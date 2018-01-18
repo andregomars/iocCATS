@@ -19,17 +19,17 @@ export const navigation = [
   },
   {
     name: 'Fleet',
-    url: '/home',
+    url: '/dashboard',
     icon: 'fa fa-bus'
   },
   {
     name: 'Alert',
-    url: '/home',
+    url: '/dashboard',
     icon: 'icon-bell'
   },
   {
     name: 'Preventive Maint',
-    url: '/home',
+    url: '/dashboard',
     icon: 'icon-umbrella'
   },
   {
@@ -39,7 +39,7 @@ export const navigation = [
     children: [
       {
         name: 'Maintenance',
-        url: '/home',
+        url: '/dashboard',
         badge: {
           variant: 'secondary',
           text: 'LOG'
@@ -47,7 +47,7 @@ export const navigation = [
       },
       {
         name: 'Daily Routing',
-        url: '/home',
+        url: '/dashboard',
         badge: {
           variant: 'secondary',
           text: 'LOG'
@@ -55,7 +55,7 @@ export const navigation = [
       },
       {
         name: 'Connection',
-        url: '/home',
+        url: '/dashboard',
         badge: {
           variant: 'secondary',
           text: 'LOG'
@@ -66,12 +66,12 @@ export const navigation = [
   },
   {
     name: 'Monthly Report',
-    url: '/home',
+    url: '/dashboard',
     icon: 'icon-graph'
   },
   {
     name: 'Notification Set',
-    url: '/home',
+    url: '/dashboard',
     icon: 'icon-note'
   }
 
