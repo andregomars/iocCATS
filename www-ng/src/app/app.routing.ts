@@ -27,6 +27,10 @@ export const routes: Routes = [
       {
         path: 'home',
         loadChildren: './views/home/home.module#HomeModule'
+      },
+      {
+        path: 'fleet',
+        loadChildren: './views/fleet/fleet.module#FleetModule'
       }
     ]
   }
