@@ -31,6 +31,14 @@ export const routes: Routes = [
       {
         path: 'fleet',
         loadChildren: './views/fleet/fleet.module#FleetModule'
+      },
+      {
+        path: 'alert',
+        loadChildren: './views/alert-list/alert-list.module#AlertListModule'
+      },
+      {
+        path: 'pmn',
+        loadChildren: './views/pmn/pmn.module#PmnModule'
       }
     ]
   }

@@ -15,12 +15,12 @@ export const navigation = [
   },
   {
     name: 'Alert',
-    url: '/dashboard',
+    url: '/alert',
     icon: 'icon-bell'
   },
   {
     name: 'Preventive Maint',
-    url: '/dashboard',
+    url: '/pmn',
     icon: 'icon-umbrella'
   },
   {

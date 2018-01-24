@@ -1,0 +1,67 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+      <input
+        type='text'
+        style='padding:8px;margin:15px auto;width:30%;'
+        placeholder='Bus No...'
+      />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col"><i class="fa fa-exclamation-triangle">&nbsp;&nbsp;</i>Front Door Usage</div>
+    <div class="col text-right"><button class="btn btn-primary">Reset</button></div>
+  </div>
+ <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+         <ngx-datatable #tablePmn
+            class='material'
+            [columns]="colsPmn"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]='rowsPmn'>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+         <ngx-datatable #tableResetLog
+            class='material'
+            [columns]="colsResetLog"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]='rowsResetLog'>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+         <ngx-datatable #tableNotifyLog
+            class='material'
+            [columns]="colsNotifyLog"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]='rowsNotifyLog'>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
