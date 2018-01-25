@@ -1,0 +1,38 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+      <input
+        type='text'
+        style='padding:8px;margin:15px auto;width:30%;'
+        placeholder='Fleet Name...'
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          Year Selection
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+         <ngx-datatable #tableConnection
+            class='material'
+            [columns]="colsConnection"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="0"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]='rowsConnection'>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,7 +30,7 @@ export const navigation = [
     children: [
       {
         name: 'Maintenance',
-        url: '/dashboard',
+        url: '/datalog/maintenance',
         badge: {
           variant: 'secondary',
           text: 'LOG'
@@ -38,7 +38,7 @@ export const navigation = [
       },
       {
         name: 'Daily Routing',
-        url: '/dashboard',
+        url: '/datalog/routing',
         badge: {
           variant: 'secondary',
           text: 'LOG'
@@ -46,7 +46,7 @@ export const navigation = [
       },
       {
         name: 'Connection',
-        url: '/dashboard',
+        url: '/datalog/connection',
         badge: {
           variant: 'secondary',
           text: 'LOG'

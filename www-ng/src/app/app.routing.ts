@@ -39,7 +39,12 @@ export const routes: Routes = [
       {
         path: 'pmn',
         loadChildren: './views/pmn/pmn.module#PmnModule'
+      },
+      {
+        path: 'datalog',
+        loadChildren: './views/data-log/data-log.module#DataLogModule'
       }
+
     ]
   }
 ];
