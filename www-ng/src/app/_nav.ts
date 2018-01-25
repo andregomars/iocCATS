@@ -57,12 +57,12 @@ export const navigation = [
   },
   {
     name: 'Monthly Report',
-    url: '/dashboard',
+    url: '/monthlyreport',
     icon: 'icon-graph'
   },
   {
     name: 'Notification Set',
-    url: '/dashboard',
+    url: '/pmnsetting',
     icon: 'icon-note'
   }
 

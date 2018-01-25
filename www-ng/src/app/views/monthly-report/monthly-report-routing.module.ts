@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes,
      RouterModule } from '@angular/router';
 
-import { PmnComponent } from './pmn.component';
+import { MonthlyReportComponent } from './monthly-report.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PmnComponent,
+    component: MonthlyReportComponent,
     data: {
-      title: 'Preventive Maintenance Notification'
+      title: 'Monthly Report'
     }
   }
 ];
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PmnRoutingModule {}
+export class MonthlyReportRoutingModule {}

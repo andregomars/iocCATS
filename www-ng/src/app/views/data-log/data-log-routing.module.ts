@@ -10,28 +10,28 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'DataLog'
+      title: 'Data Log'
     },
     children: [
       {
         path: 'maintenance',
         component: MaintenanceComponent,
         data: {
-          title: 'Maintenance'
+          title: 'Maintenance Log'
         }
       },
       {
         path: 'routing',
         component: RoutingComponent,
         data: {
-          title: 'Routing'
+          title: 'Daily Routing Log'
         }
       },
       {
         path: 'connection',
         component: ConnectionComponent,
         data: {
-          title: 'Connection'
+          title: 'Connection Log'
         }
       }
     ]

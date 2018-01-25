@@ -1,0 +1,67 @@
+[
+    {
+        "busno": "0001",
+        "mileage": 316.5,
+        "tripmileage": 22.3,
+        "engineidle": 33.6,
+        "mpg": 8.2,
+        "doorusage": 0.1,
+        "rampusage": 562.5,
+        "kneelusage": 384.2,
+        "havcusage": 26.3,
+        "wiperusage": 0,
+        "headlightusage": 0
+    },
+    {
+        "busno": "0002",
+        "mileage": 316.5,
+        "tripmileage": 22.3,
+        "engineidle": 33.6,
+        "mpg": 8.2,
+        "doorusage": 0.1,
+        "rampusage": 562.5,
+        "kneelusage": 384.2,
+        "havcusage": 26.3,
+        "wiperusage": 0,
+        "headlightusage": 0
+    },
+    {
+        "busno": "0003",
+        "mileage": 316.5,
+        "tripmileage": 22.3,
+        "engineidle": 33.6,
+        "mpg": 8.2,
+        "doorusage": 0.1,
+        "rampusage": 562.5,
+        "kneelusage": 384.2,
+        "havcusage": 26.3,
+        "wiperusage": 0,
+        "headlightusage": 0
+    },
+    {
+        "busno": "0004",
+        "mileage": 316.5,
+        "tripmileage": 22.3,
+        "engineidle": 33.6,
+        "mpg": 8.2,
+        "doorusage": 0.1,
+        "rampusage": 562.5,
+        "kneelusage": 384.2,
+        "havcusage": 26.3,
+        "wiperusage": 0,
+        "headlightusage": 0
+    },
+    {
+        "busno": "0005",
+        "mileage": 316.5,
+        "tripmileage": 22.3,
+        "engineidle": 33.6,
+        "mpg": 8.2,
+        "doorusage": 0.1,
+        "rampusage": 562.5,
+        "kneelusage": 384.2,
+        "havcusage": 26.3,
+        "wiperusage": 0,
+        "headlightusage": 0
+    }
+]
