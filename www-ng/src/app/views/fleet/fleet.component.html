@@ -32,13 +32,44 @@
           />
           <ngx-datatable #table
             class='material'
-            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='rows'>
+            <ngx-datatable-column name="busno">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                <a [routerLink]="['snapshot/', row[col.name]]">{{value}}</a>
+                <!-- <a routerLink="snapshot">{{value}}</a> -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="odometer">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="tripmileage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="engine">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="online">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="updated">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>

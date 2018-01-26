@@ -61,7 +61,7 @@ export const navigation = [
     icon: 'icon-graph'
   },
   {
-    name: 'Notification Set',
+    name: 'Notification Setting',
     url: '/pmnsetting',
     icon: 'icon-note'
   }

@@ -3,6 +3,7 @@ import { Routes,
      RouterModule } from '@angular/router';
 
 import { FleetComponent } from './fleet.component';
+import { SnapshotComponent } from './snapshot.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,13 @@ const routes: Routes = [
     data: {
       title: 'Fleet'
     }
+  },
+  {
+    path: 'snapshot/:id',
+    component: SnapshotComponent,
+    data: {
+      title: 'Snapshot'
+    } 
   }
 ];
 

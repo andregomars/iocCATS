@@ -1,6 +1,6 @@
 [
     {
-        "BusNo": "0001",
+        "busno": "0001",
         "odometer": 7735.6,
         "tripmileage": 12.9,
         "engine": "OFF",
@@ -8,7 +8,7 @@
         "updated": "2018-12-18 09:02:35"
     },
    {
-        "BusNo": "0002",
+        "busno": "0002",
         "odometer": 7735.6,
         "tripmileage": 12.9,
         "engine": "OFF",
@@ -16,7 +16,7 @@
         "updated": "2018-12-18 19:02:35"
     },
    {
-        "BusNo": "0005",
+        "busno": "0005",
         "odometer": 7735.6,
         "tripmileage": 12.9,
         "engine": "OFF",
@@ -24,7 +24,7 @@
         "updated": "2018-12-18 09:02:35"
     },
    {
-        "BusNo": "0006",
+        "busno": "0006",
         "odometer": 7735.6,
         "tripmileage": 12.9,
         "engine": "OFF",
@@ -32,7 +32,7 @@
         "updated": "2018-12-18 09:02:35"
     },
    {
-        "BusNo": "0012",
+        "busno": "0012",
         "odometer": 7735.6,
         "tripmileage": 12.9,
         "engine": "OFF",

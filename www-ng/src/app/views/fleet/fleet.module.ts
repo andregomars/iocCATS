@@ -6,6 +6,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FleetComponent } from './fleet.component';
 import { FleetRoutingModule } from './fleet-routing.module';
+import { SnapshotComponent } from './snapshot.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { FleetRoutingModule } from './fleet-routing.module';
     }),
     AgmJsMarkerClustererModule
   ],
-  declarations: [ FleetComponent ]
+  declarations: [ 
+    FleetComponent,
+    SnapshotComponent
+  ]
 })
 export class FleetModule { }
