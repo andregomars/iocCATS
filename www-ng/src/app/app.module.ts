@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, 
+  PathLocationStrategy } from '@angular/common';
+import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
 

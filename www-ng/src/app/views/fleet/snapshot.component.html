@@ -1,14 +1,138 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col">
-      Snapshot!..
+      Snapshot#: {{id$ | async }}
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-body">
-          Year Selection
+          <agm-map style="height: 300px" [zoom]=12 [latitude]="34.650013" [longitude]="-118.139558">
+            <agm-marker [latitude]="34.650013" [longitude]="-118.139558">
+              <agm-info-window>0001</agm-info-window>
+            </agm-marker>
+            <agm-polyline [polylineDraggable]=false [strokeColor]="red" [strokeOpacity]="0.5" [strokeWeight]="5">
+              <agm-polyline-point [latitude]="34.650013" [longitude]="-118.139558">
+              </agm-polyline-point>
+              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.149558">
+              </agm-polyline-point>
+              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.169558">
+              </agm-polyline-point>
+            </agm-polyline>
+          </agm-map>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-7">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <!-- <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A1</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A2</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A3</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A4</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A5</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A6</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A7</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A8</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A9</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A1</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A2</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+              <div class="card m-1">
+                <div class="card-body text-center small">A3</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

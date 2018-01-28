@@ -52,8 +52,6 @@ export const routes: Routes = [
         path: 'pmnsetting',
         loadChildren: './views/pmn-setting/pmn-setting.module#PmnSettingModule'
       }
-
-
     ]
   }
 ];
