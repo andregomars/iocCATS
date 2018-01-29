@@ -33,7 +33,7 @@ export const routes: Routes = [
         loadChildren: './views/fleet/fleet.module#FleetModule'
       },
       {
-        path: 'alert',
+        path: 'alert-list',
         loadChildren: './views/alert-list/alert-list.module#AlertListModule'
       },
       {

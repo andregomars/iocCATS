@@ -10,11 +10,11 @@ describe('FleetComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ FleetComponent ],
-      imports: [ NgxDatatableModule,
-        AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyC2aUGq0zuZMLTgrUG72Wb4LX6nOA_Q4VM'
-        }),
-        AgmJsMarkerClustererModule ]
+      imports: [ 
+        NgxDatatableModule,
+        AgmCoreModule,
+        AgmJsMarkerClustererModule
+      ]
     });
     TestBed.compileComponents();
   });

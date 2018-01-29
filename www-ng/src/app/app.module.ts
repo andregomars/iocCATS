@@ -67,6 +67,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -76,6 +77,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     TabsModule.forRoot(),
     ChartsModule,
     NgxDatatableModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC2aUGq0zuZMLTgrUG72Wb4LX6nOA_Q4VM'
+    }),
   ],
   declarations: [
     AppComponent,

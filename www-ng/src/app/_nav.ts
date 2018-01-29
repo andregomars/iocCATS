@@ -15,7 +15,7 @@ export const navigation = [
   },
   {
     name: 'Alert',
-    url: '/alert',
+    url: '/alert-list',
     icon: 'icon-bell'
   },
   {
