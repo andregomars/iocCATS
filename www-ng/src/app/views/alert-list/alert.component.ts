@@ -8,13 +8,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AlertComponent {
   private alert$: Observable<string>;
-  rows = [];
-  temp = [];
+  rowsSnapshot = [];
+  rowsNotifyLog = [];
+  rowsAckLog = [];
 
-  cols = [
+  colsSnapshot = [
     { name: 'Item' },
     { name: 'Value' },
     { name: 'Unit' }
+  ];
+
+  colsNotifyLog = [
+    { name: 'Notified' },
+    { name: 'Time' }
+  ];
+
+  colsAckLog = [
+    { name: 'Acknowledged' },
+    { name: 'Time' }
   ];
 
   constructor(
@@ -42,7 +53,9 @@ export class AlertComponent {
     //   this.alert$.subscribe(x => console.log(x));
     
     this.http.get<any>(`assets/data/alert.json`).subscribe(data => {
-      this.rows = data;
+      this.rowsSnapshot = data.snapshot;
+      this.rowsNotifyLog = data.notifylog;
+      this.rowsAckLog = data.acklog;
     });
   }
 

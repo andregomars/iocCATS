@@ -1,8 +1,14 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col">
-      Alert: {{alert$ | async }}
-    </div>
+  <div class="row pb-2">
+      <div class="col-4 col-sm-1">
+        <i class="fa fa-exclamation-triangle fa-3x"></i>
+      </div>
+      <div class="col-8 col-sm-5 text-left">
+        <h2>Charging Failure</h2>
+      </div>
+      <div class="col-12 col-sm-6 text-right">
+        <button class="btn btn-primary">Acknowledge</button>
+      </div>
   </div>
   <div class="row">
     <div class="col-12 col-sm-5">
@@ -139,35 +145,57 @@
     <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-body">
-          <ngx-datatable #table
+          <ngx-datatable #tableSnapshot
             class='material'
-            [columns]="cols"
+            [columns]="colsSnapshot"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
+            [rows]='rowsSnapshot'>
           </ngx-datatable>
         </div>
       </div>
     </div>
     <div class="col-12 col-sm-7">
-      <div class="card">
-        <div class="card-body">
-          <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColours"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <ngx-datatable #tableNotifyLog
+                class='material'
+                [columns]="colsNotifyLog"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="0"
+                [rowHeight]="'auto'"
+                [limit]="10"
+                [rows]='rowsNotifyLog'>
+              </ngx-datatable>
+            </div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <ngx-datatable #tableAckLog
+                class='material'
+                [columns]="colsAckLog"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="0"
+                [rowHeight]="'auto'"
+                [limit]="10"
+                [rows]='rowsAckLog'>
+              </ngx-datatable>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
