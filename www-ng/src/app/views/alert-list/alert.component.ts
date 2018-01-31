@@ -34,24 +34,13 @@ export class AlertComponent {
   ) { }
 
   ngOnInit(): void {
-    // this.id$ = this.route.paramMap
-    //   .map((params: ParamMap) => { 
-    //     return params.get('id');
-    //   });
-
-    // this.alert$ = this.route.paramMap
-    //   .map((params: ParamMap) => { 
-    //     let id = params.get('id');
-    //     return id;
-    //   })
-    //   .mergeMap(id => {
-    //     return this.http.get<any>(`assets/data/alert-list.json`)
-    //             .map(row => row.id);
-    //             // .filter(row => row['id'] === id);
-    //   });
-    
-    //   this.alert$.subscribe(x => console.log(x));
-    
+    this.alert$ = this.route.paramMap
+      .map((params: ParamMap) => params.get('id'))
+      .mergeMap(id => 
+        this.http.get<any>(`assets/data/alert-list.json`)
+          .map(row => row.find(row => row['id'] === id).alert)
+      )
+   
     this.http.get<any>(`assets/data/alert.json`).subscribe(data => {
       this.rowsSnapshot = data.snapshot;
       this.rowsNotifyLog = data.notifylog;
