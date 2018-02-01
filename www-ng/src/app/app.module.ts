@@ -68,6 +68,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AgmCoreModule } from '@agm/core';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from 'environments/environment';
 
 @NgModule({
   imports: [
@@ -77,9 +80,9 @@ import { AgmCoreModule } from '@agm/core';
     TabsModule.forRoot(),
     ChartsModule,
     NgxDatatableModule, 
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2aUGq0zuZMLTgrUG72Wb4LX6nOA_Q4VM'
-    }),
+    AgmCoreModule.forRoot(environment.agm),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   declarations: [
     AppComponent,

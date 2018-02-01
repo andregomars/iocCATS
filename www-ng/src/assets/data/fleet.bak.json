@@ -1,0 +1,47 @@
+[
+    {
+        "busno": "0001",
+        "odometer": 7735.6,
+        "tripmileage": 12.9,
+        "engine": "OFF",
+        "online": "OFF",
+        "updated": "2018-12-18 09:02:35"
+    },
+   {
+        "busno": "0002",
+        "odometer": 7735.6,
+        "tripmileage": 12.9,
+        "engine": "OFF",
+        "online": "ON",
+        "updated": "2018-12-18 19:02:35"
+    },
+   {
+        "busno": "0005",
+        "odometer": 7735.6,
+        "tripmileage": 12.9,
+        "engine": "OFF",
+        "online": "OFF",
+        "updated": "2018-12-18 09:02:35"
+    },
+   {
+        "busno": "0006",
+        "odometer": 7735.6,
+        "tripmileage": 12.9,
+        "engine": "OFF",
+        "online": "OFF",
+        "updated": "2018-12-18 09:02:35"
+    },
+   {
+        "busno": "0012",
+        "odometer": 7735.6,
+        "tripmileage": 12.9,
+        "engine": "OFF",
+        "online": "OFF",
+        "updated": "2018-12-18 09:02:35"
+    }
+  
+
+
+
+
+]
