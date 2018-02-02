@@ -3,18 +3,26 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <agm-map style="height: 300px" [zoom]=10 [streetViewControl]=false
-            [latitude]="34.650013" [longitude]="-118.139558">
+          <!-- <agm-map *ngIf="rows && rows.length > 0"
+            style="height: 300px" [zoom]=10 [streetViewControl]=false
+            [latitude]="rows[0].gps_location[0].latitude" 
+            [longitude]="rows[0].gps_location[0].longitude"> -->
+          <agm-map *ngIf="rows && rows.length > 0"
+              style="height: 300px" [zoom]=10 [streetViewControl]=false
+              [latitude]="33.934353" 
+              [longitude]="-117.934343">
             <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
-              <agm-marker [latitude]="34.650013" [longitude]="-118.139558">
-                <agm-info-window>0001</agm-info-window>
+              <agm-marker *ngFor="let v of rows"
+                [latitude]="v.gps_location[0].latitude" 
+                [longitude]="v.gps_location[0].longitude">
+                <agm-info-window>{{v.bus_number}}</agm-info-window>
               </agm-marker>
-              <agm-marker [latitude]="34.670013" [longitude]="-118.147558">
+              <!-- <agm-marker [latitude]="34.670013" [longitude]="-118.147558">
                 <agm-info-window>0002</agm-info-window>
               </agm-marker>
               <agm-marker [latitude]="34.690013" [longitude]="-118.149558">
                 <agm-info-window>0003</agm-info-window>
-              </agm-marker>
+              </agm-marker> -->
             </agm-marker-cluster>
           </agm-map>
         </div>
@@ -39,35 +47,35 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='rows'>
-            <ngx-datatable-column name="busno">
+            <ngx-datatable-column name="Bus No." prop="bus_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 <a [routerLink]="['snapshot', row[col.name]]">{{value}}</a>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="odometer">
+            <ngx-datatable-column name="Odometer" prop="odometer">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="tripmileage">
+            <ngx-datatable-column name="Tripmileage" prop="trip_mileage">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="engine">
+            <ngx-datatable-column name="Engine" prop="engine_status">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="online">
+            <ngx-datatable-column name="Online" prop="online_status">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="updated">
+            <ngx-datatable-column name="Updated" prop="update_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
+                {{value | date:'yyyy-MM-dd HH:mm:ss'}}
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

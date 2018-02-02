@@ -1,53 +1,40 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http/src/module';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   templateUrl: 'fleet.component.html'
 })
 export class FleetComponent {
-
   rows = [];
-
   temp = [];
+  data$: Observable<any>;
+  dataLocalUrl = `assets/data/fleet/AVTA.json`;
+  dataRemoteUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
 
-  columns = [
-    { prop: 'BusNo' },
-    { name: 'Odometer' },
-    { name: 'Tripmileage' },
-    { name: 'Engine' },
-    { name: 'Online' },
-    { name: 'Updated' }
-  ];
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
-  constructor() {
-    this.fetch((data) => {
-      // cache our list
-      this.temp = [...data];
+  constructor(
+    private http: HttpClient
+  ) { }
 
-      // push our inital complete list
-      this.rows = data;
+  ngOnInit(): void {
+    this.data$ = this.http.get<any>(this.dataRemoteUrl);
+    this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
+      this.temp = [...data.vehicles];
+      this.rows = data.vehicles;
     });
-  }
-
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/fleet.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
   }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data
-    const temp = this.temp.filter(function(d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    const temp = this.temp.filter(row => {
+      return row.bus_number.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows
