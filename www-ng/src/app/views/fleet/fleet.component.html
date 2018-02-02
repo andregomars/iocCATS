@@ -7,24 +7,32 @@
             style="height: 300px" [zoom]=10 [streetViewControl]=false
             [latitude]="rows[0].gps_location[0].latitude" 
             [longitude]="rows[0].gps_location[0].longitude"> -->
-          <agm-map *ngIf="rows && rows.length > 0"
+          <agm-map
               style="height: 300px" [zoom]=10 [streetViewControl]=false
               [latitude]="33.934353" 
               [longitude]="-117.934343">
-            <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
-              <agm-marker *ngFor="let v of rows"
+            <!-- <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'"> -->
+              <agm-marker *ngFor="let v of data$ | async"
                 [latitude]="v.gps_location[0].latitude" 
                 [longitude]="v.gps_location[0].longitude">
                 <agm-info-window>{{v.bus_number}}</agm-info-window>
               </agm-marker>
-              <!-- <agm-marker [latitude]="34.670013" [longitude]="-118.147558">
+              <!-- <agm-marker [latitude]="33.934353" [longitude]="-117.934343">
                 <agm-info-window>0002</agm-info-window>
               </agm-marker>
-              <agm-marker [latitude]="34.690013" [longitude]="-118.149558">
+              <agm-marker [latitude]="33.954353" [longitude]="-117.964343">
                 <agm-info-window>0003</agm-info-window>
               </agm-marker> -->
-            </agm-marker-cluster>
+            <!-- </agm-marker-cluster> -->
           </agm-map>
+          <div>
+            {{data$ | async | json}}
+            <ul>
+              <li *ngFor="let v of data$ | async">
+                {{v.gps_location[0].latitude}} | {{v.gps_location[0].longitude}}  
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

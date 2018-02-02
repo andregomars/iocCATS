@@ -22,11 +22,12 @@ export class FleetComponent {
   ) { }
 
   ngOnInit(): void {
-    this.data$ = this.http.get<any>(this.dataRemoteUrl);
-    this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
-      this.temp = [...data.vehicles];
-      this.rows = data.vehicles;
-    });
+    this.data$ = this.http.get<any>(this.dataRemoteUrl)
+      .map(x => x.vehicles);
+    // this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
+    //   this.temp = [...data.vehicles];
+    //   this.rows = data.vehicles;
+    // });
   }
 
   updateFilter(event) {
