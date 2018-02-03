@@ -11,7 +11,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "enc": "cd src/environments && encrypt environment.ts environment.ts.enc",
+    "dec": "cd src/environments && decrypt environment.ts.enc environment.ts"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +32,7 @@
     "angularfire2": "^5.0.0-rc.6",
     "bootstrap": "4.0.0-beta.3",
     "chart.js": "2.7.1",
+    "config-leaf": "^0.3.0",
     "core-js": "2.5.1",
     "firebase": "^4.9.0",
     "font-awesome": "^4.7.0",
