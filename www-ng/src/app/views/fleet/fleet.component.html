@@ -3,36 +3,18 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <!-- <agm-map *ngIf="rows && rows.length > 0"
-            style="height: 300px" [zoom]=10 [streetViewControl]=false
-            [latitude]="rows[0].gps_location[0].latitude" 
-            [longitude]="rows[0].gps_location[0].longitude"> -->
-          <agm-map
+          <agm-map *ngIf="locations && locations.length > 0"
               style="height: 300px" [zoom]=10 [streetViewControl]=false
-              [latitude]="33.934353" 
-              [longitude]="-117.934343">
-            <!-- <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'"> -->
-              <agm-marker *ngFor="let v of data$ | async"
-                [latitude]="v.gps_location[0].latitude" 
-                [longitude]="v.gps_location[0].longitude">
-                <agm-info-window>{{v.bus_number}}</agm-info-window>
+              [latitude]="locations[0].latitude | toNumber" 
+              [longitude]="locations[0].longitude | toNumber">
+            <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
+              <agm-marker *ngFor="let loc of locations"
+                [latitude]="loc.latitude | toNumber" 
+                [longitude]="loc.longitude | toNumber">
+                <agm-info-window>{{loc.bus_number}}</agm-info-window>
               </agm-marker>
-              <!-- <agm-marker [latitude]="33.934353" [longitude]="-117.934343">
-                <agm-info-window>0002</agm-info-window>
-              </agm-marker>
-              <agm-marker [latitude]="33.954353" [longitude]="-117.964343">
-                <agm-info-window>0003</agm-info-window>
-              </agm-marker> -->
-            <!-- </agm-marker-cluster> -->
+            </agm-marker-cluster>
           </agm-map>
-          <div>
-            {{data$ | async | json}}
-            <ul>
-              <li *ngFor="let v of data$ | async">
-                {{v.gps_location[0].latitude}} | {{v.gps_location[0].longitude}}  
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -54,7 +36,7 @@
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
+            [rows]='vehicles'>
             <ngx-datatable-column name="Bus No." prop="bus_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>

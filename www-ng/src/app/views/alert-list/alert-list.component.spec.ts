@@ -1,14 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { By } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { RouterModule } from '@angular/router';
 
 import { AlertListComponent } from './alert-list.component';
 
 describe('AlertListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertListComponent ],
-      imports: [ TabsModule.forRoot() ]
+      declarations: [ 
+        AlertListComponent
+      ],
+      imports: [
+        NgxDatatableModule,
+        RouterModule
+      ]
     });
     TestBed.compileComponents();
   });

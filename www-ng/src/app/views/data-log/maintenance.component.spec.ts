@@ -1,12 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { MaintenanceComponent } from './maintenance.component';
+import { ChartsModule } from 'ng2-charts';
 
 describe('MaintenanceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaintenanceComponent ]
+      declarations: [ 
+        MaintenanceComponent 
+      ],
+      imports: [
+        NgxDatatableModule,
+        ChartsModule
+      ]
     });
     TestBed.compileComponents();
   });

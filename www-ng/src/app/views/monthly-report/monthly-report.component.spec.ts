@@ -1,14 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { By } from '@angular/platform-browser';
 
 import { MonthlyReportComponent } from './monthly-report.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 describe('MonthlyReportComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ MonthlyReportComponent ],
-      imports: [ TabsModule.forRoot() ]
+      declarations: [ 
+        MonthlyReportComponent
+      ],
+      imports: [
+        NgxDatatableModule
+      ]
     });
     TestBed.compileComponents();
   });

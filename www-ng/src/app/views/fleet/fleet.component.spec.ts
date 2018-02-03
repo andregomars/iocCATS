@@ -1,19 +1,31 @@
 import { TestBed, async } from '@angular/core/testing';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 
 import { FleetComponent } from './fleet.component';
+import { ToNumberPipe } from 'app/pipes';
 
 describe('FleetComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ FleetComponent ],
+      declarations: [ 
+        FleetComponent,
+        ToNumberPipe
+      ],
       imports: [ 
         NgxDatatableModule,
         AgmCoreModule,
-        AgmJsMarkerClustererModule
+        AgmJsMarkerClustererModule,
+        RouterModule
+      ],
+      providers: [
+        { provide: GoogleMapsAPIWrapper },
+        { provide: MapsAPILoader },
+        { provide: HttpClient },
       ]
     });
     TestBed.compileComponents();

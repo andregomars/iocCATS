@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { DataLogRoutingModule } from './data-log-routing.module';

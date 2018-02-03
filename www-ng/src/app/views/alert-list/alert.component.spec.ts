@@ -1,12 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ActivatedRoute } from '@angular/router';
 
 import { AlertComponent } from './alert.component';
+import { HttpClient } from '@angular/common/http';
 
 describe('AlertComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ 
+        AlertComponent
+      ],
+      imports: [
+        AgmCoreModule,
+        NgxDatatableModule
+      ],
+      providers: [
+        { provide: ActivatedRoute },
+        { provide: HttpClient },
+        { provide: GoogleMapsAPIWrapper },
+        { provide: MapsAPILoader }
+      ]
     });
     TestBed.compileComponents();
   });

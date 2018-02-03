@@ -1,12 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { ConnectionComponent } from './connection.component';
 
 describe('ConnectionComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionComponent ]
+      declarations: [ 
+        ConnectionComponent 
+      ],
+      imports: [
+        NgxDatatableModule
+      ]
     });
     TestBed.compileComponents();
   });

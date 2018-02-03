@@ -1,12 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { RoutingComponent } from './routing.component';
 
 describe('RoutingComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoutingComponent ]
+      declarations: [ 
+        RoutingComponent 
+      ],
+      imports: [
+        NgxDatatableModule
+      ]
     });
     TestBed.compileComponents();
   });

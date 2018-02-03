@@ -1,12 +1,29 @@
 import { TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 import { SnapshotComponent } from './snapshot.component';
 
 describe('SnapshotComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnapshotComponent ]
+      declarations: [ 
+        SnapshotComponent 
+      ],
+      imports: [
+        AgmCoreModule,
+        NgxDatatableModule,
+        ChartsModule
+      ],
+      providers: [
+        { provide: ActivatedRoute },
+        { provide: HttpClient },
+        { provide: GoogleMapsAPIWrapper },
+        { provide: MapsAPILoader }
+      ]
     });
     TestBed.compileComponents();
   });

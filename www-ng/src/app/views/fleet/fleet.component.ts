@@ -2,16 +2,14 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http/src/module';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   templateUrl: 'fleet.component.html'
 })
 export class FleetComponent {
-  rows = [];
+  vehicles = [];
+  locations = [];
   temp = [];
-  data$: Observable<any>;
   dataLocalUrl = `assets/data/fleet/AVTA.json`;
   dataRemoteUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
 
@@ -22,15 +20,30 @@ export class FleetComponent {
   ) { }
 
   ngOnInit(): void {
-    this.data$ = this.http.get<any>(this.dataRemoteUrl)
-      .map(x => x.vehicles);
-    // this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
-    //   this.temp = [...data.vehicles];
-    //   this.rows = data.vehicles;
-    // });
+    this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
+      this.temp = [...data.vehicles];
+      this.vehicles = data.vehicles;
+      this.locations = this.extracLocations(this.vehicles);
+    });
   }
 
-  updateFilter(event) {
+  extracLocations(vehicles: Array<any>) : Array<any> {
+    return vehicles.map(v => {
+      let lat: number = 0;
+      let lng: number = 0;
+      if (v.gps_location.length > 0) {
+        lat = v.gps_location[0].latitude;
+        lng = v.gps_location[0].longitude;
+      }
+      return {
+        bus_number: v.bus_number,
+        latitude: lat,
+        longitude: lng 
+      }
+    })
+  }
+
+  private updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data
@@ -39,7 +52,8 @@ export class FleetComponent {
     });
 
     // update the rows
-    this.rows = temp;
+    this.vehicles = temp;
+    this.locations = this.extracLocations(this.vehicles);
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }
