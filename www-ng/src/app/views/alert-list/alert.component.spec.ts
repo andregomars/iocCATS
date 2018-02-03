@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 describe('AlertComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         AlertComponent
       ],
       imports: [

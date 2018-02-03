@@ -24,15 +24,16 @@ export class AppSidebarNavComponent {
 
   public navigation = navigation;
 
+  private constructor() { }
+
   public isDivider(item) {
-    return item.divider ? true : false
+    return item.divider ? true : false;
   }
 
   public isTitle(item) {
-    return item.title ? true : false
+    return item.title ? true : false;
   }
 
-  constructor() { }
 }
 
 import { Router } from '@angular/router';
@@ -56,24 +57,23 @@ import { Router } from '@angular/router';
 export class AppSidebarNavItemComponent {
   @Input() item: any;
 
+  private constructor( private router: Router )  { }
+
   public hasClass() {
-    return this.item.class ? true : false
+    return this.item.class ? true : false;
   }
 
   public isDropdown() {
-    return this.item.children ? true : false
+    return this.item.children ? true : false;
   }
 
   public thisUrl() {
-    return this.item.url
+    return this.item.url;
   }
 
   public isActive() {
-    return this.router.isActive(this.thisUrl(), false)
+    return this.router.isActive(this.thisUrl(), false);
   }
-
-  constructor( private router: Router )  { }
-
 }
 
 @Component({
@@ -99,23 +99,24 @@ export class AppSidebarNavItemComponent {
 export class AppSidebarNavLinkComponent {
   @Input() link: any;
 
+  private constructor() { }
+
   public hasVariant() {
-    return this.link.variant ? true : false
+    return this.link.variant ? true : false;
   }
 
   public isBadge() {
-    return this.link.badge ? true : false
+    return this.link.badge ? true : false;
   }
 
   public isExternalLink() {
-    return this.link.url.substring(0, 4) === 'http' ? true : false
+    return this.link.url.substring(0, 4) === 'http' ? true : false;
   }
 
   public isIcon() {
-    return this.link.icon ? true : false
+    return this.link.icon ? true : false;
   }
 
-  constructor() { }
 }
 
 @Component({
@@ -136,15 +137,16 @@ export class AppSidebarNavLinkComponent {
 export class AppSidebarNavDropdownComponent {
   @Input() link: any;
 
+  private constructor() { }
+
   public isBadge() {
-    return this.link.badge ? true : false
+    return this.link.badge ? true : false;
   }
 
   public isIcon() {
-    return this.link.icon ? true : false
+    return this.link.icon ? true : false;
   }
 
-  constructor() { }
 }
 
 @Component({
@@ -176,7 +178,7 @@ export class AppSidebarNavTitleComponent implements OnInit {
     } else {
       this.renderer.appendChild(li, name);
     }
-    this.renderer.appendChild(nativeElement, li)
+    this.renderer.appendChild(nativeElement, li);
   }
 }
 

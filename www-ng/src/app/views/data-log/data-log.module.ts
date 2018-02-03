@@ -13,7 +13,7 @@ import { ConnectionComponent } from './connection.component';
     ChartsModule,
     NgxDatatableModule
   ],
-  declarations: [ 
+  declarations: [
     MaintenanceComponent,
     RoutingComponent,
     ConnectionComponent

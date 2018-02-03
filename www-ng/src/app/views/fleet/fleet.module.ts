@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     AgmCoreModule,
     AgmJsMarkerClustererModule
   ],
-  declarations: [ 
+  declarations: [
     FleetComponent,
     SnapshotComponent,
     ToNumberPipe

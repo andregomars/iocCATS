@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, 
+import { LocationStrategy,
   PathLocationStrategy } from '@angular/common';
 import './rxjs-extensions';
 
@@ -15,7 +15,7 @@ import {
 const APP_CONTAINERS = [
   FullLayoutComponent,
   SimpleLayoutComponent
-]
+];
 
 // Import components
 import {
@@ -42,7 +42,7 @@ const APP_COMPONENTS = [
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
   APP_SIDEBAR_NAV
-]
+];
 
 // Import directives
 import {
@@ -57,7 +57,7 @@ const APP_DIRECTIVES = [
   NAV_DROPDOWN_DIRECTIVES,
   ReplaceDirective,
   SIDEBAR_TOGGLE_DIRECTIVES
-]
+];
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -79,7 +79,7 @@ import { environment } from 'environments/environment';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    NgxDatatableModule, 
+    NgxDatatableModule,
     AgmCoreModule.forRoot(environment.agm),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule

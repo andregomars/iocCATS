@@ -48,16 +48,18 @@ export class BrandMinimizeDirective {
 export class MobileSidebarToggleDirective {
   constructor() { }
 
-  // Check if element has class
-  private hasClass(target: any, elementClassName: string) {
-    return new RegExp('(\\s|^)' + elementClassName + '(\\s|$)').test(target.className);
-  }
-
   @HostListener('click', ['$event'])
   toggleOpen($event: any) {
     $event.preventDefault();
     document.querySelector('body').classList.toggle('sidebar-mobile-show');
   }
+
+  // Check if element has class
+  private hasClass(target: any, elementClassName: string) {
+    return new RegExp('(\\s|^)' + elementClassName + '(\\s|$)').test(target.className);
+  }
+
+
 }
 
 /**
@@ -68,6 +70,15 @@ export class MobileSidebarToggleDirective {
 })
 export class SidebarOffCanvasCloseDirective {
   constructor() { }
+
+  @HostListener('click', ['$event'])
+  toggleOpen($event: any) {
+    $event.preventDefault();
+
+    if (this.hasClass(document.querySelector('body'), 'sidebar-off-canvas')) {
+      this.toggleClass(document.querySelector('body'), 'sidebar-opened');
+    }
+  }
 
   // Check if element has class
   private hasClass(target: any, elementClassName: string) {
@@ -87,14 +98,7 @@ export class SidebarOffCanvasCloseDirective {
     }
   }
 
-  @HostListener('click', ['$event'])
-  toggleOpen($event: any) {
-    $event.preventDefault();
 
-    if (this.hasClass(document.querySelector('body'), 'sidebar-off-canvas')) {
-      this.toggleClass(document.querySelector('body'), 'sidebar-opened');
-    }
-  }
 }
 
 export const SIDEBAR_TOGGLE_DIRECTIVES = [

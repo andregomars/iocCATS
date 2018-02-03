@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   templateUrl: 'fleet.component.html'
 })
-export class FleetComponent {
+export class FleetComponent implements OnInit {
   vehicles = [];
   locations = [];
   temp = [];
@@ -27,10 +27,10 @@ export class FleetComponent {
     });
   }
 
-  extracLocations(vehicles: Array<any>) : Array<any> {
+  extracLocations(vehicles: Array<any>): Array<any> {
     return vehicles.map(v => {
-      let lat: number = 0;
-      let lng: number = 0;
+      let lat = 0;
+      let lng = 0;
       if (v.gps_location.length > 0) {
         lat = v.gps_location[0].latitude;
         lng = v.gps_location[0].longitude;
@@ -38,9 +38,9 @@ export class FleetComponent {
       return {
         bus_number: v.bus_number,
         latitude: lat,
-        longitude: lng 
-      }
-    })
+        longitude: lng
+      };
+    });
   }
 
   private updateFilter(event) {

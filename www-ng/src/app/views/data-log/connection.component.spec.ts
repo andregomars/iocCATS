@@ -6,8 +6,8 @@ import { ConnectionComponent } from './connection.component';
 describe('ConnectionComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        ConnectionComponent 
+      declarations: [
+        ConnectionComponent
       ],
       imports: [
         NgxDatatableModule

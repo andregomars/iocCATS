@@ -6,35 +6,9 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   templateUrl: 'snapshot.component.html'
 })
-export class SnapshotComponent {
-  private id$: Observable<string>;
-  rows = [];
-  temp = [];
-
-  cols = [
-    { name: 'Item' },
-    { name: 'Value' },
-    { name: 'Unit' }
-  ];
-
-  constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient
-  ) { }
-
-  ngOnInit(): void {
-    this.id$ = this.route.paramMap
-      .map((params: ParamMap) => { 
-        return params.get('id');
-      });
-    
-    this.http.get<any>(`assets/data/snapshot.json`).subscribe(data => {
-      this.rows = data;
-    });
-  }
-
-  // lineChart
-  public lineChartData: Array<any> = [
+export class SnapshotComponent implements OnInit {
+   // lineChart
+   public lineChartData: Array<any> = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
     {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
@@ -72,4 +46,35 @@ export class SnapshotComponent {
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';
+
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) { }
+
+  private id$: Observable<string>;
+
+  private rows = [];
+  private temp = [];
+
+  private cols = [
+    { name: 'Item' },
+    { name: 'Value' },
+    { name: 'Unit' }
+  ];
+
+
+
+  ngOnInit(): void {
+    this.id$ = this.route.paramMap
+      .map((params: ParamMap) => {
+        return params.get('id');
+      });
+
+    this.http.get<any>(`assets/data/snapshot.json`).subscribe(data => {
+      this.rows = data;
+    });
+  }
+
+
 }

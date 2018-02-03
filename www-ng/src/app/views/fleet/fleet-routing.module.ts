@@ -18,7 +18,7 @@ const routes: Routes = [
     component: SnapshotComponent,
     data: {
       title: 'Snapshot'
-    } 
+    }
   }
 ];
 

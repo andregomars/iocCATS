@@ -12,11 +12,11 @@ import { ToNumberPipe } from 'app/pipes';
 describe('FleetComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         FleetComponent,
         ToNumberPipe
       ],
-      imports: [ 
+      imports: [
         NgxDatatableModule,
         AgmCoreModule,
         AgmJsMarkerClustererModule,

@@ -10,8 +10,8 @@ import { SnapshotComponent } from './snapshot.component';
 describe('SnapshotComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        SnapshotComponent 
+      declarations: [
+        SnapshotComponent
       ],
       imports: [
         AgmCoreModule,

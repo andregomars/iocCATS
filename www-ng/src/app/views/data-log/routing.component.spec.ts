@@ -6,8 +6,8 @@ import { RoutingComponent } from './routing.component';
 describe('RoutingComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        RoutingComponent 
+      declarations: [
+        RoutingComponent
       ],
       imports: [
         NgxDatatableModule

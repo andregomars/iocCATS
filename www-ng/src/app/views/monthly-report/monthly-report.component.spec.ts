@@ -6,7 +6,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 describe('MonthlyReportComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         MonthlyReportComponent
       ],
       imports: [

@@ -7,7 +7,7 @@ import { AlertListComponent } from './alert-list.component';
 describe('AlertListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         AlertListComponent
       ],
       imports: [

@@ -7,8 +7,8 @@ import { ChartsModule } from 'ng2-charts';
 describe('MaintenanceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        MaintenanceComponent 
+      declarations: [
+        MaintenanceComponent
       ],
       imports: [
         NgxDatatableModule,

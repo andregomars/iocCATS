@@ -6,8 +6,8 @@ import { PmnSettingComponent } from './pmn-setting.component';
 describe('PmnSettingComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        PmnSettingComponent 
+      declarations: [
+        PmnSettingComponent
       ],
       imports: [
         NgxDatatableModule

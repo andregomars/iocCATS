@@ -6,10 +6,10 @@ import { PmnComponent } from './pmn.component';
 describe('PmnComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         PmnComponent
       ],
-      imports: [ 
+      imports: [
         NgxDatatableModule
       ]
     });
