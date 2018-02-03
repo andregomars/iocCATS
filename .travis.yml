@@ -24,9 +24,9 @@ before_install:
 
 install:
   - cd www-ng
-  - yarn install
+  - yarn install --no-progress
 
 script: 
   - yarn lint
-  - yarn build
-  - yarn test --single-run
+  - yarn build --progress false
+  - yarn test --progress false --single-run
