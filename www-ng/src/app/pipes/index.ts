@@ -1,1 +1,1 @@
-export * from './to-number.pipe';
+export * from './to-number';

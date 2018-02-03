@@ -10,6 +10,39 @@ import { FleetComponent } from './fleet.component';
 import { ToNumberPipe } from 'app/pipes';
 
 describe('FleetComponent', () => {
+  const vehicles = [
+    {
+        'bus_number': '001',
+        'engine_status': 'on',
+        'gps_location': [
+            {
+                'altitude': '2393',
+                'latitude': '33.934353',
+                'longitude': '-117.934343'
+            }
+        ],
+        'odometer': 10033,
+        'online_status': 'online',
+        'trip_mileage': 122,
+        'update_time': '2018-02-23 08:28:00'
+    },
+    {
+        'bus_number': '002',
+        'engine_status': 'off',
+        'gps_location': [
+            {
+                'altitude': '2393',
+                'latitude': '33.954353',
+                'longitude': '-117.964343'
+            }
+        ],
+        'odometer': 23580.6,
+        'online_status': 'online',
+        'trip_mileage': 35.8,
+        'update_time': '2018-02-23 10:54:00'
+    }
+];
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -36,6 +69,26 @@ describe('FleetComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
+
+ it('should extract location array', function() {
+    const fixture = TestBed.createComponent(FleetComponent);
+    const app = fixture.componentInstance;
+    const test = app.extracLocations(vehicles);
+    const fact = [
+      {
+        bus_number: '001',
+        latitude: '33.934353',
+        longitude: '-117.934343'
+      },
+      {
+        bus_number: '002',
+        latitude: '33.954353',
+        longitude: '-117.964343'
+      },
+    ];
+    expect(test).toEqual(fact);
+  });
+
 
   // it('should have agm-map in app', async(() => {
   //   const fixture = TestBed.createComponent(FleetComponent);
