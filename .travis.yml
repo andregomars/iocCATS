@@ -13,7 +13,7 @@ addons:
 before_script:
   - cd www-ng
   - npm install --silent -g @angular/cli
-  - npm install --silent
+  - npm install
 
 script: 
   - ng test --single-run
