@@ -11,9 +11,9 @@ addons:
 #  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 before_script:
+  - cd www-ng
   - npm install -g @angular/cli
   - npm install
 
 script: 
-  - cd www-ng
   - ng test
