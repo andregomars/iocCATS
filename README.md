@@ -1,4 +1,4 @@
-# iocCATS
+# iocCATS [![Build Status](https://travis-ci.org/andregomars/iocCATS.svg?branch=master)](https://travis-ci.org/andregomars/iocCATS)
 
 * Build angular bundles
 ```bash
