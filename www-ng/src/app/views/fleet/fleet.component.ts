@@ -10,8 +10,8 @@ export class FleetComponent implements OnInit {
   vehicles = [];
   locations = [];
   temp = [];
-  dataLocalUrl = `assets/data/fleet/AVTA.json`;
-  dataRemoteUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
+  dataUrl = `assets/data/fleet/AVTA.json`;
+  // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -20,7 +20,7 @@ export class FleetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get<any>(this.dataRemoteUrl).subscribe(data => {
+    this.http.get<any>(this.dataUrl).subscribe(data => {
       this.temp = [...data.vehicles];
       this.vehicles = data.vehicles;
       this.locations = this.extracLocations(this.vehicles);

@@ -8,7 +8,7 @@
     "time_zone": "201707230003",
     "vehicles": [
         {
-            "bus_number": "001",
+            "bus_number": "0001",
             "engine_status": "on",
             "gps_location": [
                 {
@@ -23,7 +23,7 @@
             "update_time": "2018-02-23 08:28:00"
         },
         {
-            "bus_number": "002",
+            "bus_number": "0002",
             "engine_status": "off",
             "gps_location": [
                 {
