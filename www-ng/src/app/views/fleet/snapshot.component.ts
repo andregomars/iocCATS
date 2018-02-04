@@ -68,7 +68,7 @@ export class SnapshotComponent implements OnInit {
   ngOnInit(): void {
     this.id$ = this.route.paramMap
       .map((params: ParamMap) => {
-        return params.get('id');
+        return params.get('vid');
       });
 
     this.http.get<any>(`assets/data/snapshot.json`).subscribe(data => {

@@ -40,7 +40,7 @@
             <ngx-datatable-column name="Bus No." prop="bus_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
-                <a [routerLink]="['snapshot', row[col.name]]">{{value}}</a>
+                <a [routerLink]="['snapshot', 'AVTA', row[col.prop]]">{{value}}</a>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Odometer" prop="odometer">

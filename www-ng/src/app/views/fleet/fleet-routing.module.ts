@@ -14,7 +14,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'snapshot/:id',
+    path: 'snapshot/:fid/:vid',
     component: SnapshotComponent,
     data: {
       title: 'Snapshot'
