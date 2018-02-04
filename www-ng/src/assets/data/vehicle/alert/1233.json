@@ -1,0 +1,26 @@
+{
+  "item_info" : [ {
+    "item" : "A1",
+    "unit" : "V",
+    "value" : 220
+  },
+  {
+    "item" : "A3",
+    "unit" : "A",
+    "value" : 20
+  },
+  {
+    "item" : "B1",
+    "unit" : "kWh",
+    "value" : 300
+  }  ],
+  "fleet_name" : "AVTA",
+  "module_info" : [ {
+    "module_icon_path" : "0002\\343.png",
+    "module_name" : "TRANSMISSION",
+    "module_status" : "on"
+  } ],
+  "alert_id" : "1233",
+  "fleet_id" : 5256,
+  "vehicle_id" : "0001"
+}
