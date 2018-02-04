@@ -7,28 +7,36 @@
             type='text'
             style='padding:8px;margin:15px auto;width:30%;'
             placeholder='Bus No...'
+            (keyup)='updateFilter($event)'
           />
           <ngx-datatable #table
             class='material'
-            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
-            <ngx-datatable-column name="alert">
+            [rows]='alerts'>
+           <ngx-datatable-column name="Alert" prop="alert_name">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
-                <a [routerLink]="['alert', row['id']]">{{value}}</a>
+                <a [routerLink]="['alert', row['alert_id']]">
+                  {{value}}
+                </a>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="type">
+            <ngx-datatable-column name="Bus No." prop="bus_number">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Type" prop="alert_type">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="time">
+            <ngx-datatable-column name="Time" prop="alert_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>

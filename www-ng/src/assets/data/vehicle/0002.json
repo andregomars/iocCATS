@@ -4,13 +4,13 @@
   "vehicle_id" : "0002",
   "alert_list" : [ {
     "alert_time" : "2018-02-23 08:04:20",
-    "alert_id" : 5256,
+    "alert_id" : 1235,
     "alert_name" : "Rear Door Open failure",
     "alert_type" : "critical"
   },
   {
     "alert_time" : "2018-02-23 09:12:21",
-    "alert_id" : 5256,
+    "alert_id" : 1237,
     "alert_name" : "Front Door Open failure",
     "alert_type" : "critical"
   } ]

@@ -43,6 +43,7 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
+      .do(x => console.log(x))
       .mergeMap(id =>
         this.http.get<any>(`assets/data/alert-list.json`)
           .map(row => row.find(x => x['id'] === id).alert)

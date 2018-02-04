@@ -4,19 +4,19 @@
   "vehicle_id" : "0001",
   "alert_list" : [ {
     "alert_time" : "2018-02-23 10:54:00",
-    "alert_id" : 5256,
+    "alert_id" : 1233,
     "alert_name" : "HAVC failure",
     "alert_type" : "general"
   },
   {
     "alert_time" : "2018-02-23 11:12:21",
-    "alert_id" : 5256,
+    "alert_id" : 1235,
     "alert_name" : "Engine stall",
     "alert_type" : "critical"
   },
   {
     "alert_time" : "2018-02-23 14:02:10",
-    "alert_id" : 5256,
+    "alert_id" : 1236,
     "alert_name" : "Charging failure",
     "alert_type" : "general"
   } ]
