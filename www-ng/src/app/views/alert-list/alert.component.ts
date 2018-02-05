@@ -19,14 +19,18 @@ export class AlertComponent implements OnInit {
     private http: HttpClient
   ) { }
 
-  private alert$: Observable<string>;
+  private alert$: Observable<any>;
+  private fleet$: Observable<any>;
+  private alertName$: Observable<string>;
+  private snapshot$: Observable<any>;
+  private locations$: Observable<any>;
   private rowsSnapshot = [];
   private rowsNotifyLog = [];
   private rowsAckLog = [];
   private colsSnapshot = [
-    { name: 'Item' },
-    { name: 'Value' },
-    { name: 'Unit' }
+    { name: 'Item', prop: 'item' },
+    { name: 'Value', prop: 'value' },
+    { name: 'Unit', prop: 'unit' }
   ];
 
   private colsNotifyLog = [
@@ -43,14 +47,26 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
-      .do(x => console.log(x))
-      .mergeMap(id =>
-        this.http.get<any>(`assets/data/alert-list.json`)
-          .map(row => row.find(x => x['id'] === id).alert)
+      .mergeMap(alertId =>
+        this.http.get<any>(`assets/data/vehicle/alert/${ alertId }.json`)
       );
 
+    this.alertName$ = this.alert$
+      .mergeMap(alert =>
+        this.http.get<any>(`assets/data/vehicle/${ alert.vehicle_id }.json`)
+        )
+      .map(v => v.vehicle_id);
+
+    this.locations$ = this.alert$
+      .mergeMap(alert =>
+        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`))
+      .map(f => f.vehicles)
+      .do(x => console.log(x));
+
+    this.snapshot$ = this.alert$
+      .map(a => a.item_info);
+
     this.http.get<any>(`assets/data/alert.json`).subscribe(data => {
-      this.rowsSnapshot = data.snapshot;
       this.rowsNotifyLog = data.notifylog;
       this.rowsAckLog = data.acklog;
     });

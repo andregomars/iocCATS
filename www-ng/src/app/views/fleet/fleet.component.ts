@@ -10,7 +10,8 @@ export class FleetComponent implements OnInit {
   vehicles = [];
   locations = [];
   temp = [];
-  dataUrl = `assets/data/fleet/AVTA.json`;
+  fleetId = 5256; // AVTA
+  dataUrl = `assets/data/fleet/${ this.fleetId }.json`;
   // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;

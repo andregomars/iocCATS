@@ -3,7 +3,7 @@
     "default_unit_type": "ABC",
     "desc": "First pilot program",
     "fleet_functional_code": "abc",
-    "name": "Central",
+    "name": "AVTA",
     "time_offset": 2,
     "time_zone": "201707230003",
     "vehicles": [
