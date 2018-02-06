@@ -52,6 +52,11 @@ import {
   SIDEBAR_TOGGLE_DIRECTIVES
 } from './directives';
 
+// Import pipes
+import {
+  AppPipeModule
+} from './pipes/pipes.module';
+
 const APP_DIRECTIVES = [
   AsideToggleDirective,
   NAV_DROPDOWN_DIRECTIVES,
@@ -82,7 +87,8 @@ import { environment } from 'environments/environment';
     NgxDatatableModule,
     AgmCoreModule.forRoot(environment.agm),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AppPipeModule
   ],
   declarations: [
     AppComponent,

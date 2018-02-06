@@ -6,7 +6,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FleetComponent } from './fleet.component';
 import { FleetRoutingModule } from './fleet-routing.module';
-import { ToNumberPipe } from 'app/pipes';
+import { AppPipeModule } from 'app/pipes/pipes.module';
 import { SnapshotComponent } from './snapshot.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,12 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsModule,
     NgxDatatableModule,
     AgmCoreModule,
-    AgmJsMarkerClustererModule
+    AgmJsMarkerClustererModule,
+    AppPipeModule
   ],
   declarations: [
     FleetComponent,
     SnapshotComponent,
-    ToNumberPipe
   ]
 })
 export class FleetModule { }

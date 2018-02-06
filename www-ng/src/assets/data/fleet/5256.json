@@ -15,6 +15,16 @@
                     "altitude": "2393",
                     "latitude": "33.934353",
                     "longitude": "-117.934343"
+                },
+                {
+                    "altitude": "2389",
+                    "latitude": "33.944353",
+                    "longitude": "-117.934343"
+                },
+                {
+                    "altitude": "2377",
+                    "latitude": "33.944353",
+                    "longitude": "-117.954343"
                 }
             ],
             "odometer": 10033,

@@ -12,6 +12,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { AlertListComponent } from './alert-list.component';
 import { AlertComponent } from './alert.component';
 import { AlertListRoutingModule } from './alert-list-routing.module';
+import { AppPipeModule } from 'app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -22,11 +23,12 @@ import { AlertListRoutingModule } from './alert-list-routing.module';
     AlertListRoutingModule,
     NgxDatatableModule,
     AgmCoreModule,
-    AgmJsMarkerClustererModule
+    AgmJsMarkerClustererModule,
+    AppPipeModule
   ],
   declarations: [
     AlertListComponent,
-    AlertComponent
+    AlertComponent,
   ]
 })
 export class AlertListModule { }

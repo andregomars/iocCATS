@@ -45,23 +45,28 @@ export class AlertComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // reusable middleware observable
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
-      .mergeMap(alertId =>
+      .concatMap(alertId =>
         this.http.get<any>(`assets/data/vehicle/alert/${ alertId }.json`)
       );
 
     this.alertName$ = this.alert$
-      .mergeMap(alert =>
+      .concatMap(alert =>
         this.http.get<any>(`assets/data/vehicle/${ alert.vehicle_id }.json`)
-        )
-      .map(v => v.vehicle_id);
+          .concatMap(v => Observable.from(v.alert_list))
+          .filter(a => String(a['alert_id']) === alert.alert_id)
+      )
+      .map(a => a['alert_name']);
 
     this.locations$ = this.alert$
-      .mergeMap(alert =>
-        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`))
-      .map(f => f.vehicles)
-      .do(x => console.log(x));
+      .concatMap(alert =>
+        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`)
+          .concatMap(f => Observable.from(f.vehicles))
+          .filter(v => v['bus_number'] === alert.vehicle_id)
+      )
+      .map(v => v['gps_location']);
 
     this.snapshot$ = this.alert$
       .map(a => a.item_info);

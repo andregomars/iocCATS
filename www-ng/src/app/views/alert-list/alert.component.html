@@ -14,17 +14,20 @@
     <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-body">
-          <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false
-            [latitude]="34.650013" [longitude]="-118.139558">
-            <agm-marker [latitude]="34.650013" [longitude]="-118.139558">
-              <agm-info-window>0001</agm-info-window>
+          <agm-map *ngIf="locations$ | async; let loc"
+            style="height: 300px" [zoom]=12 [streetViewControl]=false
+            [latitude]="loc[0].latitude | toNumber" 
+            [longitude]="loc[0].longitude | toNumber">
+            <agm-marker *ngFor="let loc of locations$ | async"
+              [latitude]="loc.latitude | toNumber" 
+              [longitude]="loc.longitude | toNumber">
+              <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
-            <agm-polyline [polylineDraggable]=false [strokeColor]="red" [strokeOpacity]="0.5" [strokeWeight]="5">
-              <agm-polyline-point [latitude]="34.650013" [longitude]="-118.139558">
-              </agm-polyline-point>
-              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.149558">
-              </agm-polyline-point>
-              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.169558">
+             <agm-polyline [polylineDraggable]=false [strokeColor]="red" 
+              [strokeOpacity]="0.5" [strokeWeight]="5">
+              <agm-polyline-point *ngFor="let loc of locations$ | async"
+                [latitude]="loc.latitude | toNumber" 
+                [longitude]="loc.longitude | toNumber">
               </agm-polyline-point>
             </agm-polyline>
           </agm-map>
