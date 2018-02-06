@@ -1,0 +1,25 @@
+{
+  "alert_notification" : [ {
+    "notification_type" : "Critical",
+    "notification_info" : [ {
+      "item" : "Wiper Motor",
+      "cycle_value" : 26555,
+      "odometer" : "15654.5",
+      "alert_id" : 5256,
+      "bus_number" : "Maintenance Notification",
+      "event_time" : "201712160525120005"
+    } ]
+  } ],
+  "preventive_notification" : [ {
+    "notification_type" : "Maintenance Notification",
+    "notification_info" : [ {
+      "item" : "Wiper Motor",
+      "cycle_value" : 26555,
+      "odometer" : 15654,
+      "notification_item_id" : 345,
+      "bus_number" : "Maintenance Notification",
+      "cycle_type" : "count",
+      "event_time" : "201712160525120005"
+    } ]
+  } ]
+}
