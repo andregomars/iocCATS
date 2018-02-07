@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { IMyDrpOptions } from 'mydaterangepicker';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: 'maintenance.component.html'
 })
-export class MaintenanceComponent {
+export class MaintenanceComponent implements OnInit {
   // barChart
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -37,10 +39,54 @@ export class MaintenanceComponent {
 
   @ViewChild(DatatableComponent) tableMaintenance: DatatableComponent;
 
-  constructor() {
+  myDateRangePickerOptions: IMyDrpOptions = {
+      // other options...
+      dateFormat: 'dd/mm/yyyy',
+  };
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
     this.fetch((data) => {
       this.rowsMaintenance = data;
     });
+  }
+
+  private myForm: FormGroup;
+
+  ngOnInit(): void {
+    this.myForm = this.formBuilder.group({
+      // Empty string means no initial value. Can be also specific date range for example:
+      // {beginDate: {year: 2018, month: 10, day: 9}, endDate: {year: 2018, month: 10, day: 19}}
+      // which sets this date range to initial value. It is also possible to set initial
+      // value using the selDateRange attribute.
+
+      myDateRange: ['', Validators.required]
+      // other controls are here...
+    });
+
+  }
+
+    setDateRange(): void {
+      // Set date range (today) using the patchValue function
+      const date = new Date();
+      this.myForm.patchValue({myDateRange: {
+          beginDate: {
+              year: date.getFullYear(),
+              month: date.getMonth() + 1,
+              day: date.getDate()
+          },
+          endDate: {
+              year: date.getFullYear(),
+              month: date.getMonth() + 1,
+              day: date.getDate()
+          }
+      }});
+  }
+
+  clearDateRange(): void {
+      // Clear the date range using the patchValue function
+      this.myForm.patchValue({myDateRange: ''});
   }
 
   fetch(cb) {

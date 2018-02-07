@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col">
       <div class="card">
+        <div class="card-head text-center mb-4">
+          <form [formGroup]="myForm" novalidate>
+              <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions"
+                              formControlName="myDateRange"></my-date-range-picker>
+          </form>
+        </div>
         <div class="card-body">
           <div class="chart-wrapper">
             <canvas baseChart class="chart"
