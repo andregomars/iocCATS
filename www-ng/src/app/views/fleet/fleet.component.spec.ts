@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 
+import { AppPipeModule } from 'app/pipes/pipes.module';
 import { FleetComponent } from './fleet.component';
-import { ToNumberPipe } from 'app/pipes';
 
 describe('FleetComponent', () => {
   const vehicles = [
@@ -46,14 +46,14 @@ describe('FleetComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        FleetComponent,
-        ToNumberPipe
+        FleetComponent
       ],
       imports: [
         NgxDatatableModule,
         AgmCoreModule,
         AgmJsMarkerClustererModule,
-        RouterModule
+        RouterModule,
+        AppPipeModule
       ],
       providers: [
         { provide: GoogleMapsAPIWrapper },

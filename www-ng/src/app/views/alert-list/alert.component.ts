@@ -27,6 +27,7 @@ export class AlertComponent implements OnInit {
   private rowsSnapshot = [];
   private rowsNotifyLog = [];
   private rowsAckLog = [];
+
   private colsSnapshot = [
     { name: 'Item', prop: 'item' },
     { name: 'Value', prop: 'value' },

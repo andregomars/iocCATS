@@ -3,6 +3,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ActivatedRoute } from '@angular/router';
 
+import { AppPipeModule } from 'app/pipes/pipes.module';
 import { AlertComponent } from './alert.component';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,7 +15,8 @@ describe('AlertComponent', () => {
       ],
       imports: [
         AgmCoreModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        AppPipeModule
       ],
       providers: [
         { provide: ActivatedRoute },
