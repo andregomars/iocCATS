@@ -41,7 +41,9 @@ export class MaintenanceComponent implements OnInit {
 
   myDateRangePickerOptions: IMyDrpOptions = {
       // other options...
-      dateFormat: 'dd/mm/yyyy',
+      dateFormat: 'mm/dd/yyyy',
+      height: '34px',
+      width: '250px'
   };
 
   constructor(
@@ -56,12 +58,10 @@ export class MaintenanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
-      // Empty string means no initial value. Can be also specific date range for example:
-      // {beginDate: {year: 2018, month: 10, day: 9}, endDate: {year: 2018, month: 10, day: 19}}
-      // which sets this date range to initial value. It is also possible to set initial
-      // value using the selDateRange attribute.
-
-      myDateRange: ['', Validators.required]
+      myDateRange: [{
+        beginDate: { year: 2018, month: 2, day: 1 },
+        endDate: { year: 2018, month: 2, day: 6 }
+      }, Validators.required]
       // other controls are here...
     });
 

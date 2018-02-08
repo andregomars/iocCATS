@@ -42,7 +42,10 @@ export const routes: Routes = [
       },
       {
         path: 'datalog',
-        loadChildren: './views/data-log/data-log.module#DataLogModule'
+        loadChildren: './views/data-log/data-log.module#DataLogModule',
+        data: {
+          preload: true
+        }
       },
       {
         path: 'monthlyreport',

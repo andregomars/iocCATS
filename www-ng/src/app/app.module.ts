@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy,
-  PathLocationStrategy } from '@angular/common';
+  PathLocationStrategy,
+  HashLocationStrategy} from '@angular/common';
 import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
@@ -98,7 +99,7 @@ import { environment } from 'environments/environment';
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: PathLocationStrategy
+    useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ]
 })
