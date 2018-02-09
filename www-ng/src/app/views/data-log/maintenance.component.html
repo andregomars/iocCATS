@@ -10,14 +10,12 @@
         </div>
         <div class="card-body">
           <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <canvas *ngIf="barChartData && barChartData.length > 0"
+              baseChart class="chart"
+              [labels] = "barChartLabels"
+              [datasets] = "barChartData"
+              [options]="barChartOptions"
+              chartType="bar"></canvas>
           </div>
         </div>
       </div>

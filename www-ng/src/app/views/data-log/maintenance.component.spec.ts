@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaintenanceComponent } from './maintenance.component';
 import { ChartsModule } from 'ng2-charts';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
+import { HttpClient } from '@angular/common/http';
 
 describe('MaintenanceComponent', () => {
   beforeEach(() => {
@@ -17,6 +18,9 @@ describe('MaintenanceComponent', () => {
         ChartsModule,
         MyDateRangePickerModule,
         ReactiveFormsModule
+      ],
+      providers: [
+        { provide: HttpClient },
       ]
     });
     TestBed.compileComponents();

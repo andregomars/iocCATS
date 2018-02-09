@@ -8,6 +8,8 @@ import { DataLogRoutingModule } from './data-log-routing.module';
 import { MaintenanceComponent } from './maintenance.component';
 import { RoutingComponent } from './routing.component';
 import { ConnectionComponent } from './connection.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ConnectionComponent } from './connection.component';
     ChartsModule,
     NgxDatatableModule,
     MyDateRangePickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule
   ],
   declarations: [
     MaintenanceComponent,
