@@ -14,20 +14,21 @@ export class MaintenanceComponent implements OnInit {
   public barChartOptions: any;
   public barChartData: any[];
   public barChartLabels: string[];
+  public tableData$: Observable<any>;
 
   rowsMaintenance = [];
   colsMaintenance = [
-    { name: 'Time' },
-    { name: 'Todaymileage' },
-    { name: 'Dailymileage' },
-    { name: 'Engineidle' },
-    { name: 'Mpg' },
-    { name: 'Doorusage' },
-    { name: 'Rampusage' },
-    { name: 'Kneelusage' },
-    { name: 'Havcusage' },
-    { name: 'Wiperusage' },
-    { name: 'Headlightusage' }
+    { name: 'Date', prop: 'date' },
+    { name: 'Today Mileage', prop: 'total_mileage' },
+    { name: 'Daily Mileage', prop: 'daily_mileage' },
+    { name: 'Engine Idle', prop: 'engine_idle_time' },
+    { name: 'Mpg', prop: 'mpg' },
+    { name: 'Door Usage', prop: 'door_usage' },
+    { name: 'Ramp Usage', prop: 'ramp_usage' },
+    { name: 'Kneel Usage', prop: 'kneel_usage' },
+    { name: 'Havc Usage', prop: 'havc' },
+    { name: 'Wiper Usage', prop: 'wiper' },
+    { name: 'Headlight Usage', prop: 'headlight' }
  ];
 
   @ViewChild(DatatableComponent) tableMaintenance: DatatableComponent;
@@ -56,84 +57,24 @@ export class MaintenanceComponent implements OnInit {
       }, Validators.required]
     });
 
-    // init chart options
-    this.barChartOptions = {
-      responsive: true,
-      legend: {
-        display: true
-      },
-      scales: {
-        yAxes: [
-          {
-            id: 'yDailyMileage',
-            type: 'linear',
-            position: 'left',
-            scaleLabel: {
-              display: true,
-              labelString: 'Daily Mileage',
-              fontColor: '#4bc0c0'
-            },
-            ticks: {
-              fontColor: '#4bc0c0',
-              max: 500,
-              min: 0
-            }
-          },
-          {
-            id: 'yTotalMileage',
-            scaleLabel: {
-              display: true,
-              labelString: 'Daily Mileage',
-              fontColor: '#565656'
-            },
-            type: 'linear',
-            position: 'right',
-            ticks: {
-              fontColor: '#565656',
-              max: 500,
-              min: 0
-            }
-          },
-          {
-            id: 'yKneelUsage',
-            scaleLabel: {
-              display: true,
-              labelString: 'Kneel Usage',
-              fontColor: '#4286f4'
-            },
-            type: 'linear',
-            position: 'right',
-            ticks: {
-              fontColor: '#4286f4',
-              max: 500,
-              min: 0
-            }
-          },
-          {
-            id: 'yMPG',
-            scaleLabel: {
-              display: true,
-              labelString: 'MPG',
-              fontColor: '#f47d41'
-            },
-            type: 'linear',
-            position: 'right',
-            ticks: {
-              fontColor: '#f47d41',
-              max: 500,
-              min: 0
-            }
-          }
-        ]
-      }
-    };
-
-    // load chart data
+    // retrive data source
     this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`);
+
+    this.initChartOptions();
+    this.initChartData();
+    this.initTableData();
+  }
+
+  initTableData(): void {
+    this.tableData$ = this.chart$
+      .map(r => r.maint_info_item)
+      .do(x => console.log(x));
+  }
+
+  initChartData(): void {
     this.chart$.subscribe(cData => {
       const logs: Array<any> = cData.maint_info_item;
       const xLabels = logs.map(r => r.date);
-      console.log(xLabels);
 
       this.barChartLabels = xLabels;
       this.barChartData = [
@@ -159,6 +100,78 @@ export class MaintenanceComponent implements OnInit {
           },
         ];
     });
+  }
+
+  initChartOptions(): void {
+    this.barChartOptions = {
+      responsive: true,
+      legend: {
+        display: true
+      },
+      scales: {
+        yAxes: [
+        {
+          id: 'yDailyMileage',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            display: true,
+            labelString: 'Daily Mileage',
+            fontColor: '#4bc0c0'
+          },
+          ticks: {
+            fontColor: '#4bc0c0',
+            max: 500,
+            min: 0
+          }
+        },
+        {
+          id: 'yTotalMileage',
+          scaleLabel: {
+            display: true,
+            labelString: 'Total Mileage',
+            fontColor: '#565656'
+          },
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            fontColor: '#565656',
+            max: 15000,
+            min: 0
+          }
+        },
+        {
+          id: 'yKneelUsage',
+          scaleLabel: {
+            display: true,
+            labelString: 'Kneel Usage',
+            fontColor: '#4286f4'
+          },
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            fontColor: '#4286f4',
+            max: 100,
+            min: 0
+          }
+        },
+        {
+          id: 'yMPG',
+          scaleLabel: {
+            display: true,
+            labelString: 'MPG',
+            fontColor: '#f47d41'
+          },
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            fontColor: '#f47d41',
+            max: 50,
+            min: 0
+          }
+        }
+      ]}
+    };
   }
 
   setDateRange(): void {

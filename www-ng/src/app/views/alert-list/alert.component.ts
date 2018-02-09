@@ -70,7 +70,8 @@ export class AlertComponent implements OnInit {
       .map(v => v['gps_location']);
 
     this.snapshot$ = this.alert$
-      .map(a => a.item_info);
+      .map(a => a.item_info)
+      .do(x => console.log(x));
 
     this.http.get<any>(`assets/data/alert.json`).subscribe(data => {
       this.rowsNotifyLog = data.notifylog;

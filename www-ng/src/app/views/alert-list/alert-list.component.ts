@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class AlertListComponent implements OnInit {
   alerts = [];
   temp = [];
-  dataUrlFleet = `assets/data/fleet/AVTA.json`;
+  dataUrlFleet = `assets/data/fleet/5256.json`;
   dataUrlVehicle = `assets/data/vehicle`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;

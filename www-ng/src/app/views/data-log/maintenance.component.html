@@ -9,13 +9,14 @@
           </form>
         </div>
         <div class="card-body">
-          <div class="chart-wrapper">
+          <div class="chart-wrapper" 
+            style="position: relative; width: 75vw">
             <canvas *ngIf="barChartData && barChartData.length > 0"
               baseChart class="chart"
+              chartType="bar"
               [labels] = "barChartLabels"
               [datasets] = "barChartData"
-              [options]="barChartOptions"
-              chartType="bar"></canvas>
+              [options]="barChartOptions"></canvas>
           </div>
         </div>
       </div>
@@ -33,7 +34,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsMaintenance'>
+            [rows]='tableData$ | async'>
           </ngx-datatable>
         </div>
       </div>
