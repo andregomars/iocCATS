@@ -31,4 +31,44 @@ describe('MaintenanceComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   }));
+
+  it('should extract location array', function() {
+    const fixture = TestBed.createComponent(MaintenanceComponent);
+    const app = fixture.componentInstance;
+
+    const input = [
+      {
+        date: '20180206',
+        daily_mileage: 22,
+        total_mileage: 555
+      },
+      {
+        date: '20180207',
+        daily_mileage: 11,
+        total_mileage: 333
+      }
+    ];
+
+    const expected = [
+      {
+        date: 'Summary',
+        daily_mileage: 33,
+        total_mileage: 888
+      },
+      {
+        date: '20180206',
+        daily_mileage: 22,
+        total_mileage: 555
+      },
+      {
+        date: '20180207',
+        daily_mileage: 11,
+        total_mileage: 333
+      }
+    ];
+
+    const output = app.attachSummaryRow(input);
+    expect(output).toEqual(expected);
+  });
+
 });

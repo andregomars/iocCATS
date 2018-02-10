@@ -65,9 +65,27 @@ export class MaintenanceComponent implements OnInit {
     this.initTableData();
   }
 
+  attachSummaryRow(rows: Array<any>): Array<any> {
+    const total = rows.reduce((s, r) => {
+      const keys = Object.keys(s);
+      const copy = Object.assign({}, s);
+      keys.forEach((k, i) => {
+        if (i === 0) {
+          copy[k] = 'Summary';
+        } else {
+          copy[k] = s[k] + r[k];
+        }
+      });
+      return copy;
+    });
+
+    rows.unshift(total);
+    return rows;
+  }
+
   initTableData(): void {
     this.tableData$ = this.chart$
-      .map(r => r.maint_info_item)
+      .map(r => this.attachSummaryRow(r.maint_info_item))
       .do(x => console.log(x));
   }
 
