@@ -11,3 +11,4 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/combineAll';
 import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/catch';

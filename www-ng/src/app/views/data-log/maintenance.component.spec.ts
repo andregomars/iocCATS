@@ -51,7 +51,7 @@ describe('MaintenanceComponent', () => {
 
     const expected = [
       {
-        date: 'Summary',
+        date: 'SUM',
         daily_mileage: 33,
         total_mileage: 888
       },

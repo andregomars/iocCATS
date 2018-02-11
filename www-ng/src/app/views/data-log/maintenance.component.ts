@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 @Component({
   templateUrl: 'maintenance.component.html'
@@ -58,7 +59,8 @@ export class MaintenanceComponent implements OnInit {
     });
 
     // retrive data source
-    this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`);
+    this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`)
+      .catch(e => new EmptyObservable());
 
     this.initChartOptions();
     this.initChartData();
@@ -66,12 +68,16 @@ export class MaintenanceComponent implements OnInit {
   }
 
   attachSummaryRow(rows: Array<any>): Array<any> {
+    if (!rows || rows.length < 1) {
+      return rows;
+    }
+
     const total = rows.reduce((s, r) => {
       const keys = Object.keys(s);
       const copy = Object.assign({}, s);
       keys.forEach((k, i) => {
         if (i === 0) {
-          copy[k] = 'Summary';
+          copy[k] = 'SUM';
         } else {
           copy[k] = s[k] + r[k];
         }
@@ -85,8 +91,7 @@ export class MaintenanceComponent implements OnInit {
 
   initTableData(): void {
     this.tableData$ = this.chart$
-      .map(r => this.attachSummaryRow(r.maint_info_item))
-      .do(x => console.log(x));
+      .map(r => this.attachSummaryRow(r.maint_info_item));
   }
 
   initChartData(): void {
