@@ -1,39 +1,27 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 @Component({
   templateUrl: 'pmn-setting.component.html'
 })
-export class PmnSettingComponent {
-  rows = [];
+export class PmnSettingComponent implements OnInit {
+  rows$: Observable<any>;
 
-  columns = [
-    { name: 'Item' },
-    { name: 'Bymileage' },
-    { name: 'Bydate' },
-    { name: 'Byhours' },
-    { name: 'Bycount' },
-    { name: 'Operation' },
-    { name: 'Byvalue' },
-    { name: 'Unit' },
-    { name: 'Notificationtype' },
-  ];
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() {
-    this.fetch((data) => {
-      this.rows = data;
-    });
+  private vehicleId = '0001';
+  private url = `assets/data/vehicle/preventiveNotifItemSetting/${ this.vehicleId }.json`;
+
+  ngOnInit(): void {
+    this.rows$ = this.http.get<any>(this.url)
+      .map(r => r.notification_items)
+      .catch(e => new EmptyObservable());
   }
 
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/pmn-setting.json`);
 
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
 
 }

@@ -1,6 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { Component, OnInit } from '@angular/core';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -31,8 +29,6 @@ export class MaintenanceComponent implements OnInit {
     { name: 'Wiper Usage', prop: 'wiper' },
     { name: 'Headlight Usage', prop: 'headlight' }
  ];
-
-  @ViewChild(DatatableComponent) tableMaintenance: DatatableComponent;
 
   myDateRangePickerOptions: IMyDrpOptions = {
       dateFormat: 'mm/dd/yyyy',

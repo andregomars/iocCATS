@@ -8,15 +8,59 @@
             style='padding:8px;margin:15px auto;width:30%;'
             placeholder='Bus No...'
           />
-          <ngx-datatable #table
+          <ngx-datatable
             class='material'
-            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
-            [footerHeight]="50"
+            [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
+            [rows]='rows$ | async'>
+            <ngx-datatable-column name="Item" prop="item_name">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="By Mileage (mile)" prop="mileage_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="By Date" prop="date_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="By Hours (hr)" prop="hours_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="By Count" prop="count_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Operand" prop="operand">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="By Value" prop="value">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Unit" prop="unit">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Notification Type" prop="notificate_type">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>

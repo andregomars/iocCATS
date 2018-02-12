@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PmnSettingComponent } from './pmn-setting.component';
 
@@ -10,6 +11,7 @@ describe('PmnSettingComponent', () => {
         PmnSettingComponent
       ],
       imports: [
+        HttpClientModule,
         NgxDatatableModule
       ]
     });

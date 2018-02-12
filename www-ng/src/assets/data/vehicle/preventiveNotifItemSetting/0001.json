@@ -1,0 +1,75 @@
+{
+    "notification_items": [
+    {
+        "notification_item_id": 32,
+        "item_name": "Engine oil",
+        "mileage_usage": 1000,
+        "date_usage": null,
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": "less-than",
+        "value": 20,
+        "unit": "usage",
+        "notificate_type": "Display"
+    },
+    {
+        "notification_item_id": 33,
+        "item_name": "Coolant",
+        "mileage_usage": 5000,
+        "date_usage": null,
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": "greater-than",
+        "value": 80,
+        "unit": "usage",
+        "notificate_type": "Display"
+    },
+    {
+        "notification_item_id": 34,
+        "item_name": "Front door",
+        "mileage_usage": null,
+        "date_usage": "20180207",
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": null,
+        "value": null,
+        "unit": null,
+        "notificate_type": "Display"
+    },
+    {
+        "notification_item_id": 35,
+        "item_name": "Rear door",
+        "mileage_usage": null,
+        "date_usage": null,
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": "equal",
+        "value": 350,
+        "unit": "count",
+        "notificate_type": "Display And Email"
+    },
+    {
+        "notification_item_id": 36,
+        "item_name": "High beam",
+        "mileage_usage": null,
+        "date_usage": null,
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": "less-than_equal-to",
+        "value": 80,
+        "unit": "usage",
+        "notificate_type": "Display"
+    },
+    {
+        "notification_item_id": 37,
+        "item_name": "Low bean",
+        "mileage_usage": null,
+        "date_usage": null,
+        "hours_usage": null,
+        "count_usage": null,
+        "operand": "not equal",
+        "value": 0,
+        "unit": "count",
+        "notificate_type": "Display And Email"
+    }]
+}
