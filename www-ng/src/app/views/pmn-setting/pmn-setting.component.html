@@ -8,7 +8,7 @@
             style='padding:8px;margin:15px auto;width:30%;'
             placeholder='Bus No...'
           />
-          <ngx-datatable
+          <!-- <ngx-datatable
             class='material'
             [columnMode]="'force'"
             [headerHeight]="50"
@@ -61,9 +61,72 @@
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-          </ngx-datatable>
+          </ngx-datatable> -->
+          <form [formGroup]="pmnSettingForm" class='table-responsive'>
+            <table class="table table-bordered" formArrayName="pmnSettingArray">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>By Mileage(mile)</th>
+                  <th>By Date</th>
+                  <th>By Hour(hr)</th>
+                  <th>By Count</th>
+                  <th>Operand</th>
+                  <th>By Value</th>
+                  <th>Unit</th>
+                  <th>Notification Type</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="pmnSettingForm.value">
+                <tr *ngFor="let ctl of pmnSettingArray.controls;
+                  let i = index" [formGroupName]="i">
+                  <td><input type="text" size="10" formControlName="item_name"></td>
+                  <td><input type="text" size="10" formControlName="mileage_usage"></td>
+                  <td><input type="text" size="10" formControlName="date_usage"></td>
+                  <td><input type="text" size="10" formControlName="hours_usage"></td>
+                  <td><input type="text" size="10" formControlName="count_usage"></td>
+                  <td>
+                    <select formControlName="operand">
+                      <option *ngFor="let value of operandValues" [ngValue]="value">
+                        {{value | optionName: operands}}
+                      </option>
+                    </select>
+                  </td>
+                  <td><input type="text" size="5" formControlName="value"></td>
+                  <td>
+                    <select formControlName="unit">
+                      <option *ngFor="let value of unitValues" [ngValue]="value">
+                        {{value | optionName: units}}
+                      </option>
+                    </select>
+                  </td>
+                  <td>
+                    <select formControlName="notificate_type">
+                      <option *ngFor="let type of notificationTypes" [value]="type">
+                        {{type}}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Buttons Block -->
+            <div class="form-group">
+                <button type="button" class="btn btn-primary">Add</button>
+                <button type="submit" 
+                  [disabled]="!pmnSettingForm.valid"
+                  class="btn btn-primary">
+                  Save
+                </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div>
+  <!-- <pre>{{unitValues | json}}</pre> -->
+  <!-- <pre>{{pmnSettingForm.value | json}}</pre> -->
+  <!-- <pre>{{rows$ | async | json}}</pre> -->
 </div>

@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { ToNumberPipe } from './to-number';
+import { OptionName } from './option-name';
 
 @NgModule({
     declarations: [
-        ToNumberPipe
+        ToNumberPipe,
+        OptionName
     ],
     exports: [
-        ToNumberPipe
+        ToNumberPipe,
+        OptionName
     ]
 })
 export class AppPipeModule { }
