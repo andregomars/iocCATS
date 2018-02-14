@@ -3,65 +3,24 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <input
-            type='text'
-            style='padding:8px;margin:15px auto;width:30%;'
-            placeholder='Bus No...'
-          />
-          <!-- <ngx-datatable
-            class='material'
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="0"
-            [rowHeight]="'auto'"
-            [limit]="10"
-            [rows]='rows$ | async'>
-            <ngx-datatable-column name="Item" prop="item_name">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="By Mileage (mile)" prop="mileage_usage">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="By Date" prop="date_usage">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="By Hours (hr)" prop="hours_usage">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="By Count" prop="count_usage">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Operand" prop="operand">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="By Value" prop="value">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Unit" prop="unit">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Notification Type" prop="notificate_type">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable> -->
+          <div class="row">
+            <div class="col-12 col-lg-3">
+              <ngx-select [formControl]="ngxControl"
+                [allowClear]="true"
+                [items]="vehicles"
+                placeholder="Bus No..."
+                (typed)="inputTyped('ngx-select', $event)"
+                (focus)="doFocus()"
+                (blur)="doBlur()"
+                (open)="doOpen()"
+                (close)="doClose()"
+                (select)="doSelect($event)"
+                (remove)="doRemove($event)">
+              </ngx-select>
+            </div>
+            <div class="col-0 col-lg-9"></div>
+          </div>
+          <p></p>
           <form [formGroup]="pmnSettingForm" class='table-responsive'>
             <table class="table table-bordered" formArrayName="pmnSettingArray">
               <thead>
@@ -75,12 +34,19 @@
                   <th>By Value</th>
                   <th>Unit</th>
                   <th>Notification Type</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody *ngIf="pmnSettingForm.value">
                 <tr *ngFor="let ctl of pmnSettingArray.controls;
                   let i = index" [formGroupName]="i">
-                  <td><input type="text" size="10" formControlName="item_name"></td>
+                  <td>
+                    <select formControlName="item_name">
+                      <option *ngFor="let name of itemNames" [value]="name">
+                        {{name}}
+                      </option>
+                    </select>
+                  </td>
                   <td><input type="text" size="10" formControlName="mileage_usage"></td>
                   <td><input type="text" size="10" formControlName="date_usage"></td>
                   <td><input type="text" size="10" formControlName="hours_usage"></td>
@@ -107,15 +73,24 @@
                       </option>
                     </select>
                   </td>
+                  <td>
+                    <a href="" (click)="removeLine($event, i)">
+                      <i class="fa fa-times-circle fa-lg"></i>
+                    </a> 
+                  </td>
                 </tr>
               </tbody>
             </table>
             <!-- Buttons Block -->
             <div class="form-group">
-                <button type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-primary" 
+                  (click)="addNewLine()">
+                  Add
+                </button>
                 <button type="submit" 
                   [disabled]="!pmnSettingForm.valid"
-                  class="btn btn-primary">
+                  class="btn btn-primary"
+                  (click)="primaryModal.show()">
                   Save
                 </button>
             </div>
@@ -125,6 +100,24 @@
     </div>
   </div>
 </div>
+<div bsModal #primaryModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Success</h4>
+        <button type="button" class="close" (click)="primaryModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You have <strong>{{pmnSettingArray.length}}</strong> notification setting items are saved!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="primaryModal.hide()">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <div>
   <!-- <pre>{{unitValues | json}}</pre> -->
   <!-- <pre>{{pmnSettingForm.value | json}}</pre> -->

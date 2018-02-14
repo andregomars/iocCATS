@@ -4717,9 +4717,19 @@ ng2-charts@1.6.0:
   dependencies:
     chart.js "^2.6.0"
 
+ng2-select@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ng2-select/-/ng2-select-2.0.0.tgz#99e66f147ae479ef171378cbc526e639ff4e2df7"
+
 ngx-bootstrap@1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.9.3.tgz#28e75d14fb1beaee609383d7694de4eb3ba03b26"
+
+ngx-select-ex@^3.3.10:
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/ngx-select-ex/-/ngx-select-ex-3.3.10.tgz#b251ec38a4bed899f1a6b83f55cd042b1c526c97"
+  dependencies:
+    tslib "^1.7.1"
 
 no-case@^2.2.0:
   version "2.3.2"

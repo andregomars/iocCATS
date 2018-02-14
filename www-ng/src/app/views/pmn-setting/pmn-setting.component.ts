@@ -7,31 +7,36 @@ import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { FormArray } from '@angular/forms/src/model';
 
 @Component({
-  templateUrl: 'pmn-setting.component.html'
+  templateUrl: 'pmn-setting.component.html',
+  styles: [`.ui-select-choices.dropdown-menu {
+    display: block;
+    }`]
 })
 export class PmnSettingComponent implements OnInit {
-  rows$: Observable<any>;
+  vehicles: Array<string>;
+  ngxControl = new FormControl();
   pmnSettingForm: FormGroup;
-  notificationTypes: Array<string>;
+  itemNames: Array<string>;
   units: Array<any>;
   unitValues: Array<string>;
   operands: Array<any>;
   operandValues: Array<string>;
+  notificationTypes: Array<string>;
 
   constructor(
     private http: HttpClient,
     private fb: FormBuilder
   ) { }
 
-  get pmnSettingArray() { return this.pmnSettingForm.get('pmnSettingArray'); }
+  get pmnSettingArray(): FormArray {
+    return this.pmnSettingForm.get('pmnSettingArray') as FormArray;
+  }
 
   private vehicleId = '0001';
   private url = `assets/data/vehicle/preventiveNotifItemSetting/${ this.vehicleId }.json`;
 
   ngOnInit(): void {
-    // this.rows$ = this.http.get<any>(this.url)
-    //   .map(r => r.notification_items)
-    //   .catch(e => new EmptyObservable());
+    this.initSelectBox();
     this.initSelectOptions();
 
     this.pmnSettingForm = this.fb.group({
@@ -47,7 +52,14 @@ export class PmnSettingComponent implements OnInit {
       });
   }
 
+  initSelectBox(): void {
+    this.vehicles = ['0001', '0002', '0003'];
+  }
+
   initSelectOptions(): void {
+    this.itemNames = ['Engine oil', 'Coolant', 'Front door',
+      'Rear door', 'High beam', 'Low beam'];
+
     this.operands = [
       { name: '', value: null },
       { name: '<', value: 'less-than' },
@@ -69,5 +81,57 @@ export class PmnSettingComponent implements OnInit {
     this.notificationTypes = ['Display', 'Display And Email'];
   }
 
+  // select box section
+  public inputTyped(source: string, text: string) {
+    console.log('SingleDemoComponent.inputTyped', source, text);
+  }
+
+  public doFocus() {
+      console.log('SingleDemoComponent.doFocus');
+  }
+
+  public doBlur() {
+      console.log('SingleDemoComponent.doBlur');
+  }
+
+  public doOpen() {
+      console.log('SingleDemoComponent.doOpen');
+  }
+
+  public doClose() {
+      console.log('SingleDemoComponent.doClose');
+  }
+
+  public doSelect(value: any) {
+      console.log('SingleDemoComponent.doSelect', value);
+  }
+
+  public doRemove(value: any) {
+      console.log('SingleDemoComponent.doRemove', value);
+  }
+  // -----
+
+  addNewLine(): void {
+    const newLine = {
+      notification_item_id: 0,
+      item_name: 'Engine oil',
+      mileage_usage: null,
+      date_usage: null,
+      hours_usage: null,
+      count_usage: null,
+      operand: null,
+      value: null,
+      unit: null,
+      notificate_type: 'Display'
+    };
+    this.pmnSettingArray.push(this.fb.group(newLine));
+  }
+
+  removeLine($event, i): void {
+    $event.preventDefault();
+    if (this.pmnSettingArray && this.pmnSettingArray.length > 0) {
+      this.pmnSettingArray.removeAt(i);
+    }
+  }
 }
 
