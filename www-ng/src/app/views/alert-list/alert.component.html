@@ -16,20 +16,25 @@
         <div class="card-body">
           <agm-map *ngIf="locations$ | async; let loc"
             style="height: 300px" [zoom]=12 [streetViewControl]=false
-            [latitude]="loc[0].latitude | toNumber" 
-            [longitude]="loc[0].longitude | toNumber">
-            <agm-marker *ngFor="let loc of locations$ | async"
+            [latitude]="loc.latitude | toNumber" 
+            [longitude]="loc.longitude | toNumber">
+            <agm-marker 
               [latitude]="loc.latitude | toNumber" 
               [longitude]="loc.longitude | toNumber">
               <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
-             <agm-polyline [polylineDraggable]=false [strokeColor]="red" 
+            <!-- <agm-marker *ngFor="let loc of locations$ | async"
+              [latitude]="loc.latitude | toNumber" 
+              [longitude]="loc.longitude | toNumber">
+              <agm-info-window>{{loc.altitude}}</agm-info-window>
+            </agm-marker>
+            <agm-polyline [polylineDraggable]=false [strokeColor]="red" 
               [strokeOpacity]="0.5" [strokeWeight]="5">
               <agm-polyline-point *ngFor="let loc of locations$ | async"
                 [latitude]="loc.latitude | toNumber" 
                 [longitude]="loc.longitude | toNumber">
               </agm-polyline-point>
-            </agm-polyline>
+            </agm-polyline> -->
           </agm-map>
         </div>
       </div>

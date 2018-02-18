@@ -14,7 +14,6 @@ import { FormArray } from '@angular/forms/src/model';
 })
 export class PmnSettingComponent implements OnInit {
   vehicles: Array<string>;
-  ngxControl = new FormControl();
   pmnSettingForm: FormGroup;
   itemNames: Array<string>;
   units: Array<any>;
@@ -36,7 +35,6 @@ export class PmnSettingComponent implements OnInit {
   private url = `assets/data/vehicle/preventiveNotifItemSetting/${ this.vehicleId }.json`;
 
   ngOnInit(): void {
-    this.initSelectBox();
     this.initSelectOptions();
 
     this.pmnSettingForm = this.fb.group({
@@ -50,10 +48,6 @@ export class PmnSettingComponent implements OnInit {
         const fgArray = this.fb.array(fgList);
         this.pmnSettingForm.setControl('pmnSettingArray', fgArray);
       });
-  }
-
-  initSelectBox(): void {
-    this.vehicles = ['0001', '0002', '0003'];
   }
 
   initSelectOptions(): void {
@@ -80,36 +74,6 @@ export class PmnSettingComponent implements OnInit {
 
     this.notificationTypes = ['Display', 'Display And Email'];
   }
-
-  // select box section
-  public inputTyped(source: string, text: string) {
-    console.log('SingleDemoComponent.inputTyped', source, text);
-  }
-
-  public doFocus() {
-      console.log('SingleDemoComponent.doFocus');
-  }
-
-  public doBlur() {
-      console.log('SingleDemoComponent.doBlur');
-  }
-
-  public doOpen() {
-      console.log('SingleDemoComponent.doOpen');
-  }
-
-  public doClose() {
-      console.log('SingleDemoComponent.doClose');
-  }
-
-  public doSelect(value: any) {
-      console.log('SingleDemoComponent.doSelect', value);
-  }
-
-  public doRemove(value: any) {
-      console.log('SingleDemoComponent.doRemove', value);
-  }
-  // -----
 
   addNewLine(): void {
     const newLine = {

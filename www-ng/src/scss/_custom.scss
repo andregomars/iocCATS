@@ -14,6 +14,16 @@
     width:100%;
 }
 
+.ioc-dropdown .ui-select-container .ui-select-search.form-control {
+    padding: 8px; 
+    border-radius: 4px; 
+}
+
+.ioc-dropdown .ui-select-container .ui-select-match .ui-select-toggle.form-control {
+    padding: 8px; 
+    border-radius: 4px; 
+}
+
 .ngx-datatable.bootstrap {
     border: 1px solid #d1d4d7;
 }
