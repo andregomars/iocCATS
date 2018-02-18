@@ -1,7 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSelectModule } from 'ngx-select-ex';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { MonthlyReportComponent } from './monthly-report.component';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 describe('MonthlyReportComponent', () => {
   beforeEach(() => {
@@ -10,6 +12,8 @@ describe('MonthlyReportComponent', () => {
         MonthlyReportComponent
       ],
       imports: [
+        ReactiveFormsModule,
+        NgxSelectModule,
         NgxDatatableModule
       ]
     });

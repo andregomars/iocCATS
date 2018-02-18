@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes,
-     RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { MaintenanceComponent } from './maintenance.component';
 import { RoutingComponent } from './routing.component';

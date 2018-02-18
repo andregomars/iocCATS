@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxSelectModule } from 'ngx-select-ex';
 
 import { PmnSettingComponent } from './pmn-setting.component';
 import { PmnSettingRoutingModule } from './pmn-setting-routing.module';
@@ -17,7 +16,6 @@ import { AppPipeModule } from 'app/pipes/pipes.module';
     ReactiveFormsModule,
     PmnSettingRoutingModule,
     NgxDatatableModule,
-    NgxSelectModule,
     ModalModule.forRoot(),
     AppPipeModule
   ],
