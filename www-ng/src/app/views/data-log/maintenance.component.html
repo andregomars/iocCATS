@@ -2,11 +2,27 @@
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-header text-center">
-          <form [formGroup]="myForm" novalidate>
-              <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions"
-                              formControlName="myDateRange"></my-date-range-picker>
-          </form>
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12 col-md-5 col-lg-3">
+              <input
+                type="text"
+                class="ioc-table-filter text-left"
+                placeholder="Bus No ..."
+                (keyup)="updateFilter($event)"
+              />
+            </div>
+            <div class="col col-md-1 col-lg-3"></div>
+            <div class="col-12 col-md-6">
+              <form [formGroup]="myForm" novalidate
+                class="text-left">
+                  <my-date-range-picker name="mydaterange" 
+                    [options]="myDateRangePickerOptions"
+                    formControlName="myDateRange">
+                  </my-date-range-picker>
+              </form>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="chart-wrapper" 

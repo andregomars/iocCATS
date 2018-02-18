@@ -43,6 +43,8 @@ export class AlertListComponent implements OnInit {
     const temp = this.temp.filter(row => {
       return row.bus_number.toLowerCase().indexOf(val) !== -1
         || row.alert_name.toLowerCase().indexOf(val) !== -1
+        || row.alert_type.toLowerCase().indexOf(val) !== -1
+        || row.alert_time.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 

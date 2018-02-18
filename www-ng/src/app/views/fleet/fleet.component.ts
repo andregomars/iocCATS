@@ -49,7 +49,9 @@ export class FleetComponent implements OnInit {
 
     // filter our data
     const temp = this.temp.filter(row => {
-      return row.bus_number.toLowerCase().indexOf(val) !== -1 || !val;
+      return row.bus_number.toLowerCase().indexOf(val) !== -1
+        || row.online_status.toLowerCase().indexOf(val) !== -1
+        || !val;
     });
 
     // update the rows

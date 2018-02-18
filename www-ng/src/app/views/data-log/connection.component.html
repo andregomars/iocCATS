@@ -1,25 +1,26 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col">
-      <input
-        type='text'
-        style='padding:8px;margin:15px auto;width:30%;'
-        placeholder='Bus No...'
-      />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          Date Selection
-        </div>
-      </div>
-    </div>
-  </div>
  <div class="row">
     <div class="col">
       <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12 col-md-5 col-lg-3">
+              <input
+                type="text"
+                class="ioc-table-filter text-left"
+                placeholder="Bus No ..."
+              />
+            </div>
+            <div class="col col-md-1 col-lg-3"></div>
+            <div class="col-12 col-md-6">
+                <input
+                type="text"
+                class="ioc-table-filter text-left"
+                placeholder="Date Selection"
+              />
+            </div>
+          </div>
+        </div>
         <div class="card-body">
          <ngx-datatable #tableConnection
             class='material'

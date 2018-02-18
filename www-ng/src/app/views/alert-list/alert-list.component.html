@@ -2,21 +2,27 @@
  <div class="row">
     <div class="col">
       <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+              <input
+                type="text"
+                class="ioc-table-filter"
+                placeholder="Bus No, Alert, Type, or Time ..."
+                (keyup)="updateFilter($event)"
+              />
+            </div>
+          </div>
+        </div>
         <div class="card-body">
-          <input
-            type='text'
-            style='padding:8px;margin:15px auto;width:30%;'
-            placeholder='Bus No...'
-            (keyup)='updateFilter($event)'
-          />
           <ngx-datatable #table
-            class='material'
+            class="material"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='alerts'>
+            [rows]="alerts">
            <ngx-datatable-column name="Alert" prop="alert_name">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>

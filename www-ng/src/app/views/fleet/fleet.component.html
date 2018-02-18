@@ -22,15 +22,21 @@
   <div class="row">
     <div class="col">
       <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+              <input
+                type="text"
+                class="ioc-table-filter"
+                placeholder="Bus No, or Online ..."
+                (keyup)="updateFilter($event)"
+              />
+            </div>
+          </div>
+        </div>
         <div class="card-body">
-          <input
-            type="text"
-            style="padding:8px;margin:15px auto;width:30%;"
-            placeholder="Bus No..."
-            (keyup)="updateFilter($event)"
-          />
-          <ngx-datatable #table
-            class="bootstrap"
+         <ngx-datatable #table
+            class="material"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
