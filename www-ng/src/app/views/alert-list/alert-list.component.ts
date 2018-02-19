@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 @Component({
   templateUrl: 'alert-list.component.html'
@@ -27,6 +28,8 @@ export class AlertListComponent implements OnInit {
       // fetch each vehicle data
       .mergeMap(v =>
         this.http.get<any>(`${ this.dataUrlVehicle }/${ v['bus_number'] }.json`))
+      // ignore when one of vehicles not found
+      .catch(() => new EmptyObservable())
       // retrive alert list and attach bus number into each alert
       .map(v => v.alert_list.map(a => Object.assign(a, {'bus_number' : v.vehicle_id})))
       // combine multiple arrays into a single array

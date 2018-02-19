@@ -30,15 +30,42 @@
           </div>
         </div>
         <div class="card-body">
-         <ngx-datatable #tableConnection
+          <ngx-datatable #tableConnection
             class='material'
-            [columns]="colsConnection"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsConnection'>
+            [rows]="connectionLogs">
+            n
+            <ngx-datatable-column name="File Time" prop="file_time">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Bus No." prop="vehicle_number">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Ethernet MAC" prop="ethernet_mac_addr">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="WiFi MAC" prop="wifi_mac_addr">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Download" prop="file_path">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <a [href]="value">
+                    <i class="fa fa-cloud-download fa-lg"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>

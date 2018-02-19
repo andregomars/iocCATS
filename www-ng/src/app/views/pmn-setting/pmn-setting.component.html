@@ -33,7 +33,7 @@
                   <td><input type="text" size="10" formControlName="mileage_usage"></td>
                   <td><input type="text" size="10" formControlName="date_usage"></td>
                   <td><input type="text" size="10" formControlName="hours_usage"></td>
-                  <td><input type="text" size="10" formControlName="count_usage"></td>
+                  <td><input type="text" size="10" formControlName="usage_count"></td>
                   <td>
                     <select formControlName="operand">
                       <option *ngFor="let value of operandValues" [ngValue]="value">
@@ -41,9 +41,9 @@
                       </option>
                     </select>
                   </td>
-                  <td><input type="text" size="5" formControlName="value"></td>
+                  <td><input type="text" size="5" formControlName="usage_value"></td>
                   <td>
-                    <select formControlName="unit">
+                    <select formControlName="unit_type">
                       <option *ngFor="let value of unitValues" [ngValue]="value">
                         {{value | optionName: units}}
                       </option>

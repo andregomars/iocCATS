@@ -9,6 +9,7 @@
                 type="text"
                 class="ioc-table-filter text-left"
                 placeholder="Bus No, File Time ..."
+                (keyup)="updateFilter($event)"
               />
             </div>
             <div class="col col-md-1 col-lg-3"></div>
@@ -32,13 +33,34 @@
         <div class="card-body">
          <ngx-datatable #tableRouting
             class='material'
-            [columns]="colsRouting"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsRouting'>
+            [rows]='routingLogs'>
+            <ngx-datatable-column name="File Time" prop="file_time">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="File Name" prop="file_name">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Download" prop="file_path">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <a [href]="value">
+                  <i class="fa fa-cloud-download fa-lg"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>

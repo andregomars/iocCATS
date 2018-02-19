@@ -1,15 +1,19 @@
 {
-    "notification_items": [
+    "fleet_id": 5256,
+    "fleet_name": "AVTA",
+    "vehicle_id": "0001",
+    "user_name": "nhk",
+    "notification_setting_items": [
     {
         "notification_item_id": 32,
         "item_name": "Engine oil",
         "mileage_usage": 1000,
         "date_usage": null,
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": "less-than",
-        "value": 20,
-        "unit": "usage",
+        "usage_value": 20,
+        "unit_type": "usage",
         "notificate_type": "Display"
     },
     {
@@ -18,10 +22,10 @@
         "mileage_usage": 5000,
         "date_usage": null,
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": "greater-than",
-        "value": 80,
-        "unit": "usage",
+        "usage_value": 80,
+        "unit_type": "usage",
         "notificate_type": "Display"
     },
     {
@@ -30,10 +34,10 @@
         "mileage_usage": null,
         "date_usage": "20180207",
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": null,
-        "value": null,
-        "unit": null,
+        "usage_value": null,
+        "unit_type": null,
         "notificate_type": "Display"
     },
     {
@@ -42,10 +46,10 @@
         "mileage_usage": null,
         "date_usage": null,
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": "equal",
-        "value": 350,
-        "unit": "count",
+        "usage_value": 350,
+        "unit_type": "count",
         "notificate_type": "Display And Email"
     },
     {
@@ -54,10 +58,10 @@
         "mileage_usage": null,
         "date_usage": null,
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": "less-than_equal-to",
-        "value": 80,
-        "unit": "usage",
+        "usage_value": 80,
+        "unit_type": "usage",
         "notificate_type": "Display"
     },
     {
@@ -66,10 +70,10 @@
         "mileage_usage": null,
         "date_usage": null,
         "hours_usage": null,
-        "count_usage": null,
+        "usage_count": null,
         "operand": "not equal",
-        "value": 0,
-        "unit": "count",
+        "usage_value": 0,
+        "unit_type": "count",
         "notificate_type": "Display And Email"
     }]
 }

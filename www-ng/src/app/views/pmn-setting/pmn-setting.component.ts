@@ -42,7 +42,7 @@ export class PmnSettingComponent implements OnInit {
     });
 
     this.http.get<any>(this.url)
-      .map(r => r.notification_items)
+      .map(r => r.notification_setting_items)
       .subscribe((data: Array<any>) => {
         const fgList = data.map(g => this.fb.group(g));
         const fgArray = this.fb.array(fgList);
@@ -82,10 +82,10 @@ export class PmnSettingComponent implements OnInit {
       mileage_usage: null,
       date_usage: null,
       hours_usage: null,
-      count_usage: null,
+      usage_count: null,
       operand: null,
-      value: null,
-      unit: null,
+      usage_value: null,
+      unit_type: null,
       notificate_type: 'Display'
     };
     this.pmnSettingArray.push(this.fb.group(newLine));

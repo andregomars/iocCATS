@@ -1,0 +1,23 @@
+[
+    {
+        "vehicle_number": "0001",
+        "file_time": "2018-01-22",
+        "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+        "wifi_mac_addr": "C8-88-84-6C-21-48",
+        "file_path": "http://www.fancydemo.com/file/20180122.log" 
+    },
+    {
+        "vehicle_number": "0001",
+        "file_time": "2018-01-23",
+        "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+        "wifi_mac_addr": "C8-88-84-6C-21-48",
+        "file_path": "http://www.fancydemo.com/file/20180123.log"  
+    },
+    {
+        "vehicle_number": "0001",
+        "file_time": "2018-01-24",
+        "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+        "wifi_mac_addr": "C8-88-84-6C-21-48",
+        "file_path": "http://www.fancydemo.com/file/20180124.log" 
+    }
+]
