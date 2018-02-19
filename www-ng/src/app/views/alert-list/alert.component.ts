@@ -68,7 +68,7 @@ export class AlertComponent implements OnInit {
           .filter(v => v['bus_number'] === alert.vehicle_id)
       )
       // .map(v => v['gps_location']);
-      .switchMap(v => Observable.from(v['gps_location']))
+      .switchMap(v => Observable.from(v['gps_location']));
 
     this.snapshot$ = this.alert$
       .map(a => a.item_info);

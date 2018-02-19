@@ -1,82 +1,74 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col">
-      <tabset type="pills">
+      <tabset type="pills" [justified]="true">
         <tab heading="Critical Alert">
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
-                <thead>
-                  <tr>
-                    <th>Bus #</th>
-                    <th>Item</th>
-                    <th>Event Time</th>
-                    <th>Odometer</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>0001</td>
-                    <td>Rear door open failure</td>
-                    <td>2018/01/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0003</td>
-                    <td>ABS fault code</td>
-                    <td>2018/02/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0005</td>
-                    <td>Wiper on failure</td>
-                    <td>2018/02/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0006</td>
-                    <td>Charging failure</td>
-                    <td>2018/03/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0007</td>
-                    <td>Wiper on failure</td>
-                    <td>2018/01/21</td>
-                    <td>12345.6</td>
-                  </tr>
-                </tbody>
-              </table>
+          <ngx-datatable #table
+            class="material"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]="alertsCritical">
+            <ngx-datatable-column name="Bus No." prop="bus_number">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Item" prop="alert_name">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                <a [routerLink]="['/alert-list/alert', row['alert_id']]">
+                  {{value}}
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Time" prop="alert_time">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Odometer">
+              <ng-template>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
         </tab>
         <tab heading="General Alert">
-            <table class="table table-bordered table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>Bus #</th>
-                    <th>Item</th>
-                    <th>Event Time</th>
-                    <th>Odometer</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>0001</td>
-                    <td>Rear door open failure</td>
-                    <td>2018/01/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0006</td>
-                    <td>Charging failure</td>
-                    <td>2018/03/01</td>
-                    <td>12345.6</td>
-                  </tr>
-                  <tr>
-                    <td>0007</td>
-                    <td>Wiper on failure</td>
-                    <td>2018/01/21</td>
-                    <td>12345.6</td>
-                  </tr>
-                </tbody>
-              </table>
+          <ngx-datatable #table
+            class="material"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [rows]="alertsGeneral">
+            <ngx-datatable-column name="Bus No." prop="bus_number">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Item" prop="alert_name">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                <a [routerLink]="['/alert-list/alert', row['alert_id']]">
+                  {{value}}
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Time" prop="alert_time">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Odometer">
+              <ng-template>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
         </tab>
         <tab heading="Preventive Maint. Notification">
             <table class="table table-bordered table-striped table-sm">
