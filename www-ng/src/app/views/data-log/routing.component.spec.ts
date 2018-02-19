@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxSelectModule } from 'ngx-select-ex';
 
@@ -15,6 +16,9 @@ describe('RoutingComponent', () => {
         ReactiveFormsModule,
         NgxSelectModule,
         NgxDatatableModule
+      ],
+      providers: [
+        { provide: HttpClient },
       ]
     });
     TestBed.compileComponents();
