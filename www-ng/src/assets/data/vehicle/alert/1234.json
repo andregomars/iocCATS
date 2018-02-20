@@ -1,37 +1,27 @@
-{ 
-  "alert_id" : "1234",
-  "fleet_id" : 5256,
-  "fleet_name" : "AVTA",
-  "vehicle_id" : "0002",
-  "item_info" : [ {
-    "item" : "A1",
-    "unit" : "V",
-    "value" : 220
+{
+  "alert_id": "1234",
+  "fleet_id": 5256,
+  "fleet_name": "AVTA",
+  "vehicle_id": "0001",
+  "item_info": [{
+    "item": "A1",
+    "unit": "V",
+    "value": 110
   },
   {
-    "item" : "A3",
-    "unit" : "A",
-    "value" : 20
-  },
-  {
-    "item" : "B1",
-    "unit" : "kWh",
-    "value" : 300
-  }  ],
-  "module_info" : [ {
-    "module_icon_path" : "0002\\343.png",
-    "module_name" : "TRANSMISSION",
-    "module_status" : "on"
-  } ],
-  "notif_info": [{
-    "notified_user": "rwwilliam",
-    "name": "Rick William",
-    "date": "201801221311020005"
+    "item": "A3",
+    "unit": "A",
+    "value": 50
   }],
-  "ackd_info": [{
-    "acknowledged_user": "ksmith",
-    "name": "Kelly Smith",
-    "date": "201801221311020005"
-  }]
-
+  "module_info": [{
+    "module_name": "TRANSMISSION",
+    "module_status": "on",
+    "module_icon_path": "0001\\343.png"
+  }],
+  "notif_info": [{
+    "notified_user": "rwilliam",
+    "name": "Rick William",
+    "date": "201802101802360005"
+  }],
+  "ackd_info": []
 }

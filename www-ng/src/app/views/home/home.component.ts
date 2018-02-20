@@ -8,34 +8,36 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'home.component.html'
 })
 export class HomeComponent implements OnInit {
-  alertsCritical = [];
-  alertsGeneral = [];
-  alerts$: Observable<any>;
-  fleetId = 5256; // AVTA
-  dataUrlFleet = `assets/data/fleet/${ this.fleetId }.json`;
-  dataUrlVehicle = 'assets/data/vehicle';
+  dataCritical$: Observable<any>;
+  dataGeneral$: Observable<any>;
+  dataPmn$: Observable<any>;
+  data$: Observable<any>;
+  user = 'u001';
+  dataUserNotificationURL = `assets/data/user/notification/${ this.user }.json`;
 
   constructor(
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    this.alerts$ = this.http.get<any>(this.dataUrlFleet)
-      // map each vehicle to a stream
-      .concatMap(f => { return Observable.from(f.vehicles); })
-      // fetch each vehicle data
-      .mergeMap(v =>
-        this.http.get<any>(`${ this.dataUrlVehicle }/${ v['bus_number'] }.json`))
-      // retrive alert list and attach bus number into each alert
-      .map(v => v.alert_list.map(a => Object.assign(a, {'bus_number' : v.vehicle_id})))
-      // combine multiple arrays into a single array
-      .reduce((pre, cur) => [...pre, ...cur] );
+    this.data$ = this.http.get<any>(this.dataUserNotificationURL);
 
-    this.alerts$.subscribe((data: Array<string>) => {
-      this.alertsCritical = data.filter(a => a['alert_type'] === 'critical');
-      this.alertsGeneral = data.filter(a => a['alert_type'] === 'general');
+    this.dataCritical$ = this.data$
+      .concatMap(data => Observable.from(data.alert_notification))
+      .filter(a => a['notification_type'].toLowerCase() === 'critical')
+      .concatMap(a => Observable.from(a['notification_info']))
+      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
 
-    });
+    this.dataGeneral$ = this.data$
+      .concatMap(data => Observable.from(data.alert_notification))
+      .filter(a => a['notification_type'].toLowerCase() === 'general')
+      .concatMap(a => Observable.from(a['notification_info']))
+      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
+
+    this.dataPmn$ = this.data$
+      .concatMap(data => Observable.from(data.preventive_notification))
+      .concatMap(a => Observable.from(a['notification_info']))
+      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
+
   }
-
 }

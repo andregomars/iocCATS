@@ -1,0 +1,84 @@
+{
+  "alert_notification": [
+    {
+      "notification_type": "Critical",
+      "notification_info": [
+        {
+          "alert_id": 1233,
+          "alert_desc": "Wiper failure",
+          "bus_number": "0001", 
+          "item": "Wiper Motor",
+          "event_time": "201712160525120005",
+          "odometer": 15654.5,
+          "cycle_value": 26555
+        },
+        {
+          "alert_id": 1234,
+          "alert_desc": "Engine stall",
+          "bus_number": "0002",
+          "item": "Engine",
+          "event_time": "201712160525120005",
+          "odometer": 1554.2,
+          "cycle_value": 26555
+        },
+        {
+          "alert_id": 1233,
+          "alert_desc": "Rear Door Open failure",
+          "bus_number": "0002",
+          "item": "Rear Door",
+          "event_time": "201712160525120005",
+          "odometer": 155.2,
+          "cycle_value": 26555
+        }
+      ]
+    },
+    {
+      "notification_type" : "General",
+      "notification_info" : [
+        {
+          "alert_id": 1234,
+          "alert_desc": "HVAC failure",
+          "bus_number": "0002",
+          "item": "HVAC",
+          "event_time": "201712160525120005",
+          "odometer": 1654.2,
+          "cycle_value": 26555
+        },
+        {
+          "alert_id": 1233,
+          "alert_desc": "Charging failure",
+          "bus_number": "0002",
+          "item": "Charger",
+          "event_time": "201712160525120005",
+          "odometer": 155.2,
+          "cycle_value": 26555
+        }
+      ]
+    }
+  ],
+  "preventive_notification" : [
+    {
+      "notification_type" : "Maintenance Notification",
+      "notification_info" : [ 
+        {
+          "alert_id": 1233,
+          "alert_desc": "HVAC failure",
+          "bus_number": "0001",
+          "item": "HVAC",
+          "event_time": "201712160525120005",
+          "odometer": 1654.2,
+          "cycle_value": 26555
+        },
+        {
+          "alert_id": 1234,
+          "alert_desc": "Charging failure",
+          "bus_number": "0002",
+          "item": "Charger",
+          "event_time": "201712160525120005",
+          "odometer": 155.2,
+          "cycle_value": 26555
+        }
+      ]
+    } 
+  ]
+}

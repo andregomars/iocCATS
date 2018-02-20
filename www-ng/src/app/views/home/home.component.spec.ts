@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -16,7 +17,8 @@ describe('HomeComponent', () => {
       imports: [
         RouterModule,
         TabsModule.forRoot(),
-        NgxDatatableModule
+        NgxDatatableModule,
+        AppPipeModule
       ],
       providers: [
         { provide: HttpClient }

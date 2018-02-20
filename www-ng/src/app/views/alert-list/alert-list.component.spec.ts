@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AlertListComponent } from './alert-list.component';
+import { AppPipeModule } from 'app/pipes/pipes.module';
 
 describe('AlertListComponent', () => {
   beforeEach(() => {
@@ -13,7 +14,8 @@ describe('AlertListComponent', () => {
       ],
       imports: [
         NgxDatatableModule,
-        RouterModule
+        RouterModule,
+        AppPipeModule
       ],
       providers: [
         { provide: HttpClient }
