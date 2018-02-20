@@ -1,15 +1,19 @@
 {
-    "address": "One Gateway Plaza, Los Angeles, CA 90012-2952",
-    "default_unit_type": "ABC",
-    "desc": "First pilot program",
-    "fleet_functional_code": "abc",
     "name": "AVTA",
+    "address": "One Gateway Plaza, Los Angeles, CA 90012-2952",
+    "desc": "First pilot program",
     "time_offset": 2,
+    "fleet_functional_code": "abc",
+    "default_unit_type": "ABC",
     "time_zone": "201707230003",
     "vehicles": [
         {
             "bus_number": "0001",
+            "odometer": 10033,
+            "trip_mileage": 122,
             "engine_status": "on",
+            "online_status": "offline",
+            "update_time": "201802230828100005",
             "gps_location": [
                 {
                     "altitude": "2393",
@@ -26,26 +30,22 @@
                     "latitude": "33.944353",
                     "longitude": "-117.954343"
                 }
-            ],
-            "odometer": 10033,
-            "online_status": "offline",
-            "trip_mileage": 122,
-            "update_time": "2018-02-23 08:28:00"
+            ]
         },
         {
             "bus_number": "0002",
+            "odometer": 23580.6,
+            "trip_mileage": 35.8,
             "engine_status": "off",
+            "online_status": "online",
+            "update_time": "201802230824330005", 
             "gps_location": [
                 {
                     "altitude": "2393",
                     "latitude": "33.954353",
                     "longitude": "-117.964343"
                 }
-            ],
-            "odometer": 23580.6,
-            "online_status": "online",
-            "trip_mileage": 35.8,
-            "update_time": "2018-02-23 10:54:00"
+            ]
         }
     ]
 }

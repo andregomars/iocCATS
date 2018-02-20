@@ -1,23 +1,23 @@
 {
-  "fleet_name" : "AVTA",
-  "fleet_id" : 5256,
   "vehicle_id" : "0001",
+  "fleet_id" : 5256,
+  "fleet_name" : "AVTA",
   "alert_list" : [ {
-    "alert_time" : "2018-02-23 10:54:00",
     "alert_id" : 1233,
     "alert_name" : "HAVC failure",
-    "alert_type" : "general"
+    "alert_type" : "general",
+    "alert_time" : "20180223105404120005"
   },
   {
-    "alert_time" : "2018-02-23 11:12:21",
     "alert_id" : 1235,
     "alert_name" : "Engine stall",
-    "alert_type" : "critical"
+    "alert_type" : "critical",
+    "alert_time" : "20180223111211330005"
   },
   {
-    "alert_time" : "2018-02-23 14:02:10",
     "alert_id" : 1236,
     "alert_name" : "Charging failure",
-    "alert_type" : "general"
+    "alert_type" : "general",
+    "alert_time" : "20180223140210040005"
   } ]
 }

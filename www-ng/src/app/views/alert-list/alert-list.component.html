@@ -43,7 +43,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Time" prop="alert_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
+                {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
