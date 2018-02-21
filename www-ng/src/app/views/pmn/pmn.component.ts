@@ -1,14 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
   templateUrl: 'pmn.component.html'
 })
-export class PmnComponent {
+export class PmnComponent implements OnInit {
   rowsPmn = [];
-  rowsResetLog = [];
-  rowsNotifyLog = [];
+  dataPmn$: Observable<any>;
+  notifications$: Observable<any>;
+  resets$: Observable<any>;
+  user = 'u001';
+  dataUserNotificationURL = `assets/data/user/notification/${ this.user }.json`;
+
 
   colsPmn = [
     { name: 'Item' },
@@ -20,37 +26,11 @@ export class PmnComponent {
     { name: 'Notificationtype' },
   ];
 
-  colsResetLog = [
-    { name: 'User' },
-    { name: 'Resetdate' }
-  ];
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  colsNotifyLog = [
-    { name: 'Notified' },
-    { name: 'Time' }
-  ];
+  ngOnInit(): void {
 
-  @ViewChild(DatatableComponent) tablePmn: DatatableComponent;
-  @ViewChild(DatatableComponent) tableResetLog: DatatableComponent;
-  @ViewChild(DatatableComponent) tableNotifyLog: DatatableComponent;
-
-  constructor() {
-    this.fetch((data) => {
-      this.rowsPmn = data.pmn;
-      this.rowsResetLog = data.resetlog;
-      this.rowsNotifyLog = data.notifylog;
-    });
   }
-
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/pmn.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
-
 }

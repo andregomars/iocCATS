@@ -1,5 +1,6 @@
 {
   "alert_id": "1234",
+  "alert_desc": "Rear Door Open failure",
   "fleet_id": 5256,
   "fleet_name": "AVTA",
   "vehicle_id": "0001",

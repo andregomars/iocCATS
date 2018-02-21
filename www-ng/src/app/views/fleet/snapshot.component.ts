@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
@@ -7,74 +7,46 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'snapshot.component.html'
 })
 export class SnapshotComponent implements OnInit {
-   // lineChart
-   public lineChartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
-  ];
-  public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: any = {
-    animation: false,
-    responsive: true
-  };
-  public lineChartColours: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
-  ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient
   ) { }
 
-  private id$: Observable<string>;
+  private vid$: Observable<string>;
+  private alert$: Observable<any>;
+  private locations$: Observable<any>;
 
-  private rows = [];
-  private temp = [];
+  private modules$: Observable<any>;
+  private snapshots$: Observable<any>;
 
-  private cols = [
-    { name: 'Item' },
-    { name: 'Value' },
-    { name: 'Unit' }
+  private colsSnapshot = [
+    { name: 'Item', prop: 'item' },
+    { name: 'Value', prop: 'value' },
+    { name: 'Unit', prop: 'unit' }
   ];
 
-
-
   ngOnInit(): void {
-    this.id$ = this.route.paramMap
-      .map((params: ParamMap) => {
-        return params.get('vid');
-      });
+    this.vid$ = this.route.paramMap
+      .map((params: ParamMap) => params.get('vid'));
 
-    this.http.get<any>(`assets/data/snapshot.json`).subscribe(data => {
-      this.rows = data;
-    });
+    this.alert$ = this.route.paramMap
+      .map((params: ParamMap) => params.get('vid'))
+      .concatMap(vid =>
+        this.http.get<any>(`assets/data/vehicle/${ vid }.json`))
+      .concatMap(v =>
+        this.http.get<any>(`assets/data/vehicle/alert/${ v.alert_list[0].alert_id }.json`));
+
+    this.locations$ = this.alert$
+      .concatMap(alert =>
+        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`)
+          .concatMap(f => Observable.from(f.vehicles))
+          .filter(v => v['bus_number'] === alert.vehicle_id)
+      )
+      // .map(v => v['gps_location']);
+      .switchMap(v => Observable.from(v['gps_location']));
+
+    this.modules$ = this.alert$.map(a => a.module_info);
+    this.snapshots$ = this.alert$.map(a => a.item_info);
   }
-
-
 }

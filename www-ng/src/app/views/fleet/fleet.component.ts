@@ -12,7 +12,7 @@ export class FleetComponent implements OnInit {
   temp = [];
   fleetId = 5256; // AVTA
   dataUrl = `assets/data/fleet/${ this.fleetId }.json`;
-  // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/AVTA.json`;
+  // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/5256.json`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -32,7 +32,7 @@ export class FleetComponent implements OnInit {
     return vehicles.map(v => {
       let lat = 0;
       let lng = 0;
-      if (v.gps_location.length > 0) {
+      if (v.gps_location && v.gps_location.length > 0) {
         lat = v.gps_location[0].latitude;
         lng = v.gps_location[0].longitude;
       }

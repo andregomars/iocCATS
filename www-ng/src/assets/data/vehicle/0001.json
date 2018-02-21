@@ -4,7 +4,7 @@
   "fleet_name" : "AVTA",
   "alert_list" : [ {
     "alert_id" : 1233,
-    "alert_name" : "HAVC failure",
+    "alert_name" : "HVAC failure",
     "alert_type" : "general",
     "alert_time" : "20180223105404120005"
   },

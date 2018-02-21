@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
 
 import { SnapshotComponent } from './snapshot.component';
+import { AppPipeModule } from 'app/pipes/pipes.module';
 
 describe('SnapshotComponent', () => {
   beforeEach(() => {
@@ -16,7 +17,8 @@ describe('SnapshotComponent', () => {
       imports: [
         AgmCoreModule,
         NgxDatatableModule,
-        ChartsModule
+        ChartsModule,
+        AppPipeModule
       ],
       providers: [
         { provide: ActivatedRoute },

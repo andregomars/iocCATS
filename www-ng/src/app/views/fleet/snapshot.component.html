@@ -1,26 +1,20 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col">
-      Bus No. {{id$ | async }}
-    </div>
-  </div>
-  <div class="row">
     <div class="col-12 col-sm-5">
       <div class="card">
+        <div class="card-header">
+          Bus No. {{vid$ | async }}
+        </div>
         <div class="card-body">
-          <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false
-            [latitude]="34.650013" [longitude]="-118.139558">
-            <agm-marker [latitude]="34.650013" [longitude]="-118.139558">
-              <agm-info-window>0001</agm-info-window>
+          <agm-map *ngIf="locations$ | async; let loc"
+            style="height: 300px" [zoom]=12 [streetViewControl]=false
+            [latitude]="loc.latitude | toNumber" 
+            [longitude]="loc.longitude | toNumber">
+            <agm-marker 
+              [latitude]="loc.latitude | toNumber" 
+              [longitude]="loc.longitude | toNumber">
+              <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
-            <agm-polyline [polylineDraggable]=false [strokeColor]="red" [strokeOpacity]="0.5" [strokeWeight]="5">
-              <agm-polyline-point [latitude]="34.650013" [longitude]="-118.139558">
-              </agm-polyline-point>
-              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.149558">
-              </agm-polyline-point>
-              <agm-polyline-point [latitude]="34.640013" [longitude]="-118.169558">
-              </agm-polyline-point>
-            </agm-polyline>
           </agm-map>
         </div>
       </div>
@@ -141,13 +135,13 @@
         <div class="card-body">
           <ngx-datatable #table
             class='material'
-            [columns]="cols"
+            [columns]="colsSnapshot"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
+            [rows]='snapshots$ | async'>
           </ngx-datatable>
         </div>
       </div>

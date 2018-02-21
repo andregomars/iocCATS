@@ -161,7 +161,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='snapshot$ | async'>
+            [rows]='snapshots$ | async'>
           </ngx-datatable>
         </div>
       </div>
@@ -173,13 +173,22 @@
             <div class="card-body">
               <ngx-datatable #tableNotifyLog
                 class='material'
-                [columns]="colsNotifyLog"
                 [columnMode]="'force'"
                 [headerHeight]="50"
                 [footerHeight]="0"
                 [rowHeight]="'auto'"
                 [limit]="10"
-                [rows]='rowsNotifyLog'>
+                [rows]='notifications$ | async'>
+                <ngx-datatable-column name="Notified" prop="notified_user">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Time" prop="date">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
+                  </ng-template>
+                </ngx-datatable-column>
               </ngx-datatable>
             </div>
           </div>
@@ -191,13 +200,22 @@
             <div class="card-body">
               <ngx-datatable #tableAckLog
                 class='material'
-                [columns]="colsAckLog"
                 [columnMode]="'force'"
                 [headerHeight]="50"
                 [footerHeight]="0"
                 [rowHeight]="'auto'"
                 [limit]="10"
-                [rows]='rowsAckLog'>
+                [rows]='acknowledges$ | async'>
+                <ngx-datatable-column name="Acknowledged" prop="acknowledged_user">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Time" prop="date">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
+                  </ng-template>
+                </ngx-datatable-column>
               </ngx-datatable>
             </div>
           </div>
