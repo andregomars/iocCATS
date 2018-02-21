@@ -13,11 +13,13 @@ import { AlertListComponent } from './alert-list.component';
 import { AlertComponent } from './alert.component';
 import { AlertListRoutingModule } from './alert-list-routing.module';
 import { AppPipeModule } from 'app/pipes/pipes.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     ChartsModule,
     NgxDatatableModule,
     AlertListRoutingModule,

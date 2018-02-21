@@ -30,7 +30,7 @@
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rows'>
+            [rows]='data$ | async'>
           </ngx-datatable>
         </div>
       </div>

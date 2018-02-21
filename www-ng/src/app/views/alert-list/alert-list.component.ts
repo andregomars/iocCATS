@@ -24,7 +24,7 @@ export class AlertListComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>(this.dataUrlFleet)
       // map each vehicle to a stream
-      .concatMap(f => { return Observable.from(f.vehicles); })
+      .concatMap(f => Observable.from(f.vehicles))
       // fetch each vehicle data
       .mergeMap(v =>
         this.http.get<any>(`${ this.dataUrlVehicle }/${ v['bus_number'] }.json`))

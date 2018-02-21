@@ -1,4 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -12,6 +14,8 @@ describe('MonthlyReportComponent', () => {
         MonthlyReportComponent
       ],
       imports: [
+        CommonModule,
+        HttpClientModule,
         ReactiveFormsModule,
         NgxSelectModule,
         NgxDatatableModule

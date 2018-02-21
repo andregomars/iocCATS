@@ -1,0 +1,714 @@
+{
+  "fleet" : {
+      "5256": {
+        "name": "AVTA",
+        "address": "One Gateway Plaza, Los Angeles, CA 90012-2952",
+        "desc": "First pilot program",
+        "time_offset": 2,
+        "fleet_functional_code": "abc",
+        "default_unit_type": "ABC",
+        "time_zone": "201707230003",
+        "vehicles": [
+            {
+                "bus_number": "0001",
+                "odometer": 10033,
+                "trip_mileage": 122,
+                "engine_status": "on",
+                "online_status": "offline",
+                "update_time": "201802230828100005",
+                "gps_location": [
+                    {
+                        "altitude": "2393",
+                        "latitude": "33.934353",
+                        "longitude": "-117.934343"
+                    },
+                    {
+                        "altitude": "2389",
+                        "latitude": "33.944353",
+                        "longitude": "-117.934343"
+                    },
+                    {
+                        "altitude": "2377",
+                        "latitude": "33.944353",
+                        "longitude": "-117.954343"
+                    }
+                ]
+            },
+            {
+                "bus_number": "0002",
+                "odometer": 23580.6,
+                "trip_mileage": 35.8,
+                "engine_status": "off",
+                "online_status": "online",
+                "update_time": "201802230824330005", 
+                "gps_location": [
+                    {
+                        "altitude": "2393",
+                        "latitude": "33.954353",
+                        "longitude": "-117.964343"
+                    }
+                ]
+            }
+        ]
+    }
+  },
+  "user": {
+    "notification": {
+      "u001": {
+        "alert_notification": [
+          {
+            "notification_type": "Critical",
+            "notification_info": [
+              {
+                "alert_id": 1233,
+                "alert_desc": "Wiper failure",
+                "bus_number": "0001", 
+                "item": "Wiper Motor",
+                "event_time": "201712160525120005",
+                "odometer": 15654.5,
+                "cycle_value": 26555
+              },
+              {
+                "alert_id": 1234,
+                "alert_desc": "Engine stall",
+                "bus_number": "0002",
+                "item": "Engine",
+                "event_time": "201712160525120005",
+                "odometer": 1554.2,
+                "cycle_value": 26555
+              },
+              {
+                "alert_id": 1233,
+                "alert_desc": "Rear Door Open failure",
+                "bus_number": "0002",
+                "item": "Rear Door",
+                "event_time": "201712160525120005",
+                "odometer": 155.2,
+                "cycle_value": 26555
+              }
+            ]
+          },
+          {
+            "notification_type" : "General",
+            "notification_info" : [
+              {
+                "alert_id": 1234,
+                "alert_desc": "HVAC failure",
+                "bus_number": "0002",
+                "item": "HVAC",
+                "event_time": "201712160525120005",
+                "odometer": 1654.2,
+                "cycle_value": 26555
+              },
+              {
+                "alert_id": 1233,
+                "alert_desc": "Charging failure",
+                "bus_number": "0002",
+                "item": "Charger",
+                "event_time": "201712160525120005",
+                "odometer": 155.2,
+                "cycle_value": 26555
+              }
+            ]
+          }
+        ],
+        "preventive_notification" : [
+          {
+            "notification_type" : "Maintenance Notification",
+            "notification_info" : [ 
+              {
+                "alert_id": 1233,
+                "alert_desc": "HVAC failure",
+                "bus_number": "0001",
+                "item": "HVAC",
+                "event_time": "201712160525120005",
+                "odometer": 1654.2,
+                "cycle_value": 26555
+              },
+              {
+                "alert_id": 1234,
+                "alert_desc": "Charging failure",
+                "bus_number": "0002",
+                "item": "Charger",
+                "event_time": "201712160525120005",
+                "odometer": 155.2,
+                "cycle_value": 26555
+              }
+            ]
+          } 
+        ]
+      }
+    }
+  },
+  "vehicle": {
+    "alert": {
+      "1233": {
+        "alert_id": "1233",
+        "alert_desc": "HVAC failure",
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "item_info": [{
+          "item": "A1",
+          "unit": "V",
+          "value": 220
+        },
+        {
+          "item": "A3",
+          "unit": "A",
+          "value": 20
+        },
+        {
+          "item": "B1",
+          "unit": "kWh",
+          "value": 300
+        }],
+        "module_info": [{
+          "module_name": "TRANSMISSION",
+          "module_status": "on",
+          "module_icon_path": "0001\\343.png"
+        }],
+        "notif_info": [{
+          "notified_user": "rwilliam",
+          "name": "Rick William",
+          "date": "201802031802360005"
+        }],
+        "ackd_info": [{
+          "acknowledged_user": "ksmith",
+          "name": "Kelly Smith",
+          "date": "201802031712070005"
+        }]
+      },
+      "1234": {
+        "alert_id": "1234",
+        "alert_desc": "Rear Door Open failure",
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "item_info": [{
+          "item": "A1",
+          "unit": "V",
+          "value": 110
+        },
+        {
+          "item": "A3",
+          "unit": "A",
+          "value": 50
+        }],
+        "module_info": [{
+          "module_name": "TRANSMISSION",
+          "module_status": "on",
+          "module_icon_path": "0001\\343.png"
+        }],
+        "notif_info": [{
+          "notified_user": "rwilliam",
+          "name": "Rick William",
+          "date": "201802101802360005"
+        }],
+        "ackd_info": []
+      },
+      "1235": {
+        "alert_id": "1235",
+        "alert_desc": "Engine stall",
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "item_info": [{
+          "item": "A1",
+          "unit": "V",
+          "value": 110
+        },
+        {
+          "item": "A3",
+          "unit": "A",
+          "value": 50
+        }],
+        "module_info": [{
+          "module_name": "TRANSMISSION",
+          "module_status": "on",
+          "module_icon_path": "0001\\343.png"
+        }],
+        "notif_info": [{
+          "notified_user": "rwilliam",
+          "name": "Rick William",
+          "date": "201802101802360005"
+        }],
+        "ackd_info": []
+      },
+      "1236": {
+        "alert_id": "1236",
+        "alert_desc": "Charging failure",
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "item_info": [{
+          "item": "A1",
+          "unit": "V",
+          "value": 110
+        },
+        {
+          "item": "A3",
+          "unit": "A",
+          "value": 50
+        }],
+        "module_info": [{
+          "module_name": "TRANSMISSION",
+          "module_status": "on",
+          "module_icon_path": "0001\\343.png"
+        }],
+        "notif_info": [{
+          "notified_user": "rwilliam",
+          "name": "Rick William",
+          "date": "201802101802360005"
+        }],
+        "ackd_info": []
+      },
+      "1237": {
+        "alert_id": "1237",
+        "alert_desc": "Front Door Open failure",
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "item_info": [{
+          "item": "A1",
+          "unit": "V",
+          "value": 110
+        },
+        {
+          "item": "A3",
+          "unit": "A",
+          "value": 50
+        }],
+        "module_info": [{
+          "module_name": "TRANSMISSION",
+          "module_status": "on",
+          "module_icon_path": "0001\\343.png"
+        }],
+        "notif_info": [{
+          "notified_user": "rwilliam",
+          "name": "Rick William",
+          "date": "201802101802360005"
+        }],
+        "ackd_info": []
+      }
+    },
+    "debugLogFileInfo": {
+      "0001": [
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-22",
+            "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+            "wifi_mac_addr": "C8-88-84-6C-21-48",
+            "file_path": "http://www.fancydemo.com/file/20180122.log" 
+        },
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-23",
+            "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+            "wifi_mac_addr": "C8-88-84-6C-21-48",
+            "file_path": "http://www.fancydemo.com/file/20180123.log"  
+        },
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-24",
+            "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
+            "wifi_mac_addr": "C8-88-84-6C-21-48",
+            "file_path": "http://www.fancydemo.com/file/20180124.log" 
+        }
+      ],
+      "0002": [
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-22",
+            "ethernet_mac_addr": "60-90-23-61-A3-E5",
+            "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
+            "file_path": "http://www.fancydemo.com/file/20180122.log" 
+        },
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-23",
+            "ethernet_mac_addr": "60-90-23-61-A3-E5",
+            "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
+            "file_path": "http://www.fancydemo.com/file/20180123.log"  
+        },
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-24",
+            "ethernet_mac_addr": "60-90-23-61-A3-E5",
+            "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
+            "file_path": "http://www.fancydemo.com/file/20180124.log" 
+        }
+      ]
+    },
+    "maintLogInfo": {
+      "0001": {
+        "fleet_id" : 5256,
+        "bus_number" : "0001",
+        "vehicle_id" : "0001",
+        "maint_info_item" : [ {
+          "date" : "20180201",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        }, 
+        {
+          "date" : "20180202",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180203",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180204",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180205",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        }, 
+        {
+          "date" : "20180206",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        } ]
+      },
+      "0002": {
+        "fleet_id" : 5256,
+        "bus_number" : "0002",
+        "vehicle_id" : "0002",
+        "maint_info_item" : [ {
+          "date" : "20180201",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        }, 
+        {
+          "date" : "20180202",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180203",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180204",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        },
+        {
+          "date" : "20180205",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        }, 
+        {
+          "date" : "20180206",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        } ]
+      }
+    },
+    "preventiveNotifItem": {
+      "0001": { 
+        "alert_id" : "1234",
+        "fleet_id" : 5256,
+        "fleet_name" : "AVTA",
+        "vehicle_id" : "0002",
+        "item_info" : [ {
+          "item" : "A1",
+          "unit" : "V",
+          "value" : 220
+        },
+        {
+          "item" : "A3",
+          "unit" : "A",
+          "value" : 20
+        },
+        {
+          "item" : "B1",
+          "unit" : "kWh",
+          "value" : 300
+        }  ],
+        "module_info" : [ {
+          "module_icon_path" : "0002\\343.png",
+          "module_name" : "TRANSMISSION",
+          "module_status" : "on"
+        } ],
+        "notif_info": [{
+          "notified_user": "rwwilliam",
+          "name": "Rick William",
+          "date": "201801221311020005"
+        }],
+        "reset_info": [{
+          "reset_user": "ksmith",
+          "name": "Kelly Smith",
+          "date": "201801221311020005"
+        }]
+      
+      }
+    },
+    "preventiveNotifItemSetting": {
+      "0001": {
+        "fleet_id": 5256,
+        "fleet_name": "AVTA",
+        "vehicle_id": "0001",
+        "user_name": "nhk",
+        "notification_setting_items": [
+        {
+            "notification_item_id": 32,
+            "item_name": "Engine oil",
+            "mileage_usage": 1000,
+            "date_usage": null,
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": "less-than",
+            "usage_value": 20,
+            "unit_type": "usage",
+            "notificate_type": "Display"
+        },
+        {
+            "notification_item_id": 33,
+            "item_name": "Coolant",
+            "mileage_usage": 5000,
+            "date_usage": null,
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": "greater-than",
+            "usage_value": 80,
+            "unit_type": "usage",
+            "notificate_type": "Display"
+        },
+        {
+            "notification_item_id": 34,
+            "item_name": "Front door",
+            "mileage_usage": null,
+            "date_usage": "20180207",
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": null,
+            "usage_value": null,
+            "unit_type": null,
+            "notificate_type": "Display"
+        },
+        {
+            "notification_item_id": 35,
+            "item_name": "Rear door",
+            "mileage_usage": null,
+            "date_usage": null,
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": "equal",
+            "usage_value": 350,
+            "unit_type": "count",
+            "notificate_type": "Display And Email"
+        },
+        {
+            "notification_item_id": 36,
+            "item_name": "High beam",
+            "mileage_usage": null,
+            "date_usage": null,
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": "less-than_equal-to",
+            "usage_value": 80,
+            "unit_type": "usage",
+            "notificate_type": "Display"
+        },
+        {
+            "notification_item_id": 37,
+            "item_name": "Low beam",
+            "mileage_usage": null,
+            "date_usage": null,
+            "hours_usage": null,
+            "usage_count": null,
+            "operand": "not equal",
+            "usage_value": 0,
+            "unit_type": "count",
+            "notificate_type": "Display And Email"
+        }]
+      }
+    },
+    "routingLogFileInfo": {
+      "0001": [
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-22",
+            "file_name": "20180122.log",
+            "file_path": "http://www.fancydemo.com/file/20180122.log" 
+        },
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-23",
+            "file_name": "20180123.log",
+            "file_path": "http://www.fancydemo.com/file/20180123.log" 
+        },
+        {
+            "vehicle_number": "0001",
+            "file_time": "2018-01-24",
+            "file_name": "20180124.log",
+            "file_path": "http://www.fancydemo.com/file/20180124.log" 
+        }
+      ],
+      "0002": [
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-22",
+            "file_name": "20180122.log",
+            "file_path": "http://www.fancydemo.com/file/20180122.log" 
+        },
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-23",
+            "file_name": "20180123.log",
+            "file_path": "http://www.fancydemo.com/file/20180123.log" 
+        },
+        {
+            "vehicle_number": "0002",
+            "file_time": "2018-01-24",
+            "file_name": "20180124.log",
+            "file_path": "http://www.fancydemo.com/file/20180124.log" 
+        }
+      ]
+    },
+    "0001": {
+      "vehicle_id" : "0001",
+      "fleet_id" : 5256,
+      "fleet_name" : "AVTA",
+      "alert_list" : [ {
+        "alert_id" : 1233,
+        "alert_name" : "HVAC failure",
+        "alert_type" : "general",
+        "alert_time" : "20180223105404120005"
+      },
+      {
+        "alert_id" : 1235,
+        "alert_name" : "Engine stall",
+        "alert_type" : "critical",
+        "alert_time" : "20180223111211330005"
+      },
+      {
+        "alert_id" : 1236,
+        "alert_name" : "Charging failure",
+        "alert_type" : "general",
+        "alert_time" : "20180223140210040005"
+      } ]
+    },
+    "0002": {
+      "vehicle_id" : "0002",
+      "fleet_id" : 5256,
+      "fleet_name" : "AVTA",
+      "alert_list" : [ {
+        "alert_id" : 1234,
+        "alert_name" : "Rear Door Open failure",
+        "alert_type" : "critical",
+        "alert_time" : "20180223080420330005"
+      },
+      {
+        "alert_id" : 1237,
+        "alert_name" : "Front Door Open failure",
+        "alert_type" : "critical",
+        "alert_time" : "20180223091221030005"
+      } ]
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { PmnComponent } from './pmn.component';
 
@@ -12,6 +13,7 @@ describe('PmnComponent', () => {
       ],
       imports: [
         HttpClientModule,
+        ModalModule.forRoot(),
         NgxDatatableModule
       ]
     });

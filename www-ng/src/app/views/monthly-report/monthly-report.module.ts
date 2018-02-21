@@ -5,9 +5,13 @@ import { NgxSelectModule } from 'ngx-select-ex';
 
 import { MonthlyReportComponent } from './monthly-report.component';
 import { MonthlyReportRoutingModule } from './monthly-report-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
+    HttpClientModule,
     MonthlyReportRoutingModule,
     ReactiveFormsModule,
     NgxDatatableModule,

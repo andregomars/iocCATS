@@ -1,37 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 @Component({
   templateUrl: 'monthly-report.component.html'
 })
 export class MonthlyReportComponent implements OnInit {
-  rows = [];
+  data$: Observable<any>;
   ngxControl: FormControl;
   months: Array<string>;
+  fleetId = 5256;
 
   columns = [
-    { name: 'Busno' },
-    { name: 'Mileage' },
-    { name: 'Tripmileage' },
-    { name: 'Engineidle' },
-    { name: 'Mpg' },
-    { name: 'Doorusage' },
-    { name: 'Rampusage' },
-    { name: 'Kneelusage' },
-    { name: 'Havcusage' },
-    { name: 'Wiperusage' },
-    { name: 'Headlightusage' }
+    { name: 'Date', prop: 'date' },
+    { name: 'Today Mileage', prop: 'total_mileage' },
+    { name: 'Trip Mileage', prop: 'daily_mileage' },
+    { name: 'Engine Idle', prop: 'engine_idle_time' },
+    { name: 'Mpg', prop: 'mpg' },
+    { name: 'Door Usage', prop: 'door_usage' },
+    { name: 'Ramp Usage', prop: 'ramp_usage' },
+    { name: 'Kneel Usage', prop: 'kneel_usage' },
+    { name: 'Havc Usage', prop: 'havc' },
+    { name: 'Wiper Usage', prop: 'wiper' },
+    { name: 'Headlight Usage', prop: 'headlight' }
   ];
 
-  constructor() {
-    this.fetch((data) => {
-      this.rows = data;
-    });
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
     this.initSelectBox();
+
+    this.data$ = this.http.get<any>(`assets/data/fleet/${ this.fleetId }.json`)
+      .concatMap(f => Observable.from(f.vehicles))
+      .mergeMap(v =>
+        this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ v['bus_number'] }.json`))
+      .catch(e => new EmptyObservable())
+      .map(r => r.maint_info_item);
   }
 
   initSelectBox(): void {
@@ -69,15 +79,5 @@ export class MonthlyReportComponent implements OnInit {
   }
   // -----
 
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/monthly-report.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
 
 }
