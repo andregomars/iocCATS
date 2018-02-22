@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
+import { AgmMap } from '@agm/core';
 
 @Component({
   templateUrl: 'fleet.component.html'
@@ -10,22 +11,35 @@ export class FleetComponent implements OnInit {
   vehicles = [];
   locations = [];
   temp = [];
+
+  // style and class
+  defaultMapHeight = 300;
+  mapHeight: number;
+  classResize: string;
+  classDown = 'fa fa-chevron-down fa-lg';
+  classUp = 'fa fa-chevron-up fa-lg';
+
   fleetId = 5256; // AVTA
   dataUrl = `assets/data/fleet/${ this.fleetId }.json`;
   // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/5256.json`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
+  @ViewChild(AgmMap) map: AgmMap;
 
   constructor(
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.mapHeight = this.defaultMapHeight;
+    this.classResize = this.classDown;
+
     this.http.get<any>(this.dataUrl).subscribe(data => {
       this.temp = [...data.vehicles];
       this.vehicles = data.vehicles;
       this.locations = this.extracLocations(this.vehicles);
     });
+
   }
 
   extracLocations(vehicles: Array<any>): Array<any> {
@@ -42,6 +56,15 @@ export class FleetComponent implements OnInit {
         longitude: lng
       };
     });
+  }
+
+  resizeMap($event): void {
+    $event.preventDefault();
+    this.mapHeight = this.mapHeight === this.defaultMapHeight ?
+      this.defaultMapHeight * 2 : this.defaultMapHeight;
+    this.map.triggerResize();
+    this.classResize = this.classResize === this.classDown ?
+      this.classUp : this.classDown;
   }
 
   private updateFilter(event) {

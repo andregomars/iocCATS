@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   data$: Observable<any>;
   user = 'u001';
   dataUserNotificationURL = `assets/data/user/notification/${ this.user }.json`;
+  // dataUserNotificationURL = `https://ioccatsdemo.firebaseio.com/user/notification/${ this.user }.json`;
 
   constructor(
     private http: HttpClient

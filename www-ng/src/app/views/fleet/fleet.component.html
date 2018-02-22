@@ -3,8 +3,9 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <agm-map *ngIf="locations && locations.length > 0"
-              style="height: 300px" [zoom]=10 [streetViewControl]=false
+          <agm-map #map
+              *ngIf="locations && locations.length > 0"
+              [style.height.px]="mapHeight" [zoom]=10 [streetViewControl]=false
               [latitude]="locations[0].latitude | toNumber" 
               [longitude]="locations[0].longitude | toNumber">
             <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
@@ -15,6 +16,11 @@
               </agm-marker>
             </agm-marker-cluster>
           </agm-map>
+          <div class="text-center">
+            <a href="" (click)="resizeMap($event)">
+              <i [className]="classResize"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
