@@ -62,19 +62,19 @@ export class SnapshotComponent implements OnInit {
 
   mapIconPaths(modules: Array<any>): Array<string> {
     return this.icons.map(icon => {
-      let path = 'assets/img/indicators/engine_na.png';
+      let path = 'assets/img/indicators/engine_na.jpg';
 
       try {
         const modules_filtered = modules.filter(module =>
           icon.name === module.module_name.toUpperCase());
         if (modules_filtered.length > 0) {
           if (modules_filtered[0].module_status === 'on') {
-            path = `${ icon.path }_online.png`;
+            path = `${ icon.path }_online.jpg`;
           } else {
-            path = `${ icon.path }_offline.png`;
+            path = `${ icon.path }_offline.jpg`;
           }
         } else {
-            path = `${ icon.path }_na.png`;
+            path = `${ icon.path }_na.jpg`;
         }
       } catch { }
 
