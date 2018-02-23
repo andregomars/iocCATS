@@ -14,6 +14,9 @@
   <div class="row">
     <div class="col-12 col-sm-5">
       <div class="card">
+        <div class="card-header">
+          Bus No. {{ (alert$ | async)?.vehicle_id }}
+        </div>
         <div class="card-body">
           <agm-map *ngIf="locations$ | async; let loc"
             style="height: 300px" [zoom]=12 [streetViewControl]=false
@@ -24,18 +27,6 @@
               [longitude]="loc.longitude | toNumber">
               <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
-            <!-- <agm-marker *ngFor="let loc of locations$ | async"
-              [latitude]="loc.latitude | toNumber" 
-              [longitude]="loc.longitude | toNumber">
-              <agm-info-window>{{loc.altitude}}</agm-info-window>
-            </agm-marker>
-            <agm-polyline [polylineDraggable]=false [strokeColor]="red" 
-              [strokeOpacity]="0.5" [strokeWeight]="5">
-              <agm-polyline-point *ngFor="let loc of locations$ | async"
-                [latitude]="loc.latitude | toNumber" 
-                [longitude]="loc.longitude | toNumber">
-              </agm-polyline-point>
-            </agm-polyline> -->
           </agm-map>
         </div>
       </div>
@@ -44,43 +35,18 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+            <div class="col-12 col-md-9">
+              <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4" *ngFor="let icon of moduleIcons$ | async">
+                  <div class="text-center align-middle">
+                    <img class="text-center mb-4" [src]="icon"/>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
-              </div>
-            </div>
-            <!-- <div class="col-12 col-sm-6 col-lg-3">
-            </div> -->
-          </div>
-          <div class="row">
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <div class="card">
-                <div class="card-body text-center"><i class="fa fa-car fa-3x"></i></div>
+            <div class="col-12 col-md-3">
+              <div class="text-center align-middle">
+                <img class="text-center mb-4" src="assets/img/indicators/mbc.jpg"/>
               </div>
             </div>
           </div>

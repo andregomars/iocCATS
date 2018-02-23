@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes,
-     RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AlertListComponent } from './alert-list.component';
 import { AlertComponent } from './alert.component';

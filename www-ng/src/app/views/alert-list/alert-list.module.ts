@@ -14,6 +14,7 @@ import { AlertComponent } from './alert.component';
 import { AlertListRoutingModule } from './alert-list-routing.module';
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { UtilityService } from 'app/services/utility.service';
 
 @NgModule({
   imports: [
@@ -31,6 +32,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   declarations: [
     AlertListComponent,
     AlertComponent,
+  ],
+  providers: [
+    UtilityService
   ]
 })
 export class AlertListModule { }

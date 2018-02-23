@@ -7,6 +7,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { SnapshotComponent } from './snapshot.component';
 import { AppPipeModule } from 'app/pipes/pipes.module';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('SnapshotComponent', () => {
   beforeEach(() => {
@@ -24,7 +25,8 @@ describe('SnapshotComponent', () => {
         { provide: ActivatedRoute },
         { provide: HttpClient },
         { provide: GoogleMapsAPIWrapper },
-        { provide: MapsAPILoader }
+        { provide: MapsAPILoader },
+        { provide: UtilityService }
       ]
     });
     TestBed.compileComponents();

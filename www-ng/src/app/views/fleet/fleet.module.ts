@@ -10,6 +10,7 @@ import { FleetComponent } from './fleet.component';
 import { FleetRoutingModule } from './fleet-routing.module';
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { SnapshotComponent } from './snapshot.component';
+import { UtilityService } from 'app/services/utility.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { SnapshotComponent } from './snapshot.component';
   declarations: [
     FleetComponent,
     SnapshotComponent,
+  ],
+  providers: [
+    UtilityService
   ]
 })
 export class FleetModule { }

@@ -7,6 +7,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { AlertComponent } from './alert.component';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('AlertComponent', () => {
   beforeEach(() => {
@@ -24,7 +25,8 @@ describe('AlertComponent', () => {
         { provide: ActivatedRoute },
         { provide: HttpClient },
         { provide: GoogleMapsAPIWrapper },
-        { provide: MapsAPILoader }
+        { provide: MapsAPILoader },
+        { provide: UtilityService }
       ]
     });
     TestBed.compileComponents();

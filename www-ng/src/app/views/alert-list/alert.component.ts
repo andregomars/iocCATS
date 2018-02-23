@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { UtilityService } from 'app/services/utility.service';
 
 @Component({
   templateUrl: 'alert.component.html'
@@ -9,14 +10,15 @@ import { HttpClient } from '@angular/common/http';
 export class AlertComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private utility: UtilityService
   ) { }
 
   private alert$: Observable<any>;
   private alertName$: Observable<string>;
   private locations$: Observable<any>;
 
-  private modules$: Observable<any>;
+  private moduleIcons$: Observable<any>;
   private snapshots$: Observable<any>;
   private notifications$: Observable<any>;
   private acknowledges$: Observable<any>;
@@ -52,9 +54,9 @@ export class AlertComponent implements OnInit {
       // .map(v => v['gps_location']);
       .switchMap(v => Observable.from(v['gps_location']));
 
-    this.modules$ = this.alert$.map(a => a.module_info);
     this.snapshots$ = this.alert$.map(a => a.item_info);
     this.notifications$ = this.alert$.map(a => a.notif_info);
     this.acknowledges$ = this.alert$.map(a => a.ackd_info);
+    this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
   }
 }

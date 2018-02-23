@@ -3,8 +3,8 @@
     <div class="col">
       <tabset type="pills" [justified]="true">
         <tab heading="Critical Alert">
-          <ngx-datatable #table
-            class="material"
+          <ngx-datatable 
+            class="material expandable"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
@@ -37,7 +37,7 @@
           </ngx-datatable>
         </tab>
         <tab heading="General Alert">
-          <ngx-datatable #table
+          <ngx-datatable 
             class="material"
             [columnMode]="'force'"
             [headerHeight]="50"
@@ -72,7 +72,7 @@
           </ngx-datatable>
         </tab>
         <tab heading="Preventive Maint. Notification">
-          <ngx-datatable #table
+          <ngx-datatable
             class="material"
             [columnMode]="'force'"
             [headerHeight]="50"

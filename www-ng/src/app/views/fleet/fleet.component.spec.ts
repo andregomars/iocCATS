@@ -58,7 +58,7 @@ describe('FleetComponent', () => {
       providers: [
         { provide: GoogleMapsAPIWrapper },
         { provide: MapsAPILoader },
-        { provide: HttpClient },
+        { provide: HttpClient }
       ]
     });
     TestBed.compileComponents();
