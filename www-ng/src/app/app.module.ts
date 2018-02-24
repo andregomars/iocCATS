@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Provider } from '@angular/core';
 import { LocationStrategy,
   PathLocationStrategy,
   HashLocationStrategy} from '@angular/common';
@@ -77,6 +77,22 @@ import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'environments/environment';
+import { ApiConfiguration } from 'app/api/api-configuration';
+
+export function initApiConfiguration(config: ApiConfiguration): Function {
+  return () => {
+    if (environment && environment.apiRootIocCATS) {
+      config.rootUrl = environment.apiRootIocCATS;
+    }
+  };
+}
+
+export const INIT_API_CONFIGURATION: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: initApiConfiguration,
+  deps: [ ApiConfiguration ],
+  multi: true
+};
 
 @NgModule({
   imports: [
@@ -97,10 +113,12 @@ import { environment } from 'environments/environment';
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    ApiConfiguration,
+    INIT_API_CONFIGURATION,
+    {
+      provide: LocationStrategy, useClass: HashLocationStrategy
+    }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
