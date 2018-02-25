@@ -1,12 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
+import { ApiConfiguration } from 'app/api/api-configuration';
+import { UserService } from '../../api/services';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 describe('HomeComponent', () => {
   beforeEach(() => {
@@ -16,12 +19,15 @@ describe('HomeComponent', () => {
       ],
       imports: [
         RouterModule,
+        HttpClientModule,
         TabsModule.forRoot(),
         NgxDatatableModule,
         AppPipeModule
       ],
       providers: [
-        { provide: HttpClient }
+        ApiConfiguration,
+        UserService,
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

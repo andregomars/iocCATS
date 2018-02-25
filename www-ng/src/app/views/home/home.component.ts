@@ -3,14 +3,10 @@ import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
-import { UserService } from 'app/api/services';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'home.component.html',
-  providers: [
-    UserService
-  ]
 })
 export class HomeComponent implements OnInit {
   dataCritical$: Observable<any>;
@@ -18,17 +14,18 @@ export class HomeComponent implements OnInit {
   dataPmn$: Observable<any>;
   data$: Observable<any>;
   userId = 'u001';
-  dataUserNotificationURL = `assets/data/user/notification/${ this.userId }.json`;
+  // dataUserNotificationURL = `assets/data/user/notification/${ this.userId }.json`;
   // dataUserNotificationURL = `https://ioccatsdemo.firebaseio.com/user/notification/${ this.user }.json`;
 
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
     // this.data$ = this.http.get<any>(this.dataUserNotificationURL);
-    this.data$ = this.userService.getUserNotification(this.userId);
+    // this.data$ = this.userService.getUserNotification(this.userId);
+    this.data$ = this.dataService.getUserNotification(this.userId);
 
     this.dataCritical$ = this.data$
       .concatMap(data => Observable.from(data.alert_notification))

@@ -8,6 +8,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { UserService } from '../../api/services';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @NgModule({
   imports: [
@@ -19,6 +21,10 @@ import { HomeRoutingModule } from './home-routing.module';
     NgxDatatableModule,
     AppPipeModule
   ],
-  declarations: [ HomeComponent ]
+  declarations: [ HomeComponent ],
+  providers: [
+    UserService,
+    RemoteDataService
+  ]
 })
 export class HomeModule { }
