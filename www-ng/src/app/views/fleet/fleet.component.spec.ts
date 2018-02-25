@@ -3,11 +3,13 @@ import { AgmCoreModule, GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { FleetComponent } from './fleet.component';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('FleetComponent', () => {
   const vehicles = [
@@ -50,15 +52,15 @@ describe('FleetComponent', () => {
       ],
       imports: [
         NgxDatatableModule,
+        HttpClientModule,
         AgmCoreModule,
         AgmJsMarkerClustererModule,
         RouterModule,
-        AppPipeModule
+        AppPipeModule,
+        ApiModule
       ],
       providers: [
-        { provide: GoogleMapsAPIWrapper },
-        { provide: MapsAPILoader },
-        { provide: HttpClient }
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

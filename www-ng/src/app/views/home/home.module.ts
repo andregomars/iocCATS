@@ -21,10 +21,6 @@ import { RemoteDataService } from '../../services/remote-data.service';
     NgxDatatableModule,
     AppPipeModule
   ],
-  declarations: [ HomeComponent ],
-  providers: [
-    UserService,
-    RemoteDataService
-  ]
+  declarations: [ HomeComponent ]
 })
 export class HomeModule { }

@@ -7,9 +7,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
-import { ApiConfiguration } from 'app/api/api-configuration';
-import { UserService } from '../../api/services';
 import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('HomeComponent', () => {
   beforeEach(() => {
@@ -22,11 +21,10 @@ describe('HomeComponent', () => {
         HttpClientModule,
         TabsModule.forRoot(),
         NgxDatatableModule,
-        AppPipeModule
+        AppPipeModule,
+        ApiModule
       ],
       providers: [
-        ApiConfiguration,
-        UserService,
         RemoteDataService
       ]
     });

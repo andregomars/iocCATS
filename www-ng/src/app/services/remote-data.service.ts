@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
-import { UserService } from 'app/api/services';
+import { UserService, FleetService } from 'app/api/services';
 import { environment, DataSourceType } from 'environments/environment';
 
 @Injectable()
 export class RemoteDataService {
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private fleetService: FleetService
   ) {
     this.sourceType = environment.dataSource;
 
@@ -32,6 +33,14 @@ export class RemoteDataService {
       return this.userService.getUserNotification(userId);
     } else {
       return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userId }.json`);
+    }
+  }
+
+  getFleetById(fleetId: number): Observable<any> {
+    if (this.sourceType === DataSourceType.Swagger) {
+      return this.fleetService.getFleetById(fleetId);
+    } else {
+      return this.http.get<any>(`${ this.rootUrl }/fleet/${ fleetId }.json`);
     }
   }
 }

@@ -11,6 +11,8 @@ import { FleetRoutingModule } from './fleet-routing.module';
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { SnapshotComponent } from './snapshot.component';
 import { UtilityService } from 'app/services/utility.service';
+import { FleetService } from '../../api/services';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @NgModule({
   imports: [
@@ -28,7 +30,7 @@ import { UtilityService } from 'app/services/utility.service';
     SnapshotComponent,
   ],
   providers: [
-    UtilityService
+    UtilityService,
   ]
 })
 export class FleetModule { }

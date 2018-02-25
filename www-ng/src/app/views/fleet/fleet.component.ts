@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { AgmMap } from '@agm/core';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'fleet.component.html'
@@ -27,14 +28,16 @@ export class FleetComponent implements OnInit {
   @ViewChild(AgmMap) map: AgmMap;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
     this.mapHeight = this.defaultMapHeight;
     this.classResize = this.classDown;
 
-    this.http.get<any>(this.dataUrl).subscribe(data => {
+    // this.http.get<any>(this.dataUrl).subscribe(data => {
+    this.dataService.getFleetById(this.fleetId).subscribe(data => {
       this.temp = [...data.vehicles];
       this.vehicles = data.vehicles;
       this.locations = this.extracLocations(this.vehicles);

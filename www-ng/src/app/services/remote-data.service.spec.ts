@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { RemoteDataService } from './remote-data.service';
-import { UserService } from '../api/services';
+import { UserService, FleetService } from '../api/services';
 import { ApiConfiguration } from '../api/api-configuration';
 
 describe('RemoteDataService', () => {
@@ -14,6 +14,7 @@ describe('RemoteDataService', () => {
       providers: [
         ApiConfiguration,
         UserService,
+        FleetService,
         RemoteDataService
       ]
     });

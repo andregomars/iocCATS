@@ -6,6 +6,9 @@ import { LocationStrategy,
 import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
+import { RemoteDataService } from 'app/services/remote-data.service';
+import { ApiConfiguration } from 'app/api/api-configuration';
+import { ApiModule } from './api/api.module';
 
 // Import containers
 import {
@@ -77,7 +80,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'environments/environment';
-import { ApiConfiguration } from 'app/api/api-configuration';
+
 
 export function initApiConfiguration(config: ApiConfiguration): Function {
   return () => {
@@ -105,7 +108,8 @@ export const INIT_API_CONFIGURATION: Provider = {
     AgmCoreModule.forRoot(environment.agm),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AppPipeModule
+    AppPipeModule,
+    ApiModule
   ],
   declarations: [
     AppComponent,
@@ -114,8 +118,8 @@ export const INIT_API_CONFIGURATION: Provider = {
     ...APP_DIRECTIVES
   ],
   providers: [
-    ApiConfiguration,
     INIT_API_CONFIGURATION,
+    RemoteDataService,
     {
       provide: LocationStrategy, useClass: HashLocationStrategy
     }],
