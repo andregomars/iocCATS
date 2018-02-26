@@ -1,10 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxSelectModule } from 'ngx-select-ex';
 
 import { RoutingComponent } from './routing.component';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('RoutingComponent', () => {
   beforeEach(() => {
@@ -13,12 +15,14 @@ describe('RoutingComponent', () => {
         RoutingComponent
       ],
       imports: [
+        HttpClientModule,
         ReactiveFormsModule,
         NgxSelectModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        ApiModule
       ],
       providers: [
-        { provide: HttpClient },
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'maintenance.component.html'
@@ -38,12 +39,14 @@ export class MaintenanceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: RemoteDataService
   ) { }
 
   private myForm: FormGroup;
   private chart$: Observable<any>;
-  private vehicleId = '0001';
+  private userName = 'u001';
+  private fleetId = 5256;
 
   ngOnInit(): void {
     // init date range picker
@@ -55,8 +58,14 @@ export class MaintenanceComponent implements OnInit {
     });
 
     // retrive data source
-    this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`)
-      .catch(e => new EmptyObservable());
+    // this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`)
+    this.chart$ = this.dataService.getFleetById(this.fleetId)
+      .concatMap(f => { return Observable.from(f.vehicles); })
+      .mergeMap(v =>
+        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
+      .catch(() => new EmptyObservable())
+      .map(m => m.maint_info_item)
+      .reduce((pre, cur) => [...pre, ...cur]);
 
     this.initChartOptions();
     this.initChartData();
@@ -87,12 +96,11 @@ export class MaintenanceComponent implements OnInit {
 
   initTableData(): void {
     this.tableData$ = this.chart$
-      .map(r => this.attachSummaryRow(r.maint_info_item));
+      .map(r => this.attachSummaryRow(r));
   }
 
   initChartData(): void {
-    this.chart$.subscribe(cData => {
-      const logs: Array<any> = cData.maint_info_item;
+    this.chart$.subscribe(logs => {
       const xLabels = logs.map(r => r.date);
 
       this.barChartLabels = xLabels;

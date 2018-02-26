@@ -4,6 +4,7 @@ import { FormControl, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'monthly-report.component.html'
@@ -13,6 +14,7 @@ export class MonthlyReportComponent implements OnInit {
   ngxControl: FormControl;
   months: Array<string>;
   fleetId = 5256;
+  userName = 'u001';
 
   columns = [
     { name: 'Date', prop: 'date' },
@@ -30,18 +32,20 @@ export class MonthlyReportComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
     this.initSelectBox();
 
-    this.data$ = this.http.get<any>(`assets/data/fleet/${ this.fleetId }.json`)
+    this.data$ = this.dataService.getFleetById(this.fleetId)
       .concatMap(f => Observable.from(f.vehicles))
       .mergeMap(v =>
-        this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ v['bus_number'] }.json`))
+        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
       .catch(e => new EmptyObservable())
-      .map(r => r.maint_info_item);
+      .map(m => m.maint_info_item)
+      .reduce((pre, cur) => [...pre, ...cur]);
   }
 
   initSelectBox(): void {

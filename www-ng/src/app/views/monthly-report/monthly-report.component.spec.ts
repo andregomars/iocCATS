@@ -6,6 +6,8 @@ import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { MonthlyReportComponent } from './monthly-report.component';
+import { ApiModule } from '../../api/api.module';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 describe('MonthlyReportComponent', () => {
   beforeEach(() => {
@@ -18,7 +20,11 @@ describe('MonthlyReportComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         NgxSelectModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        ApiModule
+      ],
+      providers: [
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

@@ -5,6 +5,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'connection.component.html'
@@ -15,24 +16,25 @@ export class ConnectionComponent implements OnInit {
   ngxControl: FormControl;
   months: Array<string>;
   fleetId = 5256; // AVTA
-  dataUrlFleet = `assets/data/fleet/${ this.fleetId }.json`;
-  dataUrlDebugLog = 'assets/data/vehicle/debugLogFileInfo';
+  userName = 'u001';
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
     this.initSelectBox();
 
-    this.http.get<any>(this.dataUrlFleet)
+    this.dataService.getFleetById(this.fleetId)
       // map each vehicle to a stream
       .concatMap(f => { return Observable.from(f.vehicles); })
       // fetch each vehicle data
       .mergeMap(v =>
-        this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['bus_number'] }.json`))
+        // this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['vehicle_id'] }.json`))
+        this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName))
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // combine multiple arrays into a single array

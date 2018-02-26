@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup,
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { FormArray } from '@angular/forms/src/model';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'pmn-setting.component.html',
@@ -24,15 +25,16 @@ export class PmnSettingComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dataService: RemoteDataService
   ) { }
 
   get pmnSettingArray(): FormArray {
     return this.pmnSettingForm.get('pmnSettingArray') as FormArray;
   }
 
-  private vehicleId = '0001';
-  private url = `assets/data/vehicle/preventiveNotifItemSetting/${ this.vehicleId }.json`;
+  private vehicleId = 1;
+  private userName = 'u001';
 
   ngOnInit(): void {
     this.initSelectOptions();
@@ -41,7 +43,7 @@ export class PmnSettingComponent implements OnInit {
       pmnSettingArray: this.fb.array([])
     });
 
-    this.http.get<any>(this.url)
+    this.dataService.getVehicleMaintSetting(this.vehicleId, this.userName)
       .map(r => r.notification_setting_items)
       .subscribe((data: Array<any>) => {
         const fgList = data.map(g => this.fb.group(g));

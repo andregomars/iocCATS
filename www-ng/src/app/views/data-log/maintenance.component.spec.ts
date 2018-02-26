@@ -5,7 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaintenanceComponent } from './maintenance.component';
 import { ChartsModule } from 'ng2-charts';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('MaintenanceComponent', () => {
   beforeEach(() => {
@@ -14,13 +16,15 @@ describe('MaintenanceComponent', () => {
         MaintenanceComponent
       ],
       imports: [
+        HttpClientModule,
         NgxDatatableModule,
         ChartsModule,
         MyDateRangePickerModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ApiModule
       ],
       providers: [
-        { provide: HttpClient },
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

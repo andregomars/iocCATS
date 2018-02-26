@@ -496,10 +496,9 @@
         }, {
           "name" : "username",
           "in" : "query",
-          "description" : "Pass in vehicle id",
+          "description" : "Pass in user name",
           "required" : true,
-          "type" : "integer",
-          "format" : "int32"
+          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -2053,7 +2052,7 @@
     },
     "Alert_Notification_Item" : {
       "type" : "object",
-      "required" : [ "ackd_info", "alert_id", "fleet_id", "fleet_name", "item_info", "module_info", "notif_info", "vehicle_id" ],
+      "required" : [ "ackd_info", "alert_id", "bus_number", "fleet_id", "fleet_name", "item_info", "module_info", "notif_info", "vehicle_id" ],
       "properties" : {
         "alert_id" : {
           "type" : "string",
@@ -2068,8 +2067,13 @@
           "example" : "AVTA"
         },
         "vehicle_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 4
+        },
+        "bus_number" : {
           "type" : "string",
-          "example" : "0001"
+          "example" : "0004"
         },
         "item_info" : {
           "type" : "array",
@@ -2127,7 +2131,8 @@
         } ],
         "alert_id" : "0355",
         "fleet_id" : "32",
-        "vehicle_id" : "0001",
+        "bus_number" : "0004",
+        "vehicle_id" : 4,
         "ackd_info" : [ {
           "date" : "201801221311020005",
           "acknowledged_user" : "ksmith",

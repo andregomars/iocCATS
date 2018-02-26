@@ -6,6 +6,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { PmnSettingComponent } from './pmn-setting.component';
 import { AppPipeModule } from 'app/pipes/pipes.module';
+import { ApiModule } from '../../api/api.module';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 describe('PmnSettingComponent', () => {
   beforeEach(() => {
@@ -18,7 +20,11 @@ describe('PmnSettingComponent', () => {
         ReactiveFormsModule,
         NgxDatatableModule,
         ModalModule.forRoot(),
-        AppPipeModule
+        AppPipeModule,
+        ApiModule
+      ],
+      providers: [
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();
