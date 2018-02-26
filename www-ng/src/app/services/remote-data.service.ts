@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
-import { UserService, FleetService } from 'app/api/services';
+import { UserService, FleetService,
+  VehicleService, AlertService } from 'app/api/services';
 import { environment, DataSourceType } from 'environments/environment';
 
 @Injectable()
@@ -11,7 +12,9 @@ export class RemoteDataService {
   constructor(
     private http: HttpClient,
     private userService: UserService,
-    private fleetService: FleetService
+    private fleetService: FleetService,
+    private vehicleService: VehicleService,
+    private alertService: AlertService
   ) {
     this.sourceType = environment.dataSource;
 
@@ -43,4 +46,41 @@ export class RemoteDataService {
       return this.http.get<any>(`${ this.rootUrl }/fleet/${ fleetId }.json`);
     }
   }
+
+  getVehicleById(vehicleId: string): Observable<any> {
+    if (this.sourceType === DataSourceType.Swagger) {
+      return this.vehicleService.getVehicleById(+vehicleId);
+    } else {
+      return this.http.get<any>(`${ this.rootUrl }/fleet/${ vehicleId }.json`);
+    }
+  }
+
+  getVehicleAlertSnapshotParams(vehicleId: number, username: number, alertId: number): Observable<any> {
+    if (this.sourceType === DataSourceType.Swagger) {
+      const params: AlertService.GetVehicleAlertSnapshotParams = {
+        vehicleId: vehicleId,
+        username: username,
+        alertId: alertId
+      };
+      return this.alertService.getVehicleAlertSnapshot(params);
+    } else {
+      return this.http.get<any>(`${ this.rootUrl }/alert/${ alertId }.json`);
+    }
+  }
+
+/*
+    this.alert$ = this.route.paramMap
+      .map((params: ParamMap) => params.get('vid'))
+      .concatMap(vid =>
+        this.http.get<any>(`assets/data/vehicle/${ vid }.json`))
+      .concatMap(v =>
+        this.http.get<any>(`assets/data/vehicle/alert/${ v.alert_list[0].alert_id }.json`));
+
+    this.locations$ = this.alert$
+      .concatMap(alert =>
+        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`)
+          .concatMap(f => Observable.from(f.vehicles))
+          .filter(v => v['bus_number'] === alert.vehicle_id)
+      )
+*/
 }

@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RemoteDataService } from './remote-data.service';
 import { UserService, FleetService } from '../api/services';
 import { ApiConfiguration } from '../api/api-configuration';
+import { VehicleService } from 'app/api/services/vehicle.service';
+import { AlertService } from 'app/api/services/alert.service';
 
 describe('RemoteDataService', () => {
   beforeEach(() => {
@@ -15,6 +17,8 @@ describe('RemoteDataService', () => {
         ApiConfiguration,
         UserService,
         FleetService,
+        VehicleService,
+        AlertService,
         RemoteDataService
       ]
     });
