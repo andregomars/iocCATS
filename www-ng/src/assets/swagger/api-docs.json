@@ -1,2194 +1,2240 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "description": "This is a server Web API for I/O Controls' Cloud Advantage Telematics System (CATS).  You can find out more about CATS at [http://cloud.iocontrols.com/ioc/index.php/cats-2/](http://cloud.iocontrols.com/ioc/index.php/cats-2/). ",
-    "version": "0.1.4",
-    "title": "I/O Controls CATS Web API Document",
-    "termsOfService": "http://www.iocontrols.com/",
-    "contact": {
-      "email": "cats@iocontrols.com"
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a server Web API for I/O Controls' Cloud Advantage Telematics System (CATS).  You can find out more about CATS at [http://cloud.iocontrols.com/ioc/index.php/cats-2/](http://cloud.iocontrols.com/ioc/index.php/cats-2/). ",
+    "version" : "0.1.4",
+    "title" : "I/O Controls CATS Web API Document",
+    "termsOfService" : "http://www.iocontrols.com/",
+    "contact" : {
+      "email" : "cats@iocontrols.com"
     },
-    "license": {
-      "name": "I/O Controls",
-      "url": "http://www.iocontrols.com"
+    "license" : {
+      "name" : "I/O Controls",
+      "url" : "http://www.iocontrols.com"
     }
   },
-  "host": "cats.iocontrols.com",
-  "basePath": "/api/rest/v1",
-  "tags": [
-    {
-      "name": "fleet",
-      "description": "CATS Web API",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://cats.iocontrols.com"
-      }
-    },
-    {
-      "name": "alert",
-      "description": "Retrieve alerts from system."
-    },
-    {
-      "name": "notification",
-      "description": "Retrieve notification from system"
-    },
-    {
-      "name": "vehicle",
-      "description": "Access to fleet information"
-    },
-    {
-      "name": "user",
-      "description": "Retrieve user related information from server.",
-      "externalDocs": {
-        "description": "Find out more about our products",
-        "url": "http://www.iocontrols.com"
-      }
+  "host" : "cats.iocontrols.com",
+  "basePath" : "/api/rest/v1",
+  "tags" : [ {
+    "name" : "fleet",
+    "description" : "CATS Web API",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://cats.iocontrols.com"
     }
-  ],
-  "schemes": [
-    "http"
-  ],
-  "paths": {
-    "/fleet/register": {
-      "post": {
-        "summary": "Create or update fleet on the system",
-        "operationId": "addFleet",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Fleet object that needs to be added to the System",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Fleet"
-            }
+  }, {
+    "name" : "alert",
+    "description" : "Retrieve alerts from system."
+  }, {
+    "name" : "notification",
+    "description" : "Retrieve notification from system"
+  }, {
+    "name" : "vehicle",
+    "description" : "Access to fleet information"
+  }, {
+    "name" : "user",
+    "description" : "Retrieve user related information from server.",
+    "externalDocs" : {
+      "description" : "Find out more about our products",
+      "url" : "http://www.iocontrols.com"
+    }
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/fleet/register" : {
+      "post" : {
+        "summary" : "Create or update fleet on the system",
+        "operationId" : "addFleet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Fleet object that needs to be added to the System",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Fleet"
           }
-        ],
-        "responses": {
-          "201": {
-            "description": "Data created"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Data created"
           },
-          "405": {
-            "description": "Invalid input"
+          "405" : {
+            "description" : "Invalid input"
           }
         },
-        "x-swagger-router-controller": "Default"
+        "x-swagger-router-controller" : "Default"
       },
-      "put": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "Create a new fleet on the system",
-        "description": "",
-        "operationId": "updateFleet",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Fleet object that needs to be added to the System",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Fleet"
-            }
+      "put" : {
+        "tags" : [ "fleet" ],
+        "summary" : "Create a new fleet on the system",
+        "description" : "",
+        "operationId" : "updateFleet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Fleet object that needs to be added to the System",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Fleet"
           }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid ID supplied"
           },
-          "404": {
-            "description": "Fleet ID not found"
+          "404" : {
+            "description" : "Fleet ID not found"
           },
-          "405": {
-            "description": "Validation exception"
+          "405" : {
+            "description" : "Validation exception"
           }
         },
-        "x-swagger-router-controller": "Fleet"
+        "x-swagger-router-controller" : "Fleet"
       }
     },
-    "/fleet/findByFleetStatus": {
-      "get": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "Finds fleet by current status",
-        "description": "Multiple status values can be provided with comma separated strings",
-        "operationId": "findFleetsByStatus",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "status",
-            "in": "query",
-            "description": "Status values that need to be considered for filter",
-            "required": true,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "default": "available",
-              "enum": [
-                "online",
-                "offline"
-              ]
+    "/fleet/findByFleetStatus" : {
+      "get" : {
+        "tags" : [ "fleet" ],
+        "summary" : "Finds fleet by current status",
+        "description" : "Multiple status values can be provided with comma separated strings",
+        "operationId" : "findFleetsByStatus",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Status values that need to be considered for filter",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "default" : "available",
+            "enum" : [ "online", "offline" ]
+          },
+          "collectionFormat" : "multi"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Fleet"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        },
+        "x-swagger-router-controller" : "Fleet"
+      }
+    },
+    "/fleet/{fleetId}" : {
+      "get" : {
+        "tags" : [ "fleet" ],
+        "summary" : "Returns fleet information by fleet id (Req. 2-2, 7-0)",
+        "description" : "Returns a single fleet (Req. 2-2, 7-0)",
+        "operationId" : "getFleetById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "fleetId",
+          "in" : "path",
+          "description" : "Pass in fleet id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/FleetInfo"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Fleet"
+      },
+      "post" : {
+        "tags" : [ "fleet" ],
+        "summary" : "Updates a fleet with form data",
+        "description" : "",
+        "operationId" : "updateFleetWithForm",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "fleetId",
+          "in" : "path",
+          "description" : "ID of fleet that needs to be updated",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "name",
+          "in" : "formData",
+          "description" : "Updated name of the fleet",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "in" : "formData",
+          "description" : "Updated status of the fleet",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "x-swagger-router-controller" : "Fleet"
+      },
+      "delete" : {
+        "tags" : [ "fleet" ],
+        "summary" : "Deletes a particular fleet from database",
+        "description" : "",
+        "operationId" : "deleteFleet",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fleetId",
+          "in" : "path",
+          "description" : "Fleet id to delete",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Fleet"
+      }
+    },
+    "/fleet/{fleetId}/uploadImage" : {
+      "post" : {
+        "tags" : [ "fleet" ],
+        "summary" : "uploads an image for the particular fleet",
+        "description" : "",
+        "operationId" : "uploadFile",
+        "consumes" : [ "multipart/form-data" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "fleetId",
+          "in" : "path",
+          "description" : "ID of fleet to update",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "additionalMetadata",
+          "in" : "formData",
+          "description" : "Additional data to pass to server",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "file",
+          "in" : "formData",
+          "description" : "file to upload",
+          "required" : false,
+          "type" : "file"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ApiResponse"
+            }
+          }
+        },
+        "x-swagger-router-controller" : "Fleet"
+      }
+    },
+    "/vehicle/{vehicleId}" : {
+      "get" : {
+        "tags" : [ "vehicle", "alert" ],
+        "summary" : "Finds vehicle information by id (Req. 4-2)",
+        "description" : "Returns a single fleet",
+        "operationId" : "getVehicleById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "path",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vehicle_Alert_Info"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/maintLogInfo/{vehicleId}" : {
+      "get" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "Finds vehicle maintenance log information (Req. 7-0 & 9-0), pass in year and month to received monthly total, use result_count for daily total. Pass in result_count = 10 for last 10 days.  Pass in certain month (1 to 12) for month values.",
+        "description" : "Returns a vehicle Maint log information",
+        "operationId" : "getVehicleMaintLogInfo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "path",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "result_count",
+          "in" : "query",
+          "description" : "Pass in how many result desire",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "string",
+          "format" : "int32"
+        }, {
+          "name" : "year",
+          "in" : "query",
+          "description" : "Pass in year",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "month",
+          "in" : "query",
+          "description" : "Pass in month",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vehicle_Maint_Info"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/routineLogFileInfo/{vehicleId}" : {
+      "get" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "Finds vehicle routine log file information (Req. 8-0 )",
+        "description" : "Returns a vehicle routine log information",
+        "operationId" : "getVehicleRoutineLogFile",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "path",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "result_count",
+          "in" : "query",
+          "description" : "Pass in how many result desire",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "string",
+          "format" : "int32"
+        }, {
+          "name" : "zip_pkg",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "yes", "no" ]
+        }, {
+          "name" : "year",
+          "in" : "query",
+          "description" : "Pass in year",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "month",
+          "in" : "query",
+          "description" : "Pass in month",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vehicle_Maint_Log_File_Info"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameters supplied"
+          },
+          "404" : {
+            "description" : "Vehicle file log not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/debugLogFileInfo/{vehicleId}" : {
+      "get" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "For internal usage only (Req. 12)",
+        "description" : "Returns a vehicle connection and debug log status",
+        "operationId" : "getVehicleDebugLogFile",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "path",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "result_count",
+          "in" : "query",
+          "description" : "Pass in how many result desire",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "username",
+          "required" : true,
+          "type" : "string",
+          "format" : "int32"
+        }, {
+          "name" : "zip_pkg",
+          "in" : "query",
+          "description" : "Pass in zip_pkg",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "yes", "no" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vehicle_Debug_Log_File_Info"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameters supplied"
+          },
+          "404" : {
+            "description" : "Vehicle file log not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/preventiveNotifItemSetting" : {
+      "get" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "Finds vehicle maintenance setting information. (Req. 6-0)",
+        "description" : "Returns vehicle maintenance setting information (Req. 6-0)",
+        "operationId" : "getVehicleMaintSetting",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Preventive_Notification_Setting"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      },
+      "post" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "Updates Preventive Maint. Setting",
+        "description" : "Returns a single vehicle preventive maintenance setting information",
+        "operationId" : "updateVehicleMaintSetting",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Preventive_Notification_Setting_Item"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Vehicle not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/preventiveNotifItem" : {
+      "get" : {
+        "tags" : [ "vehicle", "alert" ],
+        "summary" : "Finds vehicle preventive maintenance information (Req. 5-0)",
+        "description" : "Returns vehicle preventive maintenance information (Req. 5-0)",
+        "operationId" : "getPreventiveMaintNotifInfo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vehicle_Alert_Info"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      },
+      "post" : {
+        "tags" : [ "vehicle" ],
+        "summary" : "Finds vehicle maintenance information",
+        "description" : "Updates a single vehicle preventive maintenance setting information",
+        "operationId" : "updatePreventiveNotifItem",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "vehicle_id",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "preventiveItemID",
+          "in" : "query",
+          "description" : "Pass in preventive item id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "reset_status",
+          "in" : "query",
+          "description" : "reset status",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "reset", "no_reset" ]
+        }, {
+          "name" : "reset_date",
+          "in" : "query",
+          "description" : "reset status",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Vehicle not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/vehicle/alert/{alertId}" : {
+      "get" : {
+        "tags" : [ "alert", "snapshot", "vehicle" ],
+        "summary" : "Finds vehicle alert snapshot information (Req. 3-0)",
+        "description" : "Returns alert snapshot information (Req. 3-0)",
+        "operationId" : "getVehicleAlertSnapshot",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "alertId",
+          "in" : "path",
+          "description" : "Pass in alert id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "vehicleId",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in username",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Alert_Notification_Item"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Fleet not found"
+          }
+        },
+        "x-swagger-router-controller" : "Alert"
+      },
+      "post" : {
+        "tags" : [ "vehicle", "snapshot" ],
+        "summary" : "Update vehicle alert snapshot information (Req. 4-1)",
+        "description" : "User acknowledge of alert notification.",
+        "operationId" : "updateVehicleAlertSnapshot",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "vehicleId",
+          "in" : "query",
+          "description" : "Pass in vehicle id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Pass in username",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "alertId",
+          "in" : "path",
+          "description" : "Pass in alert id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "ack_status",
+          "in" : "query",
+          "description" : "Pass in ack status",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "acknowledged", "not_acknowledged" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Vehicle not found"
+          }
+        },
+        "x-swagger-router-controller" : "Vehicle"
+      }
+    },
+    "/user" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Creates user in the system",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "createUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "x-swagger-router-controller" : "User"
+      }
+    },
+    "/user/createWithArray" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Creates list of users with given input array",
+        "description" : "",
+        "operationId" : "createUsersWithArrayInput",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "List of user object",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "x-swagger-router-controller" : "User"
+      }
+    },
+    "/user/createWithList" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Creates list of users with given input array",
+        "description" : "",
+        "operationId" : "createUsersWithListInput",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "List of user object",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "x-swagger-router-controller" : "User"
+      }
+    },
+    "/user/login" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs user into the system",
+        "description" : "",
+        "operationId" : "loginUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "query",
+          "description" : "The user name for login",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "The password for login in clear text",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
             },
-            "collectionFormat": "multi"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Fleet"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid status value"
-          }
-        },
-        "x-swagger-router-controller": "Fleet"
-      }
-    },
-    "/fleet/{fleetId}": {
-      "get": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "Returns fleet information by fleet id (Req. 2-2, 7-0)",
-        "description": "Returns a single fleet (Req. 2-2, 7-0)",
-        "operationId": "getFleetById",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "fleetId",
-            "in": "path",
-            "description": "Pass in fleet id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/FleetInfo"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Fleet"
-      },
-      "post": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "Updates a fleet with form data",
-        "description": "",
-        "operationId": "updateFleetWithForm",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "fleetId",
-            "in": "path",
-            "description": "ID of fleet that needs to be updated",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "name",
-            "in": "formData",
-            "description": "Updated name of the fleet",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "status",
-            "in": "formData",
-            "description": "Updated status of the fleet",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        },
-        "x-swagger-router-controller": "Fleet"
-      },
-      "delete": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "Deletes a particular fleet from database",
-        "description": "",
-        "operationId": "deleteFleet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "api_key",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "fleetId",
-            "in": "path",
-            "description": "Fleet id to delete",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Fleet"
-      }
-    },
-    "/fleet/{fleetId}/uploadImage": {
-      "post": {
-        "tags": [
-          "fleet"
-        ],
-        "summary": "uploads an image for the particular fleet",
-        "description": "",
-        "operationId": "uploadFile",
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "fleetId",
-            "in": "path",
-            "description": "ID of fleet to update",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "additionalMetadata",
-            "in": "formData",
-            "description": "Additional data to pass to server",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "file",
-            "in": "formData",
-            "description": "file to upload",
-            "required": false,
-            "type": "file"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/ApiResponse"
-            }
-          }
-        },
-        "x-swagger-router-controller": "Fleet"
-      }
-    },
-    "/vehicle/{vehicleId}": {
-      "get": {
-        "tags": [
-          "vehicle",
-          "alert"
-        ],
-        "summary": "Finds vehicle information by id (Req. 4-2)",
-        "description": "Returns a single fleet",
-        "operationId": "getVehicleById",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "path",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Vehicle_Alert_Info"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/maintLogInfo/{vehicleId}": {
-      "get": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "Finds vehicle maintenance log information (Req. 7-0 & 9-0), pass in year and month to received monthly total, use result_count for daily total. Pass in result_count = 10 for last 10 days.  Pass in certain month (1 to 12) for month values.",
-        "description": "Returns a vehicle Maint log information",
-        "operationId": "getVehicleMaintLogInfo",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "path",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "result_count",
-            "in": "query",
-            "description": "Pass in how many result desire",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "string",
-            "format": "int32"
-          },
-          {
-            "name": "year",
-            "in": "query",
-            "description": "Pass in year",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "month",
-            "in": "query",
-            "description": "Pass in month",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Vehicle_Maint_Info"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/routineLogFileInfo/{vehicleId}": {
-      "get": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "Finds vehicle routine log file information (Req. 8-0 )",
-        "description": "Returns a vehicle routine log information",
-        "operationId": "getVehicleRoutineLogFile",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "path",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "result_count",
-            "in": "query",
-            "description": "Pass in how many result desire",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "string",
-            "format": "int32"
-          },
-          {
-            "name": "zip_pkg",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "yes",
-              "no"
-            ]
-          },
-          {
-            "name": "year",
-            "in": "query",
-            "description": "Pass in year",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "month",
-            "in": "query",
-            "description": "Pass in month",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Vehicle_Maint_Log_File_Info"
-            }
-          },
-          "400": {
-            "description": "Invalid parameters supplied"
-          },
-          "404": {
-            "description": "Vehicle file log not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/debugLogFileInfo/{vehicleId}": {
-      "get": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "For internal usage only (Req. 12)",
-        "description": "Returns a vehicle connection and debug log status",
-        "operationId": "getVehicleDebugLogFile",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "path",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "result_count",
-            "in": "query",
-            "description": "Pass in how many result desire",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "username",
-            "required": true,
-            "type": "string",
-            "format": "int32"
-          },
-          {
-            "name": "zip_pkg",
-            "in": "query",
-            "description": "Pass in zip_pkg",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "yes",
-              "no"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Vehicle_Debug_Log_File_Info"
-            }
-          },
-          "400": {
-            "description": "Invalid parameters supplied"
-          },
-          "404": {
-            "description": "Vehicle file log not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/preventiveNotifItemSetting": {
-      "get": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "Finds vehicle maintenance setting information. (Req. 6-0)",
-        "description": "Returns vehicle maintenance setting information (Req. 6-0)",
-        "operationId": "getVehicleMaintSetting",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Preventive_Notification_Setting"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      },
-      "post": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "Updates Preventive Maint. Setting",
-        "description": "Returns a single vehicle preventive maintenance setting information",
-        "operationId": "updateVehicleMaintSetting",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Created user object",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Preventive_Notification_Setting_Item"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Vehicle not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/preventiveNotifItem": {
-      "get": {
-        "tags": [
-          "vehicle",
-          "alert"
-        ],
-        "summary": "Finds vehicle preventive maintenance information (Req. 5-0)",
-        "description": "Returns vehicle preventive maintenance information (Req. 5-0)",
-        "operationId": "getPreventiveMaintNotifInfo",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Vehicle_Alert_Info"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      },
-      "post": {
-        "tags": [
-          "vehicle"
-        ],
-        "summary": "Finds vehicle maintenance information",
-        "description": "Updates a single vehicle preventive maintenance setting information",
-        "operationId": "updatePreventiveNotifItem",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "vehicle_id",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "preventiveItemID",
-            "in": "query",
-            "description": "Pass in preventive item id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "reset_status",
-            "in": "query",
-            "description": "reset status",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "reset",
-              "no_reset"
-            ]
-          },
-          {
-            "name": "reset_date",
-            "in": "query",
-            "description": "reset status",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Vehicle not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/vehicle/alert/{alertId}": {
-      "get": {
-        "tags": [
-          "alert",
-          "snapshot",
-          "vehicle"
-        ],
-        "summary": "Finds vehicle alert snapshot information (Req. 3-0)",
-        "description": "Returns alert snapshot information (Req. 3-0)",
-        "operationId": "getVehicleAlertSnapshot",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "alertId",
-            "in": "path",
-            "description": "Pass in alert id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "vehicleId",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in username",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/Alert_Notification_Item"
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Fleet not found"
-          }
-        },
-        "x-swagger-router-controller": "Alert"
-      },
-      "post": {
-        "tags": [
-          "vehicle",
-          "snapshot"
-        ],
-        "summary": "Update vehicle alert snapshot information (Req. 4-1)",
-        "description": "User acknowledge of alert notification.",
-        "operationId": "updateVehicleAlertSnapshot",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "query",
-            "description": "Pass in vehicle id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Pass in username",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "alertId",
-            "in": "path",
-            "description": "Pass in alert id",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "ack_status",
-            "in": "query",
-            "description": "Pass in ack status",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "acknowledged",
-              "not_acknowledged"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Vehicle not found"
-          }
-        },
-        "x-swagger-router-controller": "Vehicle"
-      }
-    },
-    "/user": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates user in the system",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "createUser",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Created user object",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        },
-        "x-swagger-router-controller": "User"
-      }
-    },
-    "/user/createWithArray": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates list of users with given input array",
-        "description": "",
-        "operationId": "createUsersWithArrayInput",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "List of user object",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        },
-        "x-swagger-router-controller": "User"
-      }
-    },
-    "/user/createWithList": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates list of users with given input array",
-        "description": "",
-        "operationId": "createUsersWithListInput",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "List of user object",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        },
-        "x-swagger-router-controller": "User"
-      }
-    },
-    "/user/login": {
-      "get": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Logs user into the system",
-        "description": "",
-        "operationId": "loginUser",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "query",
-            "description": "The user name for login",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "The password for login in clear text",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "string"
-            },
-            "headers": {
-              "X-Rate-Limit": {
-                "type": "integer",
-                "format": "int32",
-                "description": "calls per hour allowed by the user"
+            "headers" : {
+              "X-Rate-Limit" : {
+                "type" : "integer",
+                "format" : "int32",
+                "description" : "calls per hour allowed by the user"
               },
-              "X-Expires-After": {
-                "type": "string",
-                "format": "date-time",
-                "description": "date in UTC when token expires"
+              "X-Expires-After" : {
+                "type" : "string",
+                "format" : "date-time",
+                "description" : "date in UTC when token expires"
               }
             }
           },
-          "400": {
-            "description": "Invalid username/password supplied"
+          "400" : {
+            "description" : "Invalid username/password supplied"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       }
     },
-    "/user/logout": {
-      "get": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Logs out current logged in user session",
-        "description": "",
-        "operationId": "logoutUser",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "successful operation"
+    "/user/logout" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs out current logged in user session",
+        "description" : "",
+        "operationId" : "logoutUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       }
     },
-    "/user/{username}": {
-      "get": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Gets user information by user name",
-        "description": "",
-        "operationId": "getUserByName",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "The name that needs to be fetched. Use user1 for testing. ",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/User"
+    "/user/{username}" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Gets user information by user name",
+        "description" : "",
+        "operationId" : "getUserByName",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "description" : "The name that needs to be fetched. Use user1 for testing. ",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/User"
             }
           },
-          "400": {
-            "description": "Invalid username supplied"
+          "400" : {
+            "description" : "Invalid username supplied"
           },
-          "404": {
-            "description": "User not found"
+          "404" : {
+            "description" : "User not found"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       },
-      "put": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Updates user information",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "updateUser",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "name that need to be updated",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Updated user object",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
+      "put" : {
+        "tags" : [ "user" ],
+        "summary" : "Updates user information",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "updateUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "description" : "name that need to be updated",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
           }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid user supplied"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid user supplied"
           },
-          "404": {
-            "description": "User not found"
+          "404" : {
+            "description" : "User not found"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       },
-      "delete": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Deletes user from system or mark as inactive",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "deleteUser",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "The name that needs to be deleted",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid username supplied"
+      "delete" : {
+        "tags" : [ "user" ],
+        "summary" : "Deletes user from system or mark as inactive",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "deleteUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "description" : "The name that needs to be deleted",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid username supplied"
           },
-          "404": {
-            "description": "User not found"
+          "404" : {
+            "description" : "User not found"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       }
     },
-    "/user/notification": {
-      "get": {
-        "tags": [
-          "user",
-          "notification"
-        ],
-        "summary": "Gets user notification by user name (Req. 2-1)",
-        "description": "",
-        "operationId": "getUserNotification",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Retrieve all related alert and notifications for current logged in user.",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/UserNotification"
+    "/user/notification" : {
+      "get" : {
+        "tags" : [ "user", "notification" ],
+        "summary" : "Gets user notification by user name (Req. 2-1)",
+        "description" : "",
+        "operationId" : "getUserNotification",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Retrieve all related alert and notifications for current logged in user.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/UserNotification"
             }
           },
-          "400": {
-            "description": "Invalid username supplied"
+          "400" : {
+            "description" : "Invalid username supplied"
           },
-          "404": {
-            "description": "User not found"
+          "404" : {
+            "description" : "User not found"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       },
-      "post": {
-        "tags": [
-          "user",
-          "notification"
-        ],
-        "summary": "Updates user notitification by user name",
-        "description": "",
-        "operationId": "updateUserNotification",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "alert_id",
-            "in": "query",
-            "description": "Retrieve all related alert and notifications for current logged in user.",
-            "required": true,
-            "type": "string"
+      "post" : {
+        "tags" : [ "user", "notification" ],
+        "summary" : "Updates user notitification by user name",
+        "description" : "",
+        "operationId" : "updateUserNotification",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "alert_id",
+          "in" : "query",
+          "description" : "Retrieve all related alert and notifications for current logged in user.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "Retrieve all related alert and notifications for current logged in user.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "action",
+          "in" : "query",
+          "description" : "Retrieve all related alert and notifications for current logged in user.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
           },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Retrieve all related alert and notifications for current logged in user.",
-            "required": true,
-            "type": "string"
+          "400" : {
+            "description" : "Invalid username supplied"
           },
-          {
-            "name": "action",
-            "in": "query",
-            "description": "Retrieve all related alert and notifications for current logged in user.",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Invalid username supplied"
-          },
-          "404": {
-            "description": "User not found"
+          "404" : {
+            "description" : "User not found"
           }
         },
-        "x-swagger-router-controller": "User"
+        "x-swagger-router-controller" : "User"
       }
     }
   },
-  "definitions": {
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
         },
-        "username": {
-          "type": "string"
+        "username" : {
+          "type" : "string"
         },
-        "firstName": {
-          "type": "string"
+        "firstName" : {
+          "type" : "string"
         },
-        "lastName": {
-          "type": "string"
+        "lastName" : {
+          "type" : "string"
         },
-        "email": {
-          "type": "string"
+        "email" : {
+          "type" : "string"
         },
-        "password": {
-          "type": "string"
+        "password" : {
+          "type" : "string"
         },
-        "phone": {
-          "type": "string"
+        "phone" : {
+          "type" : "string"
         },
-        "userStatus": {
-          "type": "integer",
-          "format": "int32",
-          "description": "User Status"
-        }
-      }
-    },
-    "Tag": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
+        "userStatus" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "User Status"
         }
       },
-      "xml": {
-        "name": "Tag"
+      "example" : {
+        "firstName" : "firstName",
+        "lastName" : "lastName",
+        "password" : "password",
+        "userStatus" : 6,
+        "phone" : "phone",
+        "id" : 0,
+        "email" : "email",
+        "username" : "username"
       }
     },
-    "Fleet": {
-      "type": "object",
-      "required": [
-        "address",
-        "default_unit_type",
-        "desc",
-        "fleet_functional_code",
-        "name",
-        "time_offset",
-        "time_zone",
-        "vehicle_type"
-      ],
-      "properties": {
-        "name": {
-          "type": "string",
-          "example": "Central"
+    "Tag" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
         },
-        "vehicle_type": {
-          "type": "string",
-          "example": "bus"
-        },
-        "address": {
-          "type": "string",
-          "example": "One Gateway Plaza, Los Angeles, CA 90012-2952"
-        },
-        "desc": {
-          "type": "string",
-          "example": "First pilot program"
-        },
-        "time_offset": {
-          "type": "integer",
-          "format": "int64",
-          "example": 2
-        },
-        "fleet_functional_code": {
-          "type": "string",
-          "example": "abc"
-        },
-        "default_unit_type": {
-          "type": "string",
-          "example": "ABC"
-        },
-        "time_zone": {
-          "type": "string",
-          "example": "201707230003"
+        "name" : {
+          "type" : "string"
         }
+      },
+      "xml" : {
+        "name" : "Tag"
       }
     },
-    "ApiResponse": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
+    "Fleet" : {
+      "type" : "object",
+      "required" : [ "address", "default_unit_type", "desc", "fleet_functional_code", "name", "time_offset", "time_zone", "vehicle_type" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Central"
         },
-        "type": {
-          "type": "string"
+        "vehicle_type" : {
+          "type" : "string",
+          "example" : "bus"
         },
-        "message": {
-          "type": "string"
+        "address" : {
+          "type" : "string",
+          "example" : "One Gateway Plaza, Los Angeles, CA 90012-2952"
+        },
+        "desc" : {
+          "type" : "string",
+          "example" : "First pilot program"
+        },
+        "time_offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2
+        },
+        "fleet_functional_code" : {
+          "type" : "string",
+          "example" : "abc"
+        },
+        "default_unit_type" : {
+          "type" : "string",
+          "example" : "ABC"
+        },
+        "time_zone" : {
+          "type" : "string",
+          "example" : "201707230003"
         }
+      },
+      "example" : {
+        "address" : "One Gateway Plaza, Los Angeles, CA 90012-2952",
+        "time_offset" : 2,
+        "name" : "Central",
+        "vehicle_type" : "bus",
+        "fleet_functional_code" : "abc",
+        "default_unit_type" : "ABC",
+        "time_zone" : "201707230003",
+        "desc" : "First pilot program"
       }
     },
-    "FleetInfo": {
-      "type": "object",
-      "required": [
-        "address",
-        "default_unit_type",
-        "desc",
-        "fleet_functional_code",
-        "name",
-        "time_offset",
-        "time_zone",
-        "vehicles"
-      ],
-      "properties": {
-        "name": {
-          "type": "string",
-          "example": "Central"
+    "ApiResponse" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
         },
-        "vehicles": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Vehicle_Info"
+        "type" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "code" : 0,
+        "type" : "type",
+        "message" : "message"
+      }
+    },
+    "FleetInfo" : {
+      "type" : "object",
+      "required" : [ "address", "default_unit_type", "desc", "fleet_functional_code", "name", "time_offset", "time_zone", "vehicles" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Central"
+        },
+        "vehicles" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Vehicle_Info"
           }
         },
-        "address": {
-          "type": "string",
-          "example": "One Gateway Plaza, Los Angeles, CA 90012-2952"
+        "address" : {
+          "type" : "string",
+          "example" : "One Gateway Plaza, Los Angeles, CA 90012-2952"
         },
-        "desc": {
-          "type": "string",
-          "example": "First pilot program"
+        "desc" : {
+          "type" : "string",
+          "example" : "First pilot program"
         },
-        "time_offset": {
-          "type": "integer",
-          "format": "int64",
-          "example": 2
+        "time_offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2
         },
-        "fleet_functional_code": {
-          "type": "string",
-          "example": "abc"
+        "fleet_functional_code" : {
+          "type" : "string",
+          "example" : "abc"
         },
-        "default_unit_type": {
-          "type": "string",
-          "example": "ABC"
+        "default_unit_type" : {
+          "type" : "string",
+          "example" : "ABC"
         },
-        "time_zone": {
-          "type": "string",
-          "example": "201707230003"
+        "time_zone" : {
+          "type" : "string",
+          "example" : "201707230003"
         }
+      },
+      "example" : {
+        "address" : "One Gateway Plaza, Los Angeles, CA 90012-2952",
+        "time_offset" : 2,
+        "name" : "Central",
+        "vehicles" : [ {
+          "gps_location" : [ {
+            "altitude" : "2393",
+            "latitude" : "33.934353",
+            "longitude" : "-117.934343"
+          }, {
+            "altitude" : "2393",
+            "latitude" : "33.934353",
+            "longitude" : "-117.934343"
+          } ],
+          "update_time" : "2018022308280005",
+          "odometer" : 10033,
+          "online_status" : "online",
+          "engine_status" : "on",
+          "trip_mileage" : 122,
+          "bus_number" : "001",
+          "vehicle_id" : 1
+        }, {
+          "gps_location" : [ {
+            "altitude" : "2393",
+            "latitude" : "33.934353",
+            "longitude" : "-117.934343"
+          }, {
+            "altitude" : "2393",
+            "latitude" : "33.934353",
+            "longitude" : "-117.934343"
+          } ],
+          "update_time" : "2018022308280005",
+          "odometer" : 10033,
+          "online_status" : "online",
+          "engine_status" : "on",
+          "trip_mileage" : 122,
+          "bus_number" : "001",
+          "vehicle_id" : 1
+        } ],
+        "fleet_functional_code" : "abc",
+        "default_unit_type" : "ABC",
+        "time_zone" : "201707230003",
+        "desc" : "First pilot program"
       }
     },
-    "UserNotification": {
-      "type": "object",
-      "required": [
-        "alert_notification",
-        "preventive_notification"
-      ],
-      "properties": {
-        "alert_notification": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Alert_Notification"
+    "UserNotification" : {
+      "type" : "object",
+      "required" : [ "alert_notification", "preventive_notification" ],
+      "properties" : {
+        "alert_notification" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Alert_Notification"
           }
         },
-        "preventive_notification": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Preventive_Notification"
+        "preventive_notification" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Preventive_Notification"
           }
         }
+      },
+      "example" : {
+        "alert_notification" : [ {
+          "notification_type" : "Critical",
+          "notification_info" : [ {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : "15654.5",
+            "alert_id" : 5256,
+            "bus_number" : "Maintenance Notification",
+            "event_time" : "201712160525120005",
+            "alert_desc" : "Wiper Failure"
+          }, {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : "15654.5",
+            "alert_id" : 5256,
+            "bus_number" : "Maintenance Notification",
+            "event_time" : "201712160525120005",
+            "alert_desc" : "Wiper Failure"
+          } ]
+        }, {
+          "notification_type" : "Critical",
+          "notification_info" : [ {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : "15654.5",
+            "alert_id" : 5256,
+            "bus_number" : "Maintenance Notification",
+            "event_time" : "201712160525120005",
+            "alert_desc" : "Wiper Failure"
+          }, {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : "15654.5",
+            "alert_id" : 5256,
+            "bus_number" : "Maintenance Notification",
+            "event_time" : "201712160525120005",
+            "alert_desc" : "Wiper Failure"
+          } ]
+        } ],
+        "preventive_notification" : [ {
+          "notification_type" : "Maintenance Notification",
+          "notification_info" : [ {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : 15654,
+            "notification_item_id" : 345,
+            "bus_number" : "Maintenance Notification",
+            "cycle_type" : "count",
+            "event_time" : "201712160525120005"
+          }, {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : 15654,
+            "notification_item_id" : 345,
+            "bus_number" : "Maintenance Notification",
+            "cycle_type" : "count",
+            "event_time" : "201712160525120005"
+          } ]
+        }, {
+          "notification_type" : "Maintenance Notification",
+          "notification_info" : [ {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : 15654,
+            "notification_item_id" : 345,
+            "bus_number" : "Maintenance Notification",
+            "cycle_type" : "count",
+            "event_time" : "201712160525120005"
+          }, {
+            "item" : "Wiper Motor",
+            "cycle_value" : 26555,
+            "odometer" : 15654,
+            "notification_item_id" : 345,
+            "bus_number" : "Maintenance Notification",
+            "cycle_type" : "count",
+            "event_time" : "201712160525120005"
+          } ]
+        } ]
       }
     },
-    "Alert_Notification": {
-      "type": "object",
-      "required": [
-        "notification_info",
-        "notification_type"
-      ],
-      "properties": {
-        "notification_type": {
-          "type": "string",
-          "example": "Critical"
+    "Alert_Notification" : {
+      "type" : "object",
+      "required" : [ "notification_info", "notification_type" ],
+      "properties" : {
+        "notification_type" : {
+          "type" : "string",
+          "example" : "Critical"
         },
-        "notification_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/User_Alert_Notification_Item"
+        "notification_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/User_Alert_Notification_Item"
           }
         }
+      },
+      "example" : {
+        "notification_type" : "Critical",
+        "notification_info" : [ {
+          "item" : "Wiper Motor",
+          "cycle_value" : 26555,
+          "odometer" : "15654.5",
+          "alert_id" : 5256,
+          "bus_number" : "Maintenance Notification",
+          "event_time" : "201712160525120005",
+          "alert_desc" : "Wiper Failure"
+        }, {
+          "item" : "Wiper Motor",
+          "cycle_value" : 26555,
+          "odometer" : "15654.5",
+          "alert_id" : 5256,
+          "bus_number" : "Maintenance Notification",
+          "event_time" : "201712160525120005",
+          "alert_desc" : "Wiper Failure"
+        } ]
       }
     },
-    "Preventive_Notification": {
-      "type": "object",
-      "required": [
-        "notification_info",
-        "notification_type"
-      ],
-      "properties": {
-        "notification_type": {
-          "type": "string",
-          "example": "Maintenance Notification"
+    "Preventive_Notification" : {
+      "type" : "object",
+      "required" : [ "notification_info", "notification_type" ],
+      "properties" : {
+        "notification_type" : {
+          "type" : "string",
+          "example" : "Maintenance Notification"
         },
-        "notification_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Preventive_Notification_Item"
+        "notification_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Preventive_Notification_Item"
           }
         }
+      },
+      "example" : {
+        "notification_type" : "Maintenance Notification",
+        "notification_info" : [ {
+          "item" : "Wiper Motor",
+          "cycle_value" : 26555,
+          "odometer" : 15654,
+          "notification_item_id" : 345,
+          "bus_number" : "Maintenance Notification",
+          "cycle_type" : "count",
+          "event_time" : "201712160525120005"
+        }, {
+          "item" : "Wiper Motor",
+          "cycle_value" : 26555,
+          "odometer" : 15654,
+          "notification_item_id" : 345,
+          "bus_number" : "Maintenance Notification",
+          "cycle_type" : "count",
+          "event_time" : "201712160525120005"
+        } ]
       }
     },
-    "User_Alert_Notification_Item": {
-      "type": "object",
-      "required": [
-        "alert_desc",
-        "alert_id",
-        "bus_number",
-        "cycle_value",
-        "event_time",
-        "item",
-        "odometer"
-      ],
-      "properties": {
-        "alert_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 5256
+    "User_Alert_Notification_Item" : {
+      "type" : "object",
+      "required" : [ "alert_desc", "alert_id", "bus_number", "cycle_value", "event_time", "item", "odometer" ],
+      "properties" : {
+        "alert_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 5256
         },
-        "alert_desc": {
-          "type": "string",
-          "example": "Wiper Failure"
+        "alert_desc" : {
+          "type" : "string",
+          "example" : "Wiper Failure"
         },
-        "bus_number": {
-          "type": "string",
-          "example": "Maintenance Notification"
+        "bus_number" : {
+          "type" : "string",
+          "example" : "Maintenance Notification"
         },
-        "item": {
-          "type": "string",
-          "example": "Wiper Motor"
+        "item" : {
+          "type" : "string",
+          "example" : "Wiper Motor"
         },
-        "event_time": {
-          "type": "string",
-          "example": "201712160525120005"
+        "event_time" : {
+          "type" : "string",
+          "example" : "201712160525120005"
         },
-        "odometer": {
-          "type": "integer",
-          "format": "int32",
-          "example": "15654.5"
+        "odometer" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : "15654.5"
         },
-        "cycle_value": {
-          "type": "integer",
-          "format": "int32",
-          "example": 26555
+        "cycle_value" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 26555
         }
+      },
+      "example" : {
+        "item" : "Wiper Motor",
+        "cycle_value" : 26555,
+        "odometer" : "15654.5",
+        "alert_id" : 5256,
+        "bus_number" : "Maintenance Notification",
+        "event_time" : "201712160525120005",
+        "alert_desc" : "Wiper Failure"
       }
     },
-    "Vehicle_Alert_Info": {
-      "type": "object",
-      "required": [
-        "alert_list",
-        "fleet_id",
-        "fleet_name",
-        "vehicle_id"
-      ],
-      "properties": {
-        "vehicle_id": {
-          "type": "string",
-          "example": "0003"
+    "Vehicle_Alert_Info" : {
+      "type" : "object",
+      "required" : [ "alert_list", "bus_number", "fleet_id", "fleet_name", "vehicle_id" ],
+      "properties" : {
+        "vehicle_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 4
         },
-        "fleet_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 5256
+        "bus_number" : {
+          "type" : "string",
+          "example" : "0004"
         },
-        "fleet_name": {
-          "type": "string",
-          "example": "AVTA"
+        "fleet_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 5256
         },
-        "alert_list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Vehicle_Alert_List"
+        "fleet_name" : {
+          "type" : "string",
+          "example" : "AVTA"
+        },
+        "alert_list" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Vehicle_Alert_List"
           }
         }
+      },
+      "example" : {
+        "fleet_name" : "AVTA",
+        "fleet_id" : 5256,
+        "bus_number" : "0004",
+        "vehicle_id" : 4,
+        "alert_list" : [ {
+          "alert_time" : "201712160525120005",
+          "alert_id" : 5256,
+          "alert_name" : "HAVC failure",
+          "alert_type" : "general"
+        }, {
+          "alert_time" : "201712160525120005",
+          "alert_id" : 5256,
+          "alert_name" : "HAVC failure",
+          "alert_type" : "general"
+        } ]
       }
     },
-    "Vehicle_Alert_List": {
-      "type": "object",
-      "required": [
-        "alert_id",
-        "alert_name",
-        "alert_time",
-        "alert_type"
-      ],
-      "properties": {
-        "alert_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 5256
+    "Vehicle_Alert_List" : {
+      "type" : "object",
+      "required" : [ "alert_id", "alert_name", "alert_time", "alert_type" ],
+      "properties" : {
+        "alert_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 5256
         },
-        "alert_name": {
-          "type": "string",
-          "example": "HAVC failure"
+        "alert_name" : {
+          "type" : "string",
+          "example" : "HAVC failure"
         },
-        "alert_type": {
-          "type": "string",
-          "example": "general",
-          "enum": [
-            "general",
-            "critical"
-          ]
+        "alert_type" : {
+          "type" : "string",
+          "example" : "general",
+          "enum" : [ "general", "critical" ]
         },
-        "alert_time": {
-          "type": "string",
-          "example": "201712160525120005"
+        "alert_time" : {
+          "type" : "string",
+          "example" : "201712160525120005"
         }
+      },
+      "example" : {
+        "alert_time" : "201712160525120005",
+        "alert_id" : 5256,
+        "alert_name" : "HAVC failure",
+        "alert_type" : "general"
       }
     },
-    "Preventive_Notification_Item": {
-      "type": "object",
-      "required": [
-        "bus_number",
-        "cycle_type",
-        "cycle_value",
-        "event_time",
-        "item",
-        "notification_item_id",
-        "odometer"
-      ],
-      "properties": {
-        "notification_item_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 345
+    "Preventive_Notification_Item" : {
+      "type" : "object",
+      "required" : [ "bus_number", "cycle_type", "cycle_value", "event_time", "item", "notification_item_id", "odometer" ],
+      "properties" : {
+        "notification_item_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 345
         },
-        "bus_number": {
-          "type": "string",
-          "example": "Maintenance Notification"
+        "bus_number" : {
+          "type" : "string",
+          "example" : "Maintenance Notification"
         },
-        "item": {
-          "type": "string",
-          "example": "Wiper Motor"
+        "item" : {
+          "type" : "string",
+          "example" : "Wiper Motor"
         },
-        "event_time": {
-          "type": "string",
-          "example": "201712160525120005"
+        "event_time" : {
+          "type" : "string",
+          "example" : "201712160525120005"
         },
-        "odometer": {
-          "type": "integer",
-          "format": "int32",
-          "example": 15654
+        "odometer" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 15654
         },
-        "cycle_value": {
-          "type": "integer",
-          "format": "int32",
-          "example": 26555
+        "cycle_value" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 26555
         },
-        "cycle_type": {
-          "type": "string",
-          "enum": [
-            "count",
-            "usage"
-          ]
+        "cycle_type" : {
+          "type" : "string",
+          "enum" : [ "count", "usage" ]
         }
+      },
+      "example" : {
+        "item" : "Wiper Motor",
+        "cycle_value" : 26555,
+        "odometer" : 15654,
+        "notification_item_id" : 345,
+        "bus_number" : "Maintenance Notification",
+        "cycle_type" : "count",
+        "event_time" : "201712160525120005"
       }
     },
-    "Preventive_Notification_Setting": {
-      "type": "object",
-      "required": [
-        "fleet_id",
-        "fleet_name",
-        "notification_setting_items",
-        "user_name",
-        "vehicle_id"
-      ],
-      "properties": {
-        "fleet_id": {
-          "type": "integer",
-          "example": 345
+    "Preventive_Notification_Setting" : {
+      "type" : "object",
+      "required" : [ "fleet_id", "fleet_name", "notification_setting_items", "user_name", "vehicle_id" ],
+      "properties" : {
+        "fleet_id" : {
+          "type" : "integer",
+          "example" : 345
         },
-        "fleet_name": {
-          "type": "string",
-          "example": "AVTA"
+        "fleet_name" : {
+          "type" : "string",
+          "example" : "AVTA"
         },
-        "vehicle_id": {
-          "type": "string",
-          "example": "0004"
+        "vehicle_id" : {
+          "type" : "string",
+          "example" : "0004"
         },
-        "user_name": {
-          "type": "string",
-          "example": "nhk"
+        "user_name" : {
+          "type" : "string",
+          "example" : "nhk"
         },
-        "notification_setting_items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Preventive_Notification_Setting_Item"
+        "notification_setting_items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Preventive_Notification_Setting_Item"
           }
         }
+      },
+      "example" : {
+        "fleet_name" : "AVTA",
+        "notification_setting_items" : [ {
+          "notification_type" : "Display",
+          "usage_count" : 15654,
+          "notification_item_id" : 345,
+          "mileage_usage" : 5000,
+          "item_name" : "Engine Oil",
+          "usage_value" : 253,
+          "unit_type" : "Percent",
+          "hours_usage" : 4576,
+          "date_usage" : 76,
+          "operand" : "less-than"
+        }, {
+          "notification_type" : "Display",
+          "usage_count" : 15654,
+          "notification_item_id" : 345,
+          "mileage_usage" : 5000,
+          "item_name" : "Engine Oil",
+          "usage_value" : 253,
+          "unit_type" : "Percent",
+          "hours_usage" : 4576,
+          "date_usage" : 76,
+          "operand" : "less-than"
+        } ],
+        "user_name" : "nhk",
+        "fleet_id" : 345,
+        "vehicle_id" : "0004"
       }
     },
-    "Preventive_Notification_Setting_Item": {
-      "type": "object",
-      "required": [
-        "item_name",
-        "notification_item_id"
-      ],
-      "properties": {
-        "notification_item_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 345
+    "Preventive_Notification_Setting_Item" : {
+      "type" : "object",
+      "required" : [ "item_name", "notification_item_id" ],
+      "properties" : {
+        "notification_item_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 345
         },
-        "item_name": {
-          "type": "string",
-          "example": "Engine Oil"
+        "item_name" : {
+          "type" : "string",
+          "example" : "Engine Oil"
         },
-        "mileage_usage": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 5000
+        "mileage_usage" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 5000
         },
-        "date_usage": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 76
+        "date_usage" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 76
         },
-        "hours_usage": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 4576
+        "hours_usage" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 4576
         },
-        "usage_count": {
-          "type": "integer",
-          "format": "int32",
-          "example": 15654
+        "usage_count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 15654
         },
-        "operand": {
-          "type": "string",
-          "enum": [
-            "less-than",
-            "greater-than",
-            "equal",
-            "less-than_equal-to",
-            "greater-than_equal-to",
-            "not equal"
-          ]
+        "operand" : {
+          "type" : "string",
+          "enum" : [ "less-than", "greater-than", "equal", "less-than_equal-to", "greater-than_equal-to", "not equal" ]
         },
-        "usage_value": {
-          "type": "integer",
-          "format": "int32",
-          "example": 253
+        "usage_value" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 253
         },
-        "unit_type": {
-          "type": "string",
-          "enum": [
-            "Percent",
-            "Number"
-          ]
+        "unit_type" : {
+          "type" : "string",
+          "enum" : [ "Percent", "Number" ]
         },
-        "notification_type": {
-          "type": "string",
-          "enum": [
-            "Display",
-            "Display And Email"
-          ]
+        "notification_type" : {
+          "type" : "string",
+          "enum" : [ "Display", "Display And Email" ]
         }
+      },
+      "example" : {
+        "notification_type" : "Display",
+        "usage_count" : 15654,
+        "notification_item_id" : 345,
+        "mileage_usage" : 5000,
+        "item_name" : "Engine Oil",
+        "usage_value" : 253,
+        "unit_type" : "Percent",
+        "hours_usage" : 4576,
+        "date_usage" : 76,
+        "operand" : "less-than"
       }
     },
-    "Vehicle_Info": {
-      "type": "object",
-      "required": [
-        "bus_number",
-        "engine_status",
-        "odometer",
-        "online_status",
-        "trip_mileage",
-        "update_time"
-      ],
-      "properties": {
-        "bus_number": {
-          "type": "string",
-          "example": "001"
+    "Vehicle_Info" : {
+      "type" : "object",
+      "required" : [ "bus_number", "engine_status", "odometer", "online_status", "trip_mileage", "update_time", "vehicle_id" ],
+      "properties" : {
+        "vehicle_id" : {
+          "type" : "integer",
+          "format" : "unint32",
+          "example" : 1
         },
-        "odometer": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 10033
+        "bus_number" : {
+          "type" : "string",
+          "example" : "001"
         },
-        "trip_mileage": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 122
+        "odometer" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 10033
         },
-        "engine_status": {
-          "type": "string",
-          "enum": [
-            "on",
-            "off",
-            "idle"
-          ]
+        "trip_mileage" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 122
         },
-        "online_status": {
-          "type": "string",
-          "enum": [
-            "online",
-            "offline"
-          ]
+        "engine_status" : {
+          "type" : "string",
+          "enum" : [ "on", "off", "idle" ]
         },
-        "update_time": {
-          "type": "string",
-          "example": "2018022308280005"
+        "online_status" : {
+          "type" : "string",
+          "enum" : [ "online", "offline" ]
         },
-        "gps_location": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GPS_Location"
+        "update_time" : {
+          "type" : "string",
+          "example" : "2018022308280005"
+        },
+        "gps_location" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/GPS_Location"
           }
         }
+      },
+      "example" : {
+        "gps_location" : [ {
+          "altitude" : "2393",
+          "latitude" : "33.934353",
+          "longitude" : "-117.934343"
+        }, {
+          "altitude" : "2393",
+          "latitude" : "33.934353",
+          "longitude" : "-117.934343"
+        } ],
+        "update_time" : "2018022308280005",
+        "odometer" : 10033,
+        "online_status" : "online",
+        "engine_status" : "on",
+        "trip_mileage" : 122,
+        "bus_number" : "001",
+        "vehicle_id" : 1
       }
     },
-    "Vehicle_Maint_Info": {
-      "type": "object",
-      "required": [
-        "bus_number",
-        "fleet_id",
-        "maint_info_item",
-        "vehicle_id"
-      ],
-      "properties": {
-        "vehicle_id": {
-          "type": "string",
-          "example": "0004"
+    "Vehicle_Maint_Info" : {
+      "type" : "object",
+      "required" : [ "bus_number", "fleet_id", "maint_info_item", "vehicle_id" ],
+      "properties" : {
+        "vehicle_id" : {
+          "type" : "string",
+          "example" : "0004"
         },
-        "bus_number": {
-          "type": "string",
-          "example": "0004"
+        "bus_number" : {
+          "type" : "string",
+          "example" : "0004"
         },
-        "fleet_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 352
+        "fleet_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 352
         },
-        "maint_info_item": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Vehicle_Maint_Info_Item"
+        "maint_info_item" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Vehicle_Maint_Info_Item"
           }
         }
+      },
+      "example" : {
+        "fleet_id" : 352,
+        "bus_number" : "0004",
+        "vehicle_id" : "0004",
+        "maint_info_item" : [ {
+          "date" : "20170320",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        }, {
+          "date" : "20170320",
+          "daily_mileage" : 352.0,
+          "total_mileage" : 10033.0,
+          "kneel_usage" : 52.1,
+          "mpg" : 33.5,
+          "wiper" : 3434.0,
+          "havc" : 33.6,
+          "door_usage" : 5.9,
+          "engine_idle_time" : 32.5,
+          "ramp_usage" : 5.5,
+          "headlight" : 343.0
+        } ]
       }
     },
-    "Vehicle_Maint_Info_Item": {
-      "type": "object",
-      "required": [
-        "daily_mileage",
-        "date",
-        "door_usage",
-        "engine_idle_time",
-        "havc",
-        "headlight",
-        "kneel_usage",
-        "mpg",
-        "ramp_usage",
-        "total_mileage",
-        "wiper"
-      ],
-      "properties": {
-        "date": {
-          "type": "string",
-          "example": "20170320"
+    "Vehicle_Maint_Info_Item" : {
+      "type" : "object",
+      "required" : [ "daily_mileage", "date", "door_usage", "engine_idle_time", "havc", "headlight", "kneel_usage", "mpg", "ramp_usage", "total_mileage", "wiper" ],
+      "properties" : {
+        "date" : {
+          "type" : "string",
+          "example" : "20170320"
         },
-        "total_mileage": {
-          "type": "number",
-          "format": "float",
-          "example": 10033
+        "total_mileage" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 10033.0
         },
-        "daily_mileage": {
-          "type": "number",
-          "format": "float",
-          "example": 352
+        "daily_mileage" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 352.0
         },
-        "engine_idle_time": {
-          "type": "number",
-          "format": "float",
-          "example": 32.5
+        "engine_idle_time" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 32.5
         },
-        "mpg": {
-          "type": "number",
-          "format": "float",
-          "example": 33.5
+        "mpg" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 33.5
         },
-        "door_usage": {
-          "type": "number",
-          "format": "float",
-          "example": 5.9
+        "door_usage" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 5.9
         },
-        "ramp_usage": {
-          "type": "number",
-          "format": "float",
-          "example": 5.5
+        "ramp_usage" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 5.5
         },
-        "kneel_usage": {
-          "type": "number",
-          "format": "float",
-          "example": 52.1
+        "kneel_usage" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 52.1
         },
-        "havc": {
-          "type": "number",
-          "format": "float",
-          "example": 33.6
+        "havc" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 33.6
         },
-        "wiper": {
-          "type": "number",
-          "format": "float",
-          "example": 3434
+        "wiper" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 3434.0
         },
-        "headlight": {
-          "type": "number",
-          "format": "float",
-          "example": 343
+        "headlight" : {
+          "type" : "number",
+          "format" : "float",
+          "example" : 343.0
         }
+      },
+      "example" : {
+        "date" : "20170320",
+        "daily_mileage" : 352.0,
+        "total_mileage" : 10033.0,
+        "kneel_usage" : 52.1,
+        "mpg" : 33.5,
+        "wiper" : 3434.0,
+        "havc" : 33.6,
+        "door_usage" : 5.9,
+        "engine_idle_time" : 32.5,
+        "ramp_usage" : 5.5,
+        "headlight" : 343.0
       }
     },
-    "Vehicle_Maint_Log_File_Info": {
-      "type": "object",
-      "required": [
-        "bus_number",
-        "fleet_id",
-        "maint_log_file_item",
-        "vehicle_id",
-        "vehicle_name"
-      ],
-      "properties": {
-        "vehicle_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 33
+    "Vehicle_Maint_Log_File_Info" : {
+      "type" : "object",
+      "required" : [ "bus_number", "fleet_id", "maint_log_file_item", "vehicle_id" ],
+      "properties" : {
+        "vehicle_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 33
         },
-        "vehicle_name": {
-          "type": "string",
-          "example": "0004"
+        "bus_number" : {
+          "type" : "string",
+          "example" : "0004"
         },
-        "bus_number": {
-          "type": "string",
-          "example": "0004"
+        "fleet_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 352
         },
-        "fleet_id": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 352
-        },
-        "maint_log_file_item": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Vehicle_Maint_Daily_Log_File_Info"
+        "maint_log_file_item" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Vehicle_Maint_Daily_Log_File_Info"
           }
         }
+      },
+      "example" : {
+        "maint_log_file_item" : [ {
+          "date" : "20170526",
+          "start_time" : "2017020100010005",
+          "file_path" : "\\1651\\1651_20170203.csv",
+          "file_name" : "1651_20170203.csv",
+          "end_time" : "2017020100040005"
+        }, {
+          "date" : "20170526",
+          "start_time" : "2017020100010005",
+          "file_path" : "\\1651\\1651_20170203.csv",
+          "file_name" : "1651_20170203.csv",
+          "end_time" : "2017020100040005"
+        } ],
+        "fleet_id" : 352,
+        "bus_number" : "0004",
+        "vehicle_id" : 33
       }
     },
-    "Vehicle_Maint_Daily_Log_File_Info": {
-      "type": "object",
-      "required": [
-        "date",
-        "end_time",
-        "file_name",
-        "file_path",
-        "start_time"
-      ],
-      "properties": {
-        "date": {
-          "type": "string",
-          "example": "20170526"
+    "Vehicle_Maint_Daily_Log_File_Info" : {
+      "type" : "object",
+      "required" : [ "date", "end_time", "file_name", "file_path", "start_time" ],
+      "properties" : {
+        "date" : {
+          "type" : "string",
+          "example" : "20170526"
         },
-        "file_name": {
-          "type": "string",
-          "example": "1651_20170203.csv"
+        "file_name" : {
+          "type" : "string",
+          "example" : "1651_20170203.csv"
         },
-        "start_time": {
-          "type": "string",
-          "example": "2017020100010005"
+        "start_time" : {
+          "type" : "string",
+          "example" : "2017020100010005"
         },
-        "end_time": {
-          "type": "string",
-          "example": "2017020100040005"
+        "end_time" : {
+          "type" : "string",
+          "example" : "2017020100040005"
         },
-        "file_path": {
-          "type": "string",
-          "example": "\\1651\\1651_20170203.csv"
+        "file_path" : {
+          "type" : "string",
+          "example" : "\\1651\\1651_20170203.csv"
+        }
+      },
+      "example" : {
+        "date" : "20170526",
+        "start_time" : "2017020100010005",
+        "file_path" : "\\1651\\1651_20170203.csv",
+        "file_name" : "1651_20170203.csv",
+        "end_time" : "2017020100040005"
+      }
+    },
+    "Vehicle_Debug_Log_File_Info" : {
+      "type" : "object",
+      "required" : [ "bus_number", "ethernet_mac_addr", "file_path", "vehicle_id", "wifi_mac_addr" ],
+      "properties" : {
+        "vehicle_id" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 4
+        },
+        "bus_number" : {
+          "type" : "string",
+          "example" : "0004"
+        },
+        "file_path" : {
+          "type" : "string",
+          "example" : "\\00004\\1651_20170203.csv"
+        },
+        "ethernet_mac_addr" : {
+          "type" : "string",
+          "example" : "2017020100010005"
+        },
+        "wifi_mac_addr" : {
+          "type" : "string",
+          "example" : "2017020100040005"
+        }
+      },
+      "example" : {
+        "file_path" : "\\00004\\1651_20170203.csv",
+        "ethernet_mac_addr" : "2017020100010005",
+        "wifi_mac_addr" : "2017020100040005",
+        "bus_number" : "0004",
+        "vehicle_id" : 4
+      }
+    },
+    "Vehicle_Maint_Reset_Info" : {
+      "type" : "object",
+      "required" : [ "reset_date", "username" ],
+      "properties" : {
+        "username" : {
+          "type" : "string",
+          "example" : "Robin"
+        },
+        "reset_date" : {
+          "type" : "string",
+          "example" : "201801220825520008"
         }
       }
     },
-    "Vehicle_Debug_Log_File_Info": {
-      "type": "object",
-      "required": [
-        "ethernet_mac_addr",
-        "file_path",
-        "vehicle_number",
-        "wifi_mac_addr"
-      ],
-      "properties": {
-        "vehicle_number": {
-          "type": "string",
-          "example": "20170526"
+    "Vehicle_Maint_Notified_Info" : {
+      "type" : "object",
+      "required" : [ "notified_date", "username" ],
+      "properties" : {
+        "username" : {
+          "type" : "string",
+          "example" : "Robin"
         },
-        "file_path": {
-          "type": "string",
-          "example": "\\00004\\1651_20170203.csv"
-        },
-        "ethernet_mac_addr": {
-          "type": "string",
-          "example": "2017020100010005"
-        },
-        "wifi_mac_addr": {
-          "type": "string",
-          "example": "2017020100040005"
+        "notified_date" : {
+          "type" : "string",
+          "example" : "201801200825520008"
         }
       }
     },
-    "Vehicle_Maint_Reset_Info": {
-      "type": "object",
-      "required": [
-        "reset_date",
-        "username"
-      ],
-      "properties": {
-        "username": {
-          "type": "string",
-          "example": "Robin"
+    "GPS_Location" : {
+      "type" : "object",
+      "required" : [ "latitude", "longitude" ],
+      "properties" : {
+        "latitude" : {
+          "type" : "string",
+          "example" : "33.934353"
         },
-        "reset_date": {
-          "type": "string",
-          "example": "201801220825520008"
+        "longitude" : {
+          "type" : "string",
+          "example" : "-117.934343"
+        },
+        "altitude" : {
+          "type" : "string",
+          "example" : "2393"
         }
+      },
+      "example" : {
+        "altitude" : "2393",
+        "latitude" : "33.934353",
+        "longitude" : "-117.934343"
       }
     },
-    "Vehicle_Maint_Notified_Info": {
-      "type": "object",
-      "required": [
-        "notified_date",
-        "username"
-      ],
-      "properties": {
-        "username": {
-          "type": "string",
-          "example": "Robin"
+    "Alert_Notification_Item" : {
+      "type" : "object",
+      "required" : [ "ackd_info", "alert_id", "fleet_id", "fleet_name", "item_info", "module_info", "notif_info", "vehicle_id" ],
+      "properties" : {
+        "alert_id" : {
+          "type" : "string",
+          "example" : "0355"
         },
-        "notified_date": {
-          "type": "string",
-          "example": "201801200825520008"
-        }
-      }
-    },
-    "GPS_Location": {
-      "type": "object",
-      "required": [
-        "latitude",
-        "longitude"
-      ],
-      "properties": {
-        "latitude": {
-          "type": "string",
-          "example": "33.934353"
+        "fleet_id" : {
+          "type" : "string",
+          "example" : "32"
         },
-        "longitude": {
-          "type": "string",
-          "example": "-117.934343"
+        "fleet_name" : {
+          "type" : "string",
+          "example" : "AVTA"
         },
-        "altitude": {
-          "type": "string",
-          "example": "2393"
-        }
-      }
-    },
-    "Alert_Notification_Item": {
-      "type": "object",
-      "required": [
-        "ackd_info",
-        "alert_id",
-        "fleet_id",
-        "fleet_name",
-        "item_info",
-        "module_info",
-        "notif_info",
-        "vehicle_id"
-      ],
-      "properties": {
-        "alert_id": {
-          "type": "string",
-          "example": "0355"
+        "vehicle_id" : {
+          "type" : "string",
+          "example" : "0001"
         },
-        "fleet_id": {
-          "type": "string",
-          "example": "32"
-        },
-        "fleet_name": {
-          "type": "string",
-          "example": "AVTA"
-        },
-        "vehicle_id": {
-          "type": "string",
-          "example": "0001"
-        },
-        "item_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Alert_Notification_Item_Info"
+        "item_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Alert_Notification_Item_Info"
           }
         },
-        "module_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Alert_Notified_Info"
+        "module_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Alert_Notified_Info"
           }
         },
-        "notif_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Alert_Notification_Module_Info"
+        "notif_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Alert_Notification_Module_Info"
           }
         },
-        "ackd_info": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Alert_Acknowledged_Info"
+        "ackd_info" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Alert_Acknowledged_Info"
           }
         }
+      },
+      "example" : {
+        "item_info" : [ {
+          "item" : "A1",
+          "unit" : 0,
+          "value" : 32
+        }, {
+          "item" : "A1",
+          "unit" : 0,
+          "value" : 32
+        } ],
+        "fleet_name" : "AVTA",
+        "module_info" : [ {
+          "date" : "201801221311020005",
+          "name" : "Rick William",
+          "notified_user" : "rwilliam"
+        }, {
+          "date" : "201801221311020005",
+          "name" : "Rick William",
+          "notified_user" : "rwilliam"
+        } ],
+        "notif_info" : [ {
+          "module_icon_path" : "0002\\343.png",
+          "module_name" : "TRANSMISSION",
+          "module_status" : "on"
+        }, {
+          "module_icon_path" : "0002\\343.png",
+          "module_name" : "TRANSMISSION",
+          "module_status" : "on"
+        } ],
+        "alert_id" : "0355",
+        "fleet_id" : "32",
+        "vehicle_id" : "0001",
+        "ackd_info" : [ {
+          "date" : "201801221311020005",
+          "acknowledged_user" : "ksmith",
+          "name" : "Kelly Smith"
+        }, {
+          "date" : "201801221311020005",
+          "acknowledged_user" : "ksmith",
+          "name" : "Kelly Smith"
+        } ]
       }
     },
-    "Alert_Notification_Item_Info": {
-      "type": "object",
-      "required": [
-        "item",
-        "unit",
-        "value"
-      ],
-      "properties": {
-        "item": {
-          "type": "string",
-          "example": "A1"
+    "Alert_Notification_Item_Info" : {
+      "type" : "object",
+      "required" : [ "item", "unit", "value" ],
+      "properties" : {
+        "item" : {
+          "type" : "string",
+          "example" : "A1"
         },
-        "value": {
-          "type": "integer",
-          "format": "uint32",
-          "example": 32
+        "value" : {
+          "type" : "integer",
+          "format" : "uint32",
+          "example" : 32
         },
-        "unit": {
-          "type": "integer",
-          "format": "uint32"
+        "unit" : {
+          "type" : "integer",
+          "format" : "uint32"
         }
+      },
+      "example" : {
+        "item" : "A1",
+        "unit" : 0,
+        "value" : 32
       }
     },
-    "Alert_Notification_Module_Info": {
-      "type": "object",
-      "required": [
-        "module_icon_path",
-        "module_name",
-        "module_status"
-      ],
-      "properties": {
-        "module_name": {
-          "type": "string",
-          "example": "TRANSMISSION"
+    "Alert_Notification_Module_Info" : {
+      "type" : "object",
+      "required" : [ "module_icon_path", "module_name", "module_status" ],
+      "properties" : {
+        "module_name" : {
+          "type" : "string",
+          "example" : "TRANSMISSION"
         },
-        "module_status": {
-          "type": "string",
-          "enum": [
-            "on",
-            "off",
-            "idle",
-            "na"
-          ]
+        "module_status" : {
+          "type" : "string",
+          "enum" : [ "on", "off", "idle", "na" ]
         },
-        "module_icon_path": {
-          "type": "string",
-          "example": "0002\\343.png"
+        "module_icon_path" : {
+          "type" : "string",
+          "example" : "0002\\343.png"
         }
+      },
+      "example" : {
+        "module_icon_path" : "0002\\343.png",
+        "module_name" : "TRANSMISSION",
+        "module_status" : "on"
       }
     },
-    "Alert_Notified_Info": {
-      "type": "object",
-      "required": [
-        "date",
-        "name",
-        "notified_user"
-      ],
-      "properties": {
-        "notified_user": {
-          "type": "string",
-          "example": "rwilliam"
+    "Alert_Notified_Info" : {
+      "type" : "object",
+      "required" : [ "date", "name", "notified_user" ],
+      "properties" : {
+        "notified_user" : {
+          "type" : "string",
+          "example" : "rwilliam"
         },
-        "name": {
-          "type": "string",
-          "example": "Rick William"
+        "name" : {
+          "type" : "string",
+          "example" : "Rick William"
         },
-        "date": {
-          "type": "string",
-          "example": "201801221311020005"
+        "date" : {
+          "type" : "string",
+          "example" : "201801221311020005"
         }
+      },
+      "example" : {
+        "date" : "201801221311020005",
+        "name" : "Rick William",
+        "notified_user" : "rwilliam"
       }
     },
-    "Alert_Acknowledged_Info": {
-      "type": "object",
-      "required": [
-        "acknowledged_user",
-        "date",
-        "name"
-      ],
-      "properties": {
-        "acknowledged_user": {
-          "type": "string",
-          "example": "ksmith"
+    "Alert_Acknowledged_Info" : {
+      "type" : "object",
+      "required" : [ "acknowledged_user", "date", "name" ],
+      "properties" : {
+        "acknowledged_user" : {
+          "type" : "string",
+          "example" : "ksmith"
         },
-        "name": {
-          "type": "string",
-          "example": "Kelly Smith"
+        "name" : {
+          "type" : "string",
+          "example" : "Kelly Smith"
         },
-        "date": {
-          "type": "string",
-          "example": "201801221311020005"
+        "date" : {
+          "type" : "string",
+          "example" : "201801221311020005"
         }
+      },
+      "example" : {
+        "date" : "201801221311020005",
+        "acknowledged_user" : "ksmith",
+        "name" : "Kelly Smith"
       }
     }
   },
-  "externalDocs": {
-    "description": "Find out more about I/O Controls",
-    "url": "http://www.iocontrols.com"
+  "externalDocs" : {
+    "description" : "Find out more about I/O Controls",
+    "url" : "http://www.iocontrols.com"
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { UtilityService } from 'app/services/utility.service';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'alert.component.html'
@@ -11,11 +12,11 @@ export class AlertComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private utility: UtilityService
+    private utility: UtilityService,
+    private dataService: RemoteDataService
   ) { }
 
   private alert$: Observable<any>;
-  private alertName$: Observable<string>;
   private locations$: Observable<any>;
 
   private moduleIcons$: Observable<any>;
@@ -33,10 +34,8 @@ export class AlertComponent implements OnInit {
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
       .concatMap(alertId =>
-        this.http.get<any>(`assets/data/vehicle/alert/${ alertId }.json`)
-      );
+        this.dataService.getVehicleAlertSnapshotParams(0, 22, +alertId));
 
-    this.alertName$ = this.alert$.map(a => a.alert_desc);
     // this.alertName$ = this.alert$
     //   .concatMap(alert =>
     //     this.http.get<any>(`assets/data/vehicle/${ alert.vehicle_id }.json`)
@@ -47,9 +46,9 @@ export class AlertComponent implements OnInit {
 
     this.locations$ = this.alert$
       .concatMap(alert =>
-        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`)
+        this.dataService.getFleetById(alert.fleet_id)
           .concatMap(f => Observable.from(f.vehicles))
-          .filter(v => v['bus_number'] === alert.vehicle_id)
+          .filter(v => v['vehicle_id'] === alert.vehicle_id)
       )
       // .map(v => v['gps_location']);
       .switchMap(v => Observable.from(v['gps_location']));

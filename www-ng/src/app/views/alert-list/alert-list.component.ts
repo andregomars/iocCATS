@@ -4,6 +4,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'alert-list.component.html'
@@ -12,22 +13,22 @@ export class AlertListComponent implements OnInit {
   alerts = [];
   temp = [];
   fleetId = 5256; // AVTA
-  dataUrlFleet = `assets/data/fleet/${ this.fleetId }.json`;
   dataUrlVehicle = 'assets/data/vehicle';
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
-    this.http.get<any>(this.dataUrlFleet)
+    this.dataService.getFleetById(this.fleetId)
       // map each vehicle to a stream
       .concatMap(f => Observable.from(f.vehicles))
       // fetch each vehicle data
       .mergeMap(v =>
-        this.http.get<any>(`${ this.dataUrlVehicle }/${ v['bus_number'] }.json`))
+        this.dataService.getVehicleById(v['vehicle_id']))
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // retrive alert list and attach bus number into each alert

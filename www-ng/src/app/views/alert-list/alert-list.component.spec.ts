@@ -1,10 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AlertListComponent } from './alert-list.component';
 import { AppPipeModule } from 'app/pipes/pipes.module';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('AlertListComponent', () => {
   beforeEach(() => {
@@ -13,12 +15,14 @@ describe('AlertListComponent', () => {
         AlertListComponent
       ],
       imports: [
+        HttpClientModule,
         NgxDatatableModule,
         RouterModule,
-        AppPipeModule
+        AppPipeModule,
+        ApiModule
       ],
       providers: [
-        { provide: HttpClient }
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

@@ -8,6 +8,7 @@
     "time_zone": "201707230003",
     "vehicles": [
         {
+            "vehicle_id": 1,
             "bus_number": "0001",
             "odometer": 10033,
             "trip_mileage": 122,
@@ -33,6 +34,7 @@
             ]
         },
         {
+            "vehicle_id": 2,
             "bus_number": "0002",
             "odometer": 23580.6,
             "trip_mileage": 35.8,

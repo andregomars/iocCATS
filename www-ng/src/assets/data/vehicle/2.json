@@ -1,5 +1,6 @@
 {
-  "vehicle_id" : "0002",
+  "vehicle_id" : 2,
+  "bus_number": "0002",
   "fleet_id" : 5256,
   "fleet_name" : "AVTA",
   "alert_list" : [ {

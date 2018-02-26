@@ -3,7 +3,8 @@
   "alert_desc": "Front Door Open failure",
   "fleet_id": 5256,
   "fleet_name": "AVTA",
-  "vehicle_id": "0001",
+  "vehicle_id": 1,
+  "bus_number": "0001",
   "item_info": [{
     "item": "A1",
     "unit": "V",

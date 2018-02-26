@@ -21,8 +21,6 @@ export class FleetComponent implements OnInit {
   classUp = 'fa fa-chevron-up fa-lg';
 
   fleetId = 5256; // AVTA
-  dataUrl = `assets/data/fleet/${ this.fleetId }.json`;
-  // dataUrl = `https://ioccatsdemo.firebaseio.com/fleet/5256.json`;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
   @ViewChild(AgmMap) map: AgmMap;
@@ -36,7 +34,6 @@ export class FleetComponent implements OnInit {
     this.mapHeight = this.defaultMapHeight;
     this.classResize = this.classDown;
 
-    // this.http.get<any>(this.dataUrl).subscribe(data => {
     this.dataService.getFleetById(this.fleetId).subscribe(data => {
       this.temp = [...data.vehicles];
       this.vehicles = data.vehicles;

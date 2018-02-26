@@ -8,6 +8,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { AlertComponent } from './alert.component';
 import { UtilityService } from 'app/services/utility.service';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('AlertComponent', () => {
   beforeEach(() => {
@@ -19,14 +21,13 @@ describe('AlertComponent', () => {
         ModalModule.forRoot(),
         AgmCoreModule,
         NgxDatatableModule,
-        AppPipeModule
+        AppPipeModule,
+        ApiModule
       ],
       providers: [
-        { provide: ActivatedRoute },
-        { provide: HttpClient },
-        { provide: GoogleMapsAPIWrapper },
-        { provide: MapsAPILoader },
-        { provide: UtilityService }
+        UtilityService,
+        RemoteDataService,
+        { provide: ActivatedRoute }
       ]
     });
     TestBed.compileComponents();

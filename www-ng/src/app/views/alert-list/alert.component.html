@@ -4,7 +4,7 @@
         <i class="fa fa-exclamation-triangle fa-3x"></i>
       </div>
       <div class="col-8 col-sm-5 text-left">
-        <h2>{{alertName$ | async}}</h2>
+        <h2>{{ (alert$ | async)?.alert_desc }}</h2>
       </div>
       <div class="col-12 col-sm-6 text-right">
         <button type="submit" class="btn btn-primary"
@@ -15,7 +15,7 @@
     <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-header">
-          Bus No. {{ (alert$ | async)?.vehicle_id }}
+          Bus No. {{ (alert$ | async)?.bus_number }}
         </div>
         <div class="card-body">
           <agm-map *ngIf="locations$ | async; let loc"

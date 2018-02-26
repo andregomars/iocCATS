@@ -47,11 +47,11 @@ export class RemoteDataService {
     }
   }
 
-  getVehicleById(vehicleId: string): Observable<any> {
+  getVehicleById(vehicleId: number): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
-      return this.vehicleService.getVehicleById(+vehicleId);
+      return this.vehicleService.getVehicleById(vehicleId);
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/fleet/${ vehicleId }.json`);
+      return this.http.get<any>(`${ this.rootUrl }/vehicle/${ vehicleId }.json`);
     }
   }
 
@@ -64,7 +64,7 @@ export class RemoteDataService {
       };
       return this.alertService.getVehicleAlertSnapshot(params);
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/alert/${ alertId }.json`);
+      return this.http.get<any>(`${ this.rootUrl }/vehicle/alert/${ alertId }.json`);
     }
   }
 
