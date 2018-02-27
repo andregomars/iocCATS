@@ -24,6 +24,7 @@ export class SnapshotComponent implements OnInit {
 
   private moduleIcons$: Observable<any>;
   private snapshots$: Observable<any>;
+  private greyIcons$: Observable<any>;
 
   private colsSnapshot = [
     { name: 'Item', prop: 'item' },
@@ -39,7 +40,8 @@ export class SnapshotComponent implements OnInit {
 
     this.alert$ = this.vehicle$
       .concatMap(v =>
-        this.dataService.getVehicleAlertSnapshotParams(v.vehicle_id, 22, v.alert_list[0].alert_id));
+        this.dataService.getVehicleAlertSnapshotParams(v.vehicle_id, 22, v.alert_list[0].alert_id))
+      .share();
 
     this.locations$ = this.alert$
       .concatMap(alert =>
@@ -52,6 +54,8 @@ export class SnapshotComponent implements OnInit {
 
     this.snapshots$ = this.alert$.map(a => a.item_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
+    this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
+
   }
 
 }

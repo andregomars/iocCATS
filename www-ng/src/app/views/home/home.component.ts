@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
   dataPmn$: Observable<any>;
   data$: Observable<any>;
   userId = 'u001';
-  // dataUserNotificationURL = `assets/data/user/notification/${ this.userId }.json`;
-  // dataUserNotificationURL = `https://ioccatsdemo.firebaseio.com/user/notification/${ this.user }.json`;
 
   constructor(
     private http: HttpClient,
@@ -23,9 +21,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.data$ = this.http.get<any>(this.dataUserNotificationURL);
-    // this.data$ = this.userService.getUserNotification(this.userId);
-    this.data$ = this.dataService.getUserNotification(this.userId);
+    this.data$ = this.dataService.getUserNotification(this.userId)
+      .share();
 
     this.dataCritical$ = this.data$
       .concatMap(data => Observable.from(data.alert_notification))

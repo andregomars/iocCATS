@@ -45,72 +45,29 @@
               </div>
             </div>
             <div class="col-12 col-md-3">
-              <div class="text-center align-middle">
-                <img class="text-center mb-4" src="assets/img/indicators/mbc.jpg"/>
+              <div class="row">
+                <div class="col blank-space mb-4"></div>
+              </div>
+              <div class="row">
+                <div class="col text-center">
+                  <img class="text-center mb-4" src="assets/img/indicators/mbc.jpg"/>
+                </div>
               </div>
             </div>
           </div>
           <div class="row no-gutters">
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A1</div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1"
+              *ngFor="let s of snapshots$ | async">
+              <div class="card text-icon-green m-1">
+                <div class="card-body text-center small">{{s.item}}</div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A2</div>
+            <div class="col-12 col-sm-6 col-md-3 col-xl-1"
+              *ngFor="let s of greyIcons$ | async">
+              <div class="card text-icon-grey m-1">
+                <div class="card-body text-center small">&nbsp;&nbsp;</div>
               </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A3</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A4</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A5</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A6</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A7</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A8</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">A9</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">B1</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">B2</div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1">
-              <div class="card m-1">
-                <div class="card-body text-center small">B3</div>
-              </div>
-            </div>
+            </div> 
           </div>
         </div>
       </div>

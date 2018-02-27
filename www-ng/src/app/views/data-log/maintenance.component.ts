@@ -58,14 +58,14 @@ export class MaintenanceComponent implements OnInit {
     });
 
     // retrive data source
-    // this.chart$ = this.http.get<any>(`assets/data/vehicle/maintLogInfo/${ this.vehicleId }.json`)
     this.chart$ = this.dataService.getFleetById(this.fleetId)
       .concatMap(f => { return Observable.from(f.vehicles); })
       .mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
       .catch(() => new EmptyObservable())
       .map(m => m.maint_info_item)
-      .reduce((pre, cur) => [...pre, ...cur]);
+      .reduce((pre, cur) => [...pre, ...cur])
+      .share();
 
     this.initChartOptions();
     this.initChartData();

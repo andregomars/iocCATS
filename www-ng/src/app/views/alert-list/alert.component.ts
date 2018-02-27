@@ -6,7 +6,8 @@ import { UtilityService } from 'app/services/utility.service';
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
-  templateUrl: 'alert.component.html'
+  templateUrl: 'alert.component.html',
+  styleUrls: [ 'alert.component.scss' ]
 })
 export class AlertComponent implements OnInit {
   constructor(
@@ -23,6 +24,7 @@ export class AlertComponent implements OnInit {
   private snapshots$: Observable<any>;
   private notifications$: Observable<any>;
   private acknowledges$: Observable<any>;
+  private greyIcons$: Observable<any>;
 
   private colsSnapshot = [
     { name: 'Item', prop: 'item' },
@@ -34,7 +36,8 @@ export class AlertComponent implements OnInit {
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
       .concatMap(alertId =>
-        this.dataService.getVehicleAlertSnapshotParams(0, 22, +alertId));
+        this.dataService.getVehicleAlertSnapshotParams(0, 22, +alertId))
+      .share();
 
     // this.alertName$ = this.alert$
     //   .concatMap(alert =>
@@ -57,5 +60,6 @@ export class AlertComponent implements OnInit {
     this.notifications$ = this.alert$.map(a => a.notif_info);
     this.acknowledges$ = this.alert$.map(a => a.ackd_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
+    this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
   }
 }

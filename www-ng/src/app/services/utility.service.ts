@@ -12,6 +12,7 @@ export class UtilityService {
     { name: 'EQULIZER', path: 'assets/img/indicators/equlizer' },
     { name: 'FAN', path: 'assets/img/indicators/fan' }
   ];
+  private iconCardsCount = 12;
 
   mapIconPaths(modules: Array<any>): Array<string> {
     return this.icons.map(icon => {
@@ -33,5 +34,9 @@ export class UtilityService {
 
       return path;
     });
+  }
+
+  getGreyIcons(items: Array<any>): Array<string> {
+    return new Array<string>(this.iconCardsCount - items.length);
   }
 }
