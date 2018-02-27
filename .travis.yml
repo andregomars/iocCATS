@@ -27,6 +27,7 @@ install:
   - yarn install --no-progress
 
 script: 
+  - cp www-ng/src/environments/environment.prod.ts www-ng/src/environments/environment.ts
   - yarn lint
 #  - yarn build --progress false
   - yarn test --progress false --single-run
