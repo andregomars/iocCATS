@@ -55,10 +55,21 @@ export class RemoteDataService {
     }
   }
 
-  getVehicleAlertSnapshotParams(vehicleId: number, username: number, alertId: number): Observable<any> {
+  getPreventiveMaintNotifInfo(vehicleId: number, username: string): Observable<any> {
+    if (this.sourceType === DataSourceType.Swagger) {
+      const params: VehicleService.GetPreventiveMaintNotifInfoParams = {
+        username: username,
+        vehicleId: vehicleId
+      };
+      return this.vehicleService.getPreventiveMaintNotifInfo(params);
+    } else {
+      return this.http.get<any>(`${ this.rootUrl }/vehicle/preventiveNotifItem/${ vehicleId }.json`);
+    }
+  }
+
+  getVehicleAlertSnapshotParams(username: string, alertId: number): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
       const params: AlertService.GetVehicleAlertSnapshotParams = {
-        vehicleId: vehicleId,
         username: username,
         alertId: alertId
       };

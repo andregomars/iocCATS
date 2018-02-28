@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { PmnComponent } from './pmn.component';
+import { RemoteDataService } from '../../services/remote-data.service';
+import { ApiModule } from '../../api/api.module';
 
 describe('PmnComponent', () => {
   beforeEach(() => {
@@ -14,7 +16,11 @@ describe('PmnComponent', () => {
       imports: [
         HttpClientModule,
         ModalModule.forRoot(),
-        NgxDatatableModule
+        NgxDatatableModule,
+        ApiModule
+      ],
+      providers: [
+        RemoteDataService
       ]
     });
     TestBed.compileComponents();

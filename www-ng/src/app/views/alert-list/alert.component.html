@@ -35,7 +35,7 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-8 col-lx-9">
               <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4" *ngFor="let icon of moduleIcons$ | async">
                   <div class="text-center align-middle">
@@ -44,7 +44,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-4 col-lx-3">
               <div class="row">
                 <div class="col blank-space mb-4"></div>
               </div>
@@ -56,13 +56,13 @@
             </div>
           </div>
           <div class="row no-gutters">
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1"
+            <div class="col-3 col-md-2 col-xl-1"
               *ngFor="let s of snapshots$ | async">
               <div class="card text-icon-green m-1">
-                <div class="card-body text-center small">{{s.item}}</div>
+                <div class="card-body text-center small px-0">{{s.item}}</div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 col-xl-1"
+            <div class="col-3 col-md-2 col-xl-1"
               *ngFor="let s of greyIcons$ | async">
               <div class="card text-icon-grey m-1">
                 <div class="card-body text-center small">&nbsp;&nbsp;</div>

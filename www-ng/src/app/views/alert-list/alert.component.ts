@@ -17,6 +17,7 @@ export class AlertComponent implements OnInit {
     private dataService: RemoteDataService
   ) { }
 
+  private userName = 'u001';
   private alert$: Observable<any>;
   private locations$: Observable<any>;
 
@@ -36,7 +37,7 @@ export class AlertComponent implements OnInit {
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
       .concatMap(alertId =>
-        this.dataService.getVehicleAlertSnapshotParams(0, 22, +alertId))
+        this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId))
       .share();
 
     // this.alertName$ = this.alert$

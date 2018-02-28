@@ -18,6 +18,7 @@ export class SnapshotComponent implements OnInit {
     private dataService: RemoteDataService
   ) { }
 
+  private userName = 'u001';
   private vehicle$: Observable<any>;
   private alert$: Observable<any>;
   private locations$: Observable<any>;
@@ -40,7 +41,7 @@ export class SnapshotComponent implements OnInit {
 
     this.alert$ = this.vehicle$
       .concatMap(v =>
-        this.dataService.getVehicleAlertSnapshotParams(v.vehicle_id, 22, v.alert_list[0].alert_id))
+        this.dataService.getVehicleAlertSnapshotParams(this.userName, v.alert_list[0].alert_id))
       .share();
 
     this.locations$ = this.alert$

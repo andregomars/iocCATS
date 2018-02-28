@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="card-body">
-         <ngx-datatable #tablePmn
+         <ngx-datatable
             class='material'
             [columns]="colsPmn"
             [columnMode]="'force'"
@@ -34,7 +34,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsPmn'>
+            [rows]='dataPmn$ | async'>
           </ngx-datatable>
         </div>
       </div>
@@ -44,7 +44,7 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-         <ngx-datatable #tableResetLog
+         <ngx-datatable
             class='material'
             [columns]="colsResetLog"
             [columnMode]="'force'"
@@ -52,7 +52,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsResetLog'>
+            [rows]='resets$ | async'>
           </ngx-datatable>
         </div>
       </div>
@@ -60,7 +60,7 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-         <ngx-datatable #tableNotifyLog
+         <ngx-datatable
             class='material'
             [columns]="colsNotifyLog"
             [columnMode]="'force'"
@@ -68,7 +68,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='rowsNotifyLog'>
+            [rows]='notifications$ | async'>
           </ngx-datatable>
         </div>
       </div>
