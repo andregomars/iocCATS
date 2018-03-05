@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
@@ -15,6 +18,8 @@ export class MonthlyReportComponent implements OnInit {
   months: Array<string>;
   fleetId = 5256;
   userName = 'u001';
+  @ViewChild('table')
+  public dataTable: DatatableComponent;
 
   columns = [
     { name: 'Date', prop: 'date' },
@@ -83,5 +88,40 @@ export class MonthlyReportComponent implements OnInit {
   }
   // -----
 
+  exportAsCSV() {
+    const columns: TableColumn[] = this.dataTable.columns || this.dataTable._internalColumns;
+    const headers =
+        columns
+            .map((column: TableColumn) => column.name)
+            .filter((e) => e);  // remove column without name (i.e. falsy value)
+
+    const rows: any[] = this.dataTable.rows.map((row) => {
+      const r = {};
+      columns.forEach((column) => {
+          if (!column.name) { return; }   // ignore column without name
+          if (column.prop) {
+              const prop = column.prop;
+              r[prop] = (typeof row[prop] === 'boolean') ? (row[prop]) ? 'Yes'
+                                                                        : 'No'
+                                                          : row[prop];
+          } else {
+              // special cases handled here
+          }
+      });
+      return r;
+    });
+
+    const options = {
+        fieldSeparator  : ',',
+        quoteStrings    : '"',
+        decimalseparator: '.',
+        showLabels      : true,
+        headers         : headers,
+        showTitle       : false,
+        title           : 'Report',
+        useBom          : true,
+    };
+    return new Angular2Csv(rows, 'report', options);
+  }
 
 }
