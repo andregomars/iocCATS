@@ -18,6 +18,12 @@ export class AlertComponent implements OnInit {
   public acknowledges$: Observable<any>;
   public greyIcons$: Observable<any>;
 
+  public colsSnapshot = [
+    { name: 'Item', prop: 'item' },
+    { name: 'Value', prop: 'value' },
+    { name: 'Unit', prop: 'unit' }
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -26,12 +32,6 @@ export class AlertComponent implements OnInit {
   ) { }
 
   private userName = 'iocontrols';
-
-  colsSnapshot = [
-    { name: 'Item', prop: 'item' },
-    { name: 'Value', prop: 'value' },
-    { name: 'Unit', prop: 'unit' }
-  ];
 
   ngOnInit(): void {
     this.alert$ = this.route.paramMap
