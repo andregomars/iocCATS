@@ -15,6 +15,8 @@ export class MaintenanceComponent implements OnInit {
   public barChartData: any[];
   public barChartLabels: string[];
   public tableData$: Observable<any>;
+  public myForm: FormGroup;
+  public chart$: Observable<any>;
 
   rowsMaintenance = [];
   colsMaintenance = [
@@ -43,8 +45,6 @@ export class MaintenanceComponent implements OnInit {
     private dataService: RemoteDataService
   ) { }
 
-  private myForm: FormGroup;
-  private chart$: Observable<any>;
   private userName = 'iocontrols';
   private fleetId = 1;
 

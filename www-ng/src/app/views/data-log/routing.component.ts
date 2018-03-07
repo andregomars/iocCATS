@@ -50,7 +50,7 @@ export class RoutingComponent implements OnInit {
   }
 
   // select box section
-   public inputTyped(source: string, text: string) {
+  public inputTyped(source: string, text: string) {
     console.log('SingleDemoComponent.inputTyped', source, text);
   }
 
@@ -79,7 +79,7 @@ export class RoutingComponent implements OnInit {
   }
   // -----
 
-  private updateFilter(event) {
+  updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data

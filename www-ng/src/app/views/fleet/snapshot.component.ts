@@ -10,6 +10,19 @@ import { RemoteDataService } from 'app/services/remote-data.service';
   styleUrls: [ 'snapshot.component.scss' ]
 })
 export class SnapshotComponent implements OnInit {
+  public vehicle$: Observable<any>;
+  public alert$: Observable<any>;
+  public locations$: Observable<any>;
+
+  public moduleIcons$: Observable<any>;
+  public snapshots$: Observable<any>;
+  public greyIcons$: Observable<any>;
+
+  colsSnapshot = [
+    { name: 'Item', prop: 'item' },
+    { name: 'Value', prop: 'value' },
+    { name: 'Unit', prop: 'unit' }
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,19 +32,6 @@ export class SnapshotComponent implements OnInit {
   ) { }
 
   private userName = 'iocontrols';
-  private vehicle$: Observable<any>;
-  private alert$: Observable<any>;
-  private locations$: Observable<any>;
-
-  private moduleIcons$: Observable<any>;
-  private snapshots$: Observable<any>;
-  private greyIcons$: Observable<any>;
-
-  private colsSnapshot = [
-    { name: 'Item', prop: 'item' },
-    { name: 'Value', prop: 'value' },
-    { name: 'Unit', prop: 'unit' }
-  ];
 
   ngOnInit(): void {
     this.vehicle$ = this.route.paramMap

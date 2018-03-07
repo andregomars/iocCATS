@@ -10,6 +10,14 @@ import { RemoteDataService } from '../../services/remote-data.service';
   styleUrls: [ 'alert.component.scss' ]
 })
 export class AlertComponent implements OnInit {
+  public alert$: Observable<any>;
+  public locations$: Observable<any>;
+  public moduleIcons$: Observable<any>;
+  public snapshots$: Observable<any>;
+  public notifications$: Observable<any>;
+  public acknowledges$: Observable<any>;
+  public greyIcons$: Observable<any>;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -17,17 +25,9 @@ export class AlertComponent implements OnInit {
     private dataService: RemoteDataService
   ) { }
 
-  private userName = 'u001';
-  private alert$: Observable<any>;
-  private locations$: Observable<any>;
+  private userName = 'iocontrols';
 
-  private moduleIcons$: Observable<any>;
-  private snapshots$: Observable<any>;
-  private notifications$: Observable<any>;
-  private acknowledges$: Observable<any>;
-  private greyIcons$: Observable<any>;
-
-  private colsSnapshot = [
+  colsSnapshot = [
     { name: 'Item', prop: 'item' },
     { name: 'Value', prop: 'value' },
     { name: 'Unit', prop: 'unit' }

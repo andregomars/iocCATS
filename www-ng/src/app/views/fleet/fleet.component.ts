@@ -67,7 +67,7 @@ export class FleetComponent implements OnInit {
       this.classUp : this.classDown;
   }
 
-  private updateFilter(event) {
+  updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data

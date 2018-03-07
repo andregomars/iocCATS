@@ -9,6 +9,7 @@
     "ng": "ng",
     "start": "ng-swagger-gen && ng serve",
     "build": "ng-swagger-gen && ng build",
+    "deploy": "ng build --prod -vc false -oh none",
     "test": "ng-swagger-gen && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

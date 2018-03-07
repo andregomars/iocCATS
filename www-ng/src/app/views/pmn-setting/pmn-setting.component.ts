@@ -47,7 +47,7 @@ export class PmnSettingComponent implements OnInit {
       .map(r => r.notification_setting_items)
       .subscribe((data: Array<any>) => {
         const fgList = data
-          // .map(d => this.populateLine(d))
+          .map(d => this.populateLine(d))
           .map(g => this.fb.group(g));
         const fgArray = this.fb.array(fgList);
         this.pmnSettingForm.setControl('pmnSettingArray', fgArray);
@@ -79,18 +79,23 @@ export class PmnSettingComponent implements OnInit {
     this.notificationTypes = ['Display', 'Display And Email'];
   }
 
+  /* populate each line fields while input doesn't have that field.
+  ** e.g.
+  ** input is { b: "test", c: null }, but expected output object is { a, b, c }
+  ** so input would be transfered to { a: undefined, b: input.b, c: null } as the output
+  */
   populateLine(input: any): any {
-    const line = {
+    return {
       notification_item_id: input.notification_item_id,
       item_name: input.item_name,
-      mileage_usage: input.mileage_usage ? input.mileage_usage : '',
-      date_usage: input.date_usage ? input.date_usage : '',
-      hours_usage: input.hours_usage ? input.hours_usage : '',
-      usage_count: input.usage_count ? input.usage_count : '',
-      operand: input.operand ? input.operand : '',
-      usage_value: input.usage_value ? input.usage_value : '',
-      unit_type: input.unit_type ? input.unit_type : '',
-      notificate_type: input.notificate_type ? input.notificate_type : ''
+      mileage_usage: input.mileage_usage,
+      date_usage: input.date_usage,
+      hours_usage: input.hours_usage,
+      usage_count: input.usage_count,
+      operand: input.operand,
+      usage_value: input.usage_value,
+      unit_type: input.unit_type,
+      notificate_type: input.notificate_type
     };
   }
 

@@ -41,7 +41,7 @@ export class AlertListComponent implements OnInit {
       });
   }
 
-  private updateFilter(event) {
+  updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data
