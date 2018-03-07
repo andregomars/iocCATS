@@ -15,8 +15,8 @@ export class ConnectionComponent implements OnInit {
   temp = [];
   ngxControl: FormControl;
   months: Array<string>;
-  fleetId = 5256; // AVTA
-  userName = 'u001';
+  fleetId = 1; // AVTA
+  userName = 'iocontrols';
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 

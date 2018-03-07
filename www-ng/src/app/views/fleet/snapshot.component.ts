@@ -18,7 +18,7 @@ export class SnapshotComponent implements OnInit {
     private dataService: RemoteDataService
   ) { }
 
-  private userName = 'u001';
+  private userName = 'iocontrols';
   private vehicle$: Observable<any>;
   private alert$: Observable<any>;
   private locations$: Observable<any>;

@@ -12,7 +12,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
 export class AlertListComponent implements OnInit {
   alerts = [];
   temp = [];
-  fleetId = 5256; // AVTA
+  fleetId = 1;
   dataUrlVehicle = 'assets/data/vehicle';
 
   @ViewChild(DatatableComponent) table: DatatableComponent;

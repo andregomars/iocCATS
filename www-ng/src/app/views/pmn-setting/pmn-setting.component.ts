@@ -34,7 +34,7 @@ export class PmnSettingComponent implements OnInit {
   }
 
   private vehicleId = 1;
-  private userName = 'u001';
+  private userName = 'iocontrols';
 
   ngOnInit(): void {
     this.initSelectOptions();
@@ -46,7 +46,9 @@ export class PmnSettingComponent implements OnInit {
     this.dataService.getVehicleMaintSetting(this.vehicleId, this.userName)
       .map(r => r.notification_setting_items)
       .subscribe((data: Array<any>) => {
-        const fgList = data.map(g => this.fb.group(g));
+        const fgList = data
+          // .map(d => this.populateLine(d))
+          .map(g => this.fb.group(g));
         const fgArray = this.fb.array(fgList);
         this.pmnSettingForm.setControl('pmnSettingArray', fgArray);
       });
@@ -75,6 +77,21 @@ export class PmnSettingComponent implements OnInit {
     this.unitValues = this.units.map(x => x.value);
 
     this.notificationTypes = ['Display', 'Display And Email'];
+  }
+
+  populateLine(input: any): any {
+    const line = {
+      notification_item_id: input.notification_item_id,
+      item_name: input.item_name,
+      mileage_usage: input.mileage_usage ? input.mileage_usage : '',
+      date_usage: input.date_usage ? input.date_usage : '',
+      hours_usage: input.hours_usage ? input.hours_usage : '',
+      usage_count: input.usage_count ? input.usage_count : '',
+      operand: input.operand ? input.operand : '',
+      usage_value: input.usage_value ? input.usage_value : '',
+      unit_type: input.unit_type ? input.unit_type : '',
+      notificate_type: input.notificate_type ? input.notificate_type : ''
+    };
   }
 
   addNewLine(): void {

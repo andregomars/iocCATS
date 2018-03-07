@@ -15,8 +15,8 @@ export class RoutingComponent implements OnInit {
   temp = [];
   ngxControl: FormControl;
   months: Array<string>;
-  userName = 'u001';
-  fleetId = 5256; // AVTA
+  userName = 'iocontrols';
+  fleetId = 1; // AVTA
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 

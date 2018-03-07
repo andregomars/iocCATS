@@ -14,7 +14,7 @@ export class PmnComponent implements OnInit {
   dataPmn$: Observable<any>;
   notifications$: Observable<any>;
   resets$: Observable<any>;
-  user = 'u001';
+  user = 'iocontrols';
   vid = 1;
 
 

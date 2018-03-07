@@ -1,6 +1,6 @@
 {
   "fleet" : {
-      "5256": {
+      "1": {
         "name": "AVTA",
         "address": "One Gateway Plaza, Los Angeles, CA 90012-2952",
         "desc": "First pilot program",
@@ -10,6 +10,7 @@
         "time_zone": "201707230003",
         "vehicles": [
             {
+                "vehicle_id": 1,
                 "bus_number": "0001",
                 "odometer": 10033,
                 "trip_mileage": 122,
@@ -35,6 +36,7 @@
                 ]
             },
             {
+                "vehicle_id": 2,
                 "bus_number": "0002",
                 "odometer": 23580.6,
                 "trip_mileage": 35.8,
@@ -54,7 +56,7 @@
   },
   "user": {
     "notification": {
-      "u001": {
+      "iocontrols": {
         "alert_notification": [
           {
             "notification_type": "Critical",
@@ -145,9 +147,10 @@
       "1233": {
         "alert_id": "1233",
         "alert_desc": "HVAC failure",
-        "fleet_id": 5256,
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
+        "bus_number": "0001",
         "item_info": [{
           "item": "A1",
           "unit": "V",
@@ -164,9 +167,19 @@
           "value": 300
         }],
         "module_info": [{
+          "module_name": "FAN",
+          "module_status": "off",
+          "module_icon_path": "001\\343.png"
+        },
+        {
+          "module_name": "ABS",
+          "module_status": "on",
+          "module_icon_path": "001\\343.png"
+        },
+        {
           "module_name": "TRANSMISSION",
           "module_status": "on",
-          "module_icon_path": "0001\\343.png"
+          "module_icon_path": "001\\343.png"
         }],
         "notif_info": [{
           "notified_user": "rwilliam",
@@ -182,9 +195,10 @@
       "1234": {
         "alert_id": "1234",
         "alert_desc": "Rear Door Open failure",
-        "fleet_id": 5256,
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
+        "bus_number": "0001",
         "item_info": [{
           "item": "A1",
           "unit": "V",
@@ -210,9 +224,10 @@
       "1235": {
         "alert_id": "1235",
         "alert_desc": "Engine stall",
-        "fleet_id": 5256,
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
+        "bus_number": "0001",
         "item_info": [{
           "item": "A1",
           "unit": "V",
@@ -238,9 +253,10 @@
       "1236": {
         "alert_id": "1236",
         "alert_desc": "Charging failure",
-        "fleet_id": 5256,
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
+        "bus_number": "0001",
         "item_info": [{
           "item": "A1",
           "unit": "V",
@@ -266,9 +282,10 @@
       "1237": {
         "alert_id": "1237",
         "alert_desc": "Front Door Open failure",
-        "fleet_id": 5256,
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
+        "bus_number": "0001",
         "item_info": [{
           "item": "A1",
           "unit": "V",
@@ -293,58 +310,64 @@
       }
     },
     "debugLogFileInfo": {
-      "0001": [
+      "1": [
         {
-            "vehicle_number": "0001",
+            "vehicle_id": 1,
+            "bus_number": "0001",
             "file_time": "2018-01-22",
             "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
             "wifi_mac_addr": "C8-88-84-6C-21-48",
             "file_path": "http://www.fancydemo.com/file/20180122.log" 
         },
         {
-            "vehicle_number": "0001",
+            "vehicle_id": 1,
+            "bus_number": "0001",
             "file_time": "2018-01-23",
             "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
             "wifi_mac_addr": "C8-88-84-6C-21-48",
             "file_path": "http://www.fancydemo.com/file/20180123.log"  
         },
         {
-            "vehicle_number": "0001",
+            "vehicle_id": 1,
+            "bus_number": "0001",
             "file_time": "2018-01-24",
             "ethernet_mac_addr": "13-41-3A-C2-7A-E2",
             "wifi_mac_addr": "C8-88-84-6C-21-48",
             "file_path": "http://www.fancydemo.com/file/20180124.log" 
         }
       ],
-      "0002": [
+      "2": [
         {
-            "vehicle_number": "0002",
+            "vehicle_id": 2,
+            "bus_number": "0002",
             "file_time": "2018-01-22",
             "ethernet_mac_addr": "60-90-23-61-A3-E5",
             "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
             "file_path": "http://www.fancydemo.com/file/20180122.log" 
         },
         {
-            "vehicle_number": "0002",
+            "vehicle_id": 2,
+            "bus_number": "0002",
             "file_time": "2018-01-23",
             "ethernet_mac_addr": "60-90-23-61-A3-E5",
             "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
             "file_path": "http://www.fancydemo.com/file/20180123.log"  
         },
         {
-            "vehicle_number": "0002",
+            "vehicle_id": 2,
+            "bus_number": "0002",
             "file_time": "2018-01-24",
             "ethernet_mac_addr": "60-90-23-61-A3-E5",
             "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
             "file_path": "http://www.fancydemo.com/file/20180124.log" 
         }
-      ]
+    ]
     },
     "maintLogInfo": {
-      "0001": {
-        "fleet_id" : 5256,
+      "1": {
+        "fleet_id" : 1,
         "bus_number" : "0001",
-        "vehicle_id" : "0001",
+        "vehicle_id" : 1,
         "maint_info_item" : [ {
           "date" : "20180201",
           "daily_mileage" : 352.0,
@@ -424,10 +447,10 @@
           "headlight" : 343.0
         } ]
       },
-      "0002": {
-        "fleet_id" : 5256,
+      "2": {
+        "fleet_id" : 1,
         "bus_number" : "0002",
-        "vehicle_id" : "0002",
+        "vehicle_id" : 2,
         "maint_info_item" : [ {
           "date" : "20180201",
           "daily_mileage" : 352.0,
@@ -509,49 +532,38 @@
       }
     },
     "preventiveNotifItem": {
-      "0001": { 
-        "alert_id" : "1234",
-        "fleet_id" : 5256,
-        "fleet_name" : "AVTA",
-        "vehicle_id" : "0002",
-        "item_info" : [ {
-          "item" : "A1",
-          "unit" : "V",
-          "value" : 220
-        },
-        {
-          "item" : "A3",
-          "unit" : "A",
-          "value" : 20
-        },
-        {
-          "item" : "B1",
-          "unit" : "kWh",
-          "value" : 300
-        }  ],
-        "module_info" : [ {
-          "module_icon_path" : "0002\\343.png",
-          "module_name" : "TRANSMISSION",
-          "module_status" : "on"
-        } ],
-        "notif_info": [{
-          "notified_user": "rwwilliam",
-          "name": "Rick William",
-          "date": "201801221311020005"
-        }],
-        "reset_info": [{
-          "reset_user": "ksmith",
-          "name": "Kelly Smith",
-          "date": "201801221311020005"
-        }]
-      
+      "1": {
+        "vehicle_id": 1,
+        "vehicle_number": "0001",
+        "fleet_id": 1,
+        "fleet_name": "AVTA",
+        "alert_list": [
+          {
+            "alert_id": 3001,
+            "alert_name": "Engine oil",
+            "alert_type": "general",
+            "alert_time": "201712160525120005"
+          }
+        ],
+        "notif_list": [
+          {
+            "username": "Robin",
+            "notified_date": "201801200825520008"
+          }
+        ],
+        "reset_list": [
+          {
+            "username": "Robin",
+            "reset_date": "201801220825520008"
+          }
+        ]
       }
     },
     "preventiveNotifItemSetting": {
-      "0001": {
-        "fleet_id": 5256,
+      "1": {
+        "fleet_id": 1,
         "fleet_name": "AVTA",
-        "vehicle_id": "0001",
+        "vehicle_id": 1,
         "user_name": "nhk",
         "notification_setting_items": [
         {
@@ -629,50 +641,57 @@
       }
     },
     "routingLogFileInfo": {
-      "0001": [
-        {
-            "vehicle_number": "0001",
-            "file_time": "2018-01-22",
-            "file_name": "20180122.log",
-            "file_path": "http://www.fancydemo.com/file/20180122.log" 
-        },
-        {
-            "vehicle_number": "0001",
-            "file_time": "2018-01-23",
-            "file_name": "20180123.log",
-            "file_path": "http://www.fancydemo.com/file/20180123.log" 
-        },
-        {
-            "vehicle_number": "0001",
-            "file_time": "2018-01-24",
-            "file_name": "20180124.log",
-            "file_path": "http://www.fancydemo.com/file/20180124.log" 
-        }
+      "1": [
+          {
+              "vehicle_id": 1,
+              "bus_number": "0001",
+              "file_time": "2018-01-22",
+              "file_name": "20180122.log",
+              "file_path": "http://www.fancydemo.com/file/20180122.log" 
+          },
+          {
+              "vehicle_id": 1,
+              "bus_number": "0001",
+              "file_time": "2018-01-23",
+              "file_name": "20180123.log",
+              "file_path": "http://www.fancydemo.com/file/20180123.log" 
+          },
+          {
+              "vehicle_id": 1,
+              "bus_number": "0001",
+              "file_time": "2018-01-24",
+              "file_name": "20180124.log",
+              "file_path": "http://www.fancydemo.com/file/20180124.log" 
+          }
       ],
-      "0002": [
-        {
-            "vehicle_number": "0002",
-            "file_time": "2018-01-22",
-            "file_name": "20180122.log",
-            "file_path": "http://www.fancydemo.com/file/20180122.log" 
-        },
-        {
-            "vehicle_number": "0002",
-            "file_time": "2018-01-23",
-            "file_name": "20180123.log",
-            "file_path": "http://www.fancydemo.com/file/20180123.log" 
-        },
-        {
-            "vehicle_number": "0002",
-            "file_time": "2018-01-24",
-            "file_name": "20180124.log",
-            "file_path": "http://www.fancydemo.com/file/20180124.log" 
-        }
+      "2": [
+          {
+              "vehicle_id": 2,
+              "bus_number": "0002",
+              "file_time": "2018-01-22",
+              "file_name": "20180122.log",
+              "file_path": "http://www.fancydemo.com/file/20180122.log" 
+          },
+          {
+              "vehicle_id": 2,
+              "bus_number": "0002",
+              "file_time": "2018-01-23",
+              "file_name": "20180123.log",
+              "file_path": "http://www.fancydemo.com/file/20180123.log" 
+          },
+          {
+              "vehicle_id": 2,
+              "bus_number": "0002",
+              "file_time": "2018-01-24",
+              "file_name": "20180124.log",
+              "file_path": "http://www.fancydemo.com/file/20180124.log" 
+          }
       ]
     },
-    "0001": {
-      "vehicle_id" : "0001",
-      "fleet_id" : 5256,
+    "1": {
+      "vehicle_id" : 1,
+      "bus_number": "0001",
+      "fleet_id" : 1,
       "fleet_name" : "AVTA",
       "alert_list" : [ {
         "alert_id" : 1233,
@@ -693,9 +712,10 @@
         "alert_time" : "20180223140210040005"
       } ]
     },
-    "0002": {
-      "vehicle_id" : "0002",
-      "fleet_id" : 5256,
+    "2": {
+      "vehicle_id" : 2,
+      "bus_number": "0002",
+      "fleet_id" : 1,
       "fleet_name" : "AVTA",
       "alert_list" : [ {
         "alert_id" : 1234,

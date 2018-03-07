@@ -31,11 +31,11 @@ export class RemoteDataService {
   private sourceType: DataSourceType;
   private rootUrl: string;
 
-  getUserNotification(userId: string): Observable<any> {
+  getUserNotification(userName: string): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
-      return this.userService.getUserNotification(userId);
+      return this.userService.getUserNotification(userName);
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userId }.json`);
+      return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`);
     }
   }
 

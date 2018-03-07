@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   dataGeneral$: Observable<any>;
   dataPmn$: Observable<any>;
   data$: Observable<any>;
-  userId = 'u001';
+  userName = 'iocontrols';
 
   constructor(
     private http: HttpClient,
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data$ = this.dataService.getUserNotification(this.userId)
+    this.data$ = this.dataService.getUserNotification(this.userName)
       .share();
 
     this.dataCritical$ = this.data$

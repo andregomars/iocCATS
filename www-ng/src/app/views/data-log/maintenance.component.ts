@@ -45,8 +45,8 @@ export class MaintenanceComponent implements OnInit {
 
   private myForm: FormGroup;
   private chart$: Observable<any>;
-  private userName = 'u001';
-  private fleetId = 5256;
+  private userName = 'iocontrols';
+  private fleetId = 1;
 
   ngOnInit(): void {
     // init date range picker

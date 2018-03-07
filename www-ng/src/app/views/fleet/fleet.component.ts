@@ -20,7 +20,7 @@ export class FleetComponent implements OnInit {
   classDown = 'fa fa-chevron-down fa-lg';
   classUp = 'fa fa-chevron-up fa-lg';
 
-  fleetId = 5256; // AVTA
+  fleetId = 1;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
   @ViewChild(AgmMap) map: AgmMap;

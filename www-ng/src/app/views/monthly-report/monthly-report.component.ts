@@ -16,8 +16,8 @@ export class MonthlyReportComponent implements OnInit {
   data$: Observable<any>;
   ngxControl: FormControl;
   months: Array<string>;
-  fleetId = 5256;
-  userName = 'u001';
+  fleetId = 1;
+  userName = 'iocontrols';
   @ViewChild('table')
   public dataTable: DatatableComponent;
 
