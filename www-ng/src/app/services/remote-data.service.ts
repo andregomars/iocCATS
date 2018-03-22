@@ -55,9 +55,11 @@ export class RemoteDataService {
     }
   }
 
-  getPreventiveMaintNotifInfo(vehicleId: number, username: string): Observable<any> {
+  getPreventiveMaintNotifInfo(preventiveItemId: number,
+    vehicleId: number, username: string): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
       const params: VehicleService.GetPreventiveMaintNotifInfoParams = {
+        preventiveItemID: preventiveItemId,
         username: username,
         vehicleId: vehicleId
       };

@@ -4,7 +4,7 @@
       <i class="fa fa-exclamation-triangle fa-3x"></i>
     </div>
     <div class="col-8 col-sm-5 text-left">
-      <h2>Front Door Usage</h2>
+      <h2>{{ (dataPmn$ | async)?.prevent_notif_list.item }}</h2>
     </div>
     <div class="col-12 col-sm-6 text-right">
       <button type="submit" class="btn btn-primary"
@@ -34,7 +34,7 @@
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='dataPmn$ | async'>
+            [rows]='items$ | async'>
           </ngx-datatable>
         </div>
       </div>
@@ -46,13 +46,22 @@
         <div class="card-body">
          <ngx-datatable
             class='material'
-            [columns]="colsResetLog"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='resets$ | async'>
+            <ngx-datatable-column name="Reset Date" prop="notified_date">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | date:'MM/dd/yyyy HH:mm'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="User" prop="username">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>
@@ -62,13 +71,23 @@
         <div class="card-body">
          <ngx-datatable
             class='material'
-            [columns]="colsNotifyLog"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='notifications$ | async'>
+            <ngx-datatable-column name="Time" prop="notified_date">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | date:'MM/dd/yyyy HH:mm'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="User" prop="username">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+
           </ngx-datatable>
         </div>
       </div>

@@ -10,32 +10,23 @@ import { RemoteDataService } from '../../services/remote-data.service';
 })
 export class PmnComponent implements OnInit {
   rowsPmn = [];
-  data$: Observable<any>;
   dataPmn$: Observable<any>;
+  items$: Observable<any>;
   notifications$: Observable<any>;
   resets$: Observable<any>;
   user = 'iocontrols';
   vid = 1;
+  pid = 1;
 
 
   colsPmn = [
-    { name: 'Item', prop: 'item_name' },
-    { name: 'By Mileage', prop: 'mileage_usage' },
+    { name: 'Item', prop: 'item' },
+    { name: 'By Mileage', prop: 'odometer' },
     { name: 'Bydate', prop: 'date_usage' },
     { name: 'Byhours', prop: 'hours_usage' },
-    { name: 'Byvalue', prop: 'usage_value' },
+    { name: 'Byvalue', prop: 'cycle_value' },
     { name: 'Bycount', prop: 'usage_count' },
     { name: 'Notificationtype', prop: 'notificate_type' }
-  ];
-
-  colsResetLog = [
-    { name: 'Reset Date', prop: 'reset_date' },
-    { name: 'User', prop: 'username' }
-  ];
-
-  colsNotifyLog = [
-    { name: 'Notified', prop: 'username' },
-    { name: 'Time', prop: 'notified_date' }
   ];
 
   constructor(
@@ -44,12 +35,14 @@ export class PmnComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataPmn$ = this.dataService.getVehicleMaintSetting(this.vid, this.user)
-      .map(d => d.notification_setting_items);
+    // this.dataPmn$ = this.dataService.getVehicleMaintSetting(this.vid, this.user)
+    //   .map(d => d.notification_setting_items);
 
-    this.data$ = this.dataService.getPreventiveMaintNotifInfo(this.vid, this.user)
+    this.dataPmn$ = this.dataService.getPreventiveMaintNotifInfo(this.pid,
+      this.vid, this.user)
       .share();
-    this.resets$ = this.data$.map(d => d.reset_list);
-    this.notifications$ = this.data$.map(d => d.notif_list);
+    this.items$ = this.dataPmn$.map(d => new Array(d.prevent_notif_list));
+    this.resets$ = this.dataPmn$.map(d => d.reset_list);
+    this.notifications$ = this.dataPmn$.map(d => d.notif_list);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +7,7 @@ import { RemoteDataService } from 'app/services/remote-data.service';
 
 @Component({
   templateUrl: 'snapshot.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: [ 'snapshot.component.scss' ]
 })
 export class SnapshotComponent implements OnInit {

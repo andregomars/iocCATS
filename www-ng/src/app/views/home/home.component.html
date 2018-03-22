@@ -11,7 +11,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataCritical$ | async">
-            <ngx-datatable-column name="Bus No." prop="bus_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
@@ -26,7 +26,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Time" prop="event_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
+                {{value | date:'MM/dd/yyyy HH:mm:ss'}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Odometer" prop="odometer">
@@ -45,7 +45,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataGeneral$ | async">
-            <ngx-datatable-column name="Bus No." prop="bus_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 {{value}}
@@ -80,7 +80,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataPmn$ | async">
-            <ngx-datatable-column name="Bus No." prop="bus_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 {{value}}
@@ -96,7 +96,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Time" prop="event_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
+                {{value | date:'MM/dd/yyyy HH:mm:ss'}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Odometer" prop="odometer">
