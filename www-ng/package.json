@@ -40,6 +40,7 @@
     "js-marker-clusterer": "^1.0.0",
     "moment": "2.20.1",
     "mydaterangepicker": "^4.2.1",
+    "ng-spin-kit": "^5.1.1",
     "ng2-charts": "1.6.0",
     "ng2-select": "^2.0.0",
     "ngx-bootstrap": "1.9.3",

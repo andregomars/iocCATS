@@ -4725,6 +4725,10 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ng-spin-kit@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/ng-spin-kit/-/ng-spin-kit-5.1.1.tgz#ecad9709c77ff4dde79eb532ba0db4650a8800a8"
+
 ng-swagger-gen@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/ng-swagger-gen/-/ng-swagger-gen-0.10.0.tgz#18398011d72fa2443f0687851021888190f4b7a0"

@@ -13,6 +13,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
   templateUrl: 'monthly-report.component.html'
 })
 export class MonthlyReportComponent implements OnInit {
+  spinning = false;
   data$: Observable<any>;
   ngxControl: FormControl;
   months: Array<string>;
@@ -45,10 +46,12 @@ export class MonthlyReportComponent implements OnInit {
     this.initSelectBox();
 
     this.data$ = this.dataService.getFleetById(this.fleetId)
+      .do(() => this.spinning = true)
       .concatMap(f => Observable.from(f.vehicles))
       .mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
       .catch(e => new EmptyObservable())
+      .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)
       .reduce((pre, cur) => [...pre, ...cur]);
   }

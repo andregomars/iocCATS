@@ -23,6 +23,7 @@ export class RemoteDataService {
         this.rootUrl = environment.firebase.databaseURL;
         break;
       default:
+        this.delayEmulatorTimer = environment.delayEmulatorTimer;
         this.rootUrl = environment.apiRootLocal;
         break;
     }
@@ -30,12 +31,14 @@ export class RemoteDataService {
 
   private sourceType: DataSourceType;
   private rootUrl: string;
+  private delayEmulatorTimer = 3000;
 
   getUserNotification(userName: string): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
       return this.userService.getUserNotification(userName);
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`);
+      return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`)
+        .delay(this.delayEmulatorTimer);
     }
   }
 
@@ -93,7 +96,8 @@ export class RemoteDataService {
       };
       return this.vehicleService.getVehicleMaintLogInfo(params);
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/vehicle/maintLogInfo/${ vehicleId }.json`);
+      return this.http.get<any>(`${ this.rootUrl }/vehicle/maintLogInfo/${ vehicleId }.json`)
+        .delay(this.delayEmulatorTimer);
     }
   }
 

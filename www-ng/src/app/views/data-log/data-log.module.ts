@@ -6,6 +6,7 @@ import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { DataLogRoutingModule } from './data-log-routing.module';
 import { MaintenanceComponent } from './maintenance.component';
@@ -21,6 +22,7 @@ import { ConnectionComponent } from './connection.component';
     NgxDatatableModule,
     NgxSelectModule,
     MyDateRangePickerModule,
+    NgSpinKitModule,
     ReactiveFormsModule
   ],
   declarations: [

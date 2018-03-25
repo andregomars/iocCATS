@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
@@ -19,6 +20,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
     ChartsModule,
     TabsModule,
     NgxDatatableModule,
+    NgSpinKitModule,
     AppPipeModule
   ],
   declarations: [ HomeComponent ]

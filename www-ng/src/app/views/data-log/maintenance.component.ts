@@ -10,6 +10,8 @@ import { RemoteDataService } from '../../services/remote-data.service';
   templateUrl: 'maintenance.component.html'
 })
 export class MaintenanceComponent implements OnInit {
+  spinning = false;
+
   // barChart
   public barChartOptions: any;
   public barChartData: any[];
@@ -59,10 +61,12 @@ export class MaintenanceComponent implements OnInit {
 
     // retrive data source
     this.chart$ = this.dataService.getFleetById(this.fleetId)
+      .do(() => this.spinning = true)
       .concatMap(f => { return Observable.from(f.vehicles); })
       .mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
       .catch(() => new EmptyObservable())
+      .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)
       .reduce((pre, cur) => [...pre, ...cur])
       .share();

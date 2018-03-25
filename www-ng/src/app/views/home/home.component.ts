@@ -9,6 +9,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
   templateUrl: 'home.component.html',
 })
 export class HomeComponent implements OnInit {
+  spinning = false;
   dataCritical$: Observable<any>;
   dataGeneral$: Observable<any>;
   dataPmn$: Observable<any>;
@@ -21,7 +22,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.spinning = true;
+
     this.data$ = this.dataService.getUserNotification(this.userName)
+      .finally(() => this.spinning = false)
       .share();
 
     this.dataCritical$ = this.data$
