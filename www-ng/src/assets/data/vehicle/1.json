@@ -1,24 +1,24 @@
 {
   "vehicle_id" : 1,
-  "bus_number": "0001",
+  "vehicle_number": "0001",
   "fleet_id" : 1,
   "fleet_name" : "AVTA",
   "alert_list" : [ {
     "alert_id" : 1233,
     "alert_name" : "HVAC failure",
     "alert_type" : "general",
-    "alert_time" : "20180223105404120005"
+    "alert_time" : "2017-12-16 05:25:12"
   },
   {
     "alert_id" : 1235,
     "alert_name" : "Engine stall",
     "alert_type" : "critical",
-    "alert_time" : "20180223111211330005"
+    "alert_time" : "2017-12-17 09:25:02"
   },
   {
     "alert_id" : 1236,
     "alert_name" : "Charging failure",
     "alert_type" : "general",
-    "alert_time" : "20180223140210040005"
+    "alert_time" : "2017-12-18 15:25:12"
   } ]
 }

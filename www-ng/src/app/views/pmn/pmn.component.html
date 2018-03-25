@@ -52,7 +52,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='resets$ | async'>
-            <ngx-datatable-column name="Reset Date" prop="notified_date">
+            <ngx-datatable-column name="Reset Date" prop="reset_date">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value | date:'MM/dd/yyyy HH:mm'}}
               </ng-template>

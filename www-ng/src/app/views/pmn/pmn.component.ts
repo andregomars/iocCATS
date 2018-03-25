@@ -41,7 +41,7 @@ export class PmnComponent implements OnInit {
     this.dataPmn$ = this.dataService.getPreventiveMaintNotifInfo(this.pid,
       this.vid, this.user)
       .share();
-    this.items$ = this.dataPmn$.map(d => new Array(d.prevent_notif_list));
+    this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);
     this.resets$ = this.dataPmn$.map(d => d.reset_list);
     this.notifications$ = this.dataPmn$.map(d => d.notif_list);
   }

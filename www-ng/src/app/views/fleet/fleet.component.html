@@ -49,7 +49,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='vehicles'>
-            <ngx-datatable-column name="Bus No." prop="bus_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 <a [routerLink]="['snapshot', fleetId, row['vehicle_id']]">{{value}}</a>
@@ -77,7 +77,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Updated" prop="update_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | toTime | date:'MM/dd/yyyy HH:mm:ss'}}
+                {{value | date:'MM/dd/yyyy HH:mm:ss'}}
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

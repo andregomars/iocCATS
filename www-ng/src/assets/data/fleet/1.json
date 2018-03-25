@@ -4,17 +4,17 @@
     "desc": "First pilot program",
     "time_offset": 2,
     "fleet_functional_code": "abc",
-    "default_unit_type": "ABC",
-    "time_zone": "201707230003",
+    "default_unit_type": "%",
+    "time_zone": "-7",
     "vehicles": [
         {
             "vehicle_id": 1,
-            "bus_number": "0001",
+            "vehicle_number": "0001",
             "odometer": 10033,
             "trip_mileage": 122,
             "engine_status": "on",
             "online_status": "offline",
-            "update_time": "201802230828100005",
+            "update_time": "2018-02-23 08:28:05",
             "gps_location": [
                 {
                     "altitude": "2393",
@@ -35,12 +35,12 @@
         },
         {
             "vehicle_id": 2,
-            "bus_number": "0002",
+            "vehicle_number": "0002",
             "odometer": 23580.6,
             "trip_mileage": 35.8,
             "engine_status": "off",
             "online_status": "online",
-            "update_time": "201802230824330005", 
+            "update_time": "2018-02-24 12:44:01", 
             "gps_location": [
                 {
                     "altitude": "2393",

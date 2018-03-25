@@ -4,7 +4,7 @@
   "fleet_id": 1,
   "fleet_name": "AVTA",
   "vehicle_id": 1,
-  "bus_number": "0001",
+  "vehicle_number": "0001",
   "item_info": [{
     "item": "A1",
     "unit": "V",
@@ -38,11 +38,11 @@
   "notif_info": [{
     "notified_user": "rwilliam",
     "name": "Rick William",
-    "date": "201802031802360005"
+    "date": "2018-01-22 13:11:02"
   }],
   "ackd_info": [{
     "acknowledged_user": "ksmith",
     "name": "Kelly Smith",
-    "date": "201802031712070005"
+    "date": "2018-01-22 13:11:02"
   }]
 }

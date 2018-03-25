@@ -1,9 +1,9 @@
 {
   "fleet_id" : 1,
-  "bus_number" : "0002",
+  "vehicle_number" : "0002",
   "vehicle_id" : 2,
   "maint_info_item" : [ {
-    "date" : "20180201",
+    "date" : "2018-02-01",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,
@@ -16,7 +16,7 @@
     "headlight" : 343.0
   }, 
   {
-    "date" : "20180202",
+    "date" : "2018-02-02",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,
@@ -29,7 +29,7 @@
     "headlight" : 343.0
   },
   {
-    "date" : "20180203",
+    "date" : "2018-02-03",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,
@@ -42,7 +42,7 @@
     "headlight" : 343.0
   },
   {
-    "date" : "20180204",
+    "date" : "2018-02-04",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,
@@ -55,7 +55,7 @@
     "headlight" : 343.0
   },
   {
-    "date" : "20180205",
+    "date" : "2018-02-05",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,
@@ -68,7 +68,7 @@
     "headlight" : 343.0
   }, 
   {
-    "date" : "20180206",
+    "date" : "2018-02-06",
     "daily_mileage" : 352.0,
     "total_mileage" : 10033.0,
     "kneel_usage" : 52.1,

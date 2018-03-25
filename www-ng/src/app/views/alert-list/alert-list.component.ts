@@ -32,7 +32,7 @@ export class AlertListComponent implements OnInit {
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // retrive alert list and attach bus number into each alert
-      .map(v => v.alert_list.map(a => Object.assign(a, {'bus_number' : v.bus_number})))
+      .map(v => v.alert_list.map(a => Object.assign(a, {'vehicle_number' : v.vehicle_number})))
       // combine multiple arrays into a single array
       .reduce((pre, cur) => [...pre, ...cur] )
       .subscribe(data => {

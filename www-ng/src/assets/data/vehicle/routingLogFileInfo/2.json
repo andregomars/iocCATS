@@ -1,21 +1,21 @@
 [
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-22",
         "file_name": "20180122.log",
         "file_path": "http://www.fancydemo.com/file/20180122.log" 
     },
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-23",
         "file_name": "20180123.log",
         "file_path": "http://www.fancydemo.com/file/20180123.log" 
     },
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-24",
         "file_name": "20180124.log",
         "file_path": "http://www.fancydemo.com/file/20180124.log" 

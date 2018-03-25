@@ -1,26 +1,46 @@
 {
-  "vehicle_id": 1,
+  "fleet_name": "AVTA",
   "vehicle_number": "0001",
   "fleet_id": 1,
-  "fleet_name": "AVTA",
-  "alert_list": [
-    {
-      "alert_id": 3001,
-      "alert_name": "Engine oil",
-      "alert_type": "general",
-      "alert_time": "201712160525120005"
-    }
-  ],
+  "vehicle_id": 1,  
   "notif_list": [
     {
-      "username": "Robin",
-      "notified_date": "201801200825520008"
+      "notified_date": "2018-01-20 08:25:52",
+      "username": "Robin"
+    },
+    {
+      "notified_date": "2018-01-20 08:25:52",
+      "username": "Robin"
+    }
+  ],
+  "prevent_notif_list": [
+    {
+      "item": "Wiper Motor",
+      "cycle_value": 26555,
+      "odometer": 15654,
+      "notification_item_id": 345,
+      "vehicle_number": "0002",
+      "cycle_type": "count",
+      "event_time": "2017-12-16 05:25:12"
+    },
+    {
+      "item": "Wiper Motor",
+      "cycle_value": 26555,
+      "odometer": 15654,
+      "notification_item_id": 345,
+      "vehicle_number": "0002",
+      "cycle_type": "count",
+      "event_time": "2017-12-16 05:25:12"
     }
   ],
   "reset_list": [
     {
-      "username": "Robin",
-      "reset_date": "201801220825520008"
+      "reset_date": "2018-02-20 14:23:00",
+      "username": "Robin"
+    },
+    {
+      "reset_date": "2018-02-20 14:23:00",
+      "username": "Robin"
     }
   ]
 }

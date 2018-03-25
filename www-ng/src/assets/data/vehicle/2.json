@@ -1,18 +1,18 @@
 {
   "vehicle_id" : 2,
-  "bus_number": "0002",
+  "vehicle_number": "0002",
   "fleet_id" : 1,
   "fleet_name" : "AVTA",
   "alert_list" : [ {
     "alert_id" : 1234,
     "alert_name" : "Rear Door Open failure",
     "alert_type" : "critical",
-    "alert_time" : "20180223080420330005"
+    "alert_time" : "2017-12-16 05:25:12"
   },
   {
     "alert_id" : 1237,
     "alert_name" : "Front Door Open failure",
     "alert_type" : "critical",
-    "alert_time" : "20180223091221030005"
+    "alert_time" : "2017-12-16 05:27:12"
   } ]
 }

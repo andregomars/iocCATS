@@ -1,7 +1,7 @@
 [
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-22",
         "ethernet_mac_addr": "60-90-23-61-A3-E5",
         "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
@@ -9,7 +9,7 @@
     },
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-23",
         "ethernet_mac_addr": "60-90-23-61-A3-E5",
         "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
@@ -17,7 +17,7 @@
     },
     {
         "vehicle_id": 2,
-        "bus_number": "0002",
+        "vehicle_number": "0002",
         "file_time": "2018-01-24",
         "ethernet_mac_addr": "60-90-23-61-A3-E5",
         "wifi_mac_addr": "1F-1E-2A-FD-65-BC",
