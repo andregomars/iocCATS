@@ -4,7 +4,7 @@
       <i class="fa fa-exclamation-triangle fa-3x"></i>
     </div>
     <div class="col-8 col-sm-5 text-left">
-      <h2>{{ (dataPmn$ | async)?.prevent_notif_list.item }}</h2>
+      <h2>{{ (dataPmn$ | async)?.prevent_notif_list[0].item }}</h2>
     </div>
     <div class="col-12 col-sm-6 text-right">
       <button type="submit" class="btn btn-primary"
