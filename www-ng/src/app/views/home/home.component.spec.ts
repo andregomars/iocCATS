@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { HomeComponent } from './home.component';
@@ -22,6 +23,7 @@ describe('HomeComponent', () => {
         TabsModule.forRoot(),
         NgxDatatableModule,
         AppPipeModule,
+        NgSpinKitModule,
         ApiModule
       ],
       providers: [

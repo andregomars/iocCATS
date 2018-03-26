@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { MonthlyReportComponent } from './monthly-report.component';
 import { ApiModule } from '../../api/api.module';
@@ -21,6 +22,7 @@ describe('MonthlyReportComponent', () => {
         ReactiveFormsModule,
         NgxSelectModule,
         NgxDatatableModule,
+        NgSpinKitModule,
         ApiModule
       ],
       providers: [
