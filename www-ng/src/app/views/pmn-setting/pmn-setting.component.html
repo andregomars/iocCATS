@@ -31,7 +31,7 @@
                     </select>
                   </td>
                   <td><input type="text" size="10" formControlName="mileage_usage"></td>
-                  <td><input type="text" size="10" formControlName="date_usage"></td>
+                  <td><input type="date" size="10" formControlName="date_usage" [ngModel]="date_usage" ></td>
                   <td><input type="text" size="10" formControlName="hours_usage"></td>
                   <td><input type="text" size="10" formControlName="usage_count"></td>
                   <td>
@@ -50,7 +50,7 @@
                     </select>
                   </td>
                   <td>
-                    <select formControlName="notificate_type">
+                    <select formControlName="notification_type">
                       <option *ngFor="let type of notificationTypes" [value]="type">
                         {{type}}
                       </option>

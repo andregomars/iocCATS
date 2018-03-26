@@ -47,14 +47,13 @@
             [limit]="10"
             [rows]="dataGeneral$ | async">
             <ngx-datatable-column name="Bus No." prop="vehicle_number">
-              <ng-template let-row="row" let-col="column"
-                let-value="value" ngx-datatable-cell-template>
+              <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Item" prop="alert_desc">
-              <ng-template let-row="row" let-col="column"
-                let-value="value" ngx-datatable-cell-template>
+              <ng-template let-row="row" let-value="value" 
+                ngx-datatable-cell-template>
                 <a [routerLink]="['/alert-list/alert', row['alert_id']]">
                   {{value}}
                 </a>

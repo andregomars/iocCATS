@@ -28,13 +28,38 @@
         <div class="card-body">
          <ngx-datatable
             class='material'
-            [columns]="colsPmn"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='items$ | async'>
+            <ngx-datatable-column name="Item" prop="item">
+              <ng-template let-row="row" let-col="column"
+                let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Bus No." prop="vehicle_number">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Time" prop="event_time">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | date:'MM/dd/yyyy HH:mm:ss'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Odometer" prop="odometer">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cycle Value" prop="cycle_value">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>
@@ -52,7 +77,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='resets$ | async'>
-            <ngx-datatable-column name="Reset Date" prop="reset_date">
+            <ngx-datatable-column name="Reset Date" prop="notified_date">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value | date:'MM/dd/yyyy HH:mm'}}
               </ng-template>

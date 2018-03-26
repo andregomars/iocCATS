@@ -56,7 +56,8 @@ export class PmnSettingComponent implements OnInit {
 
   initSelectOptions(): void {
     this.itemNames = ['Engine oil', 'Coolant', 'Front door',
-      'Rear door', 'High beam', 'Low beam'];
+      'Rear door', 'High beam', 'Low beam', 'Door Usage', 'Wiper Usage',
+      'Engine Oil', 'HAVC'];
 
     this.operands = [
       { name: '', value: null },
@@ -70,13 +71,19 @@ export class PmnSettingComponent implements OnInit {
     this.operandValues = this.operands.map(x => x.value);
 
     this.units = [
-      { name: '', value: null },
+      // { name: '', value: null },
+      { name: 'Unknown', value: 'Unknown' },
       { name: 'n', value: 'count' },
       { name: '%', value: 'usage' }
     ];
     this.unitValues = this.units.map(x => x.value);
 
-    this.notificationTypes = ['Display', 'Display And Email'];
+    this.notificationTypes = [
+      '',
+      'Display',
+      'Email',
+      'Display And Email'
+    ];
   }
 
   /* populate each line fields while input doesn't have that field.
@@ -95,7 +102,7 @@ export class PmnSettingComponent implements OnInit {
       operand: input.operand,
       usage_value: input.usage_value,
       unit_type: input.unit_type,
-      notificate_type: input.notificate_type
+      notification_type: input.notification_type
     };
   }
 
@@ -110,7 +117,7 @@ export class PmnSettingComponent implements OnInit {
       operand: null,
       usage_value: null,
       unit_type: null,
-      notificate_type: 'Display'
+      notification_type: 'Display'
     };
     this.pmnSettingArray.push(this.fb.group(newLine));
   }

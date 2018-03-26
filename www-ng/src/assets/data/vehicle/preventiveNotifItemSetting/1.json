@@ -2,6 +2,7 @@
     "fleet_id": 1,
     "fleet_name": "AVTA",
     "vehicle_id": 1,
+    "vehicle_number": "0001",
     "user_name": "nhk",
     "notification_setting_items": [
     {
@@ -14,7 +15,7 @@
         "operand": "less-than",
         "usage_value": 20,
         "unit_type": "usage",
-        "notificate_type": "Display"
+        "notification_type": "Display"
     },
     {
         "notification_item_id": 33,
@@ -26,7 +27,7 @@
         "operand": "greater-than",
         "usage_value": 80,
         "unit_type": "usage",
-        "notificate_type": "Display"
+        "notification_type": "Display"
     },
     {
         "notification_item_id": 34,
@@ -38,7 +39,7 @@
         "operand": null,
         "usage_value": null,
         "unit_type": null,
-        "notificate_type": "Display"
+        "notification_type": "Display"
     },
     {
         "notification_item_id": 35,
@@ -50,7 +51,7 @@
         "operand": "equal",
         "usage_value": 350,
         "unit_type": "count",
-        "notificate_type": "Display And Email"
+        "notification_type": "Display And Email"
     },
     {
         "notification_item_id": 36,
@@ -62,7 +63,7 @@
         "operand": "less-than_equal-to",
         "usage_value": 80,
         "unit_type": "usage",
-        "notificate_type": "Display"
+        "notification_type": "Display"
     },
     {
         "notification_item_id": 37,
@@ -74,6 +75,6 @@
         "operand": "not equal",
         "usage_value": 0,
         "unit_type": "count",
-        "notificate_type": "Display And Email"
+        "notification_type": "Display And Email"
     }]
 }
