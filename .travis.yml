@@ -24,7 +24,7 @@ before_install:
 
 install:
   - cd www-ng
-  - cp src/environments/environment.prod.ts src/environments/environment.ts
+  - cp src/environments/environment.sample.ts src/environments/environment.ts
   - yarn install --no-progress
 
 script: 
