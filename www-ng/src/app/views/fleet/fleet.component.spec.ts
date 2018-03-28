@@ -14,7 +14,7 @@ import { ApiModule } from '../../api/api.module';
 describe('FleetComponent', () => {
   const vehicles = [
     {
-        'bus_number': '001',
+        'vehicle_number': '001',
         'engine_status': 'on',
         'gps_location': [
             {
@@ -29,7 +29,7 @@ describe('FleetComponent', () => {
         'update_time': '2018-02-23 08:28:00'
     },
     {
-        'bus_number': '002',
+        'vehicle_number': '002',
         'engine_status': 'off',
         'gps_location': [
             {

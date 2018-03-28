@@ -54,7 +54,9 @@ export class SnapshotComponent implements OnInit {
       // .map(v => v['gps_location']);
       .switchMap(v => Observable.from(v['gps_location']));
 
-    this.snapshots$ = this.alert$.map(a => a.item_info);
+    this.snapshots$ = this.alert$
+      .do(x => console.log(x.item_info))
+      .map(a => a.item_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
     this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
 

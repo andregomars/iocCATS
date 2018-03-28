@@ -15,8 +15,7 @@ export class ConnectionComponent implements OnInit {
   temp = [];
   ngxControl: FormControl;
   months: Array<string>;
-  fleetId = 1; // AVTA
-  userName = 'iocontrols';
+
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -24,6 +23,10 @@ export class ConnectionComponent implements OnInit {
     private http: HttpClient,
     private dataService: RemoteDataService
   ) { }
+
+  private fleetId = 1;
+  private userName = 'iocontrols';
+  private resultCount = 10;
 
   ngOnInit(): void {
     this.initSelectBox();
@@ -34,7 +37,8 @@ export class ConnectionComponent implements OnInit {
       // fetch each vehicle data
       .mergeMap(v =>
         // this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['vehicle_id'] }.json`))
-        this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName))
+        this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName,
+          null, this.resultCount))
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // combine multiple arrays into a single array
@@ -47,7 +51,7 @@ export class ConnectionComponent implements OnInit {
 
   initSelectBox(): void {
     this.ngxControl = new FormControl();
-    this.months = ['201802', '201801', '201712'];
+    this.months = ['201803', '201802', '201801', '201712'];
   }
 
   // select box section

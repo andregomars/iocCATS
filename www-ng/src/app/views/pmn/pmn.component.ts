@@ -26,7 +26,6 @@ export class PmnComponent implements OnInit {
   ngOnInit(): void {
     this.dataPmn$ = this.dataService.getPreventiveMaintNotifInfo(this.pid,
       this.vid, this.user)
-      .do(data => console.log(data))
       .share();
 
     this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);

@@ -15,8 +15,6 @@ export class RoutingComponent implements OnInit {
   temp = [];
   ngxControl: FormControl;
   months: Array<string>;
-  userName = 'iocontrols';
-  fleetId = 1; // AVTA
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -24,6 +22,12 @@ export class RoutingComponent implements OnInit {
     private http: HttpClient,
     private dataService: RemoteDataService
   ) { }
+
+  private userName = 'iocontrols';
+  private fleetId = 1;
+  private resultCount = 10;
+  private year = 2018;
+  private month = 3;
 
   ngOnInit(): void {
     this.initSelectBox();
@@ -33,7 +37,8 @@ export class RoutingComponent implements OnInit {
       .concatMap(f => { return Observable.from(f.vehicles); })
       // fetch each vehicle data
       .mergeMap(v =>
-        this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName))
+        this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName,
+          null, this.year, this.month, this.resultCount))
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // combine multiple arrays into a single array
@@ -46,7 +51,7 @@ export class RoutingComponent implements OnInit {
 
   initSelectBox(): void {
     this.ngxControl = new FormControl();
-    this.months = ['201802', '201801', '201712'];
+    this.months = ['201803', '201802', '201801', '201712'];
   }
 
   // select box section

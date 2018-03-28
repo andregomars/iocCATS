@@ -51,7 +51,7 @@ export class FleetComponent implements OnInit {
         lng = v.gps_location[0].longitude;
       }
       return {
-        bus_number: v.bus_number,
+        bus_number: v.vehicle_number,
         latitude: lat,
         longitude: lng
       };
@@ -72,7 +72,7 @@ export class FleetComponent implements OnInit {
 
     // filter our data
     const temp = this.temp.filter(row => {
-      return row.bus_number.toLowerCase().indexOf(val) !== -1
+      return row.vehicle_number.toLowerCase().indexOf(val) !== -1
         || row.online_status.toLowerCase().indexOf(val) !== -1
         || !val;
     });

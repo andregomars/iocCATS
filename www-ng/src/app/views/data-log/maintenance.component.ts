@@ -49,6 +49,9 @@ export class MaintenanceComponent implements OnInit {
 
   private userName = 'iocontrols';
   private fleetId = 1;
+  private resultCount = 10;
+  private year = 2018;
+  private month = 3;
 
   ngOnInit(): void {
     // init date range picker
@@ -64,7 +67,8 @@ export class MaintenanceComponent implements OnInit {
       .do(() => this.spinning = true)
       .concatMap(f => { return Observable.from(f.vehicles); })
       .mergeMap(v =>
-        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
+        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+          this.year, this.month, this.resultCount))
       .catch(() => new EmptyObservable())
       .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)
