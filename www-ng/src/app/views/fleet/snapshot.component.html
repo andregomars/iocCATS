@@ -30,27 +30,22 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-md-8 col-lx-9">
-              <div class="row">
-                <!-- <div class="col-6 col-xl-4" *ngFor="let icon of moduleIcons$ | async">
+              <div class="row" *ngIf="moduleIcons$ | async; else defaultIcons; let icons">
+                <div class="col-6 col-xl-4" *ngFor="let icon of icons">
                   <div class="text-center align-middle">
-                    <img class="text-center mb-4" [src]="icon"/>
+                    <img class="text-center mb-4" [src]="icon" />
                   </div>
-                </div> -->
-                <div *ngIf="moduleIcon$ | async; else defaultIcons; let icons">
-                  <div class="col-6 col-xl-4" *ngFor="let icon of icons">
+                </div>
+              </div>
+              <ng-template #defaultIcons>
+                <div class="row">
+                  <div class="col-6 col-xl-4" *ngFor="let icon of defaultModuleIcons">
                     <div class="text-center align-middle">
-                      <img class="text-center mb-4" [src]="icon"/>
+                      <img class="text-center mb-4" [src]="icon" />
                     </div>
                   </div>
                 </div>
-                <ng-template #defaultIcons>
-                  <div class="col-6 col-xl-4" *ngFor="let icon of defaultModuleIcons">
-                    <div class="text-center align-middle">
-                      <img class="text-center mb-4" [src]="icon"/>
-                    </div>
-                  </div>
-                </ng-template>
-              </div>
+              </ng-template>
             </div>
             <div class="col-12 col-md-4 col-lx-3">
               <div class="row">

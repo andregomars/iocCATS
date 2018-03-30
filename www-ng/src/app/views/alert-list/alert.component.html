@@ -1,15 +1,14 @@
 <div class="animated fadeIn">
   <div class="row pb-2">
-      <div class="col-4 col-sm-1">
-        <i class="fa fa-exclamation-triangle fa-3x"></i>
-      </div>
-      <div class="col-8 col-sm-5 text-left">
-        <h2>{{ (alert$ | async)?.alert_desc }}</h2>
-      </div>
-      <div class="col-12 col-sm-6 text-right">
-        <button type="submit" class="btn btn-primary"
-          (click)="primaryModal.show()">Acknowledge</button>
-      </div>
+    <div class="col-4 col-sm-1">
+      <i class="fa fa-exclamation-triangle fa-3x"></i>
+    </div>
+    <div class="col-8 col-sm-5 text-left">
+      <h2>{{ (alert$ | async)?.alert_desc }}</h2>
+    </div>
+    <div class="col-12 col-sm-6 text-right">
+      <button type="submit" class="btn btn-primary" (click)="primaryModal.show()">Acknowledge</button>
+    </div>
   </div>
   <div class="row">
     <div class="col-12 col-sm-5">
@@ -18,20 +17,14 @@
           Bus No. {{ (alert$ | async)?.vehicle_number }}
         </div>
         <div class="card-body">
-          <agm-map *ngIf="locations$ | async; else defaultMap; let loc"
-            style="height: 300px" [zoom]=12 [streetViewControl]=false
-            [latitude]="loc.latitude | toNumber" 
+          <agm-map *ngIf="locations$ | async; else defaultMap; let loc" style="height: 300px" [zoom]=12 [streetViewControl]=false [latitude]="loc.latitude | toNumber"
             [longitude]="loc.longitude | toNumber">
-            <agm-marker 
-              [latitude]="loc.latitude | toNumber" 
-              [longitude]="loc.longitude | toNumber">
+            <agm-marker [latitude]="loc.latitude | toNumber" [longitude]="loc.longitude | toNumber">
               <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
           </agm-map>
           <ng-template #defaultMap>
-            <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false
-              [latitude]="34.055597" 
-              [longitude]="-118.233437">
+            <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false [latitude]="34.055597" [longitude]="-118.233437">
             </agm-map>
           </ng-template>
         </div>
@@ -42,22 +35,22 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-md-8 col-lx-9">
-              <div class="row">
-                <div *ngIf="moduleIcon$ | async; else defaultIcons; let icons">
-                  <div class="col-6 col-xl-4" *ngFor="let icon of icons">
+              <div class="row" *ngIf="moduleIcons$ | async; else defaultIcons; let icons">
+                <div class="col-6 col-xl-4" *ngFor="let icon of icons">
+                  <div class="text-center align-middle">
+                    <img class="text-center mb-4" [src]="icon" />
+                  </div>
+                </div>
+              </div>
+              <ng-template #defaultIcons>
+                <div class="row">
+                  <div class="col-6 col-xl-4" *ngFor="let icon of defaultModuleIcons">
                     <div class="text-center align-middle">
-                      <img class="text-center mb-4" [src]="icon"/>
+                      <img class="text-center mb-4" [src]="icon" />
                     </div>
                   </div>
                 </div>
-                <ng-template #defaultIcons>
-                  <div class="col-6 col-xl-4" *ngFor="let icon of defaultModuleIcons">
-                    <div class="text-center align-middle">
-                      <img class="text-center mb-4" [src]="icon"/>
-                    </div>
-                  </div>
-                </ng-template>
-              </div>
+              </ng-template>
             </div>
             <div class="col-12 col-md-4 col-lx-3">
               <div class="row">
@@ -65,29 +58,26 @@
               </div>
               <div class="row">
                 <div class="col text-center">
-                  <img class="text-center mb-4" src="assets/img/indicators/mbc.jpg"/>
+                  <img class="text-center mb-4" src="assets/img/indicators/mbc.jpg" />
                 </div>
               </div>
             </div>
           </div>
           <div class="row no-gutters" *ngIf="snapshots$ | async; else defaultItems; let snapshots">
-              <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let s of snapshots">
-                <div class="card text-icon-green m-1">
-                  <div class="card-body text-center small px-0">{{s.item}}</div>
-                </div>
+            <div class="col-3 col-md-2 col-xl-1" *ngFor="let s of snapshots">
+              <div class="card text-icon-green m-1">
+                <div class="card-body text-center small px-0">{{s.item}}</div>
               </div>
-              <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let s of greyIcons$ | async">
-                <div class="card text-icon-grey m-1">
-                  <div class="card-body text-center small">&nbsp;&nbsp;</div>
-                </div>
+            </div>
+            <div class="col-3 col-md-2 col-xl-1" *ngFor="let s of greyIcons$ | async">
+              <div class="card text-icon-grey m-1">
+                <div class="card-body text-center small">&nbsp;&nbsp;</div>
               </div>
+            </div>
           </div>
           <ng-template #defaultItems>
             <div class="row no-gutters">
-              <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11]">
+              <div class="col-3 col-md-2 col-xl-1" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11]">
                 <div class="card text-icon-grey m-1">
                   <div class="card-body text-center small px-0">N/A</div>
                 </div>
@@ -102,15 +92,8 @@
     <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-body">
-          <ngx-datatable #tableSnapshot
-            class='material'
-            [columns]="colsSnapshot"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="0"
-            [rowHeight]="'auto'"
-            [limit]="10"
-            [rows]='snapshots$ | async'>
+          <ngx-datatable #tableSnapshot class='material' [columns]="colsSnapshot" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0"
+            [rowHeight]="'auto'" [limit]="10" [rows]='snapshots$ | async'>
           </ngx-datatable>
         </div>
       </div>
@@ -120,14 +103,8 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <ngx-datatable #tableNotifyLog
-                class='material'
-                [columnMode]="'force'"
-                [headerHeight]="50"
-                [footerHeight]="0"
-                [rowHeight]="'auto'"
-                [limit]="10"
-                [rows]='notifications$ | async'>
+              <ngx-datatable #tableNotifyLog class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'"
+                [limit]="10" [rows]='notifications$ | async'>
                 <ngx-datatable-column name="Notified" prop="notified_user">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value}}
@@ -147,14 +124,8 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <ngx-datatable #tableAckLog
-                class='material'
-                [columnMode]="'force'"
-                [headerHeight]="50"
-                [footerHeight]="0"
-                [rowHeight]="'auto'"
-                [limit]="10"
-                [rows]='acknowledges$ | async'>
+              <ngx-datatable #tableAckLog class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'"
+                [limit]="10" [rows]='acknowledges$ | async'>
                 <ngx-datatable-column name="Acknowledged" prop="acknowledged_user">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value}}
@@ -174,20 +145,23 @@
   </div>
 </div>
 <div bsModal #primaryModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-primary" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Success</h4>
-          <button type="button" class="close" (click)="primaryModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Alert was acknowledged!</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="primaryModal.hide()">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Success</h4>
+        <button type="button" class="close" (click)="primaryModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Alert was acknowledged!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="primaryModal.hide()">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
