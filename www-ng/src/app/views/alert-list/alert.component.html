@@ -18,7 +18,7 @@
           Bus No. {{ (alert$ | async)?.vehicle_number }}
         </div>
         <div class="card-body">
-          <agm-map *ngIf="locations$ | async; let loc"
+          <agm-map *ngIf="locations$ | async; else defaultMap; let loc"
             style="height: 300px" [zoom]=12 [streetViewControl]=false
             [latitude]="loc.latitude | toNumber" 
             [longitude]="loc.longitude | toNumber">
@@ -28,6 +28,12 @@
               <agm-info-window>{{loc.altitude}}</agm-info-window>
             </agm-marker>
           </agm-map>
+          <ng-template #defaultMap>
+            <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false
+              [latitude]="34.055597" 
+              [longitude]="-118.233437">
+            </agm-map>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -37,11 +43,20 @@
           <div class="row">
             <div class="col-12 col-md-8 col-lx-9">
               <div class="row">
-                <div class="col-12 col-sm-6 col-lg-4" *ngFor="let icon of moduleIcons$ | async">
-                  <div class="text-center align-middle">
-                    <img class="text-center mb-4" [src]="icon"/>
+                <div *ngIf="moduleIcon$ | async; else defaultIcons; let icons">
+                  <div class="col-6 col-xl-4" *ngFor="let icon of icons">
+                    <div class="text-center align-middle">
+                      <img class="text-center mb-4" [src]="icon"/>
+                    </div>
                   </div>
                 </div>
+                <ng-template #defaultIcons>
+                  <div class="col-6 col-xl-4" *ngFor="let icon of defaultModuleIcons">
+                    <div class="text-center align-middle">
+                      <img class="text-center mb-4" [src]="icon"/>
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </div>
             <div class="col-12 col-md-4 col-lx-3">
@@ -55,20 +70,30 @@
               </div>
             </div>
           </div>
-          <div class="row no-gutters">
-            <div class="col-3 col-md-2 col-xl-1"
-              *ngFor="let s of snapshots$ | async">
-              <div class="card text-icon-green m-1">
-                <div class="card-body text-center small px-0">{{s.item}}</div>
+          <div class="row no-gutters" *ngIf="snapshots$ | async; else defaultItems; let snapshots">
+              <div class="col-3 col-md-2 col-xl-1"
+                *ngFor="let s of snapshots">
+                <div class="card text-icon-green m-1">
+                  <div class="card-body text-center small px-0">{{s.item}}</div>
+                </div>
+              </div>
+              <div class="col-3 col-md-2 col-xl-1"
+                *ngFor="let s of greyIcons$ | async">
+                <div class="card text-icon-grey m-1">
+                  <div class="card-body text-center small">&nbsp;&nbsp;</div>
+                </div>
+              </div>
+          </div>
+          <ng-template #defaultItems>
+            <div class="row no-gutters">
+              <div class="col-3 col-md-2 col-xl-1"
+                *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11]">
+                <div class="card text-icon-grey m-1">
+                  <div class="card-body text-center small px-0">N/A</div>
+                </div>
               </div>
             </div>
-            <div class="col-3 col-md-2 col-xl-1"
-              *ngFor="let s of greyIcons$ | async">
-              <div class="card text-icon-grey m-1">
-                <div class="card-body text-center small">&nbsp;&nbsp;</div>
-              </div>
-            </div> 
-          </div>
+          </ng-template>
         </div>
       </div>
     </div>

@@ -36,7 +36,11 @@ export class UtilityService {
     });
   }
 
+  getDefaultIcons(): Array<string> {
+    return this.icons.map(icon => `${icon.path}_na.jpg`);
+  }
+
   getGreyIcons(items: Array<any>): Array<string> {
-    return new Array<string>(this.iconCardsCount - items.length);
+    return new Array<string>(this.iconCardsCount - items.length % this.iconCardsCount);
   }
 }

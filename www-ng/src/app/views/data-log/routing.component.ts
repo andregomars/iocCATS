@@ -39,6 +39,7 @@ export class RoutingComponent implements OnInit {
       .mergeMap(v =>
         this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName,
           null, this.year, this.month, this.resultCount))
+      .map(m => m.maint_log_file_item.map(r => Object.assign(r, {vehicle_number: m.vehicle_name})))
       // ignore when one of vehicles not found
       .catch(() => new EmptyObservable())
       // combine multiple arrays into a single array
@@ -89,8 +90,8 @@ export class RoutingComponent implements OnInit {
 
     // filter our data
     const temp = this.temp.filter(row => {
-      return row.bus_number.toLowerCase().indexOf(val) !== -1
-        || row.file_time.toLowerCase().indexOf(val) !== -1
+      return row.vehicle_number.toLowerCase().indexOf(val) !== -1
+        || row.end_time.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 

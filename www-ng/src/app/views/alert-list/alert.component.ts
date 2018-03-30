@@ -10,6 +10,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
   styleUrls: [ 'alert.component.scss' ]
 })
 export class AlertComponent implements OnInit {
+  public defaultModuleIcons: Array<string>;
   public alert$: Observable<any>;
   public locations$: Observable<any>;
   public moduleIcons$: Observable<any>;
@@ -34,6 +35,8 @@ export class AlertComponent implements OnInit {
   private userName = 'iocontrols';
 
   ngOnInit(): void {
+    this.initModuleIcons();
+
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
       .concatMap(alertId =>
@@ -62,5 +65,9 @@ export class AlertComponent implements OnInit {
     this.acknowledges$ = this.alert$.map(a => a.ackd_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
     this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
+  }
+
+  private initModuleIcons(): void {
+    this.defaultModuleIcons = this.utility.getDefaultIcons();
   }
 }

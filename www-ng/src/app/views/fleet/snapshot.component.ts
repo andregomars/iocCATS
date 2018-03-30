@@ -11,6 +11,7 @@ import { RemoteDataService } from 'app/services/remote-data.service';
   styleUrls: [ 'snapshot.component.scss' ]
 })
 export class SnapshotComponent implements OnInit {
+  public defaultModuleIcons: Array<string>;
   public vehicle$: Observable<any>;
   public alert$: Observable<any>;
   public locations$: Observable<any>;
@@ -35,6 +36,8 @@ export class SnapshotComponent implements OnInit {
   private userName = 'iocontrols';
 
   ngOnInit(): void {
+    this.initModuleIcons();
+
     this.vehicle$ = this.route.paramMap
       .map((params: ParamMap) => params.get('vid'))
       .concatMap(vid =>
@@ -55,11 +58,13 @@ export class SnapshotComponent implements OnInit {
       .switchMap(v => Observable.from(v['gps_location']));
 
     this.snapshots$ = this.alert$
-      .do(x => console.log(x.item_info))
       .map(a => a.item_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
     this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
+  }
 
+  private initModuleIcons(): void {
+    this.defaultModuleIcons = this.utility.getDefaultIcons();
   }
 
 }

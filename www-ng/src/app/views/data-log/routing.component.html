@@ -35,11 +35,11 @@
             class='material'
             [columnMode]="'force'"
             [headerHeight]="50"
-            [footerHeight]="0"
+            [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='routingLogs'>
-            <ngx-datatable-column name="File Time" prop="file_time">
+            <ngx-datatable-column name="File Time" prop="end_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>

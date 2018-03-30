@@ -7,7 +7,8 @@ import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
-  templateUrl: 'maintenance.component.html'
+  templateUrl: 'maintenance.component.html',
+  styleUrls: [ './maintenance.component.scss' ]
 })
 export class MaintenanceComponent implements OnInit {
   spinning = false;
@@ -57,8 +58,8 @@ export class MaintenanceComponent implements OnInit {
     // init date range picker
     this.myForm = this.formBuilder.group({
       myDateRange: [{
-        beginDate: { year: 2018, month: 2, day: 1 },
-        endDate: { year: 2018, month: 2, day: 6 }
+        beginDate: { year: 2018, month: 3, day: 1 },
+        endDate: { year: 2018, month: 3, day: 6 }
       }, Validators.required]
     });
 
