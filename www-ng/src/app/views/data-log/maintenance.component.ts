@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { RemoteDataService } from '../../services/remote-data.service';
+import { isNumber } from 'util';
 
 @Component({
   templateUrl: 'maintenance.component.html',
@@ -99,6 +100,16 @@ export class MaintenanceComponent implements OnInit {
       return copy;
     });
 
+
+    const average = Object.assign({}, total);
+    average.date = 'AVG';
+    for (const prop in average) {
+      if ( average.hasOwnProperty(prop) && isNumber(average[prop]) ) {
+        average[prop] = average[prop] / rows.length;
+      }
+    }
+
+    rows.unshift(average);
     rows.unshift(total);
     return rows;
   }

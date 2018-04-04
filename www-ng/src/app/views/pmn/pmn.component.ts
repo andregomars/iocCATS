@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
@@ -19,18 +19,21 @@ export class PmnComponent implements OnInit {
   resets$: Observable<any>;
   user = 'iocontrols';
   vid = 1;
-  pid = 1;
+  // pid = 1;
 
   constructor(
+    private route: ActivatedRoute,
     private http: HttpClient,
     private modalService: BsModalService,
     private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
-    this.dataPmn$ = this.dataService.getPreventiveMaintNotifInfo(this.pid,
-      this.vid, this.user)
-      .share();
+    this.dataPmn$ = this.route.paramMap
+    .map((params: ParamMap) => params.get('id'))
+    .concatMap(pid => this.dataService.getPreventiveMaintNotifInfo(+pid,
+      this.vid, this.user))
+    .share();
 
     // this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);
     this.items$ = this.dataPmn$.map(d => new Array(d.prevent_notif_list));

@@ -20,7 +20,7 @@ export const navigation = [
   },
   {
     name: 'Preventive Maint',
-    url: '/pmn',
+    url: '/pmn/1',
     icon: 'icon-umbrella'
   },
   {

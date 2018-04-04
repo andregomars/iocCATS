@@ -13,3 +13,4 @@ import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/timeout';

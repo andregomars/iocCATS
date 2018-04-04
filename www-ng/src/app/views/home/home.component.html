@@ -89,7 +89,7 @@
             <ngx-datatable-column name="Item" prop="item">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
-                <a [routerLink]="['/alert-list/alert', row['alert_id']]">
+                <a [routerLink]="['/pmn', row['alert_id']]">
                   {{value}}
                 </a>
               </ng-template>

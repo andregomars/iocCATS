@@ -23,7 +23,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="alerts">
-           <ngx-datatable-column name="Alert" prop="alert_name">
+           <ngx-datatable-column name="Alert" prop="alert_desc">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 <a [routerLink]="['alert', row['alert_id']]">
@@ -41,7 +41,7 @@
                 {{value}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Time" prop="alert_time">
+            <ngx-datatable-column name="Time" prop="event_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value | date:'MM/dd/yyyy HH:mm:ss'}}
               </ng-template>

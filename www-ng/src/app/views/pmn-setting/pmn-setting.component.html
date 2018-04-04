@@ -30,10 +30,10 @@
                       </option>
                     </select>
                   </td>
-                  <td><input type="text" size="10" formControlName="mileage_usage"></td>
-                  <td><input type="date" size="10" formControlName="date_usage" [ngModel]="date_usage" ></td>
-                  <td><input type="text" size="10" formControlName="hours_usage"></td>
-                  <td><input type="text" size="10" formControlName="usage_count"></td>
+                  <td><input type="text" size="5" formControlName="mileage_usage"></td>
+                  <td><input type="date" size="5" formControlName="date_usage" [ngModel]="date_usage" ></td>
+                  <td><input type="text" size="5" formControlName="hours_usage"></td>
+                  <td><input type="text" size="5" formControlName="usage_count"></td>
                   <td>
                     <select formControlName="operand">
                       <option *ngFor="let value of operandValues" [ngValue]="value">

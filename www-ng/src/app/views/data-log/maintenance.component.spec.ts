@@ -62,6 +62,11 @@ describe('MaintenanceComponent', () => {
         total_mileage: 888
       },
       {
+        date: 'AVG',
+        daily_mileage: 16.5,
+        total_mileage: 444
+      },
+      {
         date: '20180206',
         daily_mileage: 22,
         total_mileage: 555

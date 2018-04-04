@@ -37,7 +37,7 @@ export const routes: Routes = [
         loadChildren: './views/alert-list/alert-list.module#AlertListModule'
       },
       {
-        path: 'pmn',
+        path: 'pmn/:id',
         loadChildren: './views/pmn/pmn.module#PmnModule'
       },
       {
