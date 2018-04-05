@@ -25,5 +25,5 @@ job:
       - cp src/environments/environment.sample.ts src/environments/environment.ts
       - npm install --silent
     script:
-      - npm lint
-      - npm test --progress false --single-run
+      - npm run lint
+      - npm run test --progress false --single-run
