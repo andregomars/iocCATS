@@ -19,7 +19,7 @@ cache:
 
 job:
     before_script:
-      - npm install -g @angular/cli
+      - npm install --silent -g @angular/cli
       - cd www-ng
       - cp src/environments/environment.sample.ts src/environments/environment.ts
       - npm install
