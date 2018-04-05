@@ -1,17 +1,21 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { AgmMap } from '@agm/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
   templateUrl: 'fleet.component.html'
 })
-export class FleetComponent implements OnInit {
+export class FleetComponent implements OnInit, OnDestroy {
+  spinning = false;
   vehicles = [];
   locations = [];
   temp = [];
+  subData: Subscription;
 
   // style and class
   defaultMapHeight = 300;
@@ -34,18 +38,27 @@ export class FleetComponent implements OnInit {
     this.mapHeight = this.defaultMapHeight;
     this.classResize = this.classDown;
 
-    this.dataService.getFleetById(this.fleetId).subscribe(data => {
-      this.temp = [...data.vehicles];
-      this.vehicles = data.vehicles;
-      this.locations = this.extracLocations(this.vehicles);
-    });
+    this.subData = Observable.timer(0, 30000)
+      .subscribe(() => {
+        this.spinning = true;
+        this.dataService.getFleetById(this.fleetId).subscribe(data => {
+          this.spinning = false;
+          this.temp = [...data.vehicles];
+          this.vehicles = data.vehicles;
+          this.locations = this.extracLocations(this.vehicles);
+        });
+      });
+  }
 
+  ngOnDestroy(): void {
+    this.subData.unsubscribe();
   }
 
   extracLocations(vehicles: Array<any>): Array<any> {
     return vehicles.map(v => {
-      let lat = 0;
-      let lng = 0;
+      // default at LA union station
+      let lat = 34.055597;
+      let lng = -118.233437;
       if (v.gps_location && v.gps_location.length > 0) {
         lat = v.gps_location[0].latitude;
         lng = v.gps_location[0].longitude;

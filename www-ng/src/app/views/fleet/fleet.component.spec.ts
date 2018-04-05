@@ -5,6 +5,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { AppPipeModule } from 'app/pipes/pipes.module';
 import { FleetComponent } from './fleet.component';
@@ -56,6 +57,7 @@ describe('FleetComponent', () => {
         AgmCoreModule,
         AgmJsMarkerClustererModule,
         RouterModule,
+        NgSpinKitModule,
         AppPipeModule,
         ApiModule
       ],

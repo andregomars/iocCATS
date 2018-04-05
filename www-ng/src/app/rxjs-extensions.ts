@@ -1,6 +1,7 @@
 // Observable class extensions
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/timer';
 
 // Observable operators
 import 'rxjs/add/operator/do';

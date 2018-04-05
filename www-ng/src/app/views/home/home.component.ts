@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
-  templateUrl: 'home.component.html',
+  templateUrl: 'home.component.html'
 })
 export class HomeComponent implements OnInit {
   spinning = false;
@@ -22,28 +23,30 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.spinning = true;
-
-    this.data$ = this.dataService.getUserNotification(this.userName)
-      .finally(() => this.spinning = false)
+    this.data$ = Observable.timer(0, 30000)
+      .do(() => this.spinning = true)
+      .switchMap(() =>
+        this.dataService.getUserNotification(this.userName))
+      .do(() => this.spinning = false)
       .share();
 
     this.dataCritical$ = this.data$
-      .concatMap(data => Observable.from(data.alert_notification))
+      .switchMap(data => Observable.from(data.alert_notification))
       .filter(a => a['notification_type'].toLowerCase() === 'critical')
-      .concatMap(a => Observable.from(a['notification_info']))
-      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
+      .map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []));
 
     this.dataGeneral$ = this.data$
-      .concatMap(data => Observable.from(data.alert_notification))
+      .switchMap(data => Observable.from(data.alert_notification))
       .filter(a => a['notification_type'].toLowerCase() === 'general')
-      .concatMap(a => Observable.from(a['notification_info']))
-      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
+      .map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []));
 
     this.dataPmn$ = this.data$
-      .concatMap(data => Observable.from(data.preventive_notification))
-      .concatMap(a => Observable.from(a['notification_info']))
-      .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []);
+      .switchMap(data => Observable.from(data.preventive_notification))
+      .map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []));
 
   }
+
 }

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 import { FleetComponent } from './fleet.component';
 import { FleetRoutingModule } from './fleet-routing.module';
@@ -22,6 +23,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
     NgxDatatableModule,
     AgmCoreModule,
     AgmJsMarkerClustererModule,
+    NgSpinKitModule,
     AppPipeModule
   ],
   declarations: [
