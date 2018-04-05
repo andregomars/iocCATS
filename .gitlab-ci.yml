@@ -1,7 +1,7 @@
 # This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
-image: node:latest
+#image: node:latest
 image: weltn24/up-docker-node-chrome-headless
 
 # Pick zero or more services to be used on all builds.
@@ -25,7 +25,7 @@ job:
       - cd www-ng
       - cp src/environments/environment.sample.ts src/environments/environment.ts
       - npm install --silent
-      - export CHROME_BIN=/usr/bin/chromium-browser
+#      - export CHROME_BIN=/usr/bin/chromium-browser
     script:
       - npm run lint
       - npm run test --progress false --single-run
