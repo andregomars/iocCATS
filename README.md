@@ -4,3 +4,5 @@
 ```bash
 docker run -it --rm -v "$(pwd)":/home/node andregomars/angular-cli sh
 ```
+
+add gitlab CI
