@@ -17,10 +17,12 @@ cache:
   paths:
   - www-ng/node_modules/
 
-before_script:
-  - npm install -g @angular/cli
-  - cd www-ng
-  - cp src/environments/environment.sample.ts src/environments/environment.ts
-  - npm install
-  - npm lint
-  - npm test --progress false --single-run
+job:
+    before_script:
+      - npm install -g @angular/cli
+      - cd www-ng
+      - cp src/environments/environment.sample.ts src/environments/environment.ts
+      - npm install
+    script:
+      - npm lint
+      - npm test --progress false --single-run
