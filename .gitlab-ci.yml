@@ -24,7 +24,7 @@ job:
       - cd www-ng
       - cp src/environments/environment.sample.ts src/environments/environment.ts
       - npm install --silent
-      - export CHROME_HEADLESS=true
+      - export CHROME_BIN=/usr/bin/chromium-browser
     script:
       - npm run lint
       - npm run test --progress false --single-run
