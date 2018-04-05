@@ -19,10 +19,10 @@ cache:
 
 job:
     before_script:
-      - npm install --silent -g @angular/cli
+      - sudo npm install --silent -g @angular/cli
       - cd www-ng
       - cp src/environments/environment.sample.ts src/environments/environment.ts
-      - npm install --silent
+      - sudo npm install --silent
     script:
       - npm lint
       - npm test --progress false --single-run
