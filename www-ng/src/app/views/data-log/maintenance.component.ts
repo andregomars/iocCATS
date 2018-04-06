@@ -94,9 +94,10 @@ export class MaintenanceComponent implements OnInit {
         if (i === 0) {
           copy[k] = 'SUM';
         } else {
-          copy[k] = s[k] + r[k];
+          copy[k] = s[k] + (+r[k].toFixed(1));
         }
       });
+      console.log(copy);
       return copy;
     });
 
@@ -105,7 +106,7 @@ export class MaintenanceComponent implements OnInit {
     average.date = 'AVG';
     for (const prop in average) {
       if ( average.hasOwnProperty(prop) && isNumber(average[prop]) ) {
-        average[prop] = average[prop] / rows.length;
+        average[prop] = (average[prop] / rows.length).toFixed(1);
       }
     }
 

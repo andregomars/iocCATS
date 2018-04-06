@@ -37,7 +37,7 @@ export const navigation = [
         }
       },
       {
-        name: 'Daily Routing',
+        name: 'Daily Routine',
         url: '/datalog/routing',
         badge: {
           variant: 'secondary',
