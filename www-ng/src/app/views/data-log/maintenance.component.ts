@@ -94,10 +94,9 @@ export class MaintenanceComponent implements OnInit {
         if (i === 0) {
           copy[k] = 'SUM';
         } else {
-          copy[k] = s[k] + (+r[k].toFixed(1));
+          copy[k] = s[k] + r[k];
         }
       });
-      console.log(copy);
       return copy;
     });
 
