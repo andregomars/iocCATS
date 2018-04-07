@@ -16,25 +16,15 @@ export class MonthlyReportComponent implements OnInit {
   spinning = false;
   data$: Observable<any>;
   ngxControl: FormControl;
+
   months: Array<string>;
   fleetId = 1;
+  year = 2018;
+  month = 3;
+  resultCount = 10;
   userName = 'iocontrols';
   @ViewChild('table')
   public dataTable: DatatableComponent;
-
-  columns = [
-    { name: 'Date', prop: 'date' },
-    { name: 'Today Mileage', prop: 'total_mileage' },
-    { name: 'Trip Mileage', prop: 'daily_mileage' },
-    { name: 'Engine Idle', prop: 'engine_idle_time' },
-    { name: 'Mpg', prop: 'mpg' },
-    { name: 'Door Usage', prop: 'door_usage' },
-    { name: 'Ramp Usage', prop: 'ramp_usage' },
-    { name: 'Kneel Usage', prop: 'kneel_usage' },
-    { name: 'Havc Usage', prop: 'havc' },
-    { name: 'Wiper Usage', prop: 'wiper' },
-    { name: 'Headlight Usage', prop: 'headlight' }
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,7 +39,8 @@ export class MonthlyReportComponent implements OnInit {
       .do(() => this.spinning = true)
       .concatMap(f => Observable.from(f.vehicles))
       .mergeMap(v =>
-        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName))
+        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+            this.year, this.month, this.resultCount))
       .catch(e => new EmptyObservable())
       .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)

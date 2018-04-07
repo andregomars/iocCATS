@@ -38,7 +38,7 @@ export const navigation = [
       },
       {
         name: 'Daily Routine',
-        url: '/datalog/routing',
+        url: '/datalog/routine',
         badge: {
           variant: 'secondary',
           text: 'LOG'

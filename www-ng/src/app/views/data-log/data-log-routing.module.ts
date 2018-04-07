@@ -20,10 +20,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'routing',
+        path: 'routine',
         component: RoutingComponent,
         data: {
-          title: 'Daily Routing Log'
+          title: 'Daily Routine Log'
         }
       },
       {

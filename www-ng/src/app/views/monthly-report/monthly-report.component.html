@@ -25,13 +25,73 @@
         <div class="card-body">
           <ngx-datatable #table
             class='material'
-            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='data$ | async'>
+            <ngx-datatable-column name="Date" prop="date">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div *ngIf="value == 'SUM' || value == 'AVG'; then t_sum else t_date"></div>
+                <ng-template #t_sum>
+                  {{value}}
+                </ng-template>
+                <ng-template #t_date>
+                  {{value | date:'yyyymm' }}
+                </ng-template>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Today Mileage" prop="total_mileage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Daily Mileage" prop="daily_mileage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Engine Idle" prop="engine_idle_time">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="MPG" prop="mpg">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Door Usage" prop="door_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Ramp Usage" prop="ramp_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Kneel Usage" prop="kneel_usage">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="HVAC usage" prop="havc">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Wiper Usage" prop="wiper">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Headlight Usage" prop="headlight">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
         <div>
