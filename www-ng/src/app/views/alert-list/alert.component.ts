@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { UtilityService } from 'app/services/utility.service';
 import { RemoteDataService } from '../../services/remote-data.service';
 
@@ -10,6 +13,7 @@ import { RemoteDataService } from '../../services/remote-data.service';
   styleUrls: [ 'alert.component.scss' ]
 })
 export class AlertComponent implements OnInit {
+  public modalRef: BsModalRef;
   public defaultModuleIcons: Array<string>;
   public alert$: Observable<any>;
   public locations$: Observable<any>;
@@ -29,18 +33,22 @@ export class AlertComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private utility: UtilityService,
+    private modalService: BsModalService,
     private dataService: RemoteDataService
   ) { }
 
   private userName = 'iocontrols';
+  private alertId = 0;
 
   ngOnInit(): void {
     this.initModuleIcons();
 
     this.alert$ = this.route.paramMap
       .map((params: ParamMap) => params.get('id'))
-      .concatMap(alertId =>
-        this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId))
+      .concatMap(alertId => {
+        this.alertId = +alertId;
+        return this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId);
+      })
       .share();
 
     // this.alertName$ = this.alert$
@@ -65,6 +73,12 @@ export class AlertComponent implements OnInit {
     this.acknowledges$ = this.alert$.map(a => a.ackd_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
     this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    this.dataService.postVehicleAlertSnapshotParams(this.userName, this.alertId);
+    this.alertId = 0;
   }
 
   private initModuleIcons(): void {

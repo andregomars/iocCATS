@@ -19,7 +19,7 @@ export class PmnComponent implements OnInit {
   resets$: Observable<any>;
   user = 'iocontrols';
   vid = 1;
-  // pid = 1;
+  pid = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +31,11 @@ export class PmnComponent implements OnInit {
   ngOnInit(): void {
     this.dataPmn$ = this.route.paramMap
     .map((params: ParamMap) => params.get('id'))
-    .concatMap(pid => this.dataService.getPreventiveMaintNotifInfo(+pid,
-      this.vid, this.user))
+    .concatMap(pid => {
+      this.pid = +pid;
+      return this.dataService.getPreventiveMaintNotifInfo(+pid,
+        this.vid, this.user);
+    })
     .share();
 
     // this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);
@@ -43,6 +46,7 @@ export class PmnComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    console.log('model opend');
+    this.dataService.postPreventiveMaintNotifInfo(this.pid, this.vid, this.user);
+    this.pid = 0;
   }
 }
