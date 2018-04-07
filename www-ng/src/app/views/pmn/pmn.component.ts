@@ -46,7 +46,11 @@ export class PmnComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.dataService.postPreventiveMaintNotifInfo(this.pid, this.vid, this.user);
+    console.log(`post Reset with params - uid: ${this.user}, pid: ${this.pid}, vid: ${this.vid}`);
+    const res = this.dataService.postPreventiveMaintNotifInfo(this.pid, this.vid, this.user);
+    res.subscribe(json => {
+      console.log('Reset result: ' + json);
+    });
     this.pid = 0;
   }
 }

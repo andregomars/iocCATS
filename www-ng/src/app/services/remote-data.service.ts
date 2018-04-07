@@ -146,7 +146,7 @@ export class RemoteDataService {
   }
 
   postPreventiveMaintNotifInfo(preventiveItemId: number,
-    vehicleId: number, username: string): void {
+    vehicleId: number, username: string): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
       const params: VehicleService.UpdatePreventiveNotifItemParams = {
         preventiveItemID: preventiveItemId,
@@ -154,22 +154,22 @@ export class RemoteDataService {
         vehicleId: vehicleId,
         resetStatus: 'reset'
       };
-      this.vehicleService.updatePreventiveNotifItem(params);
+      return this.vehicleService.updatePreventiveNotifItem(params);
     } else {
-      this.http.post<any>(`${ this.rootUrl }/vehicle/preventiveNotifItem/${ vehicleId }`, {});
+      return this.http.post<any>(`${ this.rootUrl }/vehicle/preventiveNotifItem/${ vehicleId }`, {});
     }
   }
 
-  postVehicleAlertSnapshotParams(username: string, alertId: number): void {
+  postVehicleAlertSnapshotParams(username: string, alertId: number): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
       const params: VehicleService.UpdateVehicleAlertSnapshotParams = {
         username: username,
         alertId: alertId,
         ackStatus: 'acknowledged'
       };
-      this.vehicleService.updateVehicleAlertSnapshot(params);
+      return this.vehicleService.updateVehicleAlertSnapshot(params);
     } else {
-      this.http.post<any>(`${ this.rootUrl }/vehicle/alert/${ alertId }`, {});
+      return this.http.post<any>(`${ this.rootUrl }/vehicle/alert/${ alertId }`, {});
     }
   }
 /*

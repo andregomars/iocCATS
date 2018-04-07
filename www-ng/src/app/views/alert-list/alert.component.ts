@@ -77,7 +77,11 @@ export class AlertComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.dataService.postVehicleAlertSnapshotParams(this.userName, this.alertId);
+    console.log(`post Acknowledge with params - userName: ${this.userName}, alertId: ${this.alertId}`);
+    const res = this.dataService.postVehicleAlertSnapshotParams(this.userName, this.alertId);
+    res.subscribe(json => {
+      console.log('Acknowledge result: ' + json);
+    });
     this.alertId = 0;
   }
 
