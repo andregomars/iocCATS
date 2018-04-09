@@ -24,7 +24,7 @@
                 <tr *ngFor="let ctl of pmnSettingArray.controls;
                   let i = index" [formGroupName]="i">
                   <td>
-                    <select formControlName="item_name">
+                    <select style="width:150px" formControlName="item_name">
                       <option *ngFor="let name of itemNames" [value]="name">
                         {{name}}
                       </option>

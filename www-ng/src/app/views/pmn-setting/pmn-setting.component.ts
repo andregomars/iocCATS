@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { FormArray } from '@angular/forms/src/model';
 import { RemoteDataService } from '../../services/remote-data.service';
+import { options } from 'environments/options';
 
 @Component({
   templateUrl: 'pmn-setting.component.html',
@@ -55,9 +56,7 @@ export class PmnSettingComponent implements OnInit {
   }
 
   initSelectOptions(): void {
-    this.itemNames = ['Engine oil', 'Coolant', 'Front door',
-      'Rear door', 'High beam', 'Low beam', 'Door Usage', 'Wiper Usage',
-      'Engine Oil', 'HAVC'];
+    this.itemNames = options.pmn_setting_items;
 
     this.operands = [
       { name: '', value: null },

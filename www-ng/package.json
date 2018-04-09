@@ -10,6 +10,7 @@
     "start": "ng-swagger-gen && ng serve",
     "build": "ng-swagger-gen && ng build",
     "deploy": "ng build --prod -vc false -oh none",
+    "postdeploy": "cd /var/www/html && rm -rf cats-bak && mv cats cats-bak && cp -r ~/CATS/source/iocCATS/www . && mv www cats && cd ~/CATS/source/iocCATS/www-ng",
     "test": "ng-swagger-gen && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
