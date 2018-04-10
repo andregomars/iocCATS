@@ -70,12 +70,14 @@ describe('FleetComponent', () => {
 
   it('should create the app', function() {
     const fixture = TestBed.createComponent(FleetComponent);
+    fixture.detectChanges();
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
  it('should extract location array', function() {
     const fixture = TestBed.createComponent(FleetComponent);
+    fixture.detectChanges();
     const app = fixture.componentInstance;
     const test = app.extracLocations(vehicles);
     const fact = [

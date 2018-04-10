@@ -105,7 +105,7 @@ export class MaintenanceComponent implements OnInit {
     average.date = 'AVG';
     for (const prop in average) {
       if ( average.hasOwnProperty(prop) && isNumber(average[prop]) ) {
-        average[prop] = (average[prop] / rows.length).toFixed(1);
+        average[prop] = +(average[prop] / rows.length).toFixed(1);
       }
     }
 
