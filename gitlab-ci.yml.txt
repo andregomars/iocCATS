@@ -20,12 +20,12 @@ cache:
 
 job:
     before_script:
-      - apt-get update -qy
-      - npm install --silent --unsafe-perm -g @angular/cli
+#      - apt-get update -qy
+#      - npm install --silent --unsafe-perm -g @angular/cli
       - cd www-ng
       - cp src/environments/environment.sample.ts src/environments/environment.ts
-      - npm install --silent
+      - yarn --silent
 #      - export CHROME_BIN=/usr/bin/chromium-browser
     script:
-      - npm run lint
-      - npm run test --progress false --single-run
+      - yarn lint
+      - yarn test --progress false --single-run
