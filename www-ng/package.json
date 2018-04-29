@@ -14,6 +14,7 @@
     "test": "ng-swagger-gen && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json",
     "enc": "cd src/environments && encrypt environment.ts environment.ts.enc",
     "dec": "cd src/environments && decrypt environment.ts.enc environment.ts"
   },
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@angular/cli": "1.6.5",
     "@angular/compiler-cli": "5.2.0",
+    "@compodoc/compodoc": "^1.1.2",
     "@types/jasmine": "2.8.4",
     "@types/node": "9.3.0",
     "codelyzer": "4.1.0",
