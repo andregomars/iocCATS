@@ -35,7 +35,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Time" prop="event_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date:'MM/dd/yyyy HH:mm:ss'}}
+                {{value}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Odometer" prop="odometer">
@@ -61,7 +61,7 @@
             [rows]='resets$ | async'>
             <ngx-datatable-column name="Reset Date" prop="notified_date">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date:'MM/dd/yyyy HH:mm'}}
+                {{value}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="User" prop="username">
@@ -80,7 +80,7 @@
             [rows]='notifications$ | async'>
             <ngx-datatable-column name="Time" prop="notified_date">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date:'MM/dd/yyyy HH:mm'}}
+                {{value}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="User" prop="username">
