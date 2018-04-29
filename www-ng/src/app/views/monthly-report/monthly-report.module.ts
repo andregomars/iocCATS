@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgSpinKitModule } from 'ng-spin-kit';
@@ -16,6 +16,7 @@ import { UtilityService } from 'app/services/utility.service';
     CommonModule,
     HttpClientModule,
     MonthlyReportRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     DpDatePickerModule,
     NgxDatatableModule,

@@ -7,6 +7,7 @@
           <div class="row">
             <div class="col-6 col-lg-3">
               <dp-date-picker mode="month" placeholder="Choose a month..."
+                [(ngModel)]="selectedDate" (close)="updateReport()"
                 [config]="datePickerConfig"
                 ></dp-date-picker>
             </div>
@@ -20,7 +21,7 @@
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='data$ | async'>
+            [rows]='data'>
             <ngx-datatable-column name="Date" prop="date">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div *ngIf="value == 'SUM' || value == 'AVG'; then t_sum else t_date"></div>

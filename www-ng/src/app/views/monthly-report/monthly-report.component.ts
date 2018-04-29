@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
@@ -15,17 +16,16 @@ import * as moment from 'moment';
 @Component({
   templateUrl: 'monthly-report.component.html'
 })
-export class MonthlyReportComponent implements OnInit {
+export class MonthlyReportComponent implements OnInit, OnDestroy {
   spinning = false;
   data$: Observable<any>;
+  sub$: Subscription;
   ngxControl: FormControl;
 
-  selectedDate = '2018-04-29';
+  data: any;
+  selectedDate: moment.Moment;
   datePickerConfig: IDatePickerConfig;
-  months: Array<string>;
   fleetId = 1;
-  year = 2018;
-  month = 3;
   resultCount = 10;
   userName = 'iocontrols';
   @ViewChild('table')
@@ -40,61 +40,55 @@ export class MonthlyReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.initMonthPicker();
+    this.loadReport();
 
-    this.data$ = this.dataService.getFleetById(this.fleetId)
+    // this.data$ = this.dataService.getFleetById(this.fleetId)
+    //   .do(() => this.spinning = true)
+    //   .concatMap(f => Observable.from(f.vehicles))
+    //   .mergeMap(v =>
+    //     this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+    //         this.year, this.month, this.resultCount))
+    //   .catch(e => new EmptyObservable())
+    //   .finally(() => this.spinning = false)
+    //   .map(m => m.maint_info_item)
+    //   .reduce((pre, cur) => [...pre, ...cur]);
+  }
+
+  ngOnDestroy(): void {
+    this.sub$.unsubscribe();
+  }
+
+  loadReport(): void {
+    const year = this.selectedDate.get('year');
+    const month = this.selectedDate.get('month') + 1;
+
+    this.sub$ = this.dataService.getFleetById(this.fleetId)
       .do(() => this.spinning = true)
       .concatMap(f => Observable.from(f.vehicles))
       .mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-            this.year, this.month, this.resultCount))
+            year, month, this.resultCount))
       .catch(e => new EmptyObservable())
       .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)
-      .reduce((pre, cur) => [...pre, ...cur]);
+      .reduce((pre, cur) => [...pre, ...cur])
+      .subscribe(data => this.data = data);
+  }
+
+  updateReport() {
+    console.log(this.selectedDate.get('month'));
+    this.loadReport();
   }
 
   initMonthPicker(): void {
+    this.selectedDate = moment();
     const dateRange = this.utility.getReportDateRange();
     this.datePickerConfig = {
       disableKeypress: true,
       min: moment(dateRange.beginDate),
       max: moment(dateRange.endDate)
-      // min: '2018-02-01',
-      // max: '2018-05-01'
-      // min: '02/01/2018',
-      // max: '05/01/2018'
     };
   }
-
-  // select box section
-  public inputTyped(source: string, text: string) {
-    console.log('SingleDemoComponent.inputTyped', source, text);
-  }
-
-  public doFocus() {
-      console.log('SingleDemoComponent.doFocus');
-  }
-
-  public doBlur() {
-      console.log('SingleDemoComponent.doBlur');
-  }
-
-  public doOpen() {
-      console.log('SingleDemoComponent.doOpen');
-  }
-
-  public doClose() {
-      console.log('SingleDemoComponent.doClose');
-  }
-
-  public doSelect(value: any) {
-      console.log('SingleDemoComponent.doSelect', value);
-  }
-
-  public doRemove(value: any) {
-      console.log('SingleDemoComponent.doRemove', value);
-  }
-  // -----
 
   exportAsCSV() {
     const columns: TableColumn[] = this.dataTable.columns || this.dataTable._internalColumns;
