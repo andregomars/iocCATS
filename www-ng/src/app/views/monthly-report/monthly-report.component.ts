@@ -6,8 +6,11 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { IDatePickerConfig } from 'ng2-date-picker';
 
+import { UtilityService } from 'app/services/utility.service';
 import { RemoteDataService } from '../../services/remote-data.service';
+import * as moment from 'moment';
 
 @Component({
   templateUrl: 'monthly-report.component.html'
@@ -17,6 +20,8 @@ export class MonthlyReportComponent implements OnInit {
   data$: Observable<any>;
   ngxControl: FormControl;
 
+  selectedDate = '2018-04-29';
+  datePickerConfig: IDatePickerConfig;
   months: Array<string>;
   fleetId = 1;
   year = 2018;
@@ -29,11 +34,12 @@ export class MonthlyReportComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
+    private utility: UtilityService,
     private dataService: RemoteDataService
   ) { }
 
   ngOnInit(): void {
-    this.initSelectBox();
+    this.initMonthPicker();
 
     this.data$ = this.dataService.getFleetById(this.fleetId)
       .do(() => this.spinning = true)
@@ -47,9 +53,17 @@ export class MonthlyReportComponent implements OnInit {
       .reduce((pre, cur) => [...pre, ...cur]);
   }
 
-  initSelectBox(): void {
-    this.ngxControl = new FormControl();
-    this.months = ['201802', '201801', '201712'];
+  initMonthPicker(): void {
+    const dateRange = this.utility.getReportDateRange();
+    this.datePickerConfig = {
+      disableKeypress: true,
+      min: moment(dateRange.beginDate),
+      max: moment(dateRange.endDate)
+      // min: '2018-02-01',
+      // max: '2018-05-01'
+      // min: '02/01/2018',
+      // max: '05/01/2018'
+    };
   }
 
   // select box section

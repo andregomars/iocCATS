@@ -5,10 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgSpinKitModule } from 'ng-spin-kit';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { MonthlyReportComponent } from './monthly-report.component';
 import { ApiModule } from '../../api/api.module';
 import { RemoteDataService } from '../../services/remote-data.service';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('MonthlyReportComponent', () => {
   beforeEach(() => {
@@ -20,13 +22,15 @@ describe('MonthlyReportComponent', () => {
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,
+        DpDatePickerModule,
         NgxSelectModule,
         NgxDatatableModule,
         NgSpinKitModule,
         ApiModule
       ],
       providers: [
-        RemoteDataService
+        RemoteDataService,
+        UtilityService
       ]
     });
     TestBed.compileComponents();

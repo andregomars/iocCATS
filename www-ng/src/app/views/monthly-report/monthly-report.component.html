@@ -6,19 +6,9 @@
         <div class="card-header">
           <div class="row">
             <div class="col-6 col-lg-3">
-              <ngx-select [formControl]="ngxControl"
-                class="ioc-dropdown"
-                [allowClear]="true"
-                [items]="months"
-                placeholder="Year & Month ..."
-                (typed)="inputTyped('ngx-select', $event)"
-                (focus)="doFocus()"
-                (blur)="doBlur()"
-                (open)="doOpen()"
-                (close)="doClose()"
-                (select)="doSelect($event)"
-                (remove)="doRemove($event)">
-              </ngx-select>
+              <dp-date-picker mode="month" placeholder="Choose a month..."
+                [config]="datePickerConfig"
+                ></dp-date-picker>
             </div>
           </div>
         </div>

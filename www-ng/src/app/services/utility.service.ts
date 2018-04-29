@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
+import * as moment from 'moment';
 
 @Injectable()
 export class UtilityService {
@@ -42,5 +44,21 @@ export class UtilityService {
 
   getGreyIcons(items: Array<any>): Array<string> {
     return new Array<string>(this.iconCardsCount - items.length % this.iconCardsCount);
+  }
+
+  getReportDateRange(): any {
+    let fallbackMonths = 6;
+    if (environment.reportFallbackMonths &&
+      environment.reportFallbackMonths >= 0) {
+      fallbackMonths = environment.reportFallbackMonths;
+    }
+
+    const endDate = moment().endOf('month');
+    const beginDate = moment().startOf('month').subtract(fallbackMonths, 'months');
+
+    return {
+      beginDate: beginDate.toDate(),
+      endDate: endDate.toDate()
+    };
   }
 }

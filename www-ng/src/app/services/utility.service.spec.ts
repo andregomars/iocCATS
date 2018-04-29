@@ -1,5 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { UtilityService } from './utility.service';
+import * as moment from 'moment';
 
 describe('UtilityService', () => {
   beforeEach(() => {
@@ -23,4 +24,17 @@ describe('UtilityService', () => {
     expect(output).toContain(expectedPath);
   }));
 
+  it('should generate correct configured report date range', inject([UtilityService], (service: UtilityService) => {
+    if (moment().format('yyyyMM') !== '201804') {
+      expect(true);
+    }
+
+    const expected = {
+      beginDate: moment('2018-10-01').startOf('day'),
+      endDate: moment('2018-04-30').endOf('day')
+    };
+    const output = service.getReportDateRange();
+    expect(moment(output.beginDate).format('yyyyMMDD')).toEqual(expected.beginDate.format('yyyyMMDD'));
+    expect(moment(output.endDate).format('yyyyMMDD')).toEqual(expected.endDate.format('yyyyMMDD'));
+  }));
 });

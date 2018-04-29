@@ -109,6 +109,7 @@ export class RemoteDataService {
         username: username,
         year: year,
         month: month,
+        zipPkg: zipPkg as ZipPkg,
         resultCount: resultCount
       };
       return this.vehicleService.getVehicleRoutineLogFile(params);
@@ -123,7 +124,7 @@ export class RemoteDataService {
       const params: VehicleService.GetVehicleDebugLogFileParams = {
         vehicleId: vehicleId,
         username: username,
-        zipPkg: zipPkg,
+        zipPkg: zipPkg as ZipPkg,
         resultCount: resultCount
       };
       return this.vehicleService.getVehicleDebugLogFile(params);
@@ -188,3 +189,5 @@ export class RemoteDataService {
       )
 */
 }
+
+export type ZipPkg = 'yes' | 'no';
