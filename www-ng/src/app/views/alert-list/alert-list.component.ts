@@ -51,11 +51,12 @@ export class AlertListComponent implements OnInit {
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
+    console.log(this.temp);
 
     // filter our data
     const temp = this.temp.filter(row => {
       return row.vehicle_number.toLowerCase().indexOf(val) !== -1
-        || row.alert_name.toLowerCase().indexOf(val) !== -1
+        || row.alert_desc.toLowerCase().indexOf(val) !== -1
         || row.alert_type.toLowerCase().indexOf(val) !== -1
         || row.alert_time.toLowerCase().indexOf(val) !== -1
         || !val;

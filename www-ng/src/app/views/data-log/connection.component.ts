@@ -89,8 +89,8 @@ export class ConnectionComponent implements OnInit {
 
     // filter our data
     const temp = this.temp.filter(row => {
-      return row.bus_number.toLowerCase().indexOf(val) !== -1
-        || row.file_time.toLowerCase().indexOf(val) !== -1
+      return row.vehicle_number.toLowerCase().indexOf(val) !== -1
+        // || row.file_time.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 

@@ -26,7 +26,7 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
   selectedDate: moment.Moment;
   datePickerConfig: IDatePickerConfig;
   fleetId = 1;
-  resultCount = 10;
+  resultCount = 0;
   userName = 'iocontrols';
   @ViewChild('table')
   public dataTable: DatatableComponent;
@@ -41,17 +41,6 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initMonthPicker();
     this.loadReport();
-
-    // this.data$ = this.dataService.getFleetById(this.fleetId)
-    //   .do(() => this.spinning = true)
-    //   .concatMap(f => Observable.from(f.vehicles))
-    //   .mergeMap(v =>
-    //     this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-    //         this.year, this.month, this.resultCount))
-    //   .catch(e => new EmptyObservable())
-    //   .finally(() => this.spinning = false)
-    //   .map(m => m.maint_info_item)
-    //   .reduce((pre, cur) => [...pre, ...cur]);
   }
 
   ngOnDestroy(): void {
