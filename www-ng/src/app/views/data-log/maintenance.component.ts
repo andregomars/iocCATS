@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { IMyDrpOptions } from 'mydaterangepicker';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { IMyDrpOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BaseChartDirective } from 'ng2-charts';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { IDatePickerConfig } from 'ng2-date-picker';
+import * as moment from 'moment';
+
+import { UtilityService } from 'app/services/utility.service';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { RemoteDataService } from '../../services/remote-data.service';
 import { isNumber } from 'util';
@@ -11,7 +17,7 @@ import { isNumber } from 'util';
   templateUrl: 'maintenance.component.html',
   styleUrls: [ './maintenance.component.scss' ]
 })
-export class MaintenanceComponent implements OnInit {
+export class MaintenanceComponent implements OnInit, OnDestroy {
   spinning = false;
 
   // barChart
@@ -20,7 +26,13 @@ export class MaintenanceComponent implements OnInit {
   public barChartLabels: string[];
   public tableData$: Observable<any>;
   public myForm: FormGroup;
-  public chart$: Observable<any>;
+  public vehicleId = 0;
+  public selectedDate: moment.Moment;
+  public datePickerConfig: IDatePickerConfig;
+  // public chart$: Observable<any>;
+
+  @ViewChild('chartSocRange')
+  chart: BaseChartDirective;
 
   rowsMaintenance = [];
   colsMaintenance = [
@@ -46,40 +58,76 @@ export class MaintenanceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
+    private utility: UtilityService,
     private dataService: RemoteDataService
   ) { }
 
   private userName = 'iocontrols';
   private fleetId = 1;
   private resultCount = 10;
-  private year = 2018;
-  private month = 3;
+
+  private subChart$: Subscription;
 
   ngOnInit(): void {
     // init date range picker
-    this.myForm = this.formBuilder.group({
-      myDateRange: [{
-        beginDate: { year: 2018, month: 3, day: 1 },
-        endDate: { year: 2018, month: 3, day: 6 }
-      }, Validators.required]
-    });
+    // this.myForm = this.formBuilder.group({
+    //   myDateRange: [{
+    //     beginDate: { year: 2018, month: 3, day: 1 },
+    //     endDate: { year: 2018, month: 3, day: 6 }
+    //   }, Validators.required]
+    // });
 
     // retrive data source
-    this.chart$ = this.dataService.getFleetById(this.fleetId)
+    // this.chart$ = this.dataService.getFleetById(this.fleetId)
+    //   .do(() => this.spinning = true)
+    //   .concatMap(f => { return Observable.from(f.vehicles); })
+    //   .mergeMap(v =>
+    //     this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+    //       this.year, this.month, this.resultCount))
+    //   .catch(() => new EmptyObservable())
+    //   .finally(() => this.spinning = false)
+    //   .map(m => m.maint_info_item)
+    //   .reduce((pre, cur) => [...pre, ...cur])
+    //   .share();
+
+    this.initMonthPicker();
+    this.initChartOptions();
+    this.loadChartData();
+    this.loadTableData();
+  }
+
+  ngOnDestroy(): void {
+    this.subChart$.unsubscribe();
+  }
+
+  initMonthPicker(): void {
+    this.selectedDate = moment();
+    const dateRange = this.utility.getReportDateRange();
+    this.datePickerConfig = {
+      disableKeypress: true,
+      min: moment(dateRange.beginDate),
+      max: moment(dateRange.endDate)
+    };
+  }
+
+  getDataObservable(vid: number, year: number, month: number) {
+    return this.dataService.getFleetById(this.fleetId)
       .do(() => this.spinning = true)
-      .concatMap(f => { return Observable.from(f.vehicles); })
+      .concatMap(f => {
+        if (vid > 0) {
+          return f.vehicles.filter(v => v['vehicle_id'] === vid);
+        } else {
+          return Observable.from(f.vehicles);
+        }
+      })
       .mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-          this.year, this.month, this.resultCount))
+          year, month, this.resultCount))
       .catch(() => new EmptyObservable())
       .finally(() => this.spinning = false)
       .map(m => m.maint_info_item)
       .reduce((pre, cur) => [...pre, ...cur])
       .share();
-
-    this.initChartOptions();
-    this.initChartData();
-    this.initTableData();
   }
 
   attachSummaryRow(rows: Array<any>): Array<any> {
@@ -114,13 +162,20 @@ export class MaintenanceComponent implements OnInit {
     return rows;
   }
 
-  initTableData(): void {
-    this.tableData$ = this.chart$
+  loadTableData(): void {
+    const year = this.selectedDate.get('year');
+    const month = this.selectedDate.get('month') + 1;
+
+    this.tableData$ = this.getDataObservable(this.vehicleId, year, month)
       .map(r => this.attachSummaryRow(r));
   }
 
-  initChartData(): void {
-    this.chart$.subscribe(logs => {
+  loadChartData(): void {
+    const year = this.selectedDate.get('year');
+    const month = this.selectedDate.get('month') + 1;
+
+    this.subChart$ = this.getDataObservable(this.vehicleId, year, month)
+    .subscribe(logs => {
       const xLabels = logs.map(r => r.date);
 
       this.barChartLabels = xLabels;
@@ -146,6 +201,8 @@ export class MaintenanceComponent implements OnInit {
             yAxisID: 'yMPG',
           },
         ];
+
+      // this.chart.chart.update();
     });
   }
 
@@ -241,6 +298,27 @@ export class MaintenanceComponent implements OnInit {
   clearDateRange(): void {
       // Clear the date range using the patchValue function
       this.myForm.patchValue({myDateRange: ''});
+  }
+
+  onDateRangeChanged(event: IMyDateRangeModel): void {
+    if (event.beginJsDate && event.endJsDate) {
+      console.log(event.beginJsDate);
+      console.log(event.endJsDate);
+    }
+  }
+
+  reloadData(): void {
+    this.loadChartData();
+    this.loadTableData();
+  }
+
+  updateFilter(event) {
+    const val = event.target.value;
+
+    if (!isNaN(val) && +val > 0) {
+      this.vehicleId = +val;
+      this.reloadData();
+    }
   }
 
 }

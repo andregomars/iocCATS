@@ -8,10 +8,10 @@ import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { IDatePickerConfig } from 'ng2-date-picker';
+import * as moment from 'moment';
 
 import { UtilityService } from 'app/services/utility.service';
 import { RemoteDataService } from '../../services/remote-data.service';
-import * as moment from 'moment';
 
 @Component({
   templateUrl: 'monthly-report.component.html'
@@ -62,11 +62,6 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
       .map(m => m.maint_info_item)
       .reduce((pre, cur) => [...pre, ...cur])
       .subscribe(data => this.data = data);
-  }
-
-  updateReport() {
-    console.log(this.selectedDate.get('month'));
-    this.loadReport();
   }
 
   initMonthPicker(): void {
