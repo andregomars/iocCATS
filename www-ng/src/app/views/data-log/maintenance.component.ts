@@ -97,7 +97,9 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subChart$.unsubscribe();
+    if (this.subChart$) {
+      this.subChart$.unsubscribe();
+    }
   }
 
   initMonthPicker(): void {

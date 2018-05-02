@@ -13,8 +13,8 @@
               />
             </div>
             <div class="col col-md-1 col-lg-3"></div>
-            <div class="col-12 col-md-6">
-                <ngx-select [formControl]="ngxControl"
+            <div class="col-12 col-md-6 text-right">
+                <!-- <ngx-select [formControl]="ngxControl"
                   class="ioc-dropdown"
                   [allowClear]="true"
                   [items]="months"
@@ -26,7 +26,11 @@
                   (close)="doClose()"
                   (select)="doSelect($event)"
                   (remove)="doRemove($event)">
-                </ngx-select>
+                </ngx-select> -->
+                <dp-date-picker mode="month" placeholder="Choose a month..."
+                  [(ngModel)]="selectedDate" (close)="loadData()"
+                  [config]="datePickerConfig">
+                </dp-date-picker>
             </div>
           </div>
         </div>
@@ -38,7 +42,7 @@
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [limit]="10"
-            [rows]='routingLogs'>
+            [rows]='data'>
             <ngx-datatable-column name="File Time" prop="end_time">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}

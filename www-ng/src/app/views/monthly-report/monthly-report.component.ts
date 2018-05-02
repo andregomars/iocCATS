@@ -44,7 +44,9 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub$.unsubscribe();
+    if (this.sub$) {
+      this.sub$.unsubscribe();
+    }
   }
 
   loadReport(): void {
