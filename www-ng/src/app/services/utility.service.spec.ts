@@ -27,6 +27,7 @@ describe('UtilityService', () => {
   it('should generate correct configured report date range', inject([UtilityService], (service: UtilityService) => {
     if (moment().format('yyyyMM') !== '201804') {
       expect(true);
+      return;
     }
 
     const expected = {

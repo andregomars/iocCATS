@@ -1,12 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { RoutingComponent } from './routing.component';
 import { RemoteDataService } from '../../services/remote-data.service';
 import { ApiModule } from '../../api/api.module';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('RoutingComponent', () => {
   beforeEach(() => {
@@ -16,12 +18,15 @@ describe('RoutingComponent', () => {
       ],
       imports: [
         HttpClientModule,
+        FormsModule,
         ReactiveFormsModule,
+        DpDatePickerModule,
         NgxSelectModule,
         NgxDatatableModule,
         ApiModule
       ],
       providers: [
+        UtilityService,
         RemoteDataService
       ]
     });

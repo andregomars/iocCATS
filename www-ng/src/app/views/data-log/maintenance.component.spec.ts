@@ -1,14 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSpinKitModule } from 'ng-spin-kit';
+import { DpDatePickerModule } from 'ng2-date-picker';
+import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaintenanceComponent } from './maintenance.component';
-import { ChartsModule } from 'ng2-charts';
-import { MyDateRangePickerModule } from 'mydaterangepicker';
-import { HttpClientModule } from '@angular/common/http';
 import { RemoteDataService } from '../../services/remote-data.service';
 import { ApiModule } from '../../api/api.module';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('MaintenanceComponent', () => {
   beforeEach(() => {
@@ -20,12 +21,14 @@ describe('MaintenanceComponent', () => {
         HttpClientModule,
         NgxDatatableModule,
         ChartsModule,
-        MyDateRangePickerModule,
+        FormsModule,
         ReactiveFormsModule,
         NgSpinKitModule,
+        DpDatePickerModule,
         ApiModule
       ],
       providers: [
+        UtilityService,
         RemoteDataService
       ]
     });

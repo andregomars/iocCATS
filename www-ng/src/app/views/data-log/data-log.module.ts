@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgxSelectModule } from 'ngx-select-ex';
@@ -23,7 +22,6 @@ import { UtilityService } from 'app/services/utility.service';
     ChartsModule,
     NgxDatatableModule,
     NgxSelectModule,
-    MyDateRangePickerModule,
     NgSpinKitModule,
     DpDatePickerModule,
     FormsModule,

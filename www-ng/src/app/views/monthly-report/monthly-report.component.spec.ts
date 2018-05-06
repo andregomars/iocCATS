@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgSpinKitModule } from 'ng-spin-kit';
@@ -22,6 +22,7 @@ describe('MonthlyReportComponent', () => {
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,
+        FormsModule,
         DpDatePickerModule,
         NgxSelectModule,
         NgxDatatableModule,

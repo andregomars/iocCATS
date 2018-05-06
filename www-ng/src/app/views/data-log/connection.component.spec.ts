@@ -7,6 +7,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
 import { ConnectionComponent } from './connection.component';
 import { RemoteDataService } from '../../services/remote-data.service';
 import { ApiModule } from '../../api/api.module';
+import { UtilityService } from 'app/services/utility.service';
 
 describe('ConnectionComponent', () => {
   beforeEach(() => {
@@ -22,6 +23,7 @@ describe('ConnectionComponent', () => {
         ApiModule
       ],
       providers: [
+        UtilityService,
         RemoteDataService
       ]
     });
