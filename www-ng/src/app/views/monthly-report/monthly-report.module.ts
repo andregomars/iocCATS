@@ -6,6 +6,7 @@ import { NgSpinKitModule } from 'ng-spin-kit';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { PapaParseModule } from 'ngx-papaparse';
 
 import { MonthlyReportComponent } from './monthly-report.component';
 import { MonthlyReportRoutingModule } from './monthly-report-routing.module';
@@ -21,6 +22,7 @@ import { UtilityService } from 'app/services/utility.service';
     DpDatePickerModule,
     NgxDatatableModule,
     NgSpinKitModule,
+    PapaParseModule,
     NgxSelectModule
   ],
   declarations: [ MonthlyReportComponent ],

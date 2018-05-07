@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable,  Subscription, from } from 'rxjs';
+import { concatMap, reduce, mergeMap, catchError } from 'rxjs/operators';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { IDatePickerConfig } from 'ng2-date-picker';
 import * as moment from 'moment';
@@ -45,19 +45,20 @@ export class ConnectionComponent implements OnInit, OnDestroy {
     const month = this.selectedDate.get('month') + 1;
 
     this.sub$ = this.dataService.getFleetById(this.fleetId)
-      // map each vehicle to a stream
-      .concatMap(f => { return Observable.from(f.vehicles); })
-      // fetch each vehicle data
-      .mergeMap(v =>
-        // this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['vehicle_id'] }.json`))
-        this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName,
-          null, 100))
-      // ignore when one of vehicles not found
-      .catch(() => new EmptyObservable())
-      // combine multiple arrays into a single array
-      .reduce((pre, cur) => [...pre, ...cur] )
+      .pipe(
+        // map each vehicle to a stream
+        concatMap(f => { return from(f.vehicles); })
+        // fetch each vehicle data
+        ,mergeMap(v =>
+          // this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['vehicle_id'] }.json`))
+          this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName,
+            null, 100))
+        // ignore when one of vehicles not found
+        ,catchError(() => new EmptyObservable())
+        // combine multiple arrays into a single array
+        ,reduce((pre, cur) => [...pre, ...cur] )
+      )
       .subscribe(data => {
-        console.log(data);
         this.data = data;
         this.temp = this.data;
       });

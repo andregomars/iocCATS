@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
 import { AgmMap } from '@agm/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription, Observable, of, timer } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 import { RemoteDataService } from '../../services/remote-data.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class FleetComponent implements OnInit, OnDestroy {
   vehicles = [];
   locations = [];
   temp = [];
-  subData: Subscription;
+  subData$: Subscription;
 
   // style and class
   defaultMapHeight = 300;
@@ -38,7 +38,7 @@ export class FleetComponent implements OnInit, OnDestroy {
     this.mapHeight = this.defaultMapHeight;
     this.classResize = this.classDown;
 
-    this.subData = Observable.timer(0, 30000)
+    this.subData$ = timer(0, 30000)
       .subscribe(() => {
         this.spinning = true;
         this.dataService.getFleetById(this.fleetId).subscribe(data => {
@@ -51,7 +51,7 @@ export class FleetComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subData.unsubscribe();
+    this.subData$.unsubscribe();
   }
 
   extracLocations(vehicles: Array<any>): Array<any> {
@@ -73,6 +73,11 @@ export class FleetComponent implements OnInit, OnDestroy {
 
   resizeMap($event): void {
     $event.preventDefault();
+
+    if (!this.map) {
+      return;
+    }
+
     this.mapHeight = this.mapHeight === this.defaultMapHeight ?
       this.defaultMapHeight * 2 : this.defaultMapHeight;
     this.map.triggerResize();

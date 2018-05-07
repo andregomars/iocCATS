@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable ,  Subscription, from } from 'rxjs';
+import { concatMap, map, reduce, mergeMap, catchError } from 'rxjs/operators';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { IDatePickerConfig } from 'ng2-date-picker';
 import * as moment from 'moment';
@@ -37,23 +37,6 @@ export class RoutingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initMonthPicker();
-
-    // this.dataService.getFleetById(this.fleetId)
-    //   // map each vehicle to a stream
-    //   .concatMap(f => { return Observable.from(f.vehicles); })
-    //   // fetch each vehicle data
-    //   .mergeMap(v =>
-    //     this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName,
-    //       null, this.year, this.month, this.resultCount))
-    //   .map(m => m.maint_log_file_item.map(r => Object.assign(r, {vehicle_number: m.vehicle_name})))
-    //   // ignore when one of vehicles not found
-    //   .catch(() => new EmptyObservable())
-    //   // combine multiple arrays into a single array
-    //   .reduce((pre, cur) => [...pre, ...cur] )
-    //   .subscribe(data => {
-    //     this.routingLogs = data;
-    //     this.temp = this.routingLogs;
-    //   });
   }
 
   ngOnDestroy(): void {
@@ -67,17 +50,19 @@ export class RoutingComponent implements OnInit, OnDestroy {
     const month = this.selectedDate.get('month') + 1;
 
     this.sub$ = this.dataService.getFleetById(this.fleetId)
-      // map each vehicle to a stream
-      .concatMap(f => { return Observable.from(f.vehicles); })
-      // fetch each vehicle data
-      .mergeMap(v =>
-        this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName,
-          null, year, month, 0))
-      .map(m => m.maint_log_file_item.map(r => Object.assign(r, {vehicle_number: m.vehicle_name})))
-      // ignore when one of vehicles not found
-      .catch(() => new EmptyObservable())
-      // combine multiple arrays into a single array
-      .reduce((pre, cur) => [...pre, ...cur] )
+      .pipe(
+        // map each vehicle to a stream
+        concatMap(f => { return from(f.vehicles); })
+        // fetch each vehicle data
+        ,mergeMap(v =>
+          this.dataService.getVehicleRoutineLogFile(v['vehicle_id'], this.userName,
+            null, year, month, 0))
+        ,map(m => m.maint_log_file_item.map(r => Object.assign(r, {vehicle_number: m.vehicle_name})))
+        // ignore when one of vehicles not found
+        ,catchError(() => new EmptyObservable())
+        // combine multiple arrays into a single array
+        ,reduce((pre, cur) => [...pre, ...cur] )
+      )
       .subscribe(data => {
         this.data = data;
         this.temp = this.data;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 import { UserService, FleetService,
@@ -35,7 +35,7 @@ export class RemoteDataService {
 
   getUserNotification(userName: string): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
-      return this.userService.getUserNotification(userName);
+      return Object.assign(this.userService.getUserNotification(userName));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`)
         .delay(this.delayEmulatorTimer);
@@ -44,7 +44,7 @@ export class RemoteDataService {
 
   getFleetById(fleetId: number): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
-      return this.fleetService.getFleetById(fleetId);
+      return Object.assign(this.fleetService.getFleetById(fleetId));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/fleet/${ fleetId }.json`);
     }
@@ -52,7 +52,7 @@ export class RemoteDataService {
 
   getVehicleById(vehicleId: number): Observable<any> {
     if (this.sourceType === DataSourceType.Swagger) {
-      return this.vehicleService.getVehicleById(vehicleId);
+      return Object.assign(this.vehicleService.getVehicleById(vehicleId));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/${ vehicleId }.json`);
     }
@@ -66,7 +66,7 @@ export class RemoteDataService {
         username: username,
         vehicleId: vehicleId
       };
-      return this.vehicleService.getPreventiveMaintNotifInfo(params);
+      return Object.assign(this.vehicleService.getPreventiveMaintNotifInfo(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/preventiveNotifItem/${ vehicleId }.json`);
     }
@@ -78,7 +78,7 @@ export class RemoteDataService {
         username: username,
         alertId: alertId
       };
-      return this.alertService.getVehicleAlertSnapshot(params);
+      return Object.assign(this.alertService.getVehicleAlertSnapshot(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/alert/${ alertId }.json`);
     }
@@ -94,7 +94,7 @@ export class RemoteDataService {
         month: month,
         resultCount: resultCount
       };
-      return this.vehicleService.getVehicleMaintLogInfo(params);
+      return Object.assign(this.vehicleService.getVehicleMaintLogInfo(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/maintLogInfo/${ vehicleId }.json`)
         .delay(this.delayEmulatorTimer);
@@ -112,7 +112,7 @@ export class RemoteDataService {
         zipPkg: zipPkg as ZipPkg,
         resultCount: resultCount
       };
-      return this.vehicleService.getVehicleRoutineLogFile(params);
+      return Object.assign(this.vehicleService.getVehicleRoutineLogFile(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/routingLogFileInfo/${ vehicleId }.json`);
     }
@@ -127,7 +127,7 @@ export class RemoteDataService {
         zipPkg: zipPkg as ZipPkg,
         resultCount: resultCount
       };
-      return this.vehicleService.getVehicleDebugLogFile(params);
+      return Object.assign(this.vehicleService.getVehicleDebugLogFile(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/debugLogFileInfo/${ vehicleId }.json`);
     }
@@ -140,7 +140,7 @@ export class RemoteDataService {
         vehicleId: vehicleId,
         username: username
       };
-      return this.vehicleService.getVehicleMaintSetting(params);
+      return Object.assign(this.vehicleService.getVehicleMaintSetting(params));
     } else {
       return this.http.get<any>(`${ this.rootUrl }/vehicle/preventiveNotifItemSetting/${ vehicleId }.json`);
     }
@@ -155,7 +155,7 @@ export class RemoteDataService {
         vehicleId: vehicleId,
         resetStatus: 'reset'
       };
-      return this.vehicleService.updatePreventiveNotifItem(params);
+      return Object.assign(this.vehicleService.updatePreventiveNotifItem(params));
     } else {
       return this.http.post<any>(`${ this.rootUrl }/vehicle/preventiveNotifItem/${ vehicleId }`, {});
     }
@@ -168,26 +168,12 @@ export class RemoteDataService {
         alertId: alertId,
         ackStatus: 'acknowledged'
       };
-      return this.vehicleService.updateVehicleAlertSnapshot(params);
+      return Object.assign(this.vehicleService.updateVehicleAlertSnapshot(params));
     } else {
       return this.http.post<any>(`${ this.rootUrl }/vehicle/alert/${ alertId }`, {});
     }
   }
-/*
-    this.alert$ = this.route.paramMap
-      .map((params: ParamMap) => params.get('vid'))
-      .concatMap(vid =>
-        this.http.get<any>(`assets/data/vehicle/${ vid }.json`))
-      .concatMap(v =>
-        this.http.get<any>(`assets/data/vehicle/alert/${ v.alert_list[0].alert_id }.json`));
 
-    this.locations$ = this.alert$
-      .concatMap(alert =>
-        this.http.get<any>(`assets/data/fleet/${ alert.fleet_id }.json`)
-          .concatMap(f => Observable.from(f.vehicles))
-          .filter(v => v['bus_number'] === alert.vehicle_id)
-      )
-*/
 }
 
 export type ZipPkg = 'yes' | 'no';

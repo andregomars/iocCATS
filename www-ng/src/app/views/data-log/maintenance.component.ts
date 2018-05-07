@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { IMyDrpOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BaseChartDirective } from 'ng2-charts';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription, from } from 'rxjs';
+import { concatMap, tap, mergeMap, map, reduce, share, catchError, finalize } from 'rxjs/operators';
 import { IDatePickerConfig } from 'ng2-date-picker';
 import * as moment from 'moment';
 
@@ -49,12 +48,6 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
     { name: 'Headlight Usage', prop: 'headlight' }
  ];
 
-  myDateRangePickerOptions: IMyDrpOptions = {
-      dateFormat: 'mm/dd/yyyy',
-      height: '34px',
-      width: '250px'
-  };
-
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -69,27 +62,6 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
   private subChart$: Subscription;
 
   ngOnInit(): void {
-    // init date range picker
-    // this.myForm = this.formBuilder.group({
-    //   myDateRange: [{
-    //     beginDate: { year: 2018, month: 3, day: 1 },
-    //     endDate: { year: 2018, month: 3, day: 6 }
-    //   }, Validators.required]
-    // });
-
-    // retrive data source
-    // this.chart$ = this.dataService.getFleetById(this.fleetId)
-    //   .do(() => this.spinning = true)
-    //   .concatMap(f => { return Observable.from(f.vehicles); })
-    //   .mergeMap(v =>
-    //     this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-    //       this.year, this.month, this.resultCount))
-    //   .catch(() => new EmptyObservable())
-    //   .finally(() => this.spinning = false)
-    //   .map(m => m.maint_info_item)
-    //   .reduce((pre, cur) => [...pre, ...cur])
-    //   .share();
-
     this.initMonthPicker();
     this.initChartOptions();
     this.loadChartData();
@@ -114,22 +86,24 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
 
   getDataObservable(vid: number, year: number, month: number) {
     return this.dataService.getFleetById(this.fleetId)
-      .do(() => this.spinning = true)
-      .concatMap(f => {
-        if (vid > 0) {
-          return f.vehicles.filter(v => v['vehicle_id'] === vid);
-        } else {
-          return Observable.from(f.vehicles);
-        }
-      })
-      .mergeMap(v =>
-        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-          year, month, this.resultCount))
-      .catch(() => new EmptyObservable())
-      .finally(() => this.spinning = false)
-      .map(m => m.maint_info_item)
-      .reduce((pre, cur) => [...pre, ...cur])
-      .share();
+      .pipe(
+        tap(() => this.spinning = true)
+        ,concatMap(f => {
+          if (vid > 0) {
+            return f.vehicles.filter(v => v['vehicle_id'] === vid);
+          } else {
+            return from(f.vehicles);
+          }
+        })
+        ,mergeMap(v =>
+          this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+            year, month, this.resultCount))
+        ,catchError(() => new EmptyObservable())
+        ,finalize(() => this.spinning = false)
+        ,map(m => m.maint_info_item)
+        ,reduce((pre, cur) => [...pre, ...cur])
+        ,share()
+      );
   }
 
   attachSummaryRow(rows: Array<any>): Array<any> {
@@ -300,13 +274,6 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
   clearDateRange(): void {
       // Clear the date range using the patchValue function
       this.myForm.patchValue({myDateRange: ''});
-  }
-
-  onDateRangeChanged(event: IMyDateRangeModel): void {
-    if (event.beginJsDate && event.endJsDate) {
-      console.log(event.beginJsDate);
-      console.log(event.endJsDate);
-    }
   }
 
   reloadData(): void {

@@ -6,6 +6,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgSpinKitModule } from 'ng-spin-kit';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { PapaParseModule } from 'ngx-papaparse';
 
 import { MonthlyReportComponent } from './monthly-report.component';
 import { ApiModule } from '../../api/api.module';
@@ -23,6 +24,7 @@ describe('MonthlyReportComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
+        PapaParseModule,
         DpDatePickerModule,
         NgxSelectModule,
         NgxDatatableModule,

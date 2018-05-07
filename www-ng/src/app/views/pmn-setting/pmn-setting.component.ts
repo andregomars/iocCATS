@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup,
   FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { FormArray } from '@angular/forms/src/model';
 import { RemoteDataService } from '../../services/remote-data.service';
