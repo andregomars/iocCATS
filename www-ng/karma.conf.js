@@ -40,11 +40,11 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     // browsers: ['Chrome', 'ChromeHeadless'],
-    browsers: ['ChromeHeadlessNoSandbox'],
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        // flags: ['--no-sandbox']
+        flags: ['--no-sandbox']
       }
     },
     singleRun: false,
