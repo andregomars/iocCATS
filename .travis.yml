@@ -21,7 +21,9 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq yarn
   - yarn global add @angular/cli --no-progress
-
+  - # start your web application and listen on `localhost`
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  
 install:
   - cd www-ng
   - cp src/environments/environment.sample.ts src/environments/environment.ts
