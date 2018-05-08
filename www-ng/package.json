@@ -48,7 +48,7 @@
     "ngx-papaparse": "^2.1.0",
     "ngx-select-ex": "^3.3.10",
     "rxjs": "6",
-    "rxjs-compat": "6",
+    "rxjs-compat": "^6.1.0",
     "simple-line-icons": "^2.4.1",
     "ts-helpers": "1.1.2",
     "zone.js": "0.8.20"
