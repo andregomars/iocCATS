@@ -30,4 +30,4 @@ job:
 #      - export CHROME_BIN=/usr/bin/chromium-browser
     script:
       - yarn lint
-      - yarn test --progress false --single-run
+      - yarn test --progress false 

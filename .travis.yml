@@ -30,4 +30,4 @@ install:
 script: 
   - yarn lint
 #  - yarn build --progress false
-  - yarn test --progress false --single-run
+  - yarn test --progress false 
