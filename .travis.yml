@@ -8,8 +8,6 @@ node_js:
 addons:
   chrome: stable
 
-#before_install:
-#  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 cache:
   yarn: true
   directories:
@@ -22,7 +20,7 @@ before_install:
   - sudo apt-get install -y -qq yarn
   - yarn global add @angular/cli --no-progress
   - # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:9876
+  - # google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:9876
   
 install:
   - cd www-ng
