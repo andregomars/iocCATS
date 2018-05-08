@@ -21,6 +21,7 @@ export const environment = {
   },
   apiRootLocal: 'assets/data',
   apiRootIocCATS: 'http://localhost/api/rest/v1',
+  reportFallbackMonths: 3,
   delayEmulatorTimer: 2000,
   dataSource: DataSourceType.Firebase
 };
