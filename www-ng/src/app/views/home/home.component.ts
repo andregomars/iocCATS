@@ -25,32 +25,35 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.data$ = timer(0, 30000).pipe(
-      tap(() => this.spinning = true)
-      ,switchMap(() =>
-        this.dataService.getUserNotification(this.userName))
-      ,tap(() => this.spinning = false)
-      ,share()
+      tap(() => this.spinning = true),
+      switchMap(() =>
+        this.dataService.getUserNotification(this.userName)),
+      tap(() => this.spinning = false),
+      share()
     );
 
     this.dataCritical$ = this.data$.pipe(
-      switchMap(data => from(data.alert_notification))
-      ,filter(a => a['notification_type'].toLowerCase() === 'critical')
-      ,map(a => (a['notification_info'] as Array<any>)
-        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []))
+      switchMap(data => from(data.alert_notification)),
+      filter(a => a['notification_type'].toLowerCase() === 'critical'),
+      map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], [])
+      )
     );
 
     this.dataGeneral$ = this.data$.pipe(
-      switchMap(data => from(data.alert_notification))
-      ,filter(a => a['notification_type'].toLowerCase() === 'general')
-      ,map(a => (a['notification_info'] as Array<any>)
-        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []))
-    )
+      switchMap(data => from(data.alert_notification)),
+      filter(a => a['notification_type'].toLowerCase() === 'general'),
+      map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], [])
+      )
+    );
 
     this.dataPmn$ = this.data$.pipe(
-      switchMap(data => from(data.preventive_notification))
-      ,map(a => (a['notification_info'] as Array<any>)
-        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], []))
-    )
+      switchMap(data => from(data.preventive_notification)),
+      map(a => (a['notification_info'] as Array<any>)
+        .reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], [])
+      )
+    );
 
   }
 

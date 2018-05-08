@@ -85,25 +85,24 @@ export class MaintenanceComponent implements OnInit, OnDestroy {
   }
 
   getDataObservable(vid: number, year: number, month: number) {
-    return this.dataService.getFleetById(this.fleetId)
-      .pipe(
-        tap(() => this.spinning = true)
-        ,concatMap(f => {
-          if (vid > 0) {
-            return f.vehicles.filter(v => v['vehicle_id'] === vid);
-          } else {
-            return from(f.vehicles);
-          }
-        })
-        ,mergeMap(v =>
-          this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-            year, month, this.resultCount))
-        ,catchError(() => new EmptyObservable())
-        ,finalize(() => this.spinning = false)
-        ,map(m => m.maint_info_item)
-        ,reduce((pre, cur) => [...pre, ...cur])
-        ,share()
-      );
+    return this.dataService.getFleetById(this.fleetId).pipe(
+      tap(() => this.spinning = true),
+      concatMap(f => {
+        if (vid > 0) {
+          return f.vehicles.filter(v => v['vehicle_id'] === vid);
+        } else {
+          return from(f.vehicles);
+        }
+      }),
+      mergeMap(v =>
+        this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
+          year, month, this.resultCount)),
+      catchError(() => new EmptyObservable()),
+      finalize(() => this.spinning = false),
+      map(m => m.maint_info_item),
+      reduce((pre, cur) => [...pre, ...cur]),
+      share()
+    );
   }
 
   attachSummaryRow(rows: Array<any>): Array<any> {

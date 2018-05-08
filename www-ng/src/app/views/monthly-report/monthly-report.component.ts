@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable ,  Subscription, from } from 'rxjs';
+import { Observable, Subscription, from } from 'rxjs';
 import { concatMap, tap, mergeMap, catchError, map, reduce, finalize } from 'rxjs/operators';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
@@ -55,19 +55,18 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
     const year = this.selectedDate.get('year');
     const month = this.selectedDate.get('month') + 1;
 
-    this.sub$ = this.dataService.getFleetById(this.fleetId)
-    .pipe(
-      tap(() => this.spinning = true)
-      ,concatMap(f => from(f.vehicles))
-      ,mergeMap(v =>
+    this.sub$ = this.dataService.getFleetById(this.fleetId).pipe(
+      tap(() => this.spinning = true),
+      concatMap(f => from(f.vehicles)),
+      mergeMap(v =>
         this.dataService.getVehicleMaintLogInfo(v['vehicle_id'], this.userName,
-            year, month, this.resultCount))
-      ,catchError(e => new EmptyObservable())
-      ,finalize(() => this.spinning = false)
-      ,map(m => m.maint_info_item)
-      ,reduce((pre, cur) => [...pre, ...cur])
+          year, month, this.resultCount)),
+      catchError(e => new EmptyObservable()),
+      finalize(() => this.spinning = false),
+      map(m => m.maint_info_item),
+      reduce((pre, cur) => [...pre, ...cur])
     )
-    .subscribe(data => this.data = data);
+      .subscribe(data => this.data = data);
   }
 
   initMonthPicker(): void {
@@ -83,23 +82,23 @@ export class MonthlyReportComponent implements OnInit, OnDestroy {
   exportAsCSV() {
     const columns: TableColumn[] = this.dataTable.columns || this.dataTable._internalColumns;
     const headers =
-        columns
-            .map((column: TableColumn) => column.name)
-            .filter((e) => e);  // remove column without name (i.e. falsy value)
+      columns
+        .map((column: TableColumn) => column.name)
+        .filter((e) => e);  // remove column without name (i.e. falsy value)
 
     const rows: any[] = this.dataTable.rows.map((row) => {
       const r = new Array();
       columns.forEach((column) => {
-          if (!column.name) { return; }   // ignore column without name
-          if (column.prop) {
-              const prop = column.prop;
-              const val = (typeof row[prop] === 'boolean') ? (row[prop]) ? 'Yes'
-                                                                        : 'No'
-                                                          : row[prop];
-              r.push(val);
-          } else {
-              // special cases handled here
-          }
+        if (!column.name) { return; }   // ignore column without name
+        if (column.prop) {
+          const prop = column.prop;
+          const val = (typeof row[prop] === 'boolean') ? (row[prop]) ? 'Yes'
+            : 'No'
+            : row[prop];
+          r.push(val);
+        } else {
+          // special cases handled here
+        }
       });
       return r;
     });

@@ -44,19 +44,18 @@ export class ConnectionComponent implements OnInit, OnDestroy {
     const year = this.selectedDate.get('year');
     const month = this.selectedDate.get('month') + 1;
 
-    this.sub$ = this.dataService.getFleetById(this.fleetId)
-      .pipe(
+    this.sub$ = this.dataService.getFleetById(this.fleetId).pipe(
         // map each vehicle to a stream
-        concatMap(f => { return from(f.vehicles); })
+        concatMap(f => from(f.vehicles)),
         // fetch each vehicle data
-        ,mergeMap(v =>
+        mergeMap(v =>
           // this.http.get<any>(`${ this.dataUrlDebugLog }/${ v['vehicle_id'] }.json`))
           this.dataService.getVehicleDebugLogFile(v['vehicle_id'], this.userName,
-            null, 100))
+            null, 100)),
         // ignore when one of vehicles not found
-        ,catchError(() => new EmptyObservable())
+        catchError(() => new EmptyObservable()),
         // combine multiple arrays into a single array
-        ,reduce((pre, cur) => [...pre, ...cur] )
+        reduce((pre, cur) => [...pre, ...cur] )
       )
       .subscribe(data => {
         this.data = data;

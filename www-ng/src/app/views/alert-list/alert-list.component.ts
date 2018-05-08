@@ -27,8 +27,8 @@ export class AlertListComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getUserNotification(this.userName).pipe(
       concatMap(data => from(data.alert_notification))
-      ,concatMap(a => a['notification_info'].map(info => Object.assign(info, {'alert_type' : a['notification_type']})))
-      ,reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], [])
+      , concatMap(a => a['notification_info'].map(info => Object.assign(info, {'alert_type' : a['notification_type']})))
+      , reduce((pre: Array<any>, cur: Array<any>) => [...pre, ...cur], [])
     )
     .subscribe((data: Array<any>) => {
         this.alerts = data;

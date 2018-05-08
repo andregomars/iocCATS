@@ -31,13 +31,13 @@ export class PmnComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataPmn$ = this.route.paramMap.pipe(
-      map((params: ParamMap) => params.get('id'))
-      ,concatMap(pid => {
+      map((params: ParamMap) => params.get('id')),
+      concatMap(pid => {
         this.pid = +pid;
         return this.dataService.getPreventiveMaintNotifInfo(+pid,
           this.vid, this.user);
-      })
-      ,share()
+      }),
+      share()
     );
 
     // this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);

@@ -44,24 +44,23 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.initModuleIcons();
 
-    this.alert$ = this.route.paramMap
-      .pipe(
-        map((params: ParamMap) => params.get('id'))
-        ,concatMap(alertId => {
-          this.alertId = +alertId;
-          return this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId);
-          })
-        ,share()
-      );
+    this.alert$ = this.route.paramMap.pipe(
+      map((params: ParamMap) => params.get('id')),
+      concatMap(alertId => {
+        this.alertId = +alertId;
+        return this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId);
+      }),
+      share()
+    );
 
     this.locations$ = this.alert$.pipe(
       concatMap(alert =>
         this.dataService.getFleetById(alert.fleet_id).pipe(
-          concatMap(f => from(f.vehicles))
-          ,filter(v => v['vehicle_id'] === alert.vehicle_id)
+          concatMap(f => from(f.vehicles)),
+          filter(v => v['vehicle_id'] === alert.vehicle_id)
         )
-      )
-      ,switchMap(v => from(v['gps_location']))
+      ),
+      switchMap(v => from(v['gps_location']))
     );
 
     this.snapshots$ = this.alert$.map(a => a.item_info);
