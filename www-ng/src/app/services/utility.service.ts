@@ -61,4 +61,11 @@ export class UtilityService {
       endDate: endDate.toDate()
     };
   }
+
+  getSecondaryModules(modules: Array<any>): Array<any> {
+    return modules.filter(m =>
+      this.icons.filter(icon =>
+        icon.name === m.module_name.trim().toUpperCase())
+      .length === 0);
+  }
 }

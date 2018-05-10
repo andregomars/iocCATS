@@ -19,6 +19,7 @@ export class SnapshotComponent implements OnInit {
 
   public moduleIcons$: Observable<any>;
   public snapshots$: Observable<any>;
+  public secondaryModules$: Observable<any>;
   public greyIcons$: Observable<any>;
 
   colsSnapshot = [
@@ -64,6 +65,8 @@ export class SnapshotComponent implements OnInit {
     this.snapshots$ = this.alert$.map(a => a.item_info);
     this.moduleIcons$ = this.alert$.map(a =>
       this.utility.mapIconPaths(a.module_info));
+    this.secondaryModules$ = this.alert$.map(a =>
+      this.utility.getSecondaryModules(a.module_info));
     this.greyIcons$ = this.alert$.map(a =>
       this.utility.getGreyIcons(a.item_info));
   }

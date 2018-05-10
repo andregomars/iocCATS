@@ -38,4 +38,47 @@ describe('UtilityService', () => {
     expect(moment(output.beginDate).format('yyyyMMDD')).toEqual(expected.beginDate.format('yyyyMMDD'));
     expect(moment(output.endDate).format('yyyyMMDD')).toEqual(expected.endDate.format('yyyyMMDD'));
   }));
+
+  it('should get secondary modules', inject([UtilityService], (service: UtilityService) => {
+    const module_info = [
+        {
+            'module_icon_path': '',
+            'module_name': 'TRANSMISSION',
+            'module_status': 'on'
+        },
+        {
+            'module_icon_path': '',
+            'module_name': 'HVAC',
+            'module_status': 'on'
+        },
+        {
+            'module_icon_path': '',
+            'module_name': 'C5',
+            'module_status': 'on'
+        },
+        {
+            'module_icon_path': '',
+            'module_name': 'F1',
+            'module_status': 'on'
+        }
+    ];
+
+    const expected = [
+      {
+          'module_icon_path': '',
+          'module_name': 'C5',
+          'module_status': 'on'
+      },
+      {
+          'module_icon_path': '',
+          'module_name': 'F1',
+          'module_status': 'on'
+      }
+    ];
+
+    const output = service.getSecondaryModules(module_info);
+    expect(output).toEqual(expected);
+  }));
+
+
 });

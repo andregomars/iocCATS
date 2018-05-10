@@ -58,11 +58,11 @@
               </div>
             </div>
           </div>
-          <div class="row no-gutters" *ngIf="snapshots$ | async; else defaultItems; let snapshots">
+          <div class="row no-gutters" *ngIf="secondaryModules$ | async; else defaultItems; let modules">
               <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let s of snapshots">
+                *ngFor="let m of modules">
                 <div class="card text-icon-green m-1">
-                  <div class="card-body text-center small px-0">{{s.item}}</div>
+                  <div class="card-body text-center small px-0">{{m.module_name}}</div>
                 </div>
               </div>
               <div class="col-3 col-md-2 col-xl-1"
@@ -92,13 +92,27 @@
         <div class="card-body">
           <ngx-datatable #table
             class='material'
-            [columns]="colsSnapshot"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]='snapshots$ | async'>
+            <ngx-datatable-column name="Item" prop="item">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Value" prop="value">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Unit" prop="unit">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
       </div>
