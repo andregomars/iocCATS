@@ -10,7 +10,7 @@
     "start": "ng serve",
     "build": "ng-swagger-gen && ng build",
     "deploy": "ng build --prod",
-    "//postdeploy": "cd /var/www/html && sudo rm -rf cats-bak && sudo mv cats cats-bak && sudo cp -r ~/CATS/source/iocCATS/www . && sudo mv www cats && cd ~/CATS/source/iocCATS/www-ng",
+    "postdeploy": "cd /var/www/html && sudo rm -rf cats-bak && sudo mv cats cats-bak && sudo cp -r ~/CATS/source/iocCATS/www . && sudo mv www cats && cd ~/CATS/source/iocCATS/www-ng",
     "test": "ng-swagger-gen && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
