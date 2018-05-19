@@ -64,6 +64,7 @@ export class FleetComponent implements OnInit, OnDestroy {
         lng = v.gps_location[0].longitude;
       }
       return {
+        vehicle_id: v.vehicle_id,
         bus_number: v.vehicle_number,
         latitude: lat,
         longitude: lng

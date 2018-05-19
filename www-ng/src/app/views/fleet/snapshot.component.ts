@@ -76,10 +76,10 @@ export class SnapshotComponent implements OnInit {
     );
 
     this.locations$ = this.snapshot$.pipe(
-      map(alert => {
+      map(snapshot => {
         return {
-          latitude: alert.lat,
-          longitude: alert.lon
+          latitude: snapshot.lat,
+          longitude: snapshot.lon
         };
     }));
 

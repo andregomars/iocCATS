@@ -20,7 +20,7 @@
             <agm-marker 
               [latitude]="loc.latitude | toNumber" 
               [longitude]="loc.longitude | toNumber">
-              <agm-info-window>{{loc.altitude}}</agm-info-window>
+              <agm-info-window>alt: {{loc.altitude ? loc.altitude : 'n/a'}}</agm-info-window>
             </agm-marker>
           </agm-map>
           <ng-template #defaultMap>

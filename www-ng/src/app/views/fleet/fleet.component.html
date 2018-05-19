@@ -13,7 +13,9 @@
               <agm-marker *ngFor="let loc of locations"
                 [latitude]="loc.latitude | toNumber" 
                 [longitude]="loc.longitude | toNumber">
-                <agm-info-window>{{loc.bus_number}}</agm-info-window>
+                <agm-info-window>
+                  <a [routerLink]="['snapshot', fleetId, loc.vehicle_id]">{{loc.bus_number}}</a>
+                </agm-info-window>
               </agm-marker>
             </agm-marker-cluster>
           </agm-map>
