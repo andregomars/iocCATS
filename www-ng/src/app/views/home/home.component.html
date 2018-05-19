@@ -20,7 +20,8 @@
             <ngx-datatable-column name="Item" prop="alert_desc">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
-                <a [routerLink]="['/alert-list/alert', row['alert_id']]">
+                <a [routerLink]="['/alert-list/alert', row['alert_id']]"
+                  [queryParams]="{eventtime: row['event_time']}">
                   {{value}}
                 </a>
               </ng-template>
@@ -54,7 +55,8 @@
             <ngx-datatable-column name="Item" prop="alert_desc">
               <ng-template let-row="row" let-value="value" 
                 ngx-datatable-cell-template>
-                <a [routerLink]="['/alert-list/alert', row['alert_id']]">
+                <a [routerLink]="['/alert-list/alert', row['alert_id']]"
+                  [queryParams]="{eventtime: row['event_time']}">
                   {{value}}
                 </a>
               </ng-template>

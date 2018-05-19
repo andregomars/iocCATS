@@ -24,6 +24,7 @@ export class AlertComponent implements OnInit {
   public notifications$: Observable<any>;
   public acknowledges$: Observable<any>;
   public greyIcons$: Observable<any>;
+  public eventTime$: Observable<any>;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,11 +40,21 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.initModuleIcons();
 
+    this.eventTime$ = this.route.queryParams
+      .map((params: Params) => params['eventtime']);
+
     this.alert$ = this.route.paramMap.pipe(
       map((params: ParamMap) => params.get('id')),
+      // map((params: ParamMap) => {
+      //   return {
+      //     alertId: params.get('id'),
+      //     eventTime: params.get('eventtime')
+      //   };
+      // }),
       concatMap(alertId => {
         this.alertId = +alertId;
-        return this.dataService.getVehicleAlertSnapshotParams(this.userName, +alertId);
+        return this.dataService.getVehicleAlertSnapshotParams(
+          this.userName, +alertId);
       }),
       share()
     );

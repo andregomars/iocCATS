@@ -14,7 +14,14 @@
     <div class="col-12 col-sm-5">
       <div class="card">
         <div class="card-header">
-          Bus No. {{ (alert$ | async)?.vehicle_number }}
+          <div class="row">
+            <div class="col-5">
+              Bus No. {{ (alert$ | async)?.vehicle_number }}
+            </div>
+            <div class="col-7 text-right">
+              {{(eventTime$ | async)}}
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <agm-map *ngIf="locations$ | async; else defaultMap; let loc" style="height: 300px" [zoom]=12 [streetViewControl]=false [latitude]="loc.latitude | toNumber"
