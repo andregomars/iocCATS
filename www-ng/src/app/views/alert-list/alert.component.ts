@@ -19,7 +19,7 @@ export class AlertComponent implements OnInit {
   public alert$: Observable<any>;
   public locations$: Observable<any>;
   public moduleIcons$: Observable<any>;
-  public snapshots$: Observable<any>;
+  public items$: Observable<any>;
   public secondaryModules$: Observable<any>;
   public notifications$: Observable<any>;
   public acknowledges$: Observable<any>;
@@ -58,7 +58,7 @@ export class AlertComponent implements OnInit {
       switchMap(v => from(v['gps_location']))
     );
 
-    this.snapshots$ = this.alert$.map(a => a.item_info);
+    this.items$ = this.alert$.map(a => a.item_info);
     this.notifications$ = this.alert$.map(a => a.notif_info);
     this.acknowledges$ = this.alert$.map(a => a.ackd_info);
     this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
@@ -68,11 +68,11 @@ export class AlertComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    console.log(`post Acknowledge with params - userName: ${this.userName}, alertId: ${this.alertId}`);
+    // console.log(`post Acknowledge with params - userName: ${this.userName}, alertId: ${this.alertId}`);
     const res = this.dataService.postVehicleAlertSnapshotParams(this.userName, this.alertId);
-    res.subscribe(json => {
-      console.log('Acknowledge result: ' + json);
-    });
+    // res.subscribe(json => {
+    //   console.log('Acknowledge result: ' + json);
+    // });
     this.alertId = 0;
   }
 

@@ -18,4 +18,13 @@ describe('ToNumberPipe', () => {
   it('should return 0 when transform empty string', function() {
     expect(pipe.transform('')).toBe(0);
   });
+
+  it('should return standard lat/lng numbers when transform over floating string', function() {
+    expect(pipe.transform('34.13470720000001')).toBe(34.134707);
+  });
+
+  it('should return standard lat/lng numbers when transform over floating string', function() {
+    expect(pipe.transform('34.13452799999999')).toBe(34.134528);
+  });
+
 });
