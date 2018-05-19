@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 
 import { UserService, FleetService,
@@ -37,8 +38,10 @@ export class RemoteDataService {
     if (this.sourceType === DataSourceType.Swagger) {
       return Object.assign(this.userService.getUserNotification(userName));
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`)
-        .delay(this.delayEmulatorTimer);
+      return this.http
+        .get<any>(`${ this.rootUrl }/user/notification/${ userName }.json`).pipe(
+          delay(this.delayEmulatorTimer)
+        );
     }
   }
 
@@ -96,8 +99,10 @@ export class RemoteDataService {
       };
       return Object.assign(this.vehicleService.getVehicleMaintLogInfo(params));
     } else {
-      return this.http.get<any>(`${ this.rootUrl }/vehicle/maintLogInfo/${ vehicleId }.json`)
-        .delay(this.delayEmulatorTimer);
+      return this.http
+        .get<any>(`${ this.rootUrl }/vehicle/maintLogInfo/${ vehicleId }.json`).pipe(
+          delay(this.delayEmulatorTimer)
+        );
     }
   }
 
