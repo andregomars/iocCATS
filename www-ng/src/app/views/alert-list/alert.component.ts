@@ -40,17 +40,12 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.initModuleIcons();
 
-    this.eventTime$ = this.route.queryParams
-      .map((params: Params) => params['eventtime']);
+    this.eventTime$ = this.route.queryParams.pipe(
+      map((params: Params) => params['eventtime'])
+    );
 
     this.alert$ = this.route.paramMap.pipe(
       map((params: ParamMap) => params.get('id')),
-      // map((params: ParamMap) => {
-      //   return {
-      //     alertId: params.get('id'),
-      //     eventTime: params.get('eventtime')
-      //   };
-      // }),
       concatMap(alertId => {
         this.alertId = +alertId;
         return this.dataService.getVehicleAlertSnapshotParams(
@@ -69,21 +64,22 @@ export class AlertComponent implements OnInit {
       switchMap(v => from(v['gps_location']))
     );
 
-    this.items$ = this.alert$.map(a => a.item_info);
-    this.notifications$ = this.alert$.map(a => a.notif_info);
-    this.acknowledges$ = this.alert$.map(a => a.ackd_info);
-    this.moduleIcons$ = this.alert$.map(a => this.utility.mapIconPaths(a.module_info));
-    this.secondaryModules$ = this.alert$.map(a => this.utility.getSecondaryModules(a.module_info));
-    this.greyIcons$ = this.alert$.map(a => this.utility.getGreyIcons(a.item_info));
+    this.items$ = this.alert$.pipe(map(a => a.item_info));
+    this.notifications$ =
+      this.alert$.pipe(map(a => a.notif_info));
+    this.acknowledges$ =
+      this.alert$.pipe(map(a => a.ackd_info));
+    this.moduleIcons$ =
+      this.alert$.pipe(map(a => this.utility.mapIconPaths(a.module_info)));
+    this.secondaryModules$ =
+      this.alert$.pipe(map(a => this.utility.getSecondaryModules(a.module_info)));
+    this.greyIcons$ =
+      this.alert$.pipe(map(a => this.utility.getGreyIcons(a.item_info)));
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    // console.log(`post Acknowledge with params - userName: ${this.userName}, alertId: ${this.alertId}`);
     const res = this.dataService.postVehicleAlertSnapshotParams(this.userName, this.alertId);
-    // res.subscribe(json => {
-    //   console.log('Acknowledge result: ' + json);
-    // });
     this.alertId = 0;
   }
 

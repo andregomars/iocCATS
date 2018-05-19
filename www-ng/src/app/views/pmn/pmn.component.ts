@@ -41,18 +41,14 @@ export class PmnComponent implements OnInit {
     );
 
     // this.items$ = this.dataPmn$.map(d => d.prevent_notif_list);
-    this.items$ = this.dataPmn$.map(d => new Array(d.prevent_notif_list));
-    this.resets$ = this.dataPmn$.map(d => d.reset_list);
-    this.notifications$ = this.dataPmn$.map(d => d.notif_list);
+    this.items$ = this.dataPmn$.pipe(map(d => new Array(d.prevent_notif_list)));
+    this.resets$ = this.dataPmn$.pipe(map(d => d.reset_list));
+    this.notifications$ = this.dataPmn$.pipe(map(d => d.notif_list));
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    console.log(`post Reset with params - uid: ${this.user}, pid: ${this.pid}, vid: ${this.vid}`);
     const res = this.dataService.postPreventiveMaintNotifInfo(this.pid, this.vid, this.user);
-    res.subscribe(json => {
-      console.log('Reset result: ' + json);
-    });
     this.pid = 0;
   }
 }

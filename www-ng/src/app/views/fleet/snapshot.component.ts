@@ -84,13 +84,16 @@ export class SnapshotComponent implements OnInit {
     }));
 
 
-    this.items$ = this.snapshot$.map(a => a.item_info);
-    this.moduleIcons$ = this.snapshot$.map(a =>
-      this.utility.mapIconPaths(a.module_info));
-    this.secondaryModules$ = this.snapshot$.map(a =>
-      this.utility.getSecondaryModules(a.module_info));
-    this.greyIcons$ = this.snapshot$.map(a =>
-      this.utility.getGreyIcons(a.item_info));
+    this.items$ = this.snapshot$.pipe(map(a => a.item_info));
+    this.moduleIcons$ =
+      this.snapshot$.pipe(map(a =>
+        this.utility.mapIconPaths(a.module_info)));
+    this.secondaryModules$ =
+      this.snapshot$.pipe(map(a =>
+        this.utility.getSecondaryModules(a.module_info)));
+    this.greyIcons$ =
+      this.snapshot$.pipe(map(a =>
+        this.utility.getGreyIcons(a.item_info)));
   }
 
   private initModuleIcons(): void {
