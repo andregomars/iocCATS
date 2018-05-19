@@ -44,7 +44,7 @@ export class AlertListComponent implements OnInit {
       return row.vehicle_number.toLowerCase().indexOf(val) !== -1
         || row.alert_desc.toLowerCase().indexOf(val) !== -1
         || row.alert_type.toLowerCase().indexOf(val) !== -1
-        || row.alert_time.toLowerCase().indexOf(val) !== -1
+        || row.event_time.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 
