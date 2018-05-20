@@ -81,6 +81,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 export function initApiConfiguration(config: ApiConfiguration): Function {
@@ -110,7 +111,8 @@ export const INIT_API_CONFIGURATION: Provider = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AppPipeModule,
-    ApiModule
+    ApiModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,

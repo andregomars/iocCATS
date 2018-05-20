@@ -1,5 +1,5 @@
 {
-  "name": "ioc.cats.ng",
+  "name": "ioc-cats-ng",
   "version": "1.0.0",
   "description": "Open Source Bootstrap Admin Template",
   "author": "Andre Shen",
@@ -29,6 +29,7 @@
     "@angular/http": "^6.0.0",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
+    "@angular/pwa": "^0.6.3",
     "@angular/router": "^6.0.0",
     "@angular/upgrade": "^6.0.0",
     "@swimlane/ngx-datatable": "^11.1.0",
@@ -51,7 +52,8 @@
     "rxjs-compat": "^6.1.0",
     "simple-line-icons": "^2.4.1",
     "ts-helpers": "1.1.2",
-    "zone.js": "0.8.20"
+    "zone.js": "0.8.20",
+    "@angular/service-worker": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",

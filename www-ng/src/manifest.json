@@ -1,0 +1,16 @@
+{
+  "name": "ioccats",
+  "short_name": "ioccats",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/img/logo-symbol.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ]
+}
