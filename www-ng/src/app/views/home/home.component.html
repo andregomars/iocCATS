@@ -12,7 +12,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataCritical$ | async">
-            <ngx-datatable-column name="Bus No." prop="vehicle_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number" [width]="30">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
@@ -47,7 +47,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataGeneral$ | async">
-            <ngx-datatable-column name="Bus No." prop="vehicle_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number" [width]="30">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{value}}
               </ng-template>
@@ -82,7 +82,7 @@
             [rowHeight]="'auto'"
             [limit]="10"
             [rows]="dataPmn$ | async">
-            <ngx-datatable-column name="Bus No." prop="vehicle_number">
+            <ngx-datatable-column name="Bus No." prop="vehicle_number" [width]="30">
               <ng-template let-row="row" let-col="column"
                 let-value="value" ngx-datatable-cell-template>
                 {{value}}

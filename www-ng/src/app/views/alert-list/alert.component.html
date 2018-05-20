@@ -97,37 +97,13 @@
   </div>
   <div class="row">
     <div class="col-12 col-sm-5">
-      <div class="card">
-        <div class="card-body">
-          <ngx-datatable #tableSnapshot class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0"
-            [rowHeight]="'auto'" [limit]="10" [rows]='snapshots$ | async'>
-            <ngx-datatable-column name="Item" prop="item">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Value" prop="value">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | number:'1.0-1'}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Unit" prop="unit">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value}}
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-7">
       <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-body">
               <ngx-datatable #tableNotifyLog class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'"
                 [limit]="10" [rows]='notifications$ | async'>
-                <ngx-datatable-column name="Notified" prop="notified_user">
+                <ngx-datatable-column name="Notified" prop="notified_user" [width]="50">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value}}
                   </ng-template>
@@ -148,7 +124,7 @@
             <div class="card-body">
               <ngx-datatable #tableAckLog class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'"
                 [limit]="10" [rows]='acknowledges$ | async'>
-                <ngx-datatable-column name="Acknowledged" prop="acknowledged_user">
+                <ngx-datatable-column name="Acknowledged" prop="acknowledged_user" [width]="50">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value}}
                   </ng-template>
@@ -161,6 +137,30 @@
               </ngx-datatable>
             </div>
           </div>
+        </div>
+      </div>   
+    </div>
+    <div class="col-12 col-sm-7">
+      <div class="card">
+        <div class="card-body">
+          <ngx-datatable #tableSnapshot class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0"
+            [rowHeight]="'auto'" [limit]="10" [rows]='items$ | async'>
+            <ngx-datatable-column name="Item" prop="item">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Value" prop="value" [width]="30">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | number:'1.0-1'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Unit" prop="unit" [width]="20">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
         </div>
       </div>
     </div>

@@ -93,7 +93,7 @@ export class SnapshotComponent implements OnInit {
         this.utility.getSecondaryModules(a.module_info)));
     this.greyIcons$ =
       this.snapshot$.pipe(map(a =>
-        this.utility.getGreyIcons(a.item_info)));
+        this.utility.getGreyIcons(a.module_info)));
   }
 
   private initModuleIcons(): void {
