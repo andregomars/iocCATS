@@ -23,7 +23,7 @@ export class AlertComponent implements OnInit {
   public secondaryModules$: Observable<any>;
   public notifications$: Observable<any>;
   public acknowledges$: Observable<any>;
-  public greyIcons$: Observable<any>;
+  // public greyIcons$: Observable<any>;
   public eventTime$: Observable<any>;
 
   constructor(
@@ -70,11 +70,13 @@ export class AlertComponent implements OnInit {
     this.acknowledges$ =
       this.alert$.pipe(map(a => a.ackd_info));
     this.moduleIcons$ =
-      this.alert$.pipe(map(a => this.utility.mapIconPaths(a.module_info)));
+      this.alert$.pipe(map(a =>
+        this.utility.mapIconPaths(a.module_info)));
     this.secondaryModules$ =
-      this.alert$.pipe(map(a => this.utility.getSecondaryModules(a.module_info)));
-    this.greyIcons$ =
-      this.alert$.pipe(map(a => this.utility.getGreyIcons(a.item_info)));
+      this.alert$.pipe(map(a =>
+        this.utility.getSecondaryModules(a.module_info)));
+    // this.greyIcons$ =
+    //   this.alert$.pipe(map(a => this.utility.getGreyIcons(a.item_info)));
   }
 
   openModal(template: TemplateRef<any>) {

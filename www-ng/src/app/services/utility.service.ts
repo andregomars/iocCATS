@@ -63,6 +63,10 @@ export class UtilityService {
   }
 
   getSecondaryModules(modules: Array<any>): Array<any> {
+    if (!modules || modules.length < 1) {
+      return null;
+    }
+
     return modules.filter(m =>
       this.icons.filter(icon =>
         icon.name === m.module_name.trim().toUpperCase())

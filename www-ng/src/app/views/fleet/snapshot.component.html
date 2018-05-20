@@ -66,18 +66,20 @@
             </div>
           </div>
           <div class="row no-gutters" *ngIf="secondaryModules$ | async; else defaultItems; let modules">
-              <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let m of modules">
-                <div class="card text-icon-green m-1">
-                  <div class="card-body text-center small px-0">{{m.module_name}}</div>
-                </div>
+            <div class="col-3 col-md-2 col-xl-1"
+              *ngFor="let m of modules">
+              <div class="card text-icon-green m-1">
+                <div class="card-body text-center small px-0">{{m.module_name}}</div>
               </div>
-              <div class="col-3 col-md-2 col-xl-1"
-                *ngFor="let s of greyIcons$ | async">
-                <div class="card text-icon-grey m-1">
-                  <div class="card-body text-center small">&nbsp;&nbsp;</div>
-                </div>
+            </div>
+            <!-- <div class="col-3 col-md-2 col-xl-1"
+              *ngFor="let s of greyIcons$ | async"> -->
+            <div class="col-3 col-md-2 col-xl-1"
+              *ngFor="let s of utility.getGreyIcons(modules)">
+              <div class="card text-icon-grey m-1">
+                <div class="card-body text-center small">&nbsp;&nbsp;</div>
               </div>
+            </div>
           </div>
           <ng-template #defaultItems>
             <div class="row no-gutters">

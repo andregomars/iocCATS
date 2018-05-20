@@ -20,13 +20,7 @@ export class SnapshotComponent implements OnInit {
   public moduleIcons$: Observable<any>;
   public items$: Observable<any>;
   public secondaryModules$: Observable<any>;
-  public greyIcons$: Observable<any>;
-
-  colsSnapshot = [
-    { name: 'Item', prop: 'item' },
-    { name: 'Value', prop: 'value' },
-    { name: 'Unit', prop: 'unit' }
-  ];
+  // public greyIcons$: Observable<any>;
 
   constructor(
     private route: ActivatedRoute,
@@ -91,9 +85,9 @@ export class SnapshotComponent implements OnInit {
     this.secondaryModules$ =
       this.snapshot$.pipe(map(a =>
         this.utility.getSecondaryModules(a.module_info)));
-    this.greyIcons$ =
-      this.snapshot$.pipe(map(a =>
-        this.utility.getGreyIcons(a.module_info)));
+    // this.greyIcons$ =
+    //   this.snapshot$.pipe(map(a =>
+    //     this.utility.getGreyIcons(a.module_info)));
   }
 
   private initModuleIcons(): void {
