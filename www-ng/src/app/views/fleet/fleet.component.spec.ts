@@ -15,6 +15,7 @@ import { ApiModule } from '../../api/api.module';
 describe('FleetComponent', () => {
   const vehicles = [
     {
+        'vehicle_id': 1,
         'vehicle_number': '001',
         'engine_status': 'on',
         'gps_location': [
@@ -30,6 +31,7 @@ describe('FleetComponent', () => {
         'update_time': '2018-02-23 08:28:00'
     },
     {
+        'vehicle_id': 2,
         'vehicle_number': '002',
         'engine_status': 'off',
         'gps_location': [
@@ -82,11 +84,13 @@ describe('FleetComponent', () => {
     const test = app.extracLocations(vehicles);
     const fact = [
       {
+        vehicle_id: 1,
         bus_number: '001',
         latitude: '33.934353',
         longitude: '-117.934343'
       },
       {
+        vehicle_id: 2,
         bus_number: '002',
         latitude: '33.954353',
         longitude: '-117.964343'
