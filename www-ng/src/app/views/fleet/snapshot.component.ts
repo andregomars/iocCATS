@@ -15,7 +15,7 @@ export class SnapshotComponent implements OnInit {
   public defaultModuleIcons: Array<string>;
   // public vehicle$: Observable<any>;
   public snapshot$: Observable<any>;
-  public locations$: Observable<any>;
+  public location$: Observable<any>;
 
   public moduleIcons$: Observable<any>;
   public items$: Observable<any>;
@@ -69,7 +69,7 @@ export class SnapshotComponent implements OnInit {
       share()
     );
 
-    this.locations$ = this.snapshot$.pipe(
+    this.location$ = this.snapshot$.pipe(
       map(snapshot => {
         return {
           latitude: snapshot.lat,

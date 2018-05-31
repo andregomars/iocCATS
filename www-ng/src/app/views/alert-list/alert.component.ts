@@ -17,7 +17,7 @@ export class AlertComponent implements OnInit {
   public modalRef: BsModalRef;
   public defaultModuleIcons: Array<string>;
   public alert$: Observable<any>;
-  public locations$: Observable<any>;
+  public location$: Observable<any>;
   public moduleIcons$: Observable<any>;
   public items$: Observable<any>;
   public secondaryModules$: Observable<any>;
@@ -54,15 +54,23 @@ export class AlertComponent implements OnInit {
       share()
     );
 
-    this.locations$ = this.alert$.pipe(
-      concatMap(alert =>
-        this.dataService.getFleetById(alert.fleet_id).pipe(
-          concatMap(f => from(f.vehicles)),
-          filter(v => v['vehicle_id'] === alert.vehicle_id)
-        )
-      ),
-      switchMap(v => from(v['gps_location']))
-    );
+    this.location$ = this.alert$.pipe(
+      map(alert => {
+        return {
+          latitude: alert.lat,
+          longitude: alert.lon
+        };
+    }));
+
+    // this.locations$ = this.alert$.pipe(
+    //   concatMap(alert =>
+    //     this.dataService.getFleetById(alert.fleet_id).pipe(
+    //       concatMap(f => from(f.vehicles)),
+    //       filter(v => v['vehicle_id'] === alert.vehicle_id)
+    //     )
+    //   ),
+    //   switchMap(v => from(v['gps_location']))
+    // );
 
     this.items$ = this.alert$.pipe(map(a => a.item_info));
     this.notifications$ =

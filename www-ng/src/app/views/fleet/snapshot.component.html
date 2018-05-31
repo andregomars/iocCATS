@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-          <agm-map *ngIf="locations$ | async; else defaultMap; let loc"
+          <!-- <agm-map *ngIf="locations$ | async; else defaultMap; let loc"
             style="height: 300px" [zoom]=12 [streetViewControl]=false
             [latitude]="loc.latitude | toNumber" 
             [longitude]="loc.longitude | toNumber">
@@ -22,7 +22,19 @@
               [longitude]="loc.longitude | toNumber">
               <agm-info-window>alt: {{loc.altitude ? loc.altitude : 'n/a'}}</agm-info-window>
             </agm-marker>
-          </agm-map>
+          </agm-map> -->
+          <ng-container *ngIf="location$ | async; else defaultMap; let loc">
+            <agm-map *ngIf="loc.latitude && loc.latitude !== 0; else defaultMap"
+              style="height: 300px" [zoom]=12 [streetViewControl]=false
+              [latitude]="loc.latitude | toNumber" 
+              [longitude]="loc.longitude | toNumber">
+              <agm-marker 
+                [latitude]="loc.latitude | toNumber" 
+                [longitude]="loc.longitude | toNumber">
+                <agm-info-window>alt: {{loc.altitude ? loc.altitude : 'n/a'}}</agm-info-window>
+              </agm-marker>
+            </agm-map>
+          </ng-container>
           <ng-template #defaultMap>
             <agm-map style="height: 300px" [zoom]=12 [streetViewControl]=false
               [latitude]="34.055597" 
