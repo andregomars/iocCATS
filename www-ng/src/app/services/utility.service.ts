@@ -11,7 +11,7 @@ export class UtilityService {
     { name: 'TRANSMISSION', path: 'assets/img/indicators/transmission' },
     { name: 'ABS', path: 'assets/img/indicators/abs' },
     { name: 'HVAC', path: 'assets/img/indicators/hvac' },
-    { name: 'EQULIZER', path: 'assets/img/indicators/equlizer' },
+    { name: 'BATTERY EQUALIZER', path: 'assets/img/indicators/equlizer' },
     { name: 'FAN', path: 'assets/img/indicators/fan' }
   ];
   private iconCardsCount = 12;
