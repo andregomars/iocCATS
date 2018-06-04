@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { RemoteDataService } from 'app/services/remote-data.service';
 import { ApiConfiguration } from 'app/api/api-configuration';
 import { ApiModule } from './api/api.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // Import containers
 import {
@@ -110,7 +111,8 @@ export const INIT_API_CONFIGURATION: Provider = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AppPipeModule,
-    ApiModule
+    ApiModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,
